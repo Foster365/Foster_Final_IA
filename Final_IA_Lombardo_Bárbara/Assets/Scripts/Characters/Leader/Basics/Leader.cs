@@ -52,14 +52,14 @@ public class Leader : Entity, IMove
     Transform _transform;
 
     //Pathfinding
-    public Entity characterAStar;
-    public LayerMask mask;
-    public float distanceMax;
-    public float radius;
-    public Vector3 offset;
-    public GameObject finit;
+    //public Entity characterAStar;
+    //public LayerMask mask;
+    //public float distanceMax;
+    //public float radius;
+    //public Vector3 offset;
+    //public GameObject finit;
 
-    AgentAStar _agentAstar;
+    //AgentAStar _agentAstar;
     //
 
     Seek seekBehaviour;
@@ -70,7 +70,7 @@ public class Leader : Entity, IMove
     public Seek SeekBehaviour { get => seekBehaviour; set => seekBehaviour = gameObject.GetComponent<Seek>(); }
     public ObstacleAvoidance ObsAvoidanceBehaviour { get => obsAvoidanceBehaviour; set => obsAvoidanceBehaviour = gameObject.GetComponent<ObstacleAvoidance>(); }
     public Flee FleeBehaviour { get => fleeBehaviour; set => fleeBehaviour = value; }
-    public LineOfSight Line_Of_Sight { get => lineOfSight; }
+    public LineOfSight Line_Of_Sight { get => lineOfSight; set => lineOfSight = value; }
     public LayerMask Layer { get => layer; set => layer = value; }
 
     //Seek Behaviour
@@ -88,7 +88,7 @@ public class Leader : Entity, IMove
 
         _target = GameObject.FindWithTag(CharacterTags.FOLLOWER_TAG).transform;//Estaba como Leader
 
-        _agentAstar = new AgentAStar(characterAStar, mask, distanceMax, radius, offset, seekBehaviour, finit);
+        //_agentAstar = new AgentAStar(characterAStar, mask, distanceMax, radius, offset, seekBehaviour, finit);
 
         //seekBehaviour = GetComponent<Seek>();
         //obsAvoidanceBehaviour = GetComponent<ObstacleAvoidance>();
@@ -189,7 +189,7 @@ public class Leader : Entity, IMove
 
     public void Patrolling()
     {
-        _agentAstar.PathFindingAStarVector();
+        //_agentAstar.PathFindingAStarVector();
         //GoToWaypoint();
         _leaderAnimations.MoveAnimation(true);
 

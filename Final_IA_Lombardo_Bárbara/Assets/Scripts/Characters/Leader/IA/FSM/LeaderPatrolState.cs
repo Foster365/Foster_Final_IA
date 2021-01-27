@@ -12,7 +12,7 @@ public class LeaderPatrolState<T> : FSMState<T>
     T _idleState;
     T _seekState;
 
-    float patrolCounter;
+    float patrolCounter = 0;
     float maxPatrolCounter = 10f;
 
     public LeaderPatrolState(Leader leader, LeaderAnimations leaderAnimations, FSM<T> fsm,
@@ -29,9 +29,9 @@ public class LeaderPatrolState<T> : FSMState<T>
 
     public override void Awake()
     {
+
         Debug.Log("Leader Patrol State Awake");
         patrolCounter = 0f;
-
 
     }
     public override void Execute()

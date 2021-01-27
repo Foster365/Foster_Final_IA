@@ -1040,6 +1040,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1363303873}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &203790241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203790240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df06a4c46aaeb54aad2eee97f55137d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+  distanceMax: 10
+  radius: 5
+  offset: {x: 0, y: 0.1, z: 0}
+  finit: {fileID: 2133205479}
 --- !u!114 &203790242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,14 +1108,6 @@ MonoBehaviour:
   safePointLayer:
     serializedVersion: 2
     m_Bits: 1024
-  characterAStar: {fileID: 775145893}
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
-  distanceMax: 40
-  radius: 0.2
-  offset: {x: 0, y: 1.44, z: 0}
-  finit: {fileID: 2133205479}
   _idleCountdown: 3
 --- !u!54 &203790244 stripped
 Rigidbody:
@@ -1132,18 +1143,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 205aebfe6c4abe540b7fb749c50a6d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &203790250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203790240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df06a4c46aaeb54aad2eee97f55137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &213967558
@@ -1402,6 +1401,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df06a4c46aaeb54aad2eee97f55137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  distanceMax: 0
+  radius: 0
+  offset: {x: 0, y: 0, z: 0}
+  finit: {fileID: 0}
 --- !u!1 &270149129
 GameObject:
   m_ObjectHideFlags: 0

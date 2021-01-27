@@ -15,6 +15,9 @@ public class LeaderController : MonoBehaviour
     Rigidbody _rigidbody;
     //
 
+    //LineOfSight variables
+    //
+
     private void Awake()
     {
         _leader = GetComponent<Leader>();
