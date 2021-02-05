@@ -12,6 +12,20 @@ public class LineOfSight : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayers;
     [SerializeField] private LayerMask player;
 
+    public LineOfSight(float _viewDistance, float _viewCone, RaycastHit _hitInfo, Transform _visionPoint, LayerMask _obstacleLayer, LayerMask _player)
+    {
+
+        viewDistance = _viewDistance;
+        viewCone = _viewCone;
+
+        hitInfo = _hitInfo;
+
+        visionPoint = _visionPoint;
+        obstacleLayers = _obstacleLayer;
+
+        player = _player;
+
+    }
 
     public bool targetInSight = false;
 

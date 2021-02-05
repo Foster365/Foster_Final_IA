@@ -25,12 +25,12 @@ public class LeaderController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
     // Start is called before the first frame update
-    void Start() 
+    void Start()
     {
 
         _fsm = new FSM<string>();
 
-        LeaderIdleState<string> leaderIdleState = new LeaderIdleState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderDamagedState", "LeaderDeathState", "LeaderFleeState");
+        LeaderIdleState<string> leaderIdleState = new LeaderIdleState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderDamagedState", "LeaderDeathState", "LeaderFleeState", _leader.IdleCountdown);
         LeaderPatrolState<string> leaderPatrolState = new LeaderPatrolState<string>(_leader, _leaderAnimations, _fsm, "LeaderIdleState", "LeaderSeekState");
         LeaderSeekState<string> leaderSeekState = new LeaderSeekState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderAttackState");
         LeaderAttackState<string> leaderAttackState = new LeaderAttackState<string>(_leader, _leaderAnimations, _fsm, "LeaderSeekState", "LeaderFleeState", "LeaderDamagedState", "LeaderDeathState");

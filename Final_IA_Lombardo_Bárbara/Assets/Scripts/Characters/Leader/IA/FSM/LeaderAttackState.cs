@@ -84,8 +84,8 @@ public class LeaderAttackState<T> : FSMState<T>
         Debug.Log("Ruleta Enemy Creada");
         _roulette = new Roulette();
 
-        ActionNode aPunch = new ActionNode(_leader.Punch);
-        ActionNode Kick = new ActionNode(_leader.Kick);
+        ActionNode aPunch = new ActionNode(_leaderAnimations.PunchAnimation);
+        ActionNode Kick = new ActionNode(_leaderAnimations.KickAnimation);
 
         _rouletteNodes.Add(aPunch, 30);
         _rouletteNodes.Add(Kick, 50);

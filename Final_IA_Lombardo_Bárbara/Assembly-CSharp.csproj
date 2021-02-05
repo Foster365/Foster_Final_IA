@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Characters\Leader\Basics\Leader.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\Basics\LeaderAnimations.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\Basics\LeaderController.cs" />
+    <Compile Include="Assets\Scripts\Characters\Leader\Basics\LeaderSteering.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderAttackState.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderDamagedState.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderDeathState.cs" />
@@ -102,7 +103,7 @@
     <Compile Include="Assets\Scripts\IA\Roulette Wheel\Roulette.cs" />
     <Compile Include="Assets\Scripts\IA\Steering\Evade.cs" />
     <Compile Include="Assets\Scripts\IA\Steering\Flee.cs" />
-    <Compile Include="Assets\Scripts\IA\Steering\ISteeringBehaviors.cs" />
+    <Compile Include="Assets\Scripts\IA\Steering\ISteeringBehaviour.cs" />
     <Compile Include="Assets\Scripts\IA\Steering\ObstacleAvoidance.cs" />
     <Compile Include="Assets\Scripts\IA\Steering\Pursit.cs" />
     <Compile Include="Assets\Scripts\IA\Steering\Seek.cs" />

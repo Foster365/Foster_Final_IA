@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UADE.IA.Steering;
 
 public class Leader : Entity, IMove
 {
@@ -52,14 +51,13 @@ public class Leader : Entity, IMove
     Transform _transform;
 
     //Pathfinding
-    //public Entity characterAStar;
-    //public LayerMask mask;
-    //public float distanceMax;
-    //public float radius;
-    //public Vector3 offset;
-    //public GameObject finit;
+    public LayerMask mask;
+    public float distanceMax;
+    public float radius;
+    public Vector3 offset;
+    public GameObject finit;
 
-    //AgentAStar _agentAstar;
+    AgentAStar _agentAstar;
     //
 
     Seek seekBehaviour;
@@ -72,6 +70,7 @@ public class Leader : Entity, IMove
     public Flee FleeBehaviour { get => fleeBehaviour; set => fleeBehaviour = value; }
     public LineOfSight Line_Of_Sight { get => lineOfSight; set => lineOfSight = value; }
     public LayerMask Layer { get => layer; set => layer = value; }
+    public float IdleCountdown { get => _idleCountdown;}
 
     //Seek Behaviour
     float _idleTimer;
@@ -86,14 +85,13 @@ public class Leader : Entity, IMove
 
         _leaderAnimations = gameObject.GetComponent<LeaderAnimations>();
 
-        _target = GameObject.FindWithTag(CharacterTags.FOLLOWER_TAG).transform;//Estaba como Leader
+        //_target = GameObject.FindWithTag(CharacterTags.FOLLOWER_TAG).transform;//Estaba como Leader
 
-        //_agentAstar = new AgentAStar(characterAStar, mask, distanceMax, radius, offset, seekBehaviour, finit);
 
         //seekBehaviour = GetComponent<Seek>();
         //obsAvoidanceBehaviour = GetComponent<ObstacleAvoidance>();
         //fleeBehaviour = GetComponent<Flee>();
-        //lineOfSight = GetComponent<LineOfSight>();
+        lineOfSight = GetComponent<LineOfSight>();
 
         currentAttackTime = defaultAttackTime;
 
@@ -114,41 +112,6 @@ public class Leader : Entity, IMove
         _isMoving = true;
 
     }
-
-    //public void Attack()
-    //{
-    //    currentAttackTime += Time.deltaTime;
-
-    //if (currentAttackTime >= defaultAttackTime)
-    //    RouletteAction();
-
-    //    currentAttackTime = 0;
-
-    //    //Damage();
-    //    Debug.Log("Punch Anim");
-    //}
-
-    //public void RouletteWheel()
-    //{
-    //    _roulette = new Roulette();
-
-    //    //ActionNode aPunch = new ActionNode(APunch);
-    //    //ActionNode bPunch = new ActionNode(BPunch);
-    //    //ActionNode kick = new ActionNode(Kick);
-
-    //    //_rouletteNodes.Add(aPunch, 30);
-    //    //_rouletteNodes.Add(bPunch, 35);
-    //    //_rouletteNodes.Add(kick, 50);
-
-    //    ActionNode rouletteAction = new ActionNode(RouletteAction);
-    //}
-
-    //public void RouletteAction()
-    //{
-    //    Debug.Log("Entered in roulette");
-    //    Node nodeRoulette = _roulette.Run(_rouletteNodes);
-    //    nodeRoulette.Execute();
-    //}
 
     public void GoToWaypoint()
     {
@@ -221,43 +184,13 @@ public class Leader : Entity, IMove
         if (CurrentHealth < minimumLife)
         {
             seekBehaviour.move = false;
-            fleeBehaviour.Move();
+            fleeBehaviour.GetDir();
             _leaderAnimations.SeekAnimation();
             Debug.Log("Flee Animation");
         }
         else
             return;
 
-    }
-
-    public void Punch()
-    {
-        _leaderAnimations.PunchAnimation();
-    }
-
-    public void Kick()
-    {
-        _leaderAnimations.KickAnimation();
-    }
-
-    public void Block()
-    {
-        _leaderAnimations.BlockAnimation();
-    }
-
-    public void GetDamage()
-    {
-        _leaderAnimations.DamageAnimation();
-    }
-
-    public void Idle()
-    {
-        _leaderAnimations.IdleAnimation();
-    }
-
-    public void Died()
-    {
-        _leaderAnimations.DeathAnimation();
     }
 
 }

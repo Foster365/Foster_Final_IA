@@ -2,22 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seek : SteeringBehaviour
+public class Seek
 {
     public bool move;
-    private LineOfSight sight;
+    private LineOfSight lineOfSight;
     private Transform target;
     public List<Vector3> waypoints;
     int _nextPoint = 0;
     private AgentAStar agent;
     private float timer;
+    protected float speed;
+    protected float rotSpeed;
+    AgentAStar agentAStar;
+
+    Transform transform;
+    Rigidbody rbTarget;
 
     public Transform Target { get => target; set => target = value; }
 
+    public Seek(float _speed, float _rotSpeed, List<Vector3> _waypoints, LineOfSight _lineOfSight, AgentAStar _agentAStar, Transform _transform, Rigidbody _rbTarget)
+    {
+        speed = _speed;
+        rotSpeed = _rotSpeed;
+
+        waypoints = _waypoints;
+
+        lineOfSight = _lineOfSight;
+        agentAStar = _agentAStar;
+
+        transform = _transform;
+        rbTarget = _rbTarget;
+
+    }
+
     private void Awake()
     {
-        sight = GetComponent<LineOfSight>();
-        agent = GetComponent<AgentAStar>();
+
     }
 
     private void Update()
@@ -34,15 +54,15 @@ public class Seek : SteeringBehaviour
         }
     }
 
-    protected override void Move(Vector3 dir)
+    public void Move(Vector3 dir)
     {
-        Target = sight.Target;
+        Target = lineOfSight.Target;
 
         if (move && Target != null)
         {
-            dir.y = 0;
-            transform.position += Time.deltaTime * dir * speed; ;
-            transform.forward = Vector3.Lerp(transform.forward, dir, rotSpeed * Time.deltaTime);
+
+            transform.position += Time.deltaTime * rbTarget.velocity/*dir*/ * speed; ;
+            transform.forward = Vector3.Lerp(transform.forward, rbTarget.velocity/*dir*/, rotSpeed * Time.deltaTime);
         }
     }
 

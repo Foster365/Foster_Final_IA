@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UADE.IA.Steering
-{
-    public interface ISteeringBehaviors
+    public interface ISteeringBehaviour
     {
+
+        /*void Move(Vector3 dir);*/
         Vector3 GetDir();
+
     }
-}
+

@@ -6,28 +6,33 @@ using UADE.IA.FSM;
 public class LeaderIdleState<T> : FSMState<T>
 {
 
-    Leader _leader;
-    LeaderAnimations _leaderAnimations;
+    Leader leader;
+    LeaderAnimations leaderAnimations;
 
-    FSM<T> _fsm;
-    T _patrolState;
-    T _hitStateEnemy;
-    T _blockStateEnemy;
-    T _dieState;
-    T _fleeState;
+    FSM<T> fsm;
+    T patrolState;
+    T hitStateEnemy;
+    T blockStateEnemy;
+    T dieState;
+    T fleeState;
 
-    float maxCounter = 2f;
+    float maxCounter;
     float counter;
 
-    public LeaderIdleState(Leader leader, LeaderAnimations leaderAnimations,
-    FSM<T> fsm, T patrolState, T hitState, T dieState, T fleeState)
+    public LeaderIdleState(Leader _leader, LeaderAnimations _leaderAnimations,
+    FSM<T> _fsm, T _patrolState, T _hitState, T _dieState, T _fleeState, float _idleTimer)
     {
 
-        _fsm = fsm;
-        _patrolState = patrolState;
-        _hitStateEnemy = hitState;
-        _dieState = dieState;
-        _fleeState = fleeState;
+        leader = _leader;
+        leaderAnimations = _leaderAnimations;
+
+        fsm = _fsm;
+        patrolState = _patrolState;
+        hitStateEnemy = _hitState;
+        dieState = _dieState;
+        fleeState = _fleeState;
+
+        maxCounter = _idleTimer;
 
     }
 
@@ -35,7 +40,6 @@ public class LeaderIdleState<T> : FSMState<T>
     {
         Debug.Log("Leader IdleState Awake");
         counter = 0f;
-
     }
 
     public override void Execute()
@@ -44,7 +48,7 @@ public class LeaderIdleState<T> : FSMState<T>
         counter += Time.deltaTime;
         IdleBehaviour();
         if (counter >= maxCounter)
-            _fsm.Transition(_patrolState);
+            fsm.Transition(patrolState);
         //else if (_leader.CurrentHealth <= 0)
         //    _fsm.Transition(_dieState);
 
@@ -59,7 +63,8 @@ public class LeaderIdleState<T> : FSMState<T>
 
     public void IdleBehaviour()
     {
-        //_leaderAnimations.IdleAnimation();
-        //_leader.movementSpeed = 0;// Cuidado
+        leaderAnimations.MoveAnimation(false);
+        leaderAnimations.IdleAnimation();
+        //leader.movementSpeed = 0;// Cuidado
     }
 }
