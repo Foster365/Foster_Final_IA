@@ -62,8 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\3DAssets\Fighter Pack Bundle FREE\Code\CameraControl.cs" />
-    <Compile Include="Assets\3DAssets\Fighter Pack Bundle FREE\Code\FighterAnimationDemoFREE.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterAttributes\AttackColliders.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterAttributes\CharacterAnimDelegate.cs" />
     <Compile Include="Assets\Scripts\Characters\CharacterAttributes\CharacterCollider.cs" />
@@ -124,6 +122,7 @@
     <Compile Include="Assets\Scripts\Utils\SafePoint.cs" />
     <Compile Include="Assets\WorldSkies\Demo\Scripts\LookCamera.cs" />
     <Compile Include="Assets\WorldSkies\Demo\Scripts\SkyboxChanger.cs" />
+    <None Include="Assets\FantasyCharactersGoblinArcherFree\Product Licenses.txt" />
     <None Include="Assets\Ultra Skybox Fog\Shaders\UltraSkyboxFog.shader" />
     <None Include="Assets\Ultra Skybox Fog\Manual.txt" />
     <None Include="Assets\Ultra Skybox Fog\Textures\Readme.txt" />
