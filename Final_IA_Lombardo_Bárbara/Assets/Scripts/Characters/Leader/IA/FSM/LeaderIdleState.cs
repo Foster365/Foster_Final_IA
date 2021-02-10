@@ -20,7 +20,7 @@ public class LeaderIdleState<T> : FSMState<T>
     float counter;
 
     public LeaderIdleState(Leader _leader, LeaderAnimations _leaderAnimations,
-    FSM<T> _fsm, T _patrolState, T _hitState, T _dieState, T _fleeState, float _idleTimer)
+    FSM<T> _fsm, T _patrolState, T _hitState, T _blockState, T _dieState, T _fleeState, float _idleTimer)
     {
 
         leader = _leader;
@@ -29,6 +29,7 @@ public class LeaderIdleState<T> : FSMState<T>
         fsm = _fsm;
         patrolState = _patrolState;
         hitStateEnemy = _hitState;
+        blockStateEnemy = _blockState;
         dieState = _dieState;
         fleeState = _fleeState;
 

@@ -4,35 +4,59 @@ using UnityEngine;
 
 public class AgentAStar : MonoBehaviour
 {
-    Transform characterAStar;
+    //[SerializeField]
+    //Transform characterAStar;
+
+    [SerializeField]
     LayerMask mask;
+
+    [SerializeField]
     float distanceMax;
+
+    [SerializeField]
     float radius;
+
+    [SerializeField]
     Vector3 offset;
+
+    [SerializeField]
     Seek seekCharacter;
+
     List<Vector3> _listVector;
     AStar<Vector3> _aStarVector = new AStar<Vector3>();
+
+    [SerializeField]
     GameObject finit;
 
-    public AgentAStar(Transform characterAStar, LayerMask mask, float distanceMax, float radius, Vector3 offset, Seek seekCharacter, GameObject finit)
-    {
-        this.characterAStar = characterAStar;
-        this.mask = mask;
-        this.distanceMax = distanceMax;
-        this.radius = radius;
-        this.offset = offset;
-        this.seekCharacter = seekCharacter;
-        this.finit = finit;
-    }
+    LeaderSteering leaderSteering;
+
+    //public AgentAStar(Transform characterAStar, LayerMask mask, float distanceMax, float radius,
+    //Vector3 offset, Seek seekCharacter, GameObject finit)
+    //{
+    //    this.characterAStar = characterAStar;
+    //    this.mask = mask;
+    //    this.distanceMax = distanceMax;
+    //    this.radius = radius;
+    //    this.offset = offset;
+    //    this.seekCharacter = seekCharacter;
+    //    this.finit = finit;
+    //}
 
     private void Awake()
     {
+        leaderSteering = GetComponent<LeaderSteering>();
+    }
+
+    private void Start()
+    {
+
+        seekCharacter = leaderSteering.SbSeek;
 
     }
 
     public void PathFindingAStarVector()
     {
-        _listVector = _aStarVector.Run(characterAStar.position, SatisfiesVector, GetNeighboursVector, GetCostVector, HeuristicVector);
+        _listVector = _aStarVector.Run(transform.position, SatisfiesVector, GetNeighboursVector, GetCostVector, HeuristicVector);
         seekCharacter.SetWayPoints(_listVector);
     }
 

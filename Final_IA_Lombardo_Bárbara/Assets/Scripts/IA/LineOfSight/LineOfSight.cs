@@ -10,9 +10,9 @@ public class LineOfSight : MonoBehaviour
     private Transform target;
     [SerializeField] private Transform visionPoint;
     [SerializeField] private LayerMask obstacleLayers;
-    [SerializeField] private LayerMask player;
+    [SerializeField] private LayerMask sightTarget;
 
-    public LineOfSight(float _viewDistance, float _viewCone, RaycastHit _hitInfo, Transform _visionPoint, LayerMask _obstacleLayer, LayerMask _player)
+    public LineOfSight(float _viewDistance, float _viewCone, RaycastHit _hitInfo, Transform _visionPoint, LayerMask _obstacleLayer, LayerMask _lineOfSightTarget)
     {
 
         viewDistance = _viewDistance;
@@ -23,7 +23,7 @@ public class LineOfSight : MonoBehaviour
         visionPoint = _visionPoint;
         obstacleLayers = _obstacleLayer;
 
-        player = _player;
+        sightTarget = _lineOfSightTarget;
 
     }
 
@@ -49,11 +49,11 @@ public class LineOfSight : MonoBehaviour
         GetLineOfSight();
     }
 
-    public void GetLineOfSight()
+    public Transform GetLineOfSight()
     {
 
         Target = null;
-        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, viewDistance, player, QueryTriggerInteraction.Ignore);
+        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, viewDistance, sightTarget, QueryTriggerInteraction.Ignore);
         if (overlapSphere.Length > 0)
         {
             Target = overlapSphere[0].transform;
@@ -84,6 +84,7 @@ public class LineOfSight : MonoBehaviour
             }
         }
 
+        return Target;
 
     }
 

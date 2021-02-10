@@ -22,10 +22,10 @@ public class AgentBFSDFS : MonoBehaviour
     List<NodePathfinding> GetNeighbours(NodePathfinding curr)
     {
         var list = new List<NodePathfinding>();
-        for (int i = 0; i < curr.neightbourds.Count; i++)
+        for (int i = 0; i < curr.neighbours.Count; i++)
         {
-            if (curr.neightbourds[i].isTrap) continue;
-            list.Add(curr.neightbourds[i]);
+            if (curr.neighbours[i].isTrap) continue;
+            list.Add(curr.neighbours[i]);
         }
         return list;
     }

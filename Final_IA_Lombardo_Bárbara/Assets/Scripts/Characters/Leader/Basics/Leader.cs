@@ -51,19 +51,20 @@ public class Leader : Entity, IMove
     Transform _transform;
 
     //Pathfinding
-    public LayerMask mask;
-    public float distanceMax;
-    public float radius;
-    public Vector3 offset;
-    public GameObject finit;
+    //public LayerMask aStarNodeMask;
+    //public float distanceMax;
+    //public float radius;
+    //public Vector3 offset;
+    //public GameObject finit;
 
-    AgentAStar _agentAstar;
+    //AgentAStar _agentAstar;
     //
 
     Seek seekBehaviour;
     ObstacleAvoidance obsAvoidanceBehaviour;
     Flee fleeBehaviour;
     LineOfSight lineOfSight;
+    AgentAStar agentAStar;
 
     public Seek SeekBehaviour { get => seekBehaviour; set => seekBehaviour = gameObject.GetComponent<Seek>(); }
     public ObstacleAvoidance ObsAvoidanceBehaviour { get => obsAvoidanceBehaviour; set => obsAvoidanceBehaviour = gameObject.GetComponent<ObstacleAvoidance>(); }
@@ -71,6 +72,7 @@ public class Leader : Entity, IMove
     public LineOfSight Line_Of_Sight { get => lineOfSight; set => lineOfSight = value; }
     public LayerMask Layer { get => layer; set => layer = value; }
     public float IdleCountdown { get => _idleCountdown;}
+    public AgentAStar AgentAStar { get => agentAStar; set => agentAStar = value; }
 
     //Seek Behaviour
     float _idleTimer;
@@ -88,12 +90,16 @@ public class Leader : Entity, IMove
         //_target = GameObject.FindWithTag(CharacterTags.FOLLOWER_TAG).transform;//Estaba como Leader
 
 
+        agentAStar = GetComponent<AgentAStar>();
+
         //seekBehaviour = GetComponent<Seek>();
         //obsAvoidanceBehaviour = GetComponent<ObstacleAvoidance>();
         //fleeBehaviour = GetComponent<Flee>();
         lineOfSight = GetComponent<LineOfSight>();
 
         currentAttackTime = defaultAttackTime;
+
+        //agentAStar = new AgentAStar(transform, aStarNodeMask, distanceMax, radius, offset, SeekBehaviour, finit);
 
         //RouletteWheel();
 

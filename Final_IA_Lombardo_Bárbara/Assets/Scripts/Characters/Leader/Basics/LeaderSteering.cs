@@ -11,9 +11,9 @@ public class LeaderSteering : MonoBehaviour
 
     //Constructor variables
     [SerializeField]
-    Transform sbTarget;
+    Transform sbTransformTarget;
     [SerializeField]
-    Rigidbody rb;
+    Rigidbody sbRigidbodyEntity;
     [SerializeField]
     Rigidbody sbRigidbodyTarget;
 
@@ -33,7 +33,7 @@ public class LeaderSteering : MonoBehaviour
     List<Vector3> sbWaypoints;
 
     [SerializeField]
-    LayerMask sbLayerMask;
+    LayerMask sbObstacleLayerMask;
 
     [SerializeField]
     Vector3 sbDirection;
@@ -41,7 +41,6 @@ public class LeaderSteering : MonoBehaviour
     [SerializeField]
     bool sbMove;
 
-    [SerializeField]
     LineOfSight lineOfSight;
     [SerializeField]
     AgentAStar agentAstar;
@@ -53,12 +52,16 @@ public class LeaderSteering : MonoBehaviour
     Flee sbFlee;
     ObstacleAvoidance sbObstacleAvoidance;
     Pursuit sbPursuit;
-    // Seek sbSeek;
+    Seek sbSeek;
+
+    public Seek SbSeek { get => sbSeek; set => sbSeek = value; }
 
     private void Awake()
     {
 
-        rb = GetComponent<Rigidbody>();
+        sbRigidbodyEntity = GetComponent<Rigidbody>();
+        lineOfSight = GetComponent<LineOfSight>();
+        agentAstar = GetComponent<AgentAStar>();
 
     }
 
@@ -66,22 +69,30 @@ public class LeaderSteering : MonoBehaviour
     void Start()
     {
 
-        sbEvade = new Evade(transform, sbTarget, rb, sbTimePrediction);
-        sbFlee = new Flee(sbMove, sbSpeed, sbRotationSpeed, transform, lineOfSight, sbTarget, sbDirection);
-        sbObstacleAvoidance = new ObstacleAvoidance(transform, sbRadius, sbAvoidWeight, sbLayerMask);
-        sbPursuit = new Pursuit(transform, sbTarget, sbRigidbodyTarget, sbTime);
-        //sbSeek = new Seek(sbSpeed, sbRotationSpeed, sbWaypoints, lineOfSight, agentAstar, transform, sbRigidbodyTarget);
+        sbEvade = new Evade(transform, sbTransformTarget, sbRigidbodyEntity, sbTimePrediction);
+        sbFlee = new Flee(sbMove, sbSpeed, sbRotationSpeed, transform, lineOfSight, sbTransformTarget, sbDirection);
+        sbObstacleAvoidance = new ObstacleAvoidance(transform, sbRadius, sbAvoidWeight, sbObstacleLayerMask);
+        sbPursuit = new Pursuit(transform, sbTransformTarget, sbRigidbodyTarget, sbTime);
+        sbSeek = new Seek(sbSpeed, sbRotationSpeed, sbWaypoints, lineOfSight, agentAstar, transform, sbRigidbodyTarget);
+
+        //sbTransformTarget = GetTarget();
+        //sbRigidbodyTarget = GetTarget().GetComponent<Rigidbody>();//Ojo
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        GetTarget();
     }
 
     public void ChangeSteering(ISteeringBehaviour _sb)
     {
         sb = _sb;
+    }
+
+    Transform GetTarget()
+    {
+        return lineOfSight.GetLineOfSight();
     }
 }

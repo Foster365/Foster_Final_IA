@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodePathfinding : MonoBehaviour
 {
-    public List<NodePathfinding> neightbourds;
+    public List<NodePathfinding> neighbours;
     public bool isTrap;
     private void Start()
     {
@@ -18,7 +18,7 @@ public class NodePathfinding : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, dir, out hit, 2.2f))
         {
-            neightbourds.Add(hit.collider.GetComponent<NodePathfinding>());
+            neighbours.Add(hit.collider.GetComponent<NodePathfinding>());
         }
     }
 }

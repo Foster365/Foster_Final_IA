@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Characters\Leader\Basics\LeaderController.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\Basics\LeaderSteering.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderAttackState.cs" />
+    <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderBlockState.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderDamagedState.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderDeathState.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderFleeState.cs" />

@@ -17,13 +17,13 @@ TagManager:
   - UI
   - 
   - 
-  - Leader
-  - Follower
+  - LeaderA
+  - FollowerA
+  - LeaderB
+  - FollowerB
   - SafePoint
   - WalkablePoint
   - Obstacle
-  - 
-  - 
   - 
   - 
   - 

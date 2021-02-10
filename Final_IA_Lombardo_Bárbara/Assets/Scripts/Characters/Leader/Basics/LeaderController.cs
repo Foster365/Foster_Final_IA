@@ -30,7 +30,8 @@ public class LeaderController : MonoBehaviour
 
         _fsm = new FSM<string>();
 
-        LeaderIdleState<string> leaderIdleState = new LeaderIdleState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderDamagedState", "LeaderDeathState", "LeaderFleeState", _leader.IdleCountdown);
+        LeaderIdleState<string> leaderIdleState = new LeaderIdleState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderDamagedState", "LeaderBlockState", "LeaderDeathState", "LeaderFleeState", _leader.IdleCountdown);
+        LeaderBlockState<string> leaderBlockState = new LeaderBlockState<string>(_leader, _leaderAnimations, _fsm, "LeaderAttackState");//
         LeaderPatrolState<string> leaderPatrolState = new LeaderPatrolState<string>(_leader, _leaderAnimations, _fsm, "LeaderIdleState", "LeaderSeekState");
         LeaderSeekState<string> leaderSeekState = new LeaderSeekState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderAttackState");
         LeaderAttackState<string> leaderAttackState = new LeaderAttackState<string>(_leader, _leaderAnimations, _fsm, "LeaderSeekState", "LeaderFleeState", "LeaderDamagedState", "LeaderDeathState");
@@ -40,6 +41,7 @@ public class LeaderController : MonoBehaviour
 
         leaderIdleState.AddTransition("LeaderPatrolState", leaderPatrolState);
         leaderIdleState.AddTransition("LeaderHitState", leaderDamagedState);
+        leaderIdleState.AddTransition("LeaderBlockState", leaderBlockState);//
         leaderIdleState.AddTransition("LeaderDeathState", leaderDeathState);
         leaderPatrolState.AddTransition("LeaderIdleState", leaderIdleState);
         leaderPatrolState.AddTransition("LeaderSeekState", leaderSeekState);
@@ -48,9 +50,11 @@ public class LeaderController : MonoBehaviour
         leaderAttackState.AddTransition("LeaderSeekState", leaderSeekState);
         leaderAttackState.AddTransition("LeaderDamagedState", leaderDamagedState);
         leaderAttackState.AddTransition("LeaderDeathState", leaderDeathState);
+        leaderBlockState.AddTransition("LeaderAttackState", leaderAttackState);//
         leaderDamagedState.AddTransition("LeaderDamagedState", leaderDamagedState);
         leaderDamagedState.AddTransition("LeaderIdleState", leaderIdleState);
         leaderFleeState.AddTransition("LeaderSeekState", leaderSeekState);
+
         _fsm.SetInit(leaderIdleState);
 
     }

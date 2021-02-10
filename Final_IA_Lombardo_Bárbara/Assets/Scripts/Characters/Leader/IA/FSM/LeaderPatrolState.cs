@@ -15,8 +15,6 @@ public class LeaderPatrolState<T> : FSMState<T>
     float patrolCounter;
     float maxPatrolCounter = 10f;
 
-    AgentAStar _agentAstar;
-
     public LeaderPatrolState(Leader leader, LeaderAnimations leaderAnimations, FSM<T> fsm,
     T idleState, T seekState)
     {
@@ -27,6 +25,7 @@ public class LeaderPatrolState<T> : FSMState<T>
         _idleState = idleState;
         _seekState = seekState;
 
+
     }
 
     public override void Awake()
@@ -34,13 +33,13 @@ public class LeaderPatrolState<T> : FSMState<T>
 
         Debug.Log("Leader Patrol State Awake");
         patrolCounter = 0f;
-
-        _agentAstar = new AgentAStar(_leader.transform, _leader.mask, _leader.distanceMax, _leader.radius, _leader.offset, _leader.SeekBehaviour, _leader.finit);
+        _leaderAnimations.MoveAnimation(true);
     }
     public override void Execute()
     {
         Debug.Log("Leader Patrol State Execute");
         patrolCounter += Time.deltaTime;
+        _leader.AgentAStar.PathFindingAStarVector();
         //_leader.Patrolling();
 
         if (_leader.Line_Of_Sight.targetInSight)
