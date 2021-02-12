@@ -42,7 +42,7 @@ public class LeaderSteering : MonoBehaviour
     bool sbMove;
 
     LineOfSight lineOfSight;
-    [SerializeField]
+    //[SerializeField]
     AgentAStar agentAstar;
     //
 
@@ -54,13 +54,18 @@ public class LeaderSteering : MonoBehaviour
     Pursuit sbPursuit;
     Seek sbSeek;
 
+    public Evade SbEvade { get => sbEvade; set => sbEvade = value; }
+    public Flee SbFlee { get => sbFlee; set => sbFlee = value; }
+    public ObstacleAvoidance SbObstacleAvoidance { get => sbObstacleAvoidance; set => sbObstacleAvoidance = value; }
+    public Pursuit SbPursuit { get => sbPursuit; set => sbPursuit = value; }
+    public LineOfSight LineOfSight { get => lineOfSight; set => lineOfSight = value; }
     public Seek SbSeek { get => sbSeek; set => sbSeek = value; }
 
     private void Awake()
     {
 
         sbRigidbodyEntity = GetComponent<Rigidbody>();
-        lineOfSight = GetComponent<LineOfSight>();
+        LineOfSight = GetComponent<LineOfSight>();
         agentAstar = GetComponent<AgentAStar>();
 
     }
@@ -70,11 +75,11 @@ public class LeaderSteering : MonoBehaviour
     {
 
         sbEvade = new Evade(transform, sbTransformTarget, sbRigidbodyEntity, sbTimePrediction);
-        sbFlee = new Flee(sbMove, sbSpeed, sbRotationSpeed, transform, lineOfSight, sbTransformTarget, sbDirection);
+        sbFlee = new Flee(sbMove, sbSpeed, sbRotationSpeed, transform, LineOfSight, sbTransformTarget, sbDirection);
         sbObstacleAvoidance = new ObstacleAvoidance(transform, sbRadius, sbAvoidWeight, sbObstacleLayerMask);
         sbPursuit = new Pursuit(transform, sbTransformTarget, sbRigidbodyTarget, sbTime);
-        sbSeek = new Seek(sbSpeed, sbRotationSpeed, sbWaypoints, lineOfSight, agentAstar, transform, sbRigidbodyTarget);
-
+        sbSeek = new Seek(sbSpeed, sbRotationSpeed, sbWaypoints, LineOfSight, agentAstar, transform, sbRigidbodyTarget);
+        sbSeek = SbSeek;
         //sbTransformTarget = GetTarget();
         //sbRigidbodyTarget = GetTarget().GetComponent<Rigidbody>();//Ojo
 
@@ -83,7 +88,7 @@ public class LeaderSteering : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetTarget();
+        //GetTarget();
     }
 
     public void ChangeSteering(ISteeringBehaviour _sb)
@@ -93,6 +98,6 @@ public class LeaderSteering : MonoBehaviour
 
     Transform GetTarget()
     {
-        return lineOfSight.GetLineOfSight();
+        return LineOfSight.GetLineOfSight();
     }
 }

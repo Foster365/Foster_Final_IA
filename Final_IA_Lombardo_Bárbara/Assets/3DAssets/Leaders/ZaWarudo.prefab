@@ -324,9 +324,9 @@ GameObject:
   - component: {fileID: 1253046825599112225}
   - component: {fileID: 1253046825599112224}
   - component: {fileID: 1253046825599112229}
+  - component: {fileID: 1253046825599112234}
   - component: {fileID: 1253046825599112228}
   - component: {fileID: 1253046825599112235}
-  - component: {fileID: 1253046825599112234}
   m_Layer: 0
   m_Name: ZaWarudo
   m_TagString: Leader
@@ -419,9 +419,9 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4096
-  player:
+  sightTarget:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   targetInSight: 0
 --- !u!114 &1253046825599112225
 MonoBehaviour:
@@ -472,13 +472,6 @@ MonoBehaviour:
   safePointLayer:
     serializedVersion: 2
     m_Bits: 1024
-  mask:
-    serializedVersion: 2
-    m_Bits: 2048
-  distanceMax: 0
-  radius: 0.2
-  offset: {x: 0, y: 1.44, z: 0}
-  finit: {fileID: 0}
   _idleCountdown: 5
 --- !u!114 &1253046825599112229
 MonoBehaviour:
@@ -492,6 +485,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210817af5e7fb9a408eb00e0a8ff224a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1253046825599112234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926798299874947123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df06a4c46aaeb54aad2eee97f55137d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  distanceMax: 0
+  radius: 0
+  offset: {x: 0, y: 0, z: 0}
+  initNode: {fileID: 0}
+  finitNode: {fileID: 0}
 --- !u!114 &1253046825599112228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61954ed25f74e648b6aab3e5e7a6883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sbTarget: {fileID: 0}
-  rb: {fileID: 5887885169078350776}
+  sbTransformTarget: {fileID: 0}
+  sbRigidbodyEntity: {fileID: 0}
   sbRigidbodyTarget: {fileID: 0}
   sbTimePrediction: 1
   sbSpeed: 2
@@ -514,13 +527,11 @@ MonoBehaviour:
   sbAvoidWeight: 0
   sbTime: 25
   sbWaypoints: []
-  sbLayerMask:
+  sbObstacleLayerMask:
     serializedVersion: 2
     m_Bits: 0
   sbDirection: {x: 0, y: 1.44, z: 0}
   sbMove: 0
-  lineOfSight: {fileID: 1253046825599112226}
-  agentAstar: {fileID: 1253046825599112234}
 --- !u!114 &1253046825599112235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,18 +542,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 205aebfe6c4abe540b7fb749c50a6d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1253046825599112234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926798299874947123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df06a4c46aaeb54aad2eee97f55137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1985449236171165034

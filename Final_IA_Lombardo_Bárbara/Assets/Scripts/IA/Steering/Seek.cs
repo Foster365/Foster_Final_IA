@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seek
+public class Seek: MonoBehaviour
 {
     public bool move;
     private LineOfSight lineOfSight;
@@ -15,7 +15,7 @@ public class Seek
     protected float rotSpeed;
     AgentAStar agentAStar;
 
-    Transform transform;
+    Transform characterTransform;
     Rigidbody rbTarget;
 
     public Transform Target { get => target; set => target = value; }
@@ -30,14 +30,14 @@ public class Seek
         lineOfSight = _lineOfSight;
         agentAStar = _agentAStar;
 
-        transform = _transform;
+        characterTransform = _transform;
         rbTarget = _rbTarget;
 
     }
 
     private void Awake()
     {
-
+        agentAStar = GetComponent<AgentAStar>();
     }
 
     private void Update()
@@ -61,8 +61,8 @@ public class Seek
         if (move && Target != null)
         {
 
-            transform.position += Time.deltaTime * rbTarget.velocity/*dir*/ * speed; ;
-            transform.forward = Vector3.Lerp(transform.forward, rbTarget.velocity/*dir*/, rotSpeed * Time.deltaTime);
+            characterTransform.position += Time.deltaTime * rbTarget.velocity/*dir*/ * speed; ;
+            characterTransform.forward = Vector3.Lerp(characterTransform.forward, rbTarget.velocity/*dir*/, rotSpeed * Time.deltaTime);
         }
     }
 
@@ -72,8 +72,8 @@ public class Seek
         if (newPoints.Count == 0) return;
         waypoints = newPoints;
         var pos = waypoints[_nextPoint];
-        pos.y = transform.position.y;
-        transform.position = pos;
+        pos.y = characterTransform.position.y;
+        characterTransform.position = pos;
         move = true;
     }
 
@@ -81,8 +81,8 @@ public class Seek
     {
         var point = waypoints[_nextPoint];
         var posPoint = point;
-        posPoint.y = transform.position.y;
-        Vector3 dir = posPoint - transform.position;
+        posPoint.y = characterTransform.position.y;
+        Vector3 dir = posPoint - characterTransform.position;
         if (dir.magnitude < 0.2f)
         {
             if (_nextPoint + 1 < waypoints.Count)

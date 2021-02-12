@@ -27,7 +27,7 @@ public class LeaderPatrolState<T> : FSMState<T>
 
 
     }
-
+    
     public override void Awake()
     {
 
@@ -39,8 +39,9 @@ public class LeaderPatrolState<T> : FSMState<T>
     {
         Debug.Log("Leader Patrol State Execute");
         patrolCounter += Time.deltaTime;
-        _leader.AgentAStar.PathFindingAStarVector();
+        //_leader.AStar();
         //_leader.Patrolling();
+        if(_leader.readyToMove) _leader.Run();
 
         if (_leader.Line_Of_Sight.targetInSight)
         {

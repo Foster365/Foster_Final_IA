@@ -27,8 +27,9 @@ public class Leader : Entity, IMove
     bool attackTarget;
 
     //Waypoint System(Patrol) variables Esto cambia por malla de nodos
-    public List<Transform> Waypoints;
-    public float distance;
+    public List<NodePathfinding> waypoints;
+    public bool readyToMove;
+    public float waypointDistance;
     int _nextWp = 0;
     int _indexModifier = 1;
 
@@ -50,6 +51,8 @@ public class Leader : Entity, IMove
 
     Transform _transform;
 
+    LeaderSteering leaderSteering;
+
     //Pathfinding
     //public LayerMask aStarNodeMask;
     //public float distanceMax;
@@ -60,19 +63,19 @@ public class Leader : Entity, IMove
     //AgentAStar _agentAstar;
     //
 
-    Seek seekBehaviour;
-    ObstacleAvoidance obsAvoidanceBehaviour;
-    Flee fleeBehaviour;
+    //Seek seekBehaviour;
+    //ObstacleAvoidance obsAvoidanceBehaviour;
+    //Flee fleeBehaviour;
     LineOfSight lineOfSight;
     AgentAStar agentAStar;
 
-    public Seek SeekBehaviour { get => seekBehaviour; set => seekBehaviour = gameObject.GetComponent<Seek>(); }
-    public ObstacleAvoidance ObsAvoidanceBehaviour { get => obsAvoidanceBehaviour; set => obsAvoidanceBehaviour = gameObject.GetComponent<ObstacleAvoidance>(); }
-    public Flee FleeBehaviour { get => fleeBehaviour; set => fleeBehaviour = value; }
+    //public Seek SeekBehaviour { get => seekBehaviour; set => seekBehaviour = gameObject.GetComponent<Seek>(); }
+    //public ObstacleAvoidance ObsAvoidanceBehaviour { get => obsAvoidanceBehaviour; set => obsAvoidanceBehaviour = gameObject.GetComponent<ObstacleAvoidance>(); }
+    //public Flee FleeBehaviour { get => fleeBehaviour; set => fleeBehaviour = value; }
     public LineOfSight Line_Of_Sight { get => lineOfSight; set => lineOfSight = value; }
     public LayerMask Layer { get => layer; set => layer = value; }
     public float IdleCountdown { get => _idleCountdown;}
-    public AgentAStar AgentAStar { get => agentAStar; set => agentAStar = value; }
+    //public AgentAStar AgentAStar { get => agentAStar; set => agentAStar = value; }
 
     //Seek Behaviour
     float _idleTimer;
@@ -86,6 +89,8 @@ public class Leader : Entity, IMove
         _transform = GetComponent<Transform>();
 
         _leaderAnimations = gameObject.GetComponent<LeaderAnimations>();
+
+        leaderSteering = GetComponent<LeaderSteering>();
 
         //_target = GameObject.FindWithTag(CharacterTags.FOLLOWER_TAG).transform;//Estaba como Leader
 
@@ -108,33 +113,50 @@ public class Leader : Entity, IMove
         //_attackCollider = GetComponent<AttackColliders>();
 
     }
-
     public void Move(Vector3 dir)
     {
 
         dir.y = 0;
-        rb.velocity = dir * movementSpeed;
-        transform.forward = Vector3.Lerp(transform.forward, dir, 0.2f);
-        _isMoving = true;
+        transform.position += Time.deltaTime * dir * movementSpeed;
 
+        //transform.forward = Vector3.Lerp(transform.forward, dir, speedRot * Time.deltaTime);
     }
 
-    public void GoToWaypoint()
-    {
+    //public void SetWayPoints(List<NodePathfinding> newPoints)
+    //{
 
-        var waypoint = Waypoints[_nextWp];
-        var waypointPosition = waypoint.position;
-        waypointPosition.y = transform.position.y;
-        Vector3 dir = waypointPosition - transform.position;
-        if (dir.magnitude < distance)
+    //    if (newPoints.Count == 0) return;
+    //    //_anim.Play("CIA_Idle");
+    //    waypoints = newPoints;
+    //    var pos = waypoints[_nextWp].transform.position;
+    //    pos.y = transform.position.y;
+    //    transform.position = pos;
+    //    readyToMove = true;
+    //}
+
+    public void Run()
+    {
+        Debug.Log("La concha de tu madre al fin entró en esta función poronga");
+        List<Vector3> aStarWps = agentAStar.PathFindingAStarVector();
+        var point = aStarWps[_nextWp];//Var
+        var posPoint = point;
+        point = transform.position;//Var
+        posPoint.y = transform.position.y;
+        Vector3 dir = posPoint - transform.position;
+        if (dir.magnitude < waypointDistance/*0.2f*/)
         {
-            if (_nextWp + _indexModifier >= Waypoints.Count || _nextWp + _indexModifier < 0)
-                _indexModifier *= -1;
-            _nextWp += _indexModifier;
+            if (_nextWp + _indexModifier <= aStarWps.Count-1)
+                _nextWp++;
+            else
+            {
+                readyToMove = false;
+                //_anim.SetTrigger("Finish");
+                _leaderAnimations.MoveAnimation(false);
+                return;
+            }
         }
+
         Move(dir.normalized);
-        //Move(obsAvoidanceBehaviour.GetDir().normalized);//Testear este movimiento
-        // return dir;
 
     }
 
@@ -168,17 +190,17 @@ public class Leader : Entity, IMove
     {
         if (lineOfSight.Target != null)
         {
-            seekBehaviour.move = true;
+            leaderSteering.SbSeek.move = true;
 
             if (Vector3.Distance(transform.position, lineOfSight.Target.position) > attackRange)
             {
-                seekBehaviour.move = true;
+                leaderSteering.SbSeek.move = true;
                 _leaderAnimations.SeekAnimation();
                 Debug.Log("Seek Animation");
             }
             else
             {
-                seekBehaviour.move = false;
+                leaderSteering.SbSeek.move = false;
             }
             //combat.attack = true;
         }
@@ -189,14 +211,19 @@ public class Leader : Entity, IMove
 
         if (CurrentHealth < minimumLife)
         {
-            seekBehaviour.move = false;
-            fleeBehaviour.GetDir();
+            leaderSteering.SbSeek.move = false;
+            leaderSteering.SbFlee.GetDir();
             _leaderAnimations.SeekAnimation();
             Debug.Log("Flee Animation");
         }
         else
             return;
 
+    }
+
+    public void AStar()
+    {
+        agentAStar.PathFindingAStarVector();
     }
 
 }

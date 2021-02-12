@@ -24,7 +24,7 @@ public class AgentBFSDFS : MonoBehaviour
         var list = new List<NodePathfinding>();
         for (int i = 0; i < curr.neighbours.Count; i++)
         {
-            if (curr.neighbours[i].isTrap) continue;
+            if (curr.neighbours[i].hasTrap) continue;
             list.Add(curr.neighbours[i]);
         }
         return list;

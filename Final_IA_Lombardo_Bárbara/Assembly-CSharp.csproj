@@ -117,9 +117,6 @@
     <Compile Include="Assets\Scripts\UI\Screens\MainScreen.cs" />
     <Compile Include="Assets\Scripts\UI\Screens\SplashScreen.cs" />
     <Compile Include="Assets\Scripts\UI\StackNavigator.cs" />
-    <Compile Include="Assets\Scripts\Utils\NodeGeneratorWindow.cs" />
-    <Compile Include="Assets\Scripts\Utils\NodeGizmo.cs" />
-    <Compile Include="Assets\Scripts\Utils\NodeMesh.cs" />
     <Compile Include="Assets\Scripts\Utils\SafePoint.cs" />
     <Compile Include="Assets\WorldSkies\Demo\Scripts\LookCamera.cs" />
     <Compile Include="Assets\WorldSkies\Demo\Scripts\SkyboxChanger.cs" />
