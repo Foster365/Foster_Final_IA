@@ -47,7 +47,7 @@ public class Seek: MonoBehaviour
         {
             if (timer >= 1f)
             {
-                agent.PathFindingAStarVector();
+                agent.PathfindingAStar();
                 timer = 0;
             }
             Run();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Node
+public abstract class BehaviourTreeNode
 {
     public abstract void Execute();
 }

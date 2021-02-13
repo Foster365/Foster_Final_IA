@@ -223,9 +223,10 @@ GameObject:
   m_Component:
   - component: {fileID: 27434919}
   - component: {fileID: 27434920}
+  - component: {fileID: 27434921}
   m_Layer: 13
   m_Name: WalkableNode (51)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27434918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -258,6 +259,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &27434921
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27434918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &42032840
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,9 +282,10 @@ GameObject:
   m_Component:
   - component: {fileID: 42032841}
   - component: {fileID: 42032842}
+  - component: {fileID: 42032843}
   m_Layer: 13
   m_Name: WalkableNode (45)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42032840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.514623, y: 1, z: 16.754362}
+  m_LocalPosition: {x: 9.514623, y: 0.049999982, z: 16.754362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -303,6 +318,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &42032843
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42032840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &74416887
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,9 +341,10 @@ GameObject:
   m_Component:
   - component: {fileID: 74416888}
   - component: {fileID: 74416889}
+  - component: {fileID: 74416890}
   m_Layer: 13
   m_Name: WalkableNode (21)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74416887}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.814623, y: 1, z: -20.615637}
+  m_LocalPosition: {x: 13.814623, y: 0.049999982, z: -20.615637}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -348,6 +377,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &74416890
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74416887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &78779719
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,9 +400,10 @@ GameObject:
   m_Component:
   - component: {fileID: 78779720}
   - component: {fileID: 78779721}
+  - component: {fileID: 78779722}
   m_Layer: 13
   m_Name: WalkableNode (39)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78779719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.885378, y: 1, z: 8.354362}
+  m_LocalPosition: {x: -16.885378, y: 0.049999982, z: 8.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -393,6 +436,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &78779722
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78779719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &94446287
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,9 +459,10 @@ GameObject:
   m_Component:
   - component: {fileID: 94446288}
   - component: {fileID: 94446289}
+  - component: {fileID: 94446290}
   m_Layer: 13
   m_Name: WalkableNode (48)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,7 +475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94446287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.614622, y: 1, z: 26.554361}
+  m_LocalPosition: {x: 23.614622, y: 0.049999982, z: 26.554361}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -438,6 +495,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &94446290
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94446287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &105012515
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,9 +518,10 @@ GameObject:
   m_Component:
   - component: {fileID: 105012516}
   - component: {fileID: 105012517}
+  - component: {fileID: 105012518}
   m_Layer: 13
   m_Name: WalkableNode (61)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105012515}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.814623, y: 1, z: 48.89436}
+  m_LocalPosition: {x: 17.814623, y: 0.049999982, z: 48.89436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -483,6 +554,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &105012518
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105012515}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &110183240
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,9 +577,10 @@ GameObject:
   m_Component:
   - component: {fileID: 110183241}
   - component: {fileID: 110183242}
+  - component: {fileID: 110183243}
   m_Layer: 13
   m_Name: WalkableNode (63)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -508,7 +593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110183240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.814623, y: 1, z: 48.89436}
+  m_LocalPosition: {x: 17.814623, y: 0.049999982, z: 48.89436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -528,6 +613,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &110183243
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110183240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &131811267
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,9 +851,10 @@ GameObject:
   m_Component:
   - component: {fileID: 194936606}
   - component: {fileID: 194936607}
+  - component: {fileID: 194936608}
   m_Layer: 13
   m_Name: WalkableNode (10)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -768,7 +867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194936605}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9146225, y: 1, z: 44.354362}
+  m_LocalPosition: {x: 3.9146225, y: 0.05, z: 44.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -788,6 +887,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &194936608
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194936605}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &197355005
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,9 +1002,10 @@ GameObject:
   m_Component:
   - component: {fileID: 213967559}
   - component: {fileID: 213967560}
+  - component: {fileID: 213967561}
   m_Layer: 13
   m_Name: WalkableNode (53)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -905,7 +1018,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213967558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.214622, y: 1, z: 35.354362}
+  m_LocalPosition: {x: 22.214622, y: 0.049999982, z: 35.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -925,6 +1038,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &213967561
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213967558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &224667235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,9 +1565,10 @@ GameObject:
   m_Component:
   - component: {fileID: 316529144}
   - component: {fileID: 316529145}
+  - component: {fileID: 316529146}
   m_Layer: 13
   m_Name: WalkableNode (24)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316529143}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.225377, y: 1, z: -14.375638}
+  m_LocalPosition: {x: -10.225377, y: 0.049999982, z: -14.375638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -1474,6 +1601,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &316529146
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316529143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &332122559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,9 +1809,10 @@ GameObject:
   m_Component:
   - component: {fileID: 367188964}
   - component: {fileID: 367188965}
+  - component: {fileID: 367188966}
   m_Layer: 13
   m_Name: WalkableNode (25)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1684,7 +1825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367188963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.314623, y: 1, z: -8.165638}
+  m_LocalPosition: {x: 20.314623, y: 0.049999982, z: -8.165638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -1704,6 +1845,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &367188966
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367188963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &375128900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,9 +1960,10 @@ GameObject:
   m_Component:
   - component: {fileID: 379685794}
   - component: {fileID: 379685795}
+  - component: {fileID: 379685796}
   m_Layer: 13
   m_Name: WalkableNode (67)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1821,7 +1976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379685793}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.814623, y: 1, z: 53.854366}
+  m_LocalPosition: {x: 13.814623, y: 0.049999982, z: 53.854366}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -1841,6 +1996,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &379685796
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379685793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &384885292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,9 +2019,10 @@ GameObject:
   m_Component:
   - component: {fileID: 384885293}
   - component: {fileID: 384885294}
+  - component: {fileID: 384885295}
   m_Layer: 13
   m_Name: WalkableNode (11)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1866,7 +2035,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384885292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9146225, y: 1, z: 55.154366}
+  m_LocalPosition: {x: 3.9146225, y: 0.049999982, z: 55.154366}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -1886,6 +2055,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &384885295
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384885292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &388971656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,9 +2156,10 @@ GameObject:
   m_Component:
   - component: {fileID: 389645085}
   - component: {fileID: 389645086}
+  - component: {fileID: 389645087}
   m_Layer: 13
   m_Name: WalkableNode (72)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1989,7 +2172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389645084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.744623, y: 1, z: -1.1456383}
+  m_LocalPosition: {x: 13.744623, y: 0.049999982, z: -1.1456383}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -2009,6 +2192,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &389645087
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389645084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &395020233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,9 +2215,10 @@ GameObject:
   m_Component:
   - component: {fileID: 395020234}
   - component: {fileID: 395020235}
+  - component: {fileID: 395020236}
   m_Layer: 13
   m_Name: WalkableNode (29)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2034,7 +2231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395020233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.885378, y: 1, z: 8.354362}
+  m_LocalPosition: {x: -16.885378, y: 0.049999982, z: 8.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -2054,6 +2251,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &395020236
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395020233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &399063452
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,9 +2274,10 @@ GameObject:
   m_Component:
   - component: {fileID: 399063453}
   - component: {fileID: 399063454}
+  - component: {fileID: 399063455}
   m_Layer: 13
   m_Name: WalkableNode (73)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2079,7 +2290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399063452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.624624, y: 1, z: -6.195638}
+  m_LocalPosition: {x: 16.624624, y: 0.049999982, z: -6.195638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -2099,6 +2310,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &399063455
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399063452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &412309792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,9 +2474,10 @@ GameObject:
   m_Component:
   - component: {fileID: 426121068}
   - component: {fileID: 426121069}
+  - component: {fileID: 426121070}
   m_Layer: 13
   m_Name: WalkableNode (9)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2265,7 +2490,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426121067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9146225, y: 1, z: 37.95436}
+  m_LocalPosition: {x: 3.9146225, y: 0.049999982, z: 37.95436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -2285,6 +2510,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &426121070
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426121067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &478577653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,9 +2902,10 @@ GameObject:
   m_Component:
   - component: {fileID: 533359634}
   - component: {fileID: 533359635}
+  - component: {fileID: 533359636}
   m_Layer: 13
   m_Name: WalkableNode (50)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2679,7 +2918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533359633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -2699,6 +2938,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &533359636
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533359633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &558732246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,9 +2961,10 @@ GameObject:
   m_Component:
   - component: {fileID: 558732247}
   - component: {fileID: 558732248}
+  - component: {fileID: 558732249}
   m_Layer: 13
   m_Name: WalkableNode (57)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2724,7 +2977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558732246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.314623, y: 1, z: 42.65436}
+  m_LocalPosition: {x: 20.314623, y: 0.049999982, z: 42.65436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -2744,6 +2997,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &558732249
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558732246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &568245877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2938,9 +3204,10 @@ GameObject:
   m_Component:
   - component: {fileID: 671346645}
   - component: {fileID: 671346646}
+  - component: {fileID: 671346647}
   m_Layer: 13
   m_Name: WalkableNode (42)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2953,7 +3220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671346644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.414623, y: 1, z: 16.754362}
+  m_LocalPosition: {x: 25.414623, y: 0.049999982, z: 16.754362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -2973,6 +3240,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &671346647
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671346644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &698006413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3259,9 +3539,10 @@ GameObject:
   m_Component:
   - component: {fileID: 730983983}
   - component: {fileID: 730983984}
+  - component: {fileID: 730983985}
   m_Layer: 13
   m_Name: WalkableNode (28)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3274,7 +3555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730983982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.214622, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: 22.214622, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -3294,6 +3575,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &730983985
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730983982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &737723656
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,9 +3691,10 @@ GameObject:
   m_Component:
   - component: {fileID: 755523924}
   - component: {fileID: 755523925}
+  - component: {fileID: 755523926}
   m_Layer: 13
   m_Name: WalkableNode (26)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3412,7 +3707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755523923}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.085378, y: 1, z: -8.165638}
+  m_LocalPosition: {x: -12.085378, y: 0.049999982, z: -8.165638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -3432,6 +3727,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &755523926
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755523923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &772518635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3581,9 +3889,10 @@ GameObject:
   m_Component:
   - component: {fileID: 803321089}
   - component: {fileID: 803321090}
+  - component: {fileID: 803321091}
   m_Layer: 13
   m_Name: WalkableNode (64)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3596,7 +3905,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803321088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.225377, y: 1, z: 50.054363}
+  m_LocalPosition: {x: -10.225377, y: 0.049999982, z: 50.054363}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -3616,6 +3925,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &803321091
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803321088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &813189925
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,9 +4409,10 @@ GameObject:
   m_Component:
   - component: {fileID: 860241566}
   - component: {fileID: 860241567}
+  - component: {fileID: 860241568}
   m_Layer: 13
   m_Name: WalkableNode (62)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4102,7 +4425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860241565}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.225377, y: 1, z: 50.054363}
+  m_LocalPosition: {x: -10.225377, y: 0.049999982, z: 50.054363}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4122,6 +4445,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &860241568
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860241565}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &877909831
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,9 +4468,10 @@ GameObject:
   m_Component:
   - component: {fileID: 877909832}
   - component: {fileID: 877909833}
+  - component: {fileID: 877909834}
   m_Layer: 13
   m_Name: WalkableNode (40)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4147,7 +4484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877909831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.614622, y: 1, z: 8.354362}
+  m_LocalPosition: {x: 23.614622, y: 0.049999982, z: 8.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4167,6 +4504,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &877909834
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877909831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &913075201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4177,9 +4527,10 @@ GameObject:
   m_Component:
   - component: {fileID: 913075202}
   - component: {fileID: 913075203}
+  - component: {fileID: 913075204}
   m_Layer: 13
   m_Name: WalkableNode (54)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4192,7 +4543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913075201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.214622, y: 1, z: 35.354362}
+  m_LocalPosition: {x: 22.214622, y: 0.049999982, z: 35.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4212,6 +4563,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &913075204
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913075201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &927214513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4222,9 +4586,10 @@ GameObject:
   m_Component:
   - component: {fileID: 927214514}
   - component: {fileID: 927214515}
+  - component: {fileID: 927214516}
   m_Layer: 13
   m_Name: WalkableNode (27)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4237,7 +4602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927214513}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4257,6 +4622,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &927214516
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927214513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &949711336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4267,9 +4645,10 @@ GameObject:
   m_Component:
   - component: {fileID: 949711337}
   - component: {fileID: 949711338}
+  - component: {fileID: 949711339}
   m_Layer: 13
   m_Name: WalkableNode (33)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4282,7 +4661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949711336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.814623, y: 1, z: -15.535639}
+  m_LocalPosition: {x: 17.814623, y: 0.049999982, z: -15.535639}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4302,6 +4681,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &949711339
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949711336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &958177923
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,9 +4704,10 @@ GameObject:
   m_Component:
   - component: {fileID: 958177924}
   - component: {fileID: 958177925}
+  - component: {fileID: 958177926}
   m_Layer: 13
   m_Name: WalkableNode (52)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4327,7 +4720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958177923}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4347,6 +4740,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &958177926
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958177923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &963055027
 GameObject:
   m_ObjectHideFlags: 0
@@ -4533,9 +4939,10 @@ GameObject:
   m_Component:
   - component: {fileID: 971425007}
   - component: {fileID: 971425008}
+  - component: {fileID: 971425009}
   m_Layer: 13
   m_Name: WalkableNode (46)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4548,7 +4955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971425006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.614622, y: 1, z: 16.754362}
+  m_LocalPosition: {x: 17.614622, y: 0.049999982, z: 16.754362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4568,6 +4975,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &971425009
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971425006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &998810158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4625,9 +5045,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1053159653}
   - component: {fileID: 1053159654}
+  - component: {fileID: 1053159655}
   m_Layer: 13
   m_Name: WalkableNode (8)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4640,7 +5061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053159652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7146225, y: 1, z: 29.35436}
+  m_LocalPosition: {x: 3.7146225, y: 0.049999982, z: 29.35436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4660,6 +5081,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1053159655
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053159652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1062257562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4670,9 +5104,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1062257563}
   - component: {fileID: 1062257564}
+  - component: {fileID: 1062257565}
   m_Layer: 13
   m_Name: WalkableNode (35)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4685,7 +5120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062257562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.314623, y: 1, z: -8.165638}
+  m_LocalPosition: {x: 20.314623, y: 0.049999982, z: -8.165638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4705,6 +5140,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1062257565
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062257562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1091135220
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,9 +5254,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1111907323}
   - component: {fileID: 1111907324}
+  - component: {fileID: 1111907325}
   m_Layer: 13
   m_Name: WalkableNode (55)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4821,7 +5270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111907322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 35.354362}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 35.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -4841,6 +5290,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1111907325
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111907322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1114894129
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,9 +5497,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1120452933}
   - component: {fileID: 1120452934}
+  - component: {fileID: 1120452935}
   m_Layer: 13
   m_Name: WalkableNode (56)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5050,7 +5513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120452932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 35.354362}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 35.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5070,6 +5533,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1120452935
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120452932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1134242212
 GameObject:
   m_ObjectHideFlags: 0
@@ -5119,9 +5595,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1154010045}
   - component: {fileID: 1154010046}
+  - component: {fileID: 1154010047}
   m_Layer: 13
   m_Name: WalkableNode (7)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5134,7 +5611,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154010044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5146224, y: 1, z: 21.954361}
+  m_LocalPosition: {x: 3.5146224, y: 0.049999982, z: 21.954361}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5154,6 +5631,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1154010047
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154010044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1161071648
 GameObject:
   m_ObjectHideFlags: 0
@@ -5349,9 +5839,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1175905084}
   - component: {fileID: 1175905085}
+  - component: {fileID: 1175905086}
   m_Layer: 13
   m_Name: WalkableNode (5)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5364,7 +5855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175905083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8446224, y: 1, z: 8.164363}
+  m_LocalPosition: {x: 3.8446224, y: 0.049999982, z: 8.164363}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5384,6 +5875,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1175905086
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175905083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1203781071
 GameObject:
   m_ObjectHideFlags: 0
@@ -5394,9 +5898,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1203781072}
   - component: {fileID: 1203781073}
+  - component: {fileID: 1203781074}
   m_Layer: 13
   m_Name: WalkableNode (47)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5409,7 +5914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203781071}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.885378, y: 1, z: 26.554361}
+  m_LocalPosition: {x: -16.885378, y: 0.049999982, z: 26.554361}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5429,6 +5934,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1203781074
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203781071}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1216761701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5625,9 +6143,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1248758635}
   - component: {fileID: 1248758636}
+  - component: {fileID: 1248758637}
   m_Layer: 13
   m_Name: WalkableNode (36)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5640,7 +6159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248758634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.085378, y: 1, z: -8.165638}
+  m_LocalPosition: {x: -12.085378, y: 0.049999982, z: -8.165638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5660,6 +6179,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1248758637
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248758634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1253424658
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,9 +6202,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1253424659}
   - component: {fileID: 1253424660}
+  - component: {fileID: 1253424661}
   m_Layer: 13
   m_Name: WalkableNode (58)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5685,7 +6218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253424658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.085378, y: 1, z: 42.65436}
+  m_LocalPosition: {x: -12.085378, y: 0.049999982, z: 42.65436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5705,6 +6238,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1253424661
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253424658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1255160894
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,9 +6261,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1255160895}
   - component: {fileID: 1255160896}
+  - component: {fileID: 1255160897}
   m_Layer: 13
   m_Name: WalkableNode (31)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5730,7 +6277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255160894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.814623, y: 1, z: -20.615637}
+  m_LocalPosition: {x: 13.814623, y: 0.049999982, z: -20.615637}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5750,6 +6297,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1255160897
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255160894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1258490265
 GameObject:
   m_ObjectHideFlags: 0
@@ -5760,9 +6320,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1258490266}
   - component: {fileID: 1258490267}
+  - component: {fileID: 1258490268}
   m_Layer: 13
   m_Name: WalkableNode (4)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5775,7 +6336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258490265}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8946226, y: 1, z: 0.10436173}
+  m_LocalPosition: {x: 3.8946226, y: 0.049999982, z: 0.10436173}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5795,6 +6356,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1258490268
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258490265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1259601229
 GameObject:
   m_ObjectHideFlags: 0
@@ -5805,9 +6379,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1259601230}
   - component: {fileID: 1259601231}
+  - component: {fileID: 1259601232}
   m_Layer: 13
   m_Name: WalkableNode (6)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5820,7 +6395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259601229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6346226, y: 1, z: 15.84436}
+  m_LocalPosition: {x: 3.6346226, y: 0.049999982, z: 15.84436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5840,6 +6415,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1259601232
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259601229}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1261174052
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,9 +6438,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1261174053}
   - component: {fileID: 1261174054}
+  - component: {fileID: 1261174055}
   m_Layer: 13
   m_Name: WalkableNode (1)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5865,7 +6454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261174052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7146225, y: 1, z: -19.515638}
+  m_LocalPosition: {x: 3.7146225, y: 0.049999982, z: -19.515638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5885,6 +6474,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1261174055
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261174052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1264544045
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,9 +6497,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1264544046}
   - component: {fileID: 1264544047}
+  - component: {fileID: 1264544048}
   m_Layer: 13
   m_Name: WalkableNode (59)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5910,7 +6513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264544045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.314623, y: 1, z: 42.65436}
+  m_LocalPosition: {x: 20.314623, y: 0.049999982, z: 42.65436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5930,6 +6533,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1264544048
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264544045}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1265661800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,9 +6556,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1265661801}
   - component: {fileID: 1265661802}
+  - component: {fileID: 1265661803}
   m_Layer: 13
   m_Name: WalkableNode (2)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5955,7 +6572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265661800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7846227, y: 1, z: -14.365638}
+  m_LocalPosition: {x: 3.7846227, y: 0.049999982, z: -14.365638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -5975,6 +6592,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1265661803
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265661800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1294056774
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,9 +6615,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1294056775}
   - component: {fileID: 1294056776}
+  - component: {fileID: 1294056777}
   m_Layer: 13
   m_Name: WalkableNode (30)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6000,7 +6631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294056774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.614622, y: 1, z: 8.354362}
+  m_LocalPosition: {x: 23.614622, y: 0.049999982, z: 8.354362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -6020,6 +6651,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1294056777
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294056774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1362115810
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,9 +6674,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1362115811}
   - component: {fileID: 1362115812}
+  - component: {fileID: 1362115813}
   m_Layer: 13
   m_Name: WalkableNode (44)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6045,7 +6690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362115810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1853776, y: 1, z: 16.754362}
+  m_LocalPosition: {x: -3.1853776, y: 0.049999982, z: 16.754362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -6065,6 +6710,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1362115813
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362115810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1413846671
 GameObject:
   m_ObjectHideFlags: 0
@@ -6075,9 +6733,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1413846672}
   - component: {fileID: 1413846673}
+  - component: {fileID: 1413846674}
   m_Layer: 13
   m_Name: WalkableNode (43)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6090,7 +6749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413846671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.685378, y: 1, z: 16.754362}
+  m_LocalPosition: {x: -11.685378, y: 0.049999982, z: 16.754362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -6110,6 +6769,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1413846674
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413846671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1422908307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6212,9 +6884,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1424447555}
   - component: {fileID: 1424447556}
+  - component: {fileID: 1424447557}
   m_Layer: 13
   m_Name: WalkableNode (66)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6227,7 +6900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424447554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.2853775, y: 1, z: 53.854366}
+  m_LocalPosition: {x: -6.2853775, y: 0.049999982, z: 53.854366}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -6247,6 +6920,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1424447557
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424447554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1442525709
 GameObject:
   m_ObjectHideFlags: 0
@@ -6350,9 +7036,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1506493929}
   - component: {fileID: 1506493930}
+  - component: {fileID: 1506493931}
   m_Layer: 13
   m_Name: WalkableNode (32)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6365,7 +7052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506493928}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.2853775, y: 1, z: -20.615637}
+  m_LocalPosition: {x: -6.2853775, y: 0.049999982, z: -20.615637}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -6385,6 +7072,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1506493931
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506493928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1511758434
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,9 +7326,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1537046798}
   - component: {fileID: 1537046799}
+  - component: {fileID: 1537046800}
   m_Layer: 13
   m_Name: WalkableNode (41)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6641,7 +7342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537046797}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.985378, y: 1, z: 16.754362}
+  m_LocalPosition: {x: -17.985378, y: 0.049999982, z: 16.754362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -6661,6 +7362,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1537046800
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537046797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1546039952
 GameObject:
   m_ObjectHideFlags: 0
@@ -6671,9 +7385,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1546039953}
   - component: {fileID: 1546039954}
+  - component: {fileID: 1546039955}
   m_Layer: 13
   m_Name: WalkableNode (65)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6686,7 +7401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546039952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.814623, y: 1, z: 53.854366}
+  m_LocalPosition: {x: 13.814623, y: 0.049999982, z: 53.854366}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -6706,6 +7421,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1546039955
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546039952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1559076228
 GameObject:
   m_ObjectHideFlags: 0
@@ -7278,9 +8006,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1644766163}
   - component: {fileID: 1644766164}
+  - component: {fileID: 1644766165}
   m_Layer: 13
   m_Name: WalkableNode (38)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7293,7 +8022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644766162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.214622, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: 22.214622, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -7313,6 +8042,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1644766165
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644766162}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1655169356
 GameObject:
   m_ObjectHideFlags: 0
@@ -7540,9 +8282,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1728460513}
   - component: {fileID: 1728460514}
+  - component: {fileID: 1728460515}
   m_Layer: 13
   m_Name: WalkableNode (71)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7555,7 +8298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728460512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.164622, y: 1, z: 9.864363}
+  m_LocalPosition: {x: 11.164622, y: 0.049999982, z: 9.864363}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -7575,6 +8318,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1728460515
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728460512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1768976470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7955,9 +8711,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1890454855}
   - component: {fileID: 1890454856}
+  - component: {fileID: 1890454857}
   m_Layer: 13
   m_Name: WalkableNode (22)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7970,7 +8727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890454854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.2853775, y: 1, z: -20.615637}
+  m_LocalPosition: {x: -6.2853775, y: 0.049999982, z: -20.615637}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -7990,6 +8747,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1890454857
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890454854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1902170918
 GameObject:
   m_ObjectHideFlags: 0
@@ -8000,9 +8770,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1902170919}
   - component: {fileID: 1902170920}
+  - component: {fileID: 1902170921}
   m_Layer: 13
   m_Name: WalkableNode (34)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8015,7 +8786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902170918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.225377, y: 1, z: -14.375638}
+  m_LocalPosition: {x: -10.225377, y: 0.049999982, z: -14.375638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8035,6 +8806,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1902170921
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902170918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1912311992
 GameObject:
   m_ObjectHideFlags: 0
@@ -8264,9 +9048,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1947937229}
   - component: {fileID: 1947937230}
+  - component: {fileID: 1947937231}
   m_Layer: 13
   m_Name: WalkableNode (3)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8279,7 +9064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947937228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8346226, y: 1, z: -8.205638}
+  m_LocalPosition: {x: 3.8346226, y: 0.049999982, z: -8.205638}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8299,6 +9084,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1947937231
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947937228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1960535916
 GameObject:
   m_ObjectHideFlags: 0
@@ -8401,9 +9199,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1971273318}
   - component: {fileID: 1971273319}
+  - component: {fileID: 1971273320}
   m_Layer: 13
   m_Name: WalkableNode (69)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8416,7 +9215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971273317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.155377, y: 1, z: 31.74436}
+  m_LocalPosition: {x: -9.155377, y: 0.049999982, z: 31.74436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8436,6 +9235,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1971273320
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971273317}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1979682796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8446,9 +9258,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1979682797}
   - component: {fileID: 1979682798}
+  - component: {fileID: 1979682799}
   m_Layer: 13
   m_Name: WalkableNode (70)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8461,7 +9274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979682796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7153778, y: 1, z: 24.254362}
+  m_LocalPosition: {x: -2.7153778, y: 0.049999982, z: 24.254362}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8481,6 +9294,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &1979682799
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979682796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1988746174
 GameObject:
   m_ObjectHideFlags: 0
@@ -8633,9 +9459,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2019701243}
   - component: {fileID: 2019701244}
+  - component: {fileID: 2019701245}
   m_Layer: 13
   m_Name: WalkableNode (37)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8648,7 +9475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019701242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8668,6 +9495,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &2019701245
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019701242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2037041739
 GameObject:
   m_ObjectHideFlags: 0
@@ -8678,9 +9518,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2037041740}
   - component: {fileID: 2037041741}
+  - component: {fileID: 2037041742}
   m_Layer: 13
   m_Name: WalkableNode (23)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8693,7 +9534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037041739}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.814623, y: 1, z: -15.535639}
+  m_LocalPosition: {x: 17.814623, y: 0.049999982, z: -15.535639}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8713,6 +9554,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &2037041742
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037041739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2065707831
 GameObject:
   m_ObjectHideFlags: 0
@@ -8723,9 +9577,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2065707832}
   - component: {fileID: 2065707833}
+  - component: {fileID: 2065707834}
   m_Layer: 13
   m_Name: WalkableNode (60)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8738,7 +9593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065707831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.085378, y: 1, z: 42.65436}
+  m_LocalPosition: {x: -12.085378, y: 0.049999982, z: 42.65436}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8758,6 +9613,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &2065707834
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065707831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2071878528
 GameObject:
   m_ObjectHideFlags: 0
@@ -8815,9 +9683,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2083636862}
   - component: {fileID: 2083636863}
+  - component: {fileID: 2083636864}
   m_Layer: 13
   m_Name: WalkableNode (68)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8830,7 +9699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083636861}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.2853775, y: 1, z: 53.854366}
+  m_LocalPosition: {x: -6.2853775, y: 0.049999982, z: 53.854366}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8850,6 +9719,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &2083636864
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083636861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2087330108
 GameObject:
   m_ObjectHideFlags: 0
@@ -8860,9 +9742,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2087330109}
   - component: {fileID: 2087330110}
+  - component: {fileID: 2087330111}
   m_Layer: 13
   m_Name: WalkableNode
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8875,7 +9758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087330108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6746223, y: 1, z: -23.285639}
+  m_LocalPosition: {x: 3.6746223, y: 0.049999982, z: -23.285639}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8893,9 +9776,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b143f3ebc779a429f604c3955989dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbours:
-  - {fileID: 1261174054}
+  neighbours: []
   hasTrap: 0
+--- !u!135 &2087330111
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087330108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2094946524
 GameObject:
   m_ObjectHideFlags: 0
@@ -8906,9 +9801,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2094946525}
   - component: {fileID: 2094946526}
+  - component: {fileID: 2094946527}
   m_Layer: 13
   m_Name: WalkableNode (49)
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8921,7 +9817,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094946524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.7853775, y: 1, z: 0.25436172}
+  m_LocalPosition: {x: -14.7853775, y: 0.049999982, z: 0.25436172}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1601466176}
@@ -8941,6 +9837,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   hasTrap: 0
+--- !u!135 &2094946527
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094946524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2120163057
 GameObject:
   m_ObjectHideFlags: 0
@@ -9177,6 +10086,42 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1253046825399714691}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &855380097765405618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253046825599112228, guid: 06aa15f6488aafa48b844193d5d4d53b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1253046825399714691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855380097765405616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61954ed25f74e648b6aab3e5e7a6883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &855380097765405619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253046825599112234, guid: 06aa15f6488aafa48b844193d5d4d53b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1253046825399714691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855380097765405616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df06a4c46aaeb54aad2eee97f55137d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &855380097765405621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253046825599112224, guid: 06aa15f6488aafa48b844193d5d4d53b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1253046825399714691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855380097765405616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a961ea16949b34bb201a30743c7fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1253046825399714691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9662,12 +10607,22 @@ PrefabInstance:
     - target: {fileID: 1253046825599112224, guid: 06aa15f6488aafa48b844193d5d4d53b,
         type: 3}
       propertyPath: readyToMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4786207930395209562, guid: 06aa15f6488aafa48b844193d5d4d53b,
         type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786207930395209562, guid: 06aa15f6488aafa48b844193d5d4d53b,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786207930395209562, guid: 06aa15f6488aafa48b844193d5d4d53b,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5887885169078350776, guid: 06aa15f6488aafa48b844193d5d4d53b,
         type: 3}
@@ -9723,6 +10678,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sbMove
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253046825599112228, guid: 06aa15f6488aafa48b844193d5d4d53b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7156552668724851758, guid: 06aa15f6488aafa48b844193d5d4d53b,
         type: 3}
@@ -10094,6 +11054,21 @@ PrefabInstance:
       propertyPath: finitNode
       value: 
       objectReference: {fileID: 1261174054}
+    - target: {fileID: 1253046825599112234, guid: 06aa15f6488aafa48b844193d5d4d53b,
+        type: 3}
+      propertyPath: leaderSteering
+      value: 
+      objectReference: {fileID: 855380097765405618}
+    - target: {fileID: 1253046825599112234, guid: 06aa15f6488aafa48b844193d5d4d53b,
+        type: 3}
+      propertyPath: leader
+      value: 
+      objectReference: {fileID: 855380097765405621}
+    - target: {fileID: 1253046825599112235, guid: 06aa15f6488aafa48b844193d5d4d53b,
+        type: 3}
+      propertyPath: agentAStar
+      value: 
+      objectReference: {fileID: 855380097765405619}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06aa15f6488aafa48b844193d5d4d53b, type: 3}
 --- !u!54 &1253046825399714692 stripped
@@ -10128,17 +11103,17 @@ PrefabInstance:
     - target: {fileID: 133197708006464920, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -88.9
+      value: -203.9
       objectReference: {fileID: 0}
     - target: {fileID: 133197708006464920, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.77
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 133197708006464920, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -55.9
+      value: -158.3
       objectReference: {fileID: 0}
     - target: {fileID: 133197708006464920, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
@@ -10223,7 +11198,7 @@ PrefabInstance:
     - target: {fileID: 1963366928235578086, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
       propertyPath: readyToMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1963366928235578086, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
@@ -10234,6 +11209,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021814037921378530, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021814037921378530, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6152182191181052746, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
@@ -10613,12 +11598,12 @@ PrefabInstance:
     - target: {fileID: 1963366928235578105, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
       propertyPath: mask.m_Bits
-      value: 16384
+      value: 8192
       objectReference: {fileID: 0}
     - target: {fileID: 1963366928235578105, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
       propertyPath: distanceMax
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1963366928235578105, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
@@ -10645,6 +11630,21 @@ PrefabInstance:
       propertyPath: finitNode
       value: 
       objectReference: {fileID: 384885294}
+    - target: {fileID: 1963366928235578105, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963366928235578105, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: leaderSteering
+      value: 
+      objectReference: {fileID: 3223777530069425766}
+    - target: {fileID: 1963366928235578105, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: leader
+      value: 
+      objectReference: {fileID: 3223777530069425763}
     - target: {fileID: 1963366928235578107, guid: eaf689cef5c64124cbf55568fba3cb07,
         type: 3}
       propertyPath: sbWaypoints.Array.size
@@ -10670,6 +11670,26 @@ PrefabInstance:
       propertyPath: sbObstacleLayerMask.m_Bits
       value: 16384
       objectReference: {fileID: 0}
+    - target: {fileID: 4945940107806509283, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945940107806509283, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945940107806509280, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963366928235578106, guid: eaf689cef5c64124cbf55568fba3cb07,
+        type: 3}
+      propertyPath: agentAStar
+      value: 
+      objectReference: {fileID: 3223777530069425768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaf689cef5c64124cbf55568fba3cb07, type: 3}
 --- !u!54 &1963366928410309098 stripped
@@ -10684,6 +11704,42 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1963366928410309097}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3223777530069425763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1963366928235578086, guid: eaf689cef5c64124cbf55568fba3cb07,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963366928410309097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223777530069425762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a961ea16949b34bb201a30743c7fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3223777530069425766 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1963366928235578107, guid: eaf689cef5c64124cbf55568fba3cb07,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963366928410309097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223777530069425762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61954ed25f74e648b6aab3e5e7a6883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3223777530069425768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1963366928235578105, guid: eaf689cef5c64124cbf55568fba3cb07,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963366928410309097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223777530069425762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df06a4c46aaeb54aad2eee97f55137d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4433145612332433827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3235278882928689696, guid: 06aa15f6488aafa48b844193d5d4d53b,

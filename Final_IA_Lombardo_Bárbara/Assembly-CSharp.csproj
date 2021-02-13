@@ -82,7 +82,7 @@
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderPatrolState.cs" />
     <Compile Include="Assets\Scripts\Characters\Leader\IA\FSM\LeaderSeekState.cs" />
     <Compile Include="Assets\Scripts\IA\Behaviour Trees\ActionNode.cs" />
-    <Compile Include="Assets\Scripts\IA\Behaviour Trees\Node.cs" />
+    <Compile Include="Assets\Scripts\IA\Behaviour Trees\BehaviourTreeNode.cs" />
     <Compile Include="Assets\Scripts\IA\Behaviour Trees\QuestionNode.cs" />
     <Compile Include="Assets\Scripts\IA\Flocking\Behaviors\AlignmentBehavior.cs" />
     <Compile Include="Assets\Scripts\IA\Flocking\Behaviors\AvoidanceBehavior.cs" />

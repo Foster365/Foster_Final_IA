@@ -10,8 +10,8 @@ public class LeaderAttackState<T> : FSMState<T>
     LeaderAnimations _leaderAnimations;
 
     Roulette _roulette;
-    Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
-    Node _initNode;
+    Dictionary<BehaviourTreeNode, int> _rouletteNodes = new Dictionary<BehaviourTreeNode, int>();
+    BehaviourTreeNode _initNode;
 
     FSM<T> _fsm;
     T _seekState;
@@ -75,7 +75,7 @@ public class LeaderAttackState<T> : FSMState<T>
 
     public void RouletteAction()
     {
-        Node nodeRoulette = _roulette.Run(_rouletteNodes);
+        BehaviourTreeNode nodeRoulette = _roulette.Run(_rouletteNodes);
         nodeRoulette.Execute();
     }
 

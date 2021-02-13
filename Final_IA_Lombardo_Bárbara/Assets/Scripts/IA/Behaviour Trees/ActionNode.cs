@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionNode : Node
+public class ActionNode : BehaviourTreeNode
 {
     //Un delegate permite agregarle funciones que cumplan con la firma del delegate (el valor de retorno y los parametros del metodo)
     public delegate void ActionDelegate();

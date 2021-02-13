@@ -8,18 +8,29 @@ public class NodePathfinding : MonoBehaviour
     public bool hasTrap;
     private void Start()
     {
-        Neighbor(Vector3.right);
-        Neighbor(Vector3.left);
-        Neighbor(Vector3.forward);
-        Neighbor(Vector3.back);
+        Neighbour(Vector3.right);
+        Neighbour(Vector3.left);
+        Neighbour(Vector3.forward);
+        Neighbour(Vector3.back);
     }
-    void Neighbor(Vector3 dir)
+    void Neighbour(Vector3 dir)
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, dir, out hit, 2.2f))
+        if (Physics.Raycast(transform.position, dir, out hit, 100, 1 << LayerMask.NameToLayer("Walkable")))
         {
-            neighbours.Add(hit.collider.GetComponent<NodePathfinding>());
+
+            //neighbours.Add(hit.collider.GetComponent<NodePathfinding>());
+
+            var node = hit.collider.GetComponent<NodePathfinding>();
+            if (node != null)
+                neighbours.Add(node);
+
         }
+        //RaycastHit hit;
+        //if (Physics.Raycast(transform.position, dir, out hit, 2.2f))
+        //{
+
+        //}
     }
 
     private void OnDrawGizmos()

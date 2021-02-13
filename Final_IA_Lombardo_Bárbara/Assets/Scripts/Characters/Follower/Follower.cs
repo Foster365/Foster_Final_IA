@@ -35,8 +35,8 @@ public class Follower : Entity
     //
 
     Roulette _roulette;
-    Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
-    Node _initNode;
+    Dictionary<BehaviourTreeNode, int> _rouletteNodes = new Dictionary<BehaviourTreeNode, int>();
+    BehaviourTreeNode _initNode;
 
     Transform _transform;
 
@@ -121,7 +121,7 @@ public class Follower : Entity
     public void RouletteAction()
     {
         // Debug.Log("Entered in roulette");
-        Node nodeRoulette = _roulette.Run(_rouletteNodes);
+        BehaviourTreeNode nodeRoulette = _roulette.Run(_rouletteNodes);
         nodeRoulette.Execute();
     }
 

@@ -8,7 +8,8 @@ public class LeaderController : MonoBehaviour
 
     Leader _leader;
     LeaderAnimations _leaderAnimations;
-
+    [SerializeField]
+    AgentAStar agentAStar;
 
     //FSM Variables
     FSM<string> _fsm;
@@ -22,6 +23,7 @@ public class LeaderController : MonoBehaviour
     {
         _leader = GetComponent<Leader>();
         _leaderAnimations = GetComponent<LeaderAnimations>();
+        //agentAStar = GetComponent<AgentAStar>();
         _rigidbody = GetComponent<Rigidbody>();
     }
     // Start is called before the first frame update
@@ -32,7 +34,7 @@ public class LeaderController : MonoBehaviour
 
         LeaderIdleState<string> leaderIdleState = new LeaderIdleState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderDamagedState", "LeaderBlockState", "LeaderDeathState", "LeaderFleeState", _leader.IdleCountdown);
         LeaderBlockState<string> leaderBlockState = new LeaderBlockState<string>(_leader, _leaderAnimations, _fsm, "LeaderAttackState");//
-        LeaderPatrolState<string> leaderPatrolState = new LeaderPatrolState<string>(_leader, _leaderAnimations, _fsm, "LeaderIdleState", "LeaderSeekState");
+        LeaderPatrolState<string> leaderPatrolState = new LeaderPatrolState<string>(_leader, _leaderAnimations, agentAStar,_fsm, "LeaderIdleState", "LeaderSeekState");
         LeaderSeekState<string> leaderSeekState = new LeaderSeekState<string>(_leader, _leaderAnimations, _fsm, "LeaderPatrolState", "LeaderAttackState");
         LeaderAttackState<string> leaderAttackState = new LeaderAttackState<string>(_leader, _leaderAnimations, _fsm, "LeaderSeekState", "LeaderFleeState", "LeaderDamagedState", "LeaderDeathState");
         LeaderDamagedState<string> leaderDamagedState = new LeaderDamagedState<string>(_leader, _leaderAnimations, _fsm, "LeaderAttackState", "LeaderIdleState", "LeaderFleeState");

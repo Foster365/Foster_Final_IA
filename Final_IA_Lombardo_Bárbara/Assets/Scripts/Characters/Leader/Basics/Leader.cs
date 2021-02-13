@@ -27,7 +27,7 @@ public class Leader : Entity, IMove
     bool attackTarget;
 
     //Waypoint System(Patrol) variables Esto cambia por malla de nodos
-    public List<NodePathfinding> waypoints;
+    public List<NodePathfinding> aStarWaypoints;
     public bool readyToMove;
     public float waypointDistance;
     int _nextWp = 0;
@@ -45,9 +45,12 @@ public class Leader : Entity, IMove
     Vector3 sPoint;
     //
 
+
+    //Behaviour Tree Variables
     Roulette _roulette;
-    Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
-    Node _initNode;
+    Dictionary<BehaviourTreeNode, int> _rouletteNodes = new Dictionary<BehaviourTreeNode, int>();
+    BehaviourTreeNode _initNode;
+    //
 
     Transform _transform;
 
@@ -74,7 +77,7 @@ public class Leader : Entity, IMove
     //public Flee FleeBehaviour { get => fleeBehaviour; set => fleeBehaviour = value; }
     public LineOfSight Line_Of_Sight { get => lineOfSight; set => lineOfSight = value; }
     public LayerMask Layer { get => layer; set => layer = value; }
-    public float IdleCountdown { get => _idleCountdown;}
+    public float IdleCountdown { get => _idleCountdown; }
     //public AgentAStar AgentAStar { get => agentAStar; set => agentAStar = value; }
 
     //Seek Behaviour
@@ -119,41 +122,53 @@ public class Leader : Entity, IMove
         dir.y = 0;
         transform.position += Time.deltaTime * dir * movementSpeed;
 
-        //transform.forward = Vector3.Lerp(transform.forward, dir, speedRot * Time.deltaTime);
+        //transform.forward = Vector3.Lerp(transform.forward, dir, movementSpeed * Time.deltaTime);
     }
 
-    //public void SetWayPoints(List<NodePathfinding> newPoints)
-    //{
+    public void SetWayPoints(List<NodePathfinding> newPoints)
+    {
 
-    //    if (newPoints.Count == 0) return;
-    //    //_anim.Play("CIA_Idle");
-    //    waypoints = newPoints;
-    //    var pos = waypoints[_nextWp].transform.position;
-    //    pos.y = transform.position.y;
-    //    transform.position = pos;
-    //    readyToMove = true;
-    //}
+        _nextWp = 0;
+
+        if (newPoints.Count == 0) return;
+
+        aStarWaypoints = newPoints;
+
+        var pos = aStarWaypoints[_nextWp].transform.position;
+
+        pos.y = transform.position.y;
+        transform.position = pos;
+        readyToMove = true;
+    }
 
     public void Run()
     {
-        Debug.Log("La concha de tu madre al fin entró en esta función poronga");
-        List<Vector3> aStarWps = agentAStar.PathFindingAStarVector();
-        var point = aStarWps[_nextWp];//Var
-        var posPoint = point;
-        point = transform.position;//Var
+
+        var point = aStarWaypoints[_nextWp];//Var
+
+        var posPoint = point.transform.position;
         posPoint.y = transform.position.y;
         Vector3 dir = posPoint - transform.position;
+
         if (dir.magnitude < waypointDistance/*0.2f*/)
         {
-            if (_nextWp + _indexModifier <= aStarWps.Count-1)
+
+            if (_nextWp + _indexModifier < aStarWaypoints.Count-1)
+            {
+
                 _nextWp++;
+                _leaderAnimations.MoveAnimation(true);
+
+            }
+
             else
             {
                 readyToMove = false;
-                //_anim.SetTrigger("Finish");
+
                 _leaderAnimations.MoveAnimation(false);
                 return;
             }
+
         }
 
         Move(dir.normalized);
@@ -219,11 +234,6 @@ public class Leader : Entity, IMove
         else
             return;
 
-    }
-
-    public void AStar()
-    {
-        agentAStar.PathFindingAStarVector();
     }
 
 }

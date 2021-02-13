@@ -22,7 +22,7 @@ TagManager:
   - LeaderB
   - FollowerB
   - SafePoint
-  - WalkablePoint
+  - Walkable
   - Obstacle
   - 
   - 
