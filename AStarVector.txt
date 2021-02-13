@@ -1,0 +1,87 @@
+@ -19,14 +19,20 @@ public class AgentAStar : MonoBehaviour
+    [SerializeField]
+    Vector3 offset;
+
+    [SerializeField]
+    //[SerializeField]
+    Seek seekCharacter;
+
+    [SerializeField]
+    NodePathfinding initNode;
+
+    [SerializeField]
+    NodePathfinding finitNode;
+
+    List<Vector3> _listVector;
+    AStar<Vector3> _aStarVector = new AStar<Vector3>();
+
+    [SerializeField]
+    GameObject finit;
+    //[SerializeField]
+    //GameObject finit;
+    
+    LeaderSteering leaderSteering;
+
+@ -44,25 +50,28 @@ public class AgentAStar : MonoBehaviour
+
+    private void Awake()
+    {
+        leaderSteering = GetComponent<LeaderSteering>();
+        leaderSteering = gameObject.GetComponent<LeaderSteering>();
+    }
+
+    private void Start()
+    {
+
+        seekCharacter = leaderSteering.SbSeek;
+        //seekCharacter = leaderSteering.SbSeek;
+
+    }
+
+    public void PathFindingAStarVector()
+    public List<Vector3> PathFindingAStarVector()
+    {
+        _listVector = _aStarVector.Run(transform.position, SatisfiesVector, GetNeighboursVector, GetCostVector, HeuristicVector);
+        seekCharacter.SetWayPoints(_listVector);
+        
+        Debug.Log("List vector" + _listVector);
+        //leaderSteering.SbSeek.SetWayPoints(_listVector);
+        //Debug.Log("SeekCharacter" + leaderSteering.SbSeek);
+        return _listVector = _aStarVector.Run(initNode.transform.position, SatisfiesVector, GetNeighboursVector, GetCostVector, HeuristicVector);
+    }
+
+    float HeuristicVector(Vector3 curr)
+    {
+        return Vector3.Distance(curr, finit.transform.position);
+        return Vector3.Distance(curr, finitNode.transform.position);
+    }
+
+    float GetCostVector(Vector3 p, Vector3 c)
+@ -91,7 +100,7 @@ public class AgentAStar : MonoBehaviour
+
+    bool SatisfiesVector(Vector3 curr)
+    {
+        return Vector3.Distance(curr, finit.transform.position) < 1;
+        return Vector3.Distance(curr, finitNode.transform.position) < 1;
+    }
+
+    private void OnDrawGizmos()
+@ -102,15 +111,15 @@ public class AgentAStar : MonoBehaviour
+        if (init != null)
+            Gizmos.DrawSphere(init + offset, radius);
+
+        if (finit != null)
+            Gizmos.DrawSphere(finit.transform.position + offset, radius);
+        if (finitNode != null)
+            Gizmos.DrawSphere(finitNode.transform.position + offset, radius);
+
+        if (_listVector != null)
+        {
+            Gizmos.color = Color.green;
+            foreach (var item in _listVector)
+            {
+                if (item != init && item != finit.transform.position)
+                if (item != init && item != finitNode.transform.position)
+                    Gizmos.DrawSphere(item + offset, radius);
+            }
+        }
