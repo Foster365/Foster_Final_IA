@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class AStar<T>
 {
-
     public delegate bool Satisfies(T curr);
     public delegate List<T> GetNeighbours(T curr);
     public delegate float GetCost(T p, T c);
     public delegate float Heuristic(T curr);
-
-    public List<T> Run(T start, Satisfies satisfies, GetNeighbours getNeighbours, GetCost getCost, Heuristic heuristic, int watchDogs = 999999999)
+    public List<T> Run(T start, Satisfies satisfies, GetNeighbours getNeighbours, GetCost getCost, Heuristic heuristic, int watchDogs = 500)
     {
         Dictionary<T, T> parents = new Dictionary<T, T>();
         PriorityQueue<T> pending = new PriorityQueue<T>();
@@ -40,9 +38,7 @@ public class AStar<T>
                 pending.Enqueue(item, totalcost + heuristic(item));
             }
         }
-
         return new List<T>();
-
     }
 
     List<T> ConstructPath(T end, Dictionary<T, T> parents)
