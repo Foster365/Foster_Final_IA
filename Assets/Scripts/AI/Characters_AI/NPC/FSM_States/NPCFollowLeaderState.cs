@@ -33,8 +33,11 @@ public class NPCFollowLeaderState<T> : FSMState<T>
     {
         npcAIController.FlockBehaviour();
 
-        if (!npcAIController.LeaderGameObject.gameObject.GetComponent<CharacterModel>().ReadyToMove &&
-            !npcAIController.CharacterLineOfSight.targetInSight) fsm.Transition(idleState);
+        //if (!npcAIController.LeaderGameObject.gameObject.GetComponent<CharacterModel>().ReadyToMove &&
+        //    !npcAIController.CharacterLineOfSight.targetInSight) fsm.Transition(idleState);
+
+
+        if (!npcAIController.CharacterLineOfSight.targetInSight) fsm.Transition(idleState);
 
         else if (npcAIController.CharacterLineOfSight.targetInSight &&
             Vector3.Distance(npcAIController.transform.position, npcAIController.CharacterLineOfSight.Target.position)

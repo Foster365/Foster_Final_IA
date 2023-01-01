@@ -992,7 +992,7 @@ MonoBehaviour:
   attackRange: 10
   attackCooldown: 1
   blockCooldown: 2.5
-  lineOfSightViewDistance: 25
+  lineOfSightViewDistance: 80
   lineOfSightViewCone: 90
   lineOfSightObstacleLayer:
     serializedVersion: 2
@@ -1008,9 +1008,9 @@ MonoBehaviour:
   pursuitSBTimePrediction: 2
   flockingAvoidDist: 3
   flockingTurningDistance: 5
-  flockingMinSpeed: 2
+  flockingMinSpeed: 4
   flockingMaxSpeed: 5
-  flockingNeighbourDist: 5.92
+  flockingNeighbourDist: 7.7
   flockingRotationSpeed: 1.25
 --- !u!114 &98198282869816547
 MonoBehaviour:
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7373aba0d9cc32443844bd0ad729373d, type: 3}
   m_Name: 

@@ -57,6 +57,8 @@ public class NPCAttackState<T> : FSMState<T>
             //    cooldownTimer = 0;
             //    fsm.Transition(seekState);
             //}
+
+            //else if mato npc vuelvo a seguir al leader de nuevo
             else if (npcAIController.CharModel.CharacterHealthController.IsDamage)
             {
                 cooldownTimer = 0;

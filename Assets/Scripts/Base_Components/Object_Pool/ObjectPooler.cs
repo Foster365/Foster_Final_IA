@@ -19,15 +19,7 @@ public class ObjectPooler : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
 
-    #endregion
-
-    [SerializeField] List<Pool> pools;
-    Dictionary<string, Queue<GameObject>> poolDictionary;
-    // Start is called before the first frame update
-    void Start()
-    {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools)
@@ -44,6 +36,11 @@ public class ObjectPooler : MonoBehaviour
             poolDictionary.Add(pool.tag, objectPool);
         }
     }
+
+    #endregion
+
+    [SerializeField] List<Pool> pools;
+    Dictionary<string, Queue<GameObject>> poolDictionary;
 
     public GameObject SpawnFromPool(string _tag, Vector3 _position, Quaternion _rotation)
     {

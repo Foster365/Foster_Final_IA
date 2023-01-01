@@ -45,9 +45,9 @@ public class NPCIdleState<T> : FSMState<T>
         Debug.Log("NPC Idle State Execute");
         npcAIController.CharacterLineOfSight.GetLineOfSight();
 
-        if (npcAIController.LeaderGameObject.gameObject.GetComponent<CharacterModel>().ReadyToMove &&
-            !npcAIController.CharacterLineOfSight.targetInSight) fsm.Transition(followLeaderState);
-
+        //if (npcAIController.LeaderGameObject.gameObject.GetComponent<CharacterModel>().ReadyToMove &&
+        //    !npcAIController.CharacterLineOfSight.targetInSight) fsm.Transition(followLeaderState);
+        if (!npcAIController.CharacterLineOfSight.targetInSight) fsm.Transition(followLeaderState);
         else if (npcAIController.CharacterLineOfSight.targetInSight &&
             Vector3.Distance(npcAIController.transform.position, npcAIController.CharacterLineOfSight.Target.position)
             < npcAIController.SeekRange) fsm.Transition(seekState);
@@ -60,7 +60,8 @@ public class NPCIdleState<T> : FSMState<T>
 
         else if (npcAIController.CharModel.CharacterHealthController.IsDamage) fsm.Transition(damageState);
 
-        else if (npcAIController.CharModel.CharacterHealthController.IsDamage) fsm.Transition(deathState);
+        else if (npcAIController.CharModel.CharacterHealthController.IsDead
+            || npcAIController.LeaderGameObject.GetComponent<HealthController>().IsDead) fsm.Transition(deathState);
 
     }
     public override void Sleep()

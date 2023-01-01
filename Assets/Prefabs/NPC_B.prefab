@@ -1380,7 +1380,7 @@ MonoBehaviour:
   attackRange: 10
   attackCooldown: 1
   blockCooldown: 2.5
-  lineOfSightViewDistance: 25
+  lineOfSightViewDistance: 80
   lineOfSightViewCone: 90
   lineOfSightObstacleLayer:
     serializedVersion: 2

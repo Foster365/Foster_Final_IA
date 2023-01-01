@@ -22,15 +22,15 @@ public class NPCFleeState<T> : FSMState<T>
     }
     public override void Awake()
     {
-        npcAIController.NpcFleeSteeringBehaviour = new Flee(npcAIController.CharModel.MovementSpeed, npcAIController.CharModel.rotationSpeed,
-            npcAIController.transform, npcAIController.CharacterLineOfSight, npcAIController.CharacterLineOfSight.Target,
-            GetDirFromLineOfSightTarget(npcAIController.CharacterLineOfSight.Target));
+        //npcAIController.NpcFleeSteeringBehaviour = new Flee(npcAIController.CharModel.MovementSpeed, npcAIController.CharModel.rotationSpeed,
+        //    npcAIController.transform, npcAIController.CharacterLineOfSight, npcAIController.CharacterLineOfSight.Target,
+        //    GetDirFromLineOfSightTarget(npcAIController.CharacterLineOfSight.Target));
 
     }
     public override void Execute()
     {
         Debug.Log("NPC Flee State Execute");
-        FleeBehaviour();
+        //if (npcAIController.CharacterLineOfSight.Target != null) FleeBehaviour();
     }
 
     void FleeBehaviour()

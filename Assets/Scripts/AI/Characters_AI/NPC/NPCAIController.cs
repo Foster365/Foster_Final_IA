@@ -115,19 +115,20 @@ public class NPCAIController : MonoBehaviour
     public Pursuit NpcPursuitSteeringBehaviour { get => npcPursuitSteeringBehaviour; set => npcPursuitSteeringBehaviour = value; }
     public Flee NpcFleeSteeringBehaviour { get => npcFleeSteeringBehaviour; set => npcFleeSteeringBehaviour = value; }
     public float PursuitSBTimePrediction { get => pursuitSBTimePrediction; set => pursuitSBTimePrediction = value; }
+    public GameObject LeaderGameObject1 { get => leaderGameObject; set => leaderGameObject = value; }
     #endregion
 
     private void Awake()
     {
         charModel = GetComponent<NPCCharacterModel>();
         flockingEntity = GetComponent<FlockEntity>();
-        CheckLeaderTarget();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         charSpawnGrid = GameObject.Find("NPC_A_Object_Pooler").gameObject.GetComponent<CharacterSpawnGrid>();
+        CheckLeaderTarget();
         flockingSpeed = charModel.MovementSpeed;
         //Debug.Log("Componentes: " + "AllPrefabs " + charSpawnGrid.AllPrefabs + " GO " + gameObject + " FlockAvoidDist " + flockingAvoidDist
         //    + " FlockNbDist " + flockingNeighbourDist + " FlockSpeed " + flockingSpeed + " FlockMaxSpeed " + flockingMaxSpeed
@@ -153,11 +154,11 @@ public class NPCAIController : MonoBehaviour
     public void SetUpAIComponents()
     {
         SetUpFSM();
-        //CreateAttackRoulette();
+        CreateAttackRoulette();
         flockingMovementLimits = new Vector3(charSpawnGrid.GridSizeX, 1, charSpawnGrid.GridSizeY);
         flockingGoalPos = leaderGameObject.transform.position;
         flockingBehaviour = new Flocking(charSpawnGrid.AllPrefabs, gameObject, flockingAvoidDist, flockingNeighbourDist, flockingMaxSpeed,
-            flockingRotationSpeed, leaderGameObject.transform.position);
+            flockingRotationSpeed);//, leaderGameObject.transform.position);
         characterLineOfSight = new LineOfSight(lineOfSightViewDistance, lineOfSightViewCone, new RaycastHit(),
                                             transform, lineOfSightObstacleLayer, lineOfSightTarget);
         characterPathfinding = new Pathfinding(transform, characterLineOfSight.Target, charModel.PathfindingLastPosition, charModel.MapGrid);
@@ -290,10 +291,6 @@ public class NPCAIController : MonoBehaviour
         }
 
         transform.Translate(0, 0, Time.deltaTime * flockingSpeed);
-        //charModel.Move(direction.normalized, flockingSpeed);
-        //return direction;
-        //characterPathfinding.FindPath(transform.position, flockingGoalPos);
-        //if (characterPathfinding.finalPath.Count > 1) charModel.Run(characterPathfinding.finalPath);// transform.Translate(0, 0, Time.deltaTime * flockingSpeed);
 
     }
 

@@ -13,6 +13,7 @@ public class CharacterSpawnGrid : MonoBehaviour
     [SerializeField] string poolTag;
     [SerializeField] float nodeRadius = 1.5f;
     float nodeDiameter = 2;
+    Vector3 worldPoint;
 
     ObjectPooler pooler;
 
@@ -43,7 +44,7 @@ public class CharacterSpawnGrid : MonoBehaviour
             {
                 if (troopSizeCounter < troopSize)
                 {
-                    Vector3 worldPoint = worldBottomLeft + (Vector3.right * ((x * nodeDiameter) + nodeRadius))
+                    worldPoint = worldBottomLeft + (Vector3.right * ((x * nodeDiameter) + nodeRadius))
                         + (Vector3.forward * ((y * nodeDiameter) + nodeRadius));
                     var go = pooler.SpawnFromPool(poolTag, worldPoint, leader.transform.rotation);//GameObject.Instantiate(prefab, worldPoint, leader.transform.rotation);
                     allPrefabs[troopSizeCounter] = go;
@@ -55,6 +56,8 @@ public class CharacterSpawnGrid : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(worldPoint, 2);
 
     }
 }

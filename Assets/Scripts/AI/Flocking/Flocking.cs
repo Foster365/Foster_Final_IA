@@ -9,10 +9,10 @@ public class Flocking
     GameObject myFlockAgent;
 
     float avoidDistance, speed, neighbourDist, maxSpeed, rotationSpeed;
-    Vector3 goalPosition;
+    Transform goalPosition;
 
     public Flocking(GameObject[] _prefabsGrid, GameObject _myFlockAgent, float _avoidDistance, float _neighbourDist
-        , float _maxSpeed, float _rotationSpeed, Vector3 _goalPosition)
+        , float _maxSpeed, float _rotationSpeed)
     {
         prefabsGrid = _prefabsGrid;
         myFlockAgent = _myFlockAgent;
@@ -22,11 +22,10 @@ public class Flocking
 
         maxSpeed = _maxSpeed;
         rotationSpeed = _rotationSpeed;
-
-        goalPosition = _goalPosition;
     }
 
     public float Speed { get => speed; set => speed = value; }
+    public Transform GoalPosition { get => goalPosition; set => goalPosition = value; }
 
     public void ApplyFlockingRules()
     {
@@ -37,10 +36,9 @@ public class Flocking
         Vector3 neighboursCenter = Vector3.zero; //Centro de los vecinos.
         Vector3 avoidanceVector = Vector3.zero; //Dist avoidance entre agentes.
 
-        float globalSpeed = .01f; //Average speed en la que se mueve el grupo
-        float neighbourDistance; //Distancia vecina entre agentes
-        int groupSize = 0; // Representa la cantidad de agentes pertenecientes al grupo dentro del rebaño, la sección más
-        //pequeña del rebaño/bandada
+        float globalSpeed = .01f;
+        float neighbourDistance;
+        int groupSize = 0;
 
         foreach (GameObject neighbour in neighbours)
         {
@@ -62,7 +60,7 @@ public class Flocking
                     Flocking anotherFlock = neighbour.GetComponent<Flocking>(); //Obtengo el flock component del agente comparado.
                     globalSpeed += anotherFlock.speed; //Establezco la velocidad global del grupo, acorde al vecino comparado.
 
-                    if (anotherFlock.speed == 0) speed = 0;
+                    //if (anotherFlock.speed == 0) speed = 0;
                 }
 
             }
@@ -71,7 +69,7 @@ public class Flocking
         if (groupSize > 0)
         {
 
-            neighboursCenter = (neighboursCenter / groupSize) + (goalPosition - myFlockAgent.transform.position);
+            neighboursCenter = (neighboursCenter / groupSize) + (goalPosition.position - myFlockAgent.transform.position);
             speed = globalSpeed / groupSize;
 
             if (speed >= maxSpeed) speed = maxSpeed;

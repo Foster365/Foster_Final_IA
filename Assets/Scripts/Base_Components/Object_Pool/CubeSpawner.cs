@@ -12,6 +12,6 @@ public class CubeSpawner : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        pooler.SpawnFromPool("aa", transform.position, Quaternion.identity);
+        //pooler.SpawnFromPool("aa", transform.position, Quaternion.identity);
     }
 }
