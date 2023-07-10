@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterAttackDelegate : MonoBehaviour
 {
     [SerializeField] GameObject attacker, leftArmCollider, weaponCollider, shieldCollider, magicPrefab;
-    [SerializeField] bool hasShield;
+    [SerializeField] bool hasShield; //TODO Agregar a characterData
 
     void LeftArmAttackOn()
     {

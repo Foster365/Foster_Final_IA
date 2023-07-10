@@ -17,12 +17,10 @@ public class Node : IHeapItem<Node>
     int heapIndex;
 
 
-    public Node(bool _isWalkable, Vector3 _worldPosition, int _gridX, int _gridY, int _movementPenalty)
+    public Node(bool _isWalkable, Vector3 _worldPosition, int _gridX, int _gridY)
     {
         isWalkable =  _isWalkable;
         worldPosition = _worldPosition;
-
-        movementPenalty = _movementPenalty;
 
         gridX = _gridX;
         gridY = _gridY;

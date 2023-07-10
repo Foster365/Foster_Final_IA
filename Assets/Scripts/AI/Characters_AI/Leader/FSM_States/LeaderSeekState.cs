@@ -30,6 +30,8 @@ public class LeaderSeekState<T> : FSMState<T>
     public override void Awake()
     {
         leaderAIController.CharModel.ReadyToMove = true;
+        leaderAIController.CharacterPathfinding.FindPath(leaderAIController.transform.position,
+            leaderAIController.CharacterLineOfSight.Target.position);
     }
 
     public override void Execute()
@@ -53,8 +55,6 @@ public class LeaderSeekState<T> : FSMState<T>
 
     void SeekBehaviour()
     {
-        leaderAIController.CharacterPathfinding.FindPath(leaderAIController.transform.position,
-            leaderAIController.CharacterLineOfSight.Target.position);
         leaderAIController.CharModel.Run(leaderAIController.CharacterPathfinding.finalPath);
     }
 

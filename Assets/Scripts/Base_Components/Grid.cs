@@ -8,7 +8,6 @@ public class Grid : MonoBehaviour
     public Vector2 gridWorldSize;
     public float nodeRadius;
     Node[,] grid;
-    public TerrainType[] walkableRegions;
 
     float nodeDiameter;
     int gridSizeX, gridSizeY;
@@ -41,11 +40,9 @@ public class Grid : MonoBehaviour
                 Vector3 worldPoint = worldBottomLeft + (Vector3.right * ((x * nodeDiameter) + nodeRadius)) + (Vector3.forward * ((y * nodeDiameter) + nodeRadius));
                 bool walkable = !Physics.CheckSphere(worldPoint, nodeRadius, unwalkableNodeLayerMask);
 
-                int movementPenalty = 0;
-
                 //Raycast
 
-                grid[x, y] = new Node(walkable, worldPoint, x, y, movementPenalty);
+                grid[x, y] = new Node(walkable, worldPoint, x, y);
             }
         }
     }
@@ -107,11 +104,4 @@ public class Grid : MonoBehaviour
             }
         }
     }
-}
-
-[System.Serializable]
-public class TerrainType
-{
-    public LayerMask terrainMask;
-    public int terrainPenalty;
 }

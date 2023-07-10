@@ -1566,15 +1566,6 @@ MonoBehaviour:
     m_Bits: 8
   gridWorldSize: {x: 180, y: 90}
   nodeRadius: 1
-  walkableRegions:
-  - terrainMask:
-      serializedVersion: 2
-      m_Bits: 64
-    terrainPenalty: 0
-  - terrainMask:
-      serializedVersion: 2
-      m_Bits: 128
-    terrainPenalty: 0
 --- !u!4 &387453395
 Transform:
   m_ObjectHideFlags: 0
@@ -2830,7 +2821,7 @@ GameObject:
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &923659633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6996,7 +6987,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5766630674025092386
 MonoBehaviour:
   m_ObjectHideFlags: 0

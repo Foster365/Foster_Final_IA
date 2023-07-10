@@ -13,7 +13,7 @@ public class HealthUIHandler : MonoBehaviour
 
     private void Update()
     {
-        if (character.CharacterHealthController.CurrentHealth <= 0f)
+        if (character.CharacterHealthController.CurrentHealth <= 0f) //TODO fix vida menor a 0 renderizandose en la Health UI
             txtUI.text = "0";
 
         txtUI.text = character.CharacterHealthController.CurrentHealth.ToString();
