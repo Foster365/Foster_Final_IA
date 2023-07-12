@@ -1314,7 +1314,6 @@ GameObject:
   - component: {fileID: 5739797111762774579}
   - component: {fileID: 604383441379298383}
   - component: {fileID: 7991823723559805202}
-  - component: {fileID: 7238007443329471954}
   - component: {fileID: 3626660241168869198}
   - component: {fileID: 8102678902732829951}
   - component: {fileID: 5336053095525892337}
@@ -1404,36 +1403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e79374048bade428dd7a84a12cfe04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7238007443329471954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066896392038628118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeda279ef10cdf74a9171c34ec874852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolTimer: 10
-  seekRange: 15
-  attackRange: 3
-  attackCooldown: 3
-  blockCooldown: 2
-  lineOfSightViewDistance: 45
-  lineOfSightViewCone: 180
-  lineOfSightObstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  lineOfSightTarget:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  obstacleAvoidanceRadius: 3
-  obstacleAvoidanceAvoidWeight: 2
 --- !u!114 &3626660241168869198
 MonoBehaviour:
   m_ObjectHideFlags: 0

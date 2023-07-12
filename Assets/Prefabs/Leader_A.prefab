@@ -1478,7 +1478,6 @@ GameObject:
   - component: {fileID: 8075542318739216520}
   - component: {fileID: 1012851752843451604}
   - component: {fileID: 6319736436799718757}
-  - component: {fileID: 193647464251803976}
   - component: {fileID: 672910028697169135}
   - component: {fileID: 2689386905371881058}
   - component: {fileID: 3995160727496140281}
@@ -1584,36 +1583,6 @@ MonoBehaviour:
   - {fileID: 0}
   rotationSpeed: 0.007
   speed: 10
---- !u!114 &193647464251803976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeda279ef10cdf74a9171c34ec874852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolTimer: 10
-  seekRange: 15
-  attackRange: 3
-  attackCooldown: 3
-  blockCooldown: 2
-  lineOfSightViewDistance: 45
-  lineOfSightViewCone: 90
-  lineOfSightObstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  lineOfSightTarget:
-    serializedVersion: 2
-    m_Bits: 128
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  obstacleAvoidanceRadius: 3
-  obstacleAvoidanceAvoidWeight: 1
 --- !u!114 &672910028697169135
 MonoBehaviour:
   m_ObjectHideFlags: 0
