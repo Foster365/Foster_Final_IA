@@ -53,7 +53,7 @@ public class LeaderPatrolState<T> : FSMState<T>
     void PatrolBehaviour()
     {
         leaderAIController.CharModel.ReadyToMove = true;
-        leaderAIController.CharModel.PatrolSimple();//Patrol(leaderAIController.CharacterPathfinding);
+        //leaderAIController.CharModel.PatrolSimple();//Patrol(leaderAIController.CharacterPathfinding);
         leaderAIController.CharacterLineOfSight.GetLineOfSight();
 
     }

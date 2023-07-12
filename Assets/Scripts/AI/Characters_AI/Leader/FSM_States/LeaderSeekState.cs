@@ -30,8 +30,8 @@ public class LeaderSeekState<T> : FSMState<T>
     public override void Awake()
     {
         leaderAIController.CharModel.ReadyToMove = true;
-        leaderAIController.CharacterPathfinding.FindPath(leaderAIController.transform.position,
-            leaderAIController.CharacterLineOfSight.Target.position);
+        //leaderAIController.CharacterPathfinding.FindPath(leaderAIController.transform.position,
+        //    leaderAIController.CharacterLineOfSight.Target.position);
     }
 
     public override void Execute()
@@ -39,12 +39,12 @@ public class LeaderSeekState<T> : FSMState<T>
         Debug.Log("Leader Seek State Execute");
 
         SeekBehaviour();
-        if (Vector3.Distance(leaderAIController.transform.position,
-            leaderAIController.CharacterLineOfSight.Target.position) <= attackRange)
-            _fsm.Transition(_attackState);
+        //if (Vector3.Distance(leaderAIController.transform.position,
+        //    leaderAIController.CharacterLineOfSight.Target.position) <= attackRange)
+        //    _fsm.Transition(_attackState);
 
-        else if (Vector3.Distance(leaderAIController.transform.position,
-            leaderAIController.CharacterLineOfSight.Target.position) > leaderAIController.SeekRange) _fsm.Transition(_patrolState);
+        //else if (Vector3.Distance(leaderAIController.transform.position,
+        //    leaderAIController.CharacterLineOfSight.Target.position) > leaderAIController.SeekRange) _fsm.Transition(_patrolState);
 
     }
 
@@ -55,7 +55,7 @@ public class LeaderSeekState<T> : FSMState<T>
 
     void SeekBehaviour()
     {
-        leaderAIController.CharModel.Run(leaderAIController.CharacterPathfinding.finalPath);
+        //leaderAIController.CharModel.Run(leaderAIController.CharacterPathfinding.finalPath);
     }
 
 }

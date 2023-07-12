@@ -60,12 +60,12 @@ public class LeaderIdleState<T> : FSMState<T>
             //{
             //    _fsm.Transition(seekState);
             //}
-            if (Vector3.Distance(leaderAIController.transform.position,
-                leaderAIController.CharacterLineOfSight.Target.position)
-                < leaderAIController.AttackRange)
-            {
-                _fsm.Transition(attackState);
-            }
+            //if (Vector3.Distance(leaderAIController.transform.position,
+            //    leaderAIController.CharacterLineOfSight.Target.position)
+            //    < leaderAIController.AttackRange)
+            //{
+            //    _fsm.Transition(attackState);
+            //}
         }
         else if (leaderAIController.CharModel.CharacterHealthController.IsDamage) _fsm.Transition(damageState);
         else if (leaderAIController.CharModel.CharacterHealthController.IsDead) _fsm.Transition(deathState);

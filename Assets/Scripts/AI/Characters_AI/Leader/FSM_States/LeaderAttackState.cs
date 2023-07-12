@@ -43,24 +43,24 @@ public class LeaderAttackState<T> : FSMState<T>
 
             cooldownTimer += Time.deltaTime;
 
-            if (cooldownTimer >= leaderAIController.AttackCooldown &&
-                Vector3.Distance(leaderAIController.transform.position, leaderAIController.CharacterLineOfSight.Target.position)
-                < leaderAIController.AttackRange)
-            {
-                leaderAIController.AttackRouletteAction();
-                fsm.Transition(idleState);
-            }
-            else if (Vector3.Distance(leaderAIController.transform.position, leaderAIController.CharacterLineOfSight.Target.position)
-                >= leaderAIController.AttackRange)
-            {
-                cooldownTimer = 0;
-                fsm.Transition(seekState);
-            }
-            else if (leaderAIController.CharModel.CharacterHealthController.IsDamage)
-            {
-                cooldownTimer = 0;
-                fsm.Transition(damageState);
-            }
+            //if (cooldownTimer >= leaderAIController.AttackCooldown &&
+            //    Vector3.Distance(leaderAIController.transform.position, leaderAIController.CharacterLineOfSight.Target.position)
+            //    < leaderAIController.AttackRange)
+            //{
+            //    leaderAIController.AttackRouletteAction();
+            //    fsm.Transition(idleState);
+            //}
+            //else if (Vector3.Distance(leaderAIController.transform.position, leaderAIController.CharacterLineOfSight.Target.position)
+            //    >= leaderAIController.AttackRange)
+            //{
+            //    cooldownTimer = 0;
+            //    fsm.Transition(seekState);
+            //}
+            //else if (leaderAIController.CharModel.CharacterHealthController.IsDamage)
+            //{
+            //    cooldownTimer = 0;
+            //    fsm.Transition(damageState);
+            //}
 
         }
 

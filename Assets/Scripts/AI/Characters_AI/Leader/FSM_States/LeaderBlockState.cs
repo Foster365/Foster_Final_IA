@@ -30,15 +30,15 @@ public class LeaderBlockState<T> : FSMState<T>
 
     public override void Execute()
     {
-        Debug.Log("Leader Block State Execute");
-        cooldownTimer += Time.deltaTime;
-        leaderAIController.BlockRouletteAction();
-        if (cooldownTimer >= leaderAIController.BlockCooldown)
-        {
-            leaderAIController.IdleAttackTransitionRouletteAction();
-            //cooldownTimer = 0;
-            //fsm.Transition(idleState);
-        }
+        //Debug.Log("Leader Block State Execute");
+        //cooldownTimer += Time.deltaTime;
+        //leaderAIController.BlockRouletteAction();
+        //if (cooldownTimer >= leaderAIController.BlockCooldown)
+        //{
+        //    leaderAIController.IdleAttackTransitionRouletteAction();
+        //    //cooldownTimer = 0;
+        //    //fsm.Transition(idleState);
+        //}
     }
 
     public override void Sleep()
