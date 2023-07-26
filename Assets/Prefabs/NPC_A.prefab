@@ -836,10 +836,8 @@ GameObject:
   - component: {fileID: 8075542318739216520}
   - component: {fileID: 1012851752843451604}
   - component: {fileID: 672910028697169135}
-  - component: {fileID: 2689386905371881058}
   - component: {fileID: 3995160727496140281}
   - component: {fileID: 5243582813328660072}
-  - component: {fileID: 3125223946328473007}
   - component: {fileID: 98198282869816547}
   m_Layer: 8
   m_Name: NPC_A
@@ -925,21 +923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e79374048bade428dd7a84a12cfe04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2689386905371881058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0336dc1b56dbe214f8732490e68fda48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 30
-  currentHealth: 0
-  destroyGameObjectDelay: 0.5
 --- !u!114 &3995160727496140281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,43 +958,6 @@ MonoBehaviour:
   wp: []
   waypoints: []
   rotationSpeed: 1
---- !u!114 &3125223946328473007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb94c37672155634e97c940a35c888fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolTimer: 5
-  seekRange: 15
-  attackRange: 10
-  attackCooldown: 1
-  blockCooldown: 2.5
-  lineOfSightViewDistance: 80
-  lineOfSightViewCone: 90
-  lineOfSightObstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  lineOfSightTarget:
-    serializedVersion: 2
-    m_Bits: 512
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  obstacleAvoidanceRadius: 3
-  obstacleAvoidanceAvoidWeight: 1
-  pursuitSBTimePrediction: 2
-  flockingAvoidDist: 3
-  flockingTurningDistance: 5
-  flockingMinSpeed: 4
-  flockingMaxSpeed: 5
-  flockingNeighbourDist: 7.7
-  flockingRotationSpeed: 1.25
 --- !u!114 &98198282869816547
 MonoBehaviour:
   m_ObjectHideFlags: 0

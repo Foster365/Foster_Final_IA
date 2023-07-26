@@ -1,26 +1,19 @@
-using System.Collections;
+using _Main.Scripts.FSM_SO_VERSION;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class CharacterModel : MonoBehaviour
+public class CharacterModel : EntityModel
 {
     //Components variables
     Rigidbody rb;
     Grid mapGrid;
-    CharacterAnimationsController charAnimController;
-    LeaderAIController charAIController;
-    HealthController characterHealthController;
-
+    //LeaderAIController charAIController;
     //
 
     //Waypoints
-    [SerializeField] List<Transform> patrollingNodes; //TODO ver con patrol state en FSM SO
-    [SerializeField] List<Transform> wp; //Patrol simple waypoints  //TODO ver con patrol state en FSM SO
-    public List<Transform> waypoints;
+    List<Transform> patrollingNodes; //TODO ver con patrol state en FSM SO
+    List<Transform> wp; //Patrol simple waypoints  //TODO ver con patrol state en FSM SO
     List<Node> targetSeekNodes;
-    public float rotationSpeed = 1;
     bool readyToMove = false;
     int _nextWaypoint = 0, waypointIndexModifier = 1;
     //
@@ -30,12 +23,7 @@ public class CharacterModel : MonoBehaviour
 
     //
 
-    //Character Variables
-    [Header("Basic character props")]
-    public float speed = .1f;
-
     Transform target;
-    bool isBlocking = false;
     #region Encapsulated Variables
 
     public Vector3 PathfindingLastPosition { get => pathfindingLastPosition; set => pathfindingLastPosition = value; }
@@ -43,8 +31,6 @@ public class CharacterModel : MonoBehaviour
     public Grid MapGrid { get => mapGrid; set => mapGrid = value; }
     public bool ReadyToMove { get => readyToMove; set => readyToMove = value; }
     public List<Node> TargetSeekNodes { get => targetSeekNodes; set => targetSeekNodes = value; }
-    public HealthController CharacterHealthController { get => characterHealthController; set => characterHealthController = value; }
-    public CharacterAnimationsController CharAnimController { get => charAnimController; set => charAnimController = value; }
 
     #endregion
 
@@ -53,14 +39,14 @@ public class CharacterModel : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         mapGrid = GameObject.Find("Grid").GetComponent<Grid>();
-        charAnimController = GetComponent<CharacterAnimationsController>();
-        charAIController = GetComponent<LeaderAIController>();
-        characterHealthController = GetComponent<HealthController>();
+        View = GetComponent<EntityView>();
     }
 
     private void Start()
     {
         pathfindingLastPosition = Vector3.zero;
+        HealthController = new HealthController(this);
+        //charAIController = new LeaderAIController();
         new List<Node>();
         SetCharacterTag();
     }
@@ -69,8 +55,32 @@ public class CharacterModel : MonoBehaviour
 
     void SetCharacterTag()
     {
-        if (gameObject.tag == TagManager.LEADER_TAG) characterHealthController.IsLeader = true;
-        else if (gameObject.tag == TagManager.NPC_TAG) characterHealthController.IsNPC = true;
+        if (gameObject.tag == TagManager.LEADER_TAG) HealthController.IsLeader = true;
+        else if (gameObject.tag == TagManager.NPC_TAG) HealthController.IsNPC = true;
     }
 
+    public override StateData[] GetStates() => Data.FsmStates;
+    public override Vector3 GetFoward() => transform.forward;
+
+    public override float GetSpeed() => rb.velocity.magnitude;
+    public override void Move(Vector3 direction)
+    {
+        direction.y = 0;
+        //direction += _obstacleAvoidance.GetDir() * multiplier;
+        rb.velocity = direction.normalized * (Data.MovementSpeed * Time.deltaTime);
+
+        transform.forward = Vector3.Lerp(transform.forward, direction, Data.RotationSpeed * Time.deltaTime);
+        //View.PlayWalkAnimation(true);
+    }
+
+    public override void LookDir(Vector3 direction)
+    {
+        if (direction == Vector3.zero) return;
+        direction.y = 0;
+        transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * Data.RotationSpeed);
+    }
+
+    public override Rigidbody GetRigidbody() => rb;
+
+    public override EntityModel GetModel() => this;
 }

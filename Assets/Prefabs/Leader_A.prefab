@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd3d29f3a8d14f41972a85f9a087f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 6319736436799718757}
+  character: {fileID: 0}
   textUI: {fileID: 4357537218321141068}
   txtUI: {fileID: 8413733771863612029}
 --- !u!1 &1602564582279940539
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd3d29f3a8d14f41972a85f9a087f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 6319736436799718757}
+  character: {fileID: 0}
   textUI: {fileID: 4357537218321141068}
   txtUI: {fileID: 0}
 --- !u!1 &6529605298891968840
@@ -1477,10 +1477,7 @@ GameObject:
   - component: {fileID: 6936562248828474058}
   - component: {fileID: 8075542318739216520}
   - component: {fileID: 1012851752843451604}
-  - component: {fileID: 6319736436799718757}
-  - component: {fileID: 672910028697169135}
-  - component: {fileID: 2689386905371881058}
-  - component: {fileID: 3995160727496140281}
+  - component: {fileID: 5596960023787767279}
   m_Layer: 6
   m_Name: Leader_A
   m_TagString: Leader
@@ -1554,7 +1551,7 @@ CapsuleCollider:
   m_Height: 1.3276348
   m_Direction: 1
   m_Center: {x: -0.008973122, y: 0.58259475, z: -0.16390327}
---- !u!114 &6319736436799718757
+--- !u!114 &5596960023787767279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1566,68 +1563,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b18e03092eee04db398756437863fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrollingNodes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  wp:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  rotationSpeed: 0.007
-  speed: 10
---- !u!114 &672910028697169135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2e79374048bade428dd7a84a12cfe04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2689386905371881058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0336dc1b56dbe214f8732490e68fda48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  destroyGameObjectDelay: 1.5
---- !u!114 &3995160727496140281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e21f505495540a4f93262e52d773662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attacker: {fileID: 6936562248821186842}
-  leftArmCollider: {fileID: 6529605298891968840}
-  weaponCollider: {fileID: 1602564582279940539}
-  shieldCollider: {fileID: 0}
-  magicPrefab: {fileID: 6778120169541092406, guid: 4cea750722225ba4090f5f62e0a000bd, type: 3}
-  hasShield: 0
+  leftHandCollider: {fileID: 0}
+  rightHandCollider: {fileID: 0}
+  leftFootCollider: {fileID: 0}
+  rightFootCollider: {fileID: 0}
+  redMaterial: {fileID: 2100000, guid: a45bf9c279754524199c02e869550db1, type: 2}
+  material: {fileID: 2100000, guid: 7ce7eb6b9b3fe5c46a4a516ed7c60a28, type: 2}
+  meshRenderer: {fileID: 6936562248824368138}
+  data: {fileID: 11400000, guid: b741a65f24eb0a84aad5677f9d6311f0, type: 2}
+  patrollingNodes: []
+  wp: []
 --- !u!1 &6936562248821186844
 GameObject:
   m_ObjectHideFlags: 0

@@ -2016,9 +2016,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b18e03092eee04db398756437863fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotSpeed: 0
+  leftHandCollider: {fileID: 0}
+  rightHandCollider: {fileID: 0}
+  leftFootCollider: {fileID: 0}
+  rightFootCollider: {fileID: 0}
+  redMaterial: {fileID: 0}
+  material: {fileID: 0}
+  meshRenderer: {fileID: 0}
   patrollingNodes: []
   wp: []
-  waypoints: []
   rotationSpeed: 10
   speed: 10
 --- !u!114 &572511134
@@ -5720,6 +5727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7238007443329471954, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+    - {fileID: 5336053095525892337, guid: 45288819fde2143449a96207b14db0bb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 45288819fde2143449a96207b14db0bb, type: 3}
 --- !u!4 &1874826770 stripped
 Transform:
@@ -7097,10 +7105,6 @@ PrefabInstance:
     - target: {fileID: 2445433145769636798, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
       propertyPath: m_Name
       value: Health_UI_Icon
-      objectReference: {fileID: 0}
-    - target: {fileID: 2689386905371881058, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
-      propertyPath: maxHealth
-      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3467438939863339156, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
       propertyPath: m_Enabled
@@ -9018,6 +9022,5 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 193647464251803976, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41cb901dc733d394086cb7b57923c591, type: 3}

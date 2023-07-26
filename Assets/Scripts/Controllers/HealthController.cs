@@ -2,60 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour
+public class HealthController
 {
-    [SerializeField] int maxHealth;
-    [SerializeField] int currentHealth;
-    [SerializeField] float destroyGameObjectDelay;
+    EntityModel model;
 
-    int damageTaken;
-    bool isDamage, isDead;
+    int maxHealth, currentHealth, damage;
+
     bool isLeader, isNPC;
 
-    CharacterAnimationsController characterAnimController;
+    #region Encapsulated variables
 
-    public bool IsDead { get => isDead; set => isDead = value; }
     public bool IsLeader { get => isLeader; set => isLeader = value; }
     public bool IsNPC { get => isNPC; set => isNPC = value; }
-    public bool IsDamage { get => isDamage; set => isDamage = value; }
-    public int DamageTaken { get => damageTaken; }
+    public int Damage { get => damage; set => damage = value; }
     public int CurrentHealth { get => currentHealth; }
-    public int MaxHealth { get => maxHealth; }
+    #endregion
 
-    private void Awake()
+    public HealthController(EntityModel model)
     {
-        characterAnimController = GetComponent<CharacterAnimationsController>();
-    }
-
-    private void Update()
-    {
-        if (currentHealth <= 0) IsDead = true;
-    }
-
-    private void Start()
-    {
+        this.model = model;
         currentHealth = maxHealth;
-        isDamage = false;
-        isDead = false;
-        isLeader = false;
-        isNPC = false;
-        damageTaken = 0;//Los pongo por default.
     }
 
-    public void TakeDamage(int _damage)
-    {
-        currentHealth -= _damage;
-        isDamage = true;
-        characterAnimController.CharacterDamageAnimation();
-        if (currentHealth <= 0) isDead = true;
-    }
+    public bool IsEntityDead() => model.IsDead;
+    public virtual void Die() { }
+    public virtual void DoDamage(EntityModel affectedModel) { }
+    
+    public void GetDamage(int damage) { }
+    public void Heal(int healingPoints) { }
 
-    public void Die()
-    {
-        if (isDead)
-        {
-            characterAnimController.CharacterDeathAnimation();
-            Destroy(gameObject, destroyGameObjectDelay);
-        }
-    }
 }

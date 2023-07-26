@@ -21,10 +21,10 @@ public class AttackCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<HealthController>() && gameObject != null)
+        if (other.gameObject.GetComponent<EntityModel>().HealthController != null && gameObject != null)
         {
-            other.gameObject.GetComponent<HealthController>().IsDamage = true;
-            other.gameObject.GetComponent<HealthController>().TakeDamage(damage);
+            //other.gameObject.GetComponent<HealthController>().IsDamage = true;
+            //other.gameObject.GetComponent<HealthController>().TakeDamage(damage);
             //other.gameObject.GetComponent<HealthController>().DamageTaken = 10;
             //other.gameObject.GetComponent<HealthController>().TakeDamage(10);
             //isAutoDestroy = true;

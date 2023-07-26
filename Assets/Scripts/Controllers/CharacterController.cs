@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UADE.IA.FSM;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
@@ -9,7 +8,7 @@ public class CharacterController : MonoBehaviour
 
     Transform targetPosition;
 
-    LeaderAIController leaderAIController;
+    //LeaderAIController leaderAIController;
 
     private void Awake()
     {
@@ -18,8 +17,8 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     {
-        leaderAIController = new LeaderAIController();
-        leaderAIController.SetUpAIComponents();
+        //leaderAIController = new LeaderAIController();
+        //leaderAIController.SetUpAIComponents();
     }
 
     void Update()
