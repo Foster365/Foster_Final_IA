@@ -2016,7 +2016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b18e03092eee04db398756437863fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: 0
   leftHandCollider: {fileID: 0}
   rightHandCollider: {fileID: 0}
   leftFootCollider: {fileID: 0}
@@ -2024,10 +2023,8 @@ MonoBehaviour:
   redMaterial: {fileID: 0}
   material: {fileID: 0}
   meshRenderer: {fileID: 0}
-  patrollingNodes: []
-  wp: []
-  rotationSpeed: 10
-  speed: 10
+  data: {fileID: 0}
+  charAIData: {fileID: 0}
 --- !u!114 &572511134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,6 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db0d070959d32d4bafe4cf93148384f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fsmInitState: {fileID: 0}
 --- !u!54 &572511135
 Rigidbody:
   m_ObjectHideFlags: 0

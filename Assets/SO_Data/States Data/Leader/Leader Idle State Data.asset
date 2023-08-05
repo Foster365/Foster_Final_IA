@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
+  m_Name: Leader Idle State Data
+  m_EditorClassIdentifier: 
+  <State>k__BackingField: {fileID: 11400000, guid: 6b9455ee3689e744ab67da49326f473b, type: 2}
+  <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: 59939d9f15c37d344b53a7e4ae8a9290, type: 2}
+  <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: 3247a451b10ae344aafb8585d20cccd6, type: 2}

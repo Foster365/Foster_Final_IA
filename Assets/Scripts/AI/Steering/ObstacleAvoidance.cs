@@ -2,49 +2,46 @@
 
 public class ObstacleAvoidance : ISteeringBehaviour
 {
-    Transform _npc;
-    //public Vector3 target;
-    float _radius;
-    LayerMask _mask;
-    float _avoidWeight;
 
-    public ObstacleAvoidance(Transform npc, float radius, float avoidWeight, LayerMask mask)
+    private Transform _origin;
+    private float _radius;
+    private float _viewAngle;
+    private LayerMask _mask;
+    private Collider[] _allObs;
+
+    public ObstacleAvoidance(Transform origin, float radius, int maxObs, float viewAngle, LayerMask mask)
     {
-        _mask = mask;
-        _npc = npc;
+        _origin = origin;
         _radius = radius;
-        _avoidWeight = avoidWeight;
+        _mask = mask;
+        _viewAngle = viewAngle;
+        _allObs = new Collider[maxObs];
     }
 
-    public Vector3 GetDir(Vector3 _target)
+    public Vector3 GetDir()
     {
-        //Obtenemos los obstaculos
-        Collider[] obstacles = Physics.OverlapSphere(_npc.position, _radius, _mask);
-        Transform obsSave = null;
-        var count = obstacles.Length;
-
-        //Recorremos los obstaculos y determinos cual es el mas cercano
-        for (int i = 0; i < count; i++)
+        var countObs = Physics.OverlapSphereNonAlloc(_origin.position, _radius, _allObs, _mask);
+        Vector3 dirToAvoid = Vector3.zero;
+        int trueObs = 0;
+        for (int i = 0; i < countObs; i++)
         {
-            var currObs = obstacles[i].transform;
-            if (obsSave == null)
-            {
-                obsSave = currObs;
-            }
-            else if (Vector3.Distance(_npc.position, obsSave.position) > Vector3.Distance(_npc.position, currObs.position))
-            {
-                obsSave = currObs;
-            }
-        }
-        Vector3 dirToTarget = (_target - _npc.position).normalized;
+            var currObs = _allObs[i];
+            var closestPoint = currObs.ClosestPointOnBounds(_origin.transform.position);
+            var diffToPoint = closestPoint - _origin.position;
 
-        //Si hay un obstaculo, le agregamos a nuestra direccion una direccion de esquive
-        if (obsSave != null)
-        {
-            Vector3 dirObsToNpc = (_npc.position - obsSave.position).normalized * _avoidWeight;
-            dirToTarget += dirObsToNpc;
+            var angleToPoint = Vector3.Angle(_origin.forward, diffToPoint.normalized);
+
+            if (angleToPoint > _viewAngle / 2) continue;
+            float dist = diffToPoint.magnitude;
+
+            trueObs++;
+            dirToAvoid += -(diffToPoint).normalized * (_radius - dist);
+
         }
-        //retornamos la direccion final
-        return dirToTarget.normalized;
+
+        if (trueObs != 0)
+            dirToAvoid = dirToAvoid / trueObs;
+
+        return dirToAvoid;
     }
 }

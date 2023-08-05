@@ -9,6 +9,7 @@ public class HealthController
     int maxHealth, currentHealth, damage;
 
     bool isLeader, isNPC;
+    bool isDamaged, isDead;
 
     #region Encapsulated variables
 
@@ -16,6 +17,8 @@ public class HealthController
     public bool IsNPC { get => isNPC; set => isNPC = value; }
     public int Damage { get => damage; set => damage = value; }
     public int CurrentHealth { get => currentHealth; }
+    public bool IsDamaged { get => isDamaged; set => isDamaged = value; }
+    public bool IsDead { get => isDead; set => isDead = value; }
     #endregion
 
     public HealthController(EntityModel model)
@@ -24,7 +27,7 @@ public class HealthController
         currentHealth = maxHealth;
     }
 
-    public bool IsEntityDead() => model.IsDead;
+    public bool IsEntityDead() => model.HealthController.IsDead;
     public virtual void Die() { }
     public virtual void DoDamage(EntityModel affectedModel) { }
     

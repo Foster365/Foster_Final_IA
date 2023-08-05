@@ -7,6 +7,7 @@ public class CharacterModel : EntityModel
     //Components variables
     Rigidbody rb;
     Grid mapGrid;
+    CharacterController controller;
     //LeaderAIController charAIController;
     //
 
@@ -20,7 +21,6 @@ public class CharacterModel : EntityModel
 
     //Pathfinding variables
     Vector3 pathfindingLastPosition;
-
     //
 
     Transform target;
@@ -31,6 +31,7 @@ public class CharacterModel : EntityModel
     public Grid MapGrid { get => mapGrid; set => mapGrid = value; }
     public bool ReadyToMove { get => readyToMove; set => readyToMove = value; }
     public List<Node> TargetSeekNodes { get => targetSeekNodes; set => targetSeekNodes = value; }
+    public CharacterController Controller { get => controller; set => controller = value; }
 
     #endregion
 
@@ -59,7 +60,9 @@ public class CharacterModel : EntityModel
         else if (gameObject.tag == TagManager.NPC_TAG) HealthController.IsNPC = true;
     }
 
-    public override StateData[] GetStates() => Data.FsmStates;
+    public override StateData[] GetStates() => CharAIData.FsmStates;
+
+    public override EntityData GetData() => Data;
     public override Vector3 GetFoward() => transform.forward;
 
     public override float GetSpeed() => rb.velocity.magnitude;
@@ -83,4 +86,9 @@ public class CharacterModel : EntityModel
     public override Rigidbody GetRigidbody() => rb;
 
     public override EntityModel GetModel() => this;
+
+    public EntityModel GetTarget()
+    {
+        return null;
+    }
 }

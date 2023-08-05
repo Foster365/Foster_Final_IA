@@ -19,6 +19,7 @@ public abstract class EntityModel : MonoBehaviour
     HealthController healthController;
     EntityView view;
     [SerializeField] EntityData data;
+    [SerializeField] CharacterAIData charAIData;
 
 
     private void Start()
@@ -36,11 +37,12 @@ public abstract class EntityModel : MonoBehaviour
     bool isAllert;
 
     bool isWalking;
-    bool isDamaged;
     bool isFleeing;
     bool isBlocking;
-    bool isDead;
     bool isSpecialAttacking;
+    bool isAttackDone;
+    int regularAttackHealthThreshold;
+    int enhancedAttackHealthThreshold;
     #endregion
 
     #region Encapsulated variables
@@ -52,14 +54,16 @@ public abstract class EntityModel : MonoBehaviour
     public bool IsSearching { get => isSearching; set => isSearching = value; }
     public bool IsAllert { get => isAllert; set => isAllert = value; }
     public bool IsWalking { get => isWalking; set => isWalking = value; }
-    public bool IsDead { get => isDead; set => isDead = value; }
     public bool IsSpecialAttacking { get => isSpecialAttacking; set => isSpecialAttacking = value; }
-    public bool IsDamaged { get => isDamaged; set => isDamaged = value; }
     public bool IsFleeing { get => isFleeing; set => isFleeing = value; }
     public bool IsBlocking { get => isBlocking; set => isBlocking = value; }
     public HealthController HealthController { get => healthController; set => healthController = value; }
     public EntityView View { get => view; set => view = value; }
     public EntityData Data { get => data; set => data = value; }
+    public bool IsAttackDone { get => isAttackDone; set => isAttackDone = value; }
+    public int RegularAttackHealthThreshold { get => regularAttackHealthThreshold; set => regularAttackHealthThreshold = value; }
+    public int EnhancedAttackHealthThreshold { get => enhancedAttackHealthThreshold; set => enhancedAttackHealthThreshold = value; }
+    public CharacterAIData CharAIData { get => charAIData; set => charAIData = value; }
     #endregion
 
     #region Attack Colliders Activation/Deactivation
@@ -98,6 +102,7 @@ public abstract class EntityModel : MonoBehaviour
     #endregion
     public abstract Rigidbody GetRigidbody();
     public abstract EntityModel GetModel();
+    public abstract EntityData GetData();
     public abstract StateData[] GetStates();
     public abstract Vector3 GetFoward();
     public abstract float GetSpeed();
