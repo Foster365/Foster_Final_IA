@@ -2,95 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seek
+public class Seek : ISteeringBehaviour
 {
-    public bool move;
-    private LineOfSight lineOfSight;
-    private Transform target;
-    public List<Vector3> waypoints;
-    int _nextPoint = 0;
-    private float timer;
-    protected float speed;
-    protected float rotSpeed;
+    private Transform _origin;
+    private Transform _target;
 
-    Transform characterTransform;
-    Rigidbody rbTarget;
-
-    public Transform Target { get => target; set => target = value; }
-
-    public Seek(float _speed, float _rotSpeed, List<Vector3> _waypoints, LineOfSight _lineOfSight, Transform _transform, Rigidbody _rbTarget)
+    public Seek(Transform origin, Transform target)
     {
-        speed = _speed;
-        rotSpeed = _rotSpeed;
-
-        waypoints = _waypoints;
-
-        lineOfSight = _lineOfSight;
-        //agentAStar = _agentAStar;
-
-        characterTransform = _transform;
-        rbTarget = _rbTarget;
-
+        _origin = origin;
+        _target = target;
     }
 
-    private void Awake()
+    public Vector3 GetDir()
     {
-        //agentAStar = GetComponent<AgentAStar>();
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-        if (move)
-        {
-            if (timer >= 1f)
-            {
-                //agent.PathfindingAStar();
-                timer = 0;
-            }
-            Run();
-        }
-    }
-
-    public void SetWayPoints(List<Vector3> newPoints)
-    {
-        _nextPoint = 0;
-        if (newPoints.Count == 0) return;
-        waypoints = newPoints;
-        var pos = waypoints[_nextPoint];
-        pos.y = characterTransform.position.y;
-        characterTransform.position = pos;
-        move = true;
-    }
-
-    public void Run()
-    {
-        var point = waypoints[_nextPoint];
-        var posPoint = point;
-        posPoint.y = characterTransform.position.y;
-        Vector3 dir = posPoint - characterTransform.position;
-        if (dir.magnitude < 0.2f)
-        {
-            if (_nextPoint + 1 < waypoints.Count)
-                _nextPoint++;
-            else
-            {
-                move = false;
-                return;
-            }
-        }
-        Move(dir.normalized);
-    }
-    public void Move(Vector3 dir)
-    {
-        Target = lineOfSight.Target;
-
-        if (move && Target != null)
-        {
-
-            characterTransform.position += Time.deltaTime * /*rbTarget.velocity*/dir * speed; ;
-            characterTransform.forward = Vector3.Lerp(characterTransform.forward, /*rbTarget.velocity*/dir, rotSpeed * Time.deltaTime);
-        }
+        return (_target.position - _origin.position).normalized;
     }
 
 }

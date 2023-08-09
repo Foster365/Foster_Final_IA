@@ -1,61 +1,56 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour
+public class HealthController
 {
-    [SerializeField] int maxHealth;
-    [SerializeField] int currentHealth;
-    [SerializeField] float destroyGameObjectDelay;
+    EntityModel model;
 
-    int damageTaken;
-    bool isDamage, isDead;
+    int maxHealth, currentHealth, damage;
+
     bool isLeader, isNPC;
+    bool isDamaged, isDead;
 
-    CharacterAnimationsController characterAnimController;
+    public event Action<float> OnHealthChange;
+    public event Action OnDie;
 
-    public bool IsDead { get => isDead; set => isDead = value; }
+    #region Encapsulated variables
+
     public bool IsLeader { get => isLeader; set => isLeader = value; }
     public bool IsNPC { get => isNPC; set => isNPC = value; }
-    public bool IsDamage { get => isDamage; set => isDamage = value; }
-    public int DamageTaken { get => damageTaken; }
+    public int Damage { get => damage; set => damage = value; }
     public int CurrentHealth { get => currentHealth; }
+    public bool IsDamaged { get => isDamaged; set => isDamaged = value; }
+    public bool IsDead { get => isDead; set => isDead = value; }
     public int MaxHealth { get => maxHealth; }
+    #endregion
 
-    private void Awake()
+    public HealthController(int maxHealth)
     {
-        characterAnimController = GetComponent<CharacterAnimationsController>();
+        this.maxHealth = maxHealth;
+        currentHealth = MaxHealth;
     }
 
-    private void Update()
+    public void TakeDamage(int damage)
     {
-        if (currentHealth <= 0) IsDead = true;
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+            OnDie?.Invoke();
+        else
+            OnHealthChange?.Invoke(currentHealth);
+
     }
 
-    private void Start()
+    public void Heal(int heal)
     {
-        currentHealth = maxHealth;
-        isDamage = false;
-        isDead = false;
-        isLeader = false;
-        isNPC = false;
-        damageTaken = 0;//Los pongo por default.
-    }
+        currentHealth += heal;
 
-    public void TakeDamage(int _damage)
-    {
-        currentHealth -= _damage;
-        isDamage = true;
-        characterAnimController.CharacterDamageAnimation();
-        if (currentHealth <= 0) isDead = true;
-    }
-
-    public void Die()
-    {
-        if (isDead)
+        if (currentHealth >= MaxHealth)
         {
-            characterAnimController.CharacterDeathAnimation();
-            Destroy(gameObject, destroyGameObjectDelay);
+            currentHealth = MaxHealth;
         }
+        OnHealthChange?.Invoke(currentHealth);
     }
 }

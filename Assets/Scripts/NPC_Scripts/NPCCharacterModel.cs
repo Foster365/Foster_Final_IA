@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UADE.IA.Flocking.States;
-using UADE.IA.FSM;
 using UnityEngine;
 
 public class NPCCharacterModel : MonoBehaviour
 {
     HealthController characterHealthController;
-    NPCAIController npcAIController;
+    //NPCAIController npcAIController;
     CharacterAnimationsController characterAnimController;
 
     Rigidbody rb;
@@ -47,7 +46,7 @@ public class NPCCharacterModel : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         characterHealthController = GetComponent<HealthController>();
-        npcAIController = GetComponent<NPCAIController>();
+        //npcAIController = GetComponent<NPCAIController>();
         characterAnimController = GetComponent<CharacterAnimationsController>();
     }
 
@@ -81,30 +80,30 @@ public class NPCCharacterModel : MonoBehaviour
     public void MoveWithFlocking()
     {
 
-        npcAIController.CharacterPathfinding.FindPath(transform.position, npcAIController.FlockingGoalPos);
+        //npcAIController.CharacterPathfinding.FindPath(transform.position, npcAIController.FlockingGoalPos);
 
 
-        if (npcAIController.CharacterPathfinding.finalPath.Count > 1)
-        {
-            if (_nextWaypoint <= npcAIController.CharacterPathfinding.finalPath.Count - 1)
-            {
-                var waypoint = npcAIController.CharacterPathfinding.finalPath[_nextWaypoint];
-                var waypointPosition = waypoint.worldPosition;
-                waypointPosition.y = transform.position.y;
-                Vector3 dir = waypointPosition - transform.position;
-                //Vector3 dir = npcAIController.FlockBehaviour(waypointPosition - transform.position);
-                if (dir.magnitude < 1)
-                {
-                    if (_nextWaypoint + waypointIndexModifier >= npcAIController.CharacterPathfinding.finalPath.Count || _nextWaypoint + waypointIndexModifier < 0)
-                        waypointIndexModifier *= -1;
-                    _nextWaypoint += waypointIndexModifier;
-                    readyToMove = true;
-                }
-                else if (readyToMove) Move(dir.normalized);
-            }
+        //if (npcAIController.CharacterPathfinding.finalPath.Count > 1)
+        //{
+        //    if (_nextWaypoint <= npcAIController.CharacterPathfinding.finalPath.Count - 1)
+        //    {
+        //        var waypoint = npcAIController.CharacterPathfinding.finalPath[_nextWaypoint];
+        //        var waypointPosition = waypoint.worldPosition;
+        //        waypointPosition.y = transform.position.y;
+        //        Vector3 dir = waypointPosition - transform.position;
+        //        //Vector3 dir = npcAIController.FlockBehaviour(waypointPosition - transform.position);
+        //        if (dir.magnitude < 1)
+        //        {
+        //            if (_nextWaypoint + waypointIndexModifier >= npcAIController.CharacterPathfinding.finalPath.Count || _nextWaypoint + waypointIndexModifier < 0)
+        //                waypointIndexModifier *= -1;
+        //            _nextWaypoint += waypointIndexModifier;
+        //            readyToMove = true;
+        //        }
+        //        else if (readyToMove) Move(dir.normalized);
+        //    }
             //npcAIController.FlockBehaviour();
             //Run(npcAIController.CharacterPathfinding.finalPath);// transform.Translate(0, 0, Time.deltaTime * flockingSpeed);
-        }
+        //}
 
     }
 
@@ -132,32 +131,32 @@ public class NPCCharacterModel : MonoBehaviour
 
     public void SeekBehaviour()
     {
-        if (npcAIController.CharacterLineOfSight.Target != null)
-        {
-            npcAIController.CharacterPathfinding.FindPath(transform.position, npcAIController.CharacterLineOfSight.Target.position);
-            RunSeek(npcAIController.CharacterPathfinding.finalPath);
-        }
+        //if (npcAIController.CharacterLineOfSight.Target != null)
+        //{
+        //    npcAIController.CharacterPathfinding.FindPath(transform.position, npcAIController.CharacterLineOfSight.Target.position);
+        //    RunSeek(npcAIController.CharacterPathfinding.finalPath);
+        //}
     }
     void RunSeek(List<Node> _waypoints)
     {
-        if (_nextWaypoint <= _waypoints.Count - 1)
-        {
-            var waypoint = _waypoints[_nextWaypoint];
-            var waypointPosition = waypoint.worldPosition;
-            waypointPosition.y = transform.position.y;
-            Vector3 dir = waypointPosition - transform.position;
-            if (dir.magnitude < 1)
-            {
-                if (_nextWaypoint + waypointIndexModifier >= _waypoints.Count || _nextWaypoint + waypointIndexModifier < 0)
-                    waypointIndexModifier *= -1;
-                _nextWaypoint += waypointIndexModifier;
-                readyToMove = true;
-            }
-            Rigidbody targetRB = npcAIController.CharacterLineOfSight.Target.gameObject.GetComponent<Rigidbody>();
-            transform.position += Time.deltaTime * targetRB.velocity * movementSpeed; ;
-            transform.forward = Vector3.Lerp(transform.forward, targetRB.velocity, rotationSpeed * Time.deltaTime);
-            //npcAIController.NpcPursuitSteeringBehaviour.GetDir(dir);
-        }
+        //if (_nextWaypoint <= _waypoints.Count - 1)
+        //{
+        //    var waypoint = _waypoints[_nextWaypoint];
+        //    var waypointPosition = waypoint.worldPosition;
+        //    waypointPosition.y = transform.position.y;
+        //    Vector3 dir = waypointPosition - transform.position;
+        //    if (dir.magnitude < 1)
+        //    {
+        //        if (_nextWaypoint + waypointIndexModifier >= _waypoints.Count || _nextWaypoint + waypointIndexModifier < 0)
+        //            waypointIndexModifier *= -1;
+        //        _nextWaypoint += waypointIndexModifier;
+        //        readyToMove = true;
+        //    }
+        //    Rigidbody targetRB = npcAIController.CharacterLineOfSight.Target.gameObject.GetComponent<Rigidbody>();
+        //    transform.position += Time.deltaTime * targetRB.velocity * movementSpeed; ;
+        //    transform.forward = Vector3.Lerp(transform.forward, targetRB.velocity, rotationSpeed * Time.deltaTime);
+        //    //npcAIController.NpcPursuitSteeringBehaviour.GetDir(dir);
+        //}
     }
 
     public void Attack1()

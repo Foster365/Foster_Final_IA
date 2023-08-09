@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c1668e7644c640aafbb51d3a2c78e, type: 3}
+  m_Name: Leader B Data
+  m_EditorClassIdentifier: 
+  <MovementSpeed>k__BackingField: 10
+  <DistanceToAttack>k__BackingField: 5
+  <CooldownToAttack>k__BackingField: 0.75
+  <RotationSpeed>k__BackingField: 1
+  <FsmStates>k__BackingField: []
+  <IdleTimer>k__BackingField: 2
+  <RestPatrolTime>k__BackingField: 1
+  <TimeForSearchPlayer>k__BackingField: 5
+  <TargetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64

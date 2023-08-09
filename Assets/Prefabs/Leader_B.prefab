@@ -1314,10 +1314,8 @@ GameObject:
   - component: {fileID: 5739797111762774579}
   - component: {fileID: 604383441379298383}
   - component: {fileID: 7991823723559805202}
-  - component: {fileID: 7238007443329471954}
   - component: {fileID: 3626660241168869198}
   - component: {fileID: 8102678902732829951}
-  - component: {fileID: 5336053095525892337}
   - component: {fileID: 2120216356049981560}
   m_Layer: 7
   m_Name: Leader_B
@@ -1404,36 +1402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e79374048bade428dd7a84a12cfe04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7238007443329471954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066896392038628118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeda279ef10cdf74a9171c34ec874852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolTimer: 10
-  seekRange: 15
-  attackRange: 3
-  attackCooldown: 3
-  blockCooldown: 2
-  lineOfSightViewDistance: 45
-  lineOfSightViewCone: 180
-  lineOfSightObstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  lineOfSightTarget:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  obstacleAvoidanceRadius: 3
-  obstacleAvoidanceAvoidWeight: 2
 --- !u!114 &3626660241168869198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,17 +1414,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b18e03092eee04db398756437863fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotSpeed: 0
+  leftHandCollider: {fileID: 0}
+  rightHandCollider: {fileID: 0}
+  leftFootCollider: {fileID: 0}
+  rightFootCollider: {fileID: 0}
+  redMaterial: {fileID: 0}
+  material: {fileID: 0}
+  meshRenderer: {fileID: 0}
   patrollingNodes:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   wp:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1475,21 +1446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db0d070959d32d4bafe4cf93148384f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5336053095525892337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066896392038628118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0336dc1b56dbe214f8732490e68fda48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 150
-  currentHealth: 0
-  destroyGameObjectDelay: 1.5
 --- !u!114 &2120216356049981560
 MonoBehaviour:
   m_ObjectHideFlags: 0
