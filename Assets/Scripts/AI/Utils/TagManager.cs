@@ -1,4 +1,3 @@
-using Newtonsoft.Json.Serialization;
 using Unity.Collections.LowLevel.Unsafe;
 
 public class TagManager
