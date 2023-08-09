@@ -11,6 +11,11 @@ public class HealthUIHandler : MonoBehaviour
     [SerializeField] Image textUI;
     [SerializeField] TextMeshProUGUI txtUI;
 
+    private void Start()
+    {
+        if(character.HealthController != null) txtUI.text = character.HealthController.MaxHealth.ToString();
+    }
+
     private void Update()
     {
         if (character.HealthController.CurrentHealth <= 0f) //TODO fix vida menor a 0 renderizandose en la Health UI

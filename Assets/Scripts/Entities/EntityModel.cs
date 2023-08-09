@@ -16,16 +16,9 @@ public abstract class EntityModel : MonoBehaviour
     [SerializeField] private Material material;
     [SerializeField] private SkinnedMeshRenderer meshRenderer;
 
-    HealthController healthController;
     EntityView view;
     [SerializeField] EntityData data;
     [SerializeField] CharacterAIData charAIData;
-
-
-    private void Start()
-    {
-        healthController = new HealthController(this);
-    }
 
     #region FSM variables
     bool isIdle;
@@ -57,7 +50,6 @@ public abstract class EntityModel : MonoBehaviour
     public bool IsSpecialAttacking { get => isSpecialAttacking; set => isSpecialAttacking = value; }
     public bool IsFleeing { get => isFleeing; set => isFleeing = value; }
     public bool IsBlocking { get => isBlocking; set => isBlocking = value; }
-    public HealthController HealthController { get => healthController; set => healthController = value; }
     public EntityView View { get => view; set => view = value; }
     public EntityData Data { get => data; set => data = value; }
     public bool IsAttackDone { get => isAttackDone; set => isAttackDone = value; }
@@ -130,5 +122,4 @@ public abstract class EntityModel : MonoBehaviour
 
     }
     #endregion
-
 }

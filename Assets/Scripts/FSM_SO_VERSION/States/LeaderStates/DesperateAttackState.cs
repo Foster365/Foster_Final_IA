@@ -1,18 +1,23 @@
-using System.Collections;
+using _Main.Scripts.FSM_SO_VERSION;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DesperateAttackState : MonoBehaviour
+[CreateAssetMenu(fileName = "Leader Desperate Attack State", menuName = "Custom SO/FSM States/Leader States/Leader Desperate Attack State", order = 0)]
+public class DesperateAttackState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    float attackMaxCooldown = 1.5f, attackCooldown;
+    private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
+    public override void EnterState(EntityModel model)
     {
-        
+
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void ExecuteState(EntityModel model)
     {
-        
+    }
+
+    public override void ExitState(EntityModel model)
+    {
     }
 }

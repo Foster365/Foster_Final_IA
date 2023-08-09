@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dad101a7d328ec49a61fb468b82d7f8, type: 3}
-  m_Name: Is enemy on sight
+  m_Script: {fileID: 11500000, guid: 03aa4cfeaeb84d61b35ae276fcb3f01d, type: 3}
+  m_Name: Enemy Not In Sight
   m_EditorClassIdentifier: 
+  condition: {fileID: 11400000, guid: dc0ecfbd02f68444eb3ff9d99315e37b, type: 2}

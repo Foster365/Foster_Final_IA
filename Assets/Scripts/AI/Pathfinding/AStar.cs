@@ -4,14 +4,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class Pathfinding
+public class AStar
 {
     public Transform seeker, target;
     Grid grid;
     public List<Node> finalPath;
     Vector3 lastPos;
 
-    public Pathfinding(Transform _seeker, Transform _target, Vector3 _lastPos, Grid _grid)
+    public AStar(Transform _seeker, Transform _target, Grid _grid)
+    {
+        seeker = _seeker;
+        target = _target;
+        grid = _grid;
+    }
+
+    public AStar(Transform _seeker, Transform _target, Vector3 _lastPos, Grid _grid)
     {
         seeker = _seeker;
         target = _target;
@@ -19,28 +26,13 @@ public class Pathfinding
         grid = _grid;
     }
 
-    //private void Awake()
-    //{
-    //    lastPos = Vector3.zero;
-    //    grid = GameObject.Find("Grid").GetComponent<Grid>();
-    //}
-
-    //private void Update()
-    //{
-    //    if (Vector3.Distance(target.position, lastPos) > 1)
-    //    {
-    //        lastPos = target.position;
-    //        FindPath(transform.position, target.position);
-    //    }
-
-    //}
-    public void FindPath(Vector3 _startPosition, Vector3 _targetPosition)//, Func<Vector3,bool> isSatisfies)
+    public void FindPath()//(Vector3 _startPosition, Vector3 _targetPosition)
     {
         Stopwatch sw = Stopwatch.StartNew();
         sw.Start();
-        Node startNode = grid.GetNodeFromWorldPoint(_startPosition);
+        Node startNode = grid.GetNodeFromWorldPoint(seeker.position);//(_startPosition);
         Console.WriteLine("Start node: " + startNode);
-        Node targetNode = grid.GetNodeFromWorldPoint(_targetPosition);
+        Node targetNode = grid.GetNodeFromWorldPoint(target.position);//(_targetPosition);
 
         Heap<Node> openNodesList = new Heap<Node>(grid.MaxSize);
         HashSet<Node> closedNodesSet = new HashSet<Node>();
@@ -54,13 +46,10 @@ public class Pathfinding
 
             closedNodesSet.Add(currentNode);
 
-            if (currentNode == targetNode)//(isSatisfies(currentNode.worldPosition))
+            if (currentNode == targetNode)
             {
                 sw.Stop();
-                //print("Path found in " + sw.ElapsedMilliseconds + "ms");
-
                 finalPath = RetracePath(startNode, targetNode);
-
                 return;
             }
 

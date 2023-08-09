@@ -5,6 +5,7 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     //Basic Entity variables
+    [field:SerializeField] public int MaxHealth { get; private set; }
     [field: SerializeField] public int MovementSpeed { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public float CooldownToAttack { get; private set; }

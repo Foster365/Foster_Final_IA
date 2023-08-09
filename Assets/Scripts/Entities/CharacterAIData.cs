@@ -8,10 +8,9 @@ public class CharacterAIData : ScriptableObject
     //FSM variables
     [field: SerializeField] public StateData[] FsmStates { get; private set; }
     [field: SerializeField] public float IdleTimer { get; set; }
-    [field: SerializeField] public float RestPatrolTime { get; private set; }
+    [field: SerializeField] public float PatrolTimer { get; private set; }
     [field: SerializeField] public float TimeForSearchPlayer { get; private set; }
     [field: SerializeField] public LayerMask TargetLayer { get; private set; }
-
 
     //Line Of Sight variables
     [field: SerializeField] public LayerMask ObstacleLayerMask { get; private set; }

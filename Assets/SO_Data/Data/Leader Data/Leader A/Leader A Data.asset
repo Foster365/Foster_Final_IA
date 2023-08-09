@@ -12,14 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052c1668e7644c640aafbb51d3a2c78e, type: 3}
   m_Name: Leader A Data
   m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 20
   <MovementSpeed>k__BackingField: 10
-  <DistanceToAttack>k__BackingField: 5
+  <AttackRange>k__BackingField: 0
   <CooldownToAttack>k__BackingField: 0.75
   <RotationSpeed>k__BackingField: 1
-  <FsmStates>k__BackingField: []
-  <IdleTimer>k__BackingField: 2
-  <RestPatrolTime>k__BackingField: 1
-  <TimeForSearchPlayer>k__BackingField: 5
-  <TargetLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 128

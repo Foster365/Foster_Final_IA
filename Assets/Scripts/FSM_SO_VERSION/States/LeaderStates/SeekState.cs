@@ -15,6 +15,7 @@ public class SeekState : State
 
     public override void ExecuteState(EntityModel model)
     {
+        Debug.Log("Seek state execute");
     }
 
     public override void ExitState(EntityModel model)

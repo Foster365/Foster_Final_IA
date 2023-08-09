@@ -21,7 +21,7 @@ public class AttackCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<EntityModel>().HealthController != null && gameObject != null)
+        if (other.gameObject.GetComponent<CharacterModel>().HealthController != null && gameObject != null)
         {
             //other.gameObject.GetComponent<HealthController>().IsDamage = true;
             //other.gameObject.GetComponent<HealthController>().TakeDamage(damage);

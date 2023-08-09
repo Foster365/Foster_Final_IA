@@ -1982,6 +1982,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6936562248821186842, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
   m_PrefabInstance: {fileID: 6936562249513619771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &483484359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483484358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db0d070959d32d4bafe4cf93148384f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fsmInitState: {fileID: 11400000, guid: 8a183ecaa524d0e418bcb517048b5eda, type: 2}
+--- !u!114 &483484360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5596960023787767279, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
+  m_PrefabInstance: {fileID: 6936562249513619771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483484358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b18e03092eee04db398756437863fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &572511131
 GameObject:
   m_ObjectHideFlags: 0
@@ -7104,6 +7128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health_UI_Icon
       objectReference: {fileID: 0}
+    - target: {fileID: 3222062913441338890, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 483484360}
     - target: {fileID: 3467438939863339156, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
       propertyPath: m_Enabled
       value: 0

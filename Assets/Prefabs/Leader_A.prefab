@@ -1571,8 +1571,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 7ce7eb6b9b3fe5c46a4a516ed7c60a28, type: 2}
   meshRenderer: {fileID: 6936562248824368138}
   data: {fileID: 11400000, guid: b741a65f24eb0a84aad5677f9d6311f0, type: 2}
-  patrollingNodes: []
-  wp: []
+  charAIData: {fileID: 11400000, guid: 5811a78ab0c2e934dbbbb81502a0c217, type: 2}
 --- !u!1 &6936562248821186844
 GameObject:
   m_ObjectHideFlags: 0

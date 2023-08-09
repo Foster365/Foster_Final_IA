@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class HealthController
@@ -11,6 +13,9 @@ public class HealthController
     bool isLeader, isNPC;
     bool isDamaged, isDead;
 
+    public event Action<float> OnHealthChange;
+    public event Action OnDie;
+
     #region Encapsulated variables
 
     public bool IsLeader { get => isLeader; set => isLeader = value; }
@@ -19,19 +24,33 @@ public class HealthController
     public int CurrentHealth { get => currentHealth; }
     public bool IsDamaged { get => isDamaged; set => isDamaged = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
+    public int MaxHealth { get => maxHealth; }
     #endregion
 
-    public HealthController(EntityModel model)
+    public HealthController(int maxHealth)
     {
-        this.model = model;
-        currentHealth = maxHealth;
+        this.maxHealth = maxHealth;
+        currentHealth = MaxHealth;
     }
 
-    public bool IsEntityDead() => model.HealthController.IsDead;
-    public virtual void Die() { }
-    public virtual void DoDamage(EntityModel affectedModel) { }
-    
-    public void GetDamage(int damage) { }
-    public void Heal(int healingPoints) { }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+            OnDie?.Invoke();
+        else
+            OnHealthChange?.Invoke(currentHealth);
 
+    }
+
+    public void Heal(int heal)
+    {
+        currentHealth += heal;
+
+        if (currentHealth >= MaxHealth)
+        {
+            currentHealth = MaxHealth;
+        }
+        OnHealthChange?.Invoke(currentHealth);
+    }
 }

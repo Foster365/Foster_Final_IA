@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1748d34082d22074d9cb415b34de066d, type: 3}
+  m_Name: Leader A AI Data
+  m_EditorClassIdentifier: 
+  <FsmStates>k__BackingField:
+  - {fileID: 11400000, guid: 3c8bf4b0dadf2434cb95db28d961ed30, type: 2}
+  - {fileID: 11400000, guid: 63137e96250df9f4f9f2eb90506970ee, type: 2}
+  - {fileID: 11400000, guid: 880c43b32ea7da2489649e8acd4fd81f, type: 2}
+  - {fileID: 11400000, guid: 77898a1f754a8f5428f423ab5fea0383, type: 2}
+  - {fileID: 11400000, guid: 036c1ebe4357f6343959255a94ed9903, type: 2}
+  - {fileID: 11400000, guid: 8a183ecaa524d0e418bcb517048b5eda, type: 2}
+  - {fileID: 11400000, guid: 3247a451b10ae344aafb8585d20cccd6, type: 2}
+  - {fileID: 11400000, guid: 45abc56daa99ac9429a3c19e9a7bf9c2, type: 2}
+  <IdleTimer>k__BackingField: 3
+  <PatrolTimer>k__BackingField: 5
+  <TimeForSearchPlayer>k__BackingField: 2
+  <TargetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+  <ObstacleLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8
+  <SightRange>k__BackingField: 20
+  <TotalSightDegrees>k__BackingField: 180
+  <FleeThresholdTrigger>k__BackingField: 0
+  <ObstacleAvoidanceRadius>k__BackingField: 2
+  <ObstacleAvoidanceMaxObstacles>k__BackingField: 10
+  <ObstacleAvoidanceViewAngle>k__BackingField: 90
+  <ObstacleAvoidanceLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8

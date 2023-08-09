@@ -8,6 +8,7 @@ public class CharacterModel : EntityModel
     Rigidbody rb;
     Grid mapGrid;
     CharacterController controller;
+    HealthController healthController;
     //LeaderAIController charAIController;
     //
 
@@ -32,21 +33,22 @@ public class CharacterModel : EntityModel
     public bool ReadyToMove { get => readyToMove; set => readyToMove = value; }
     public List<Node> TargetSeekNodes { get => targetSeekNodes; set => targetSeekNodes = value; }
     public CharacterController Controller { get => controller; set => controller = value; }
-
+    public HealthController HealthController { get => healthController; set => healthController = value; }
     #endregion
 
     #region Unity Engine Methods
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
         mapGrid = GameObject.Find("Grid").GetComponent<Grid>();
         View = GetComponent<EntityView>();
+        HealthController = new HealthController(Data.MaxHealth);
     }
 
     private void Start()
     {
         pathfindingLastPosition = Vector3.zero;
-        HealthController = new HealthController(this);
         //charAIController = new LeaderAIController();
         new List<Node>();
         SetCharacterTag();

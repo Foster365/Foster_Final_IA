@@ -12,10 +12,14 @@ public class CharacterAIController
     Seek sbSeek;
     Flee sbFlee;
     ObstacleAvoidance sbObstacleAvoidance;
+    AStar aStarPathFinding;
 
     Transform target;
 
     bool isTargetInSight;
+
+    public AStar AStarPathFinding { get => aStarPathFinding; set => aStarPathFinding = value; }
+
     public CharacterAIController(CharacterModel model, StateData fsmInitialState)
     {
         this.model = model;
@@ -30,6 +34,7 @@ public class CharacterAIController
         sbObstacleAvoidance = new ObstacleAvoidance(model.transform, model.CharAIData.ObstacleAvoidanceRadius,
             model.CharAIData.ObstacleAvoidanceMaxObstacles, model.CharAIData.ObstacleAvoidanceViewAngle,
             model.CharAIData.ObstacleAvoidanceLayerMask);
+        aStarPathFinding = new AStar(model.transform, target, model.MapGrid);
 
     }
 
