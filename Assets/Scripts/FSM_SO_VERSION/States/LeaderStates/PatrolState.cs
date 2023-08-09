@@ -31,7 +31,7 @@ public class PatrolState : State
 
         if (!_movementDatas.ContainsKey(model)) _movementDatas.Add(model, new DataMovementState(model));
         //_movementDatas[model].model.View.PlayWalkAnimation(false);
-        _movementDatas[model].model.Controller.CharAIController.AStarPathFinding.FindPath();
+        //_movementDatas[model].model.Controller.CharAIController.AStarPathFinding.FindPath();
         model.IsPatrolling = true;
     }
 

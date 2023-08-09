@@ -835,10 +835,6 @@ GameObject:
   - component: {fileID: 6936562248828474058}
   - component: {fileID: 8075542318739216520}
   - component: {fileID: 1012851752843451604}
-  - component: {fileID: 672910028697169135}
-  - component: {fileID: 3995160727496140281}
-  - component: {fileID: 5243582813328660072}
-  - component: {fileID: 98198282869816547}
   m_Layer: 8
   m_Name: NPC_A
   m_TagString: NPC_A
@@ -911,72 +907,6 @@ CapsuleCollider:
   m_Height: 1.3276348
   m_Direction: 1
   m_Center: {x: -0.008973122, y: 0.58259475, z: -0.16390327}
---- !u!114 &672910028697169135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2e79374048bade428dd7a84a12cfe04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3995160727496140281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e21f505495540a4f93262e52d773662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attacker: {fileID: 6936562248821186842}
-  leftArmCollider: {fileID: 6936562248821186894}
-  weaponCollider: {fileID: 6936562248821186732}
-  shieldCollider: {fileID: 0}
-  magicPrefab: {fileID: 6778120169541092406, guid: 4cea750722225ba4090f5f62e0a000bd, type: 3}
-  hasShield: 0
---- !u!114 &5243582813328660072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3396c67061fe3ab4189b9940e67c74c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 3
-  patrollingNodes: []
-  wp: []
-  waypoints: []
-  rotationSpeed: 1
---- !u!114 &98198282869816547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7373aba0d9cc32443844bd0ad729373d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  neighbourRadius: 10
-  minFlockDist: 4
-  flockStayInRadiusRd: 7
-  mainCollider: {fileID: 1012851752843451604}
-  flockGetNeighboursLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &6936562248821186844
 GameObject:
   m_ObjectHideFlags: 0
