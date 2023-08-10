@@ -89,7 +89,7 @@ public class Grid : MonoBehaviour
             Node playerNode = GetNodeFromWorldPoint(player.position);
             foreach (Node n in grid)
             {
-                //Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
+                Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
                 if (path != null)
                 {
                     if (path.Contains(n))
@@ -99,7 +99,7 @@ public class Grid : MonoBehaviour
                     }
                 }
                 if (playerNode == n) Gizmos.color = Color.magenta;
-                //Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+                Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
 
             }
         }

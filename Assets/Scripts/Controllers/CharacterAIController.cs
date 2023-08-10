@@ -13,6 +13,7 @@ public class CharacterAIController
     Flee sbFlee;
     ObstacleAvoidance sbObstacleAvoidance;
     AStar aStarPathFinding;
+    GameObject finalNode;
 
     Transform target;
 
@@ -20,10 +21,12 @@ public class CharacterAIController
 
     public AStar AStarPathFinding { get => aStarPathFinding; set => aStarPathFinding = value; }
 
-    public CharacterAIController(CharacterModel model, StateData fsmInitialState)
+    public CharacterAIController(CharacterModel model, StateData fsmInitialState, GameObject finalNode)
     {
         this.model = model;
         this.fsmInitialState = fsmInitialState;
+
+        this.finalNode = finalNode;
     }
 
     public void InitControllerComponents()
@@ -34,7 +37,7 @@ public class CharacterAIController
         sbObstacleAvoidance = new ObstacleAvoidance(model.transform, model.CharAIData.ObstacleAvoidanceRadius,
             model.CharAIData.ObstacleAvoidanceMaxObstacles, model.CharAIData.ObstacleAvoidanceViewAngle,
             model.CharAIData.ObstacleAvoidanceLayerMask);
-        aStarPathFinding = new AStar(model.transform, target, model.MapGrid);
+        aStarPathFinding = new AStar(model.transform, finalNode.transform, model.MapGrid);
 
     }
 

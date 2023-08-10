@@ -10,7 +10,6 @@ public class SeekState : State
     public override void EnterState(EntityModel model)
     {
 
-
     }
 
     public override void ExecuteState(EntityModel model)
@@ -20,5 +19,6 @@ public class SeekState : State
 
     public override void ExitState(EntityModel model)
     {
+
     }
 }

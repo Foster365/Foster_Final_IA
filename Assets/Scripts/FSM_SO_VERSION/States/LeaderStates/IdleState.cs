@@ -18,7 +18,6 @@ public class IdleState : State
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("Leader idle state execute");
-        Debug.Log("Timer: " + timer);
         if (timer <= _entitiesData[model].CharAIData.IdleTimer) timer += Time.deltaTime;
         else
         {
