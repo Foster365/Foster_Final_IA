@@ -72,7 +72,7 @@ public class CharacterModel : EntityModel
     {
         direction.y = 0;
         //direction += _obstacleAvoidance.GetDir() * multiplier;
-        rb.velocity = direction.normalized * (Data.MovementSpeed * Time.deltaTime);
+        rb.velocity = direction * (Data.MovementSpeed * Time.deltaTime);
 
         transform.forward = Vector3.Lerp(transform.forward, direction, Data.RotationSpeed * Time.deltaTime);
         //View.PlayWalkAnimation(true);
@@ -85,6 +85,43 @@ public class CharacterModel : EntityModel
         transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * Data.RotationSpeed);
     }
 
+    public void Patrol(List<Node> _finalPath)
+    {
+        Vector3 _patrollingLastPos = Vector3.zero;
+        List<Node> _waypoints = new List<Node>();
+        for (int i = 0; i < _finalPath.Count; i++)
+        {
+            if (Vector3.Distance(_finalPath[i].worldPosition, _patrollingLastPos) > 1)
+            {
+                //Debug.Log("Ok to find path");
+                //Debug.Log("Patrolling node: " + patrollingNodes[i].name);
+                _patrollingLastPos = _finalPath[i].worldPosition;
+                //_pathfinding.FindPath(transform.position, _patrollingLastPos, IsSatisfies);
+                _waypoints = _finalPath;
+                Run(_waypoints);
+            }
+            else return;
+        }
+    }
+    public void Run(List<Node> _waypoints)
+    {
+        if (_nextWaypoint <= _waypoints.Count - 1)
+        {
+            var waypoint = _waypoints[_nextWaypoint];
+            var waypointPosition = waypoint.worldPosition;
+            waypointPosition.y = transform.position.y;
+            Vector3 dir = waypointPosition - transform.position;
+            if (dir.magnitude < 1)
+            {
+                if (_nextWaypoint + waypointIndexModifier >= _waypoints.Count || _nextWaypoint + waypointIndexModifier < 0)
+                    waypointIndexModifier *= -1;
+                _nextWaypoint += waypointIndexModifier;
+                readyToMove = true;
+            }
+            Move(dir.normalized);
+        }
+
+    }
     public override Rigidbody GetRigidbody() => rb;
 
     public override EntityModel GetModel() => this;
