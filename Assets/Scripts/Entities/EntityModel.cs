@@ -100,6 +100,7 @@ public abstract class EntityModel : MonoBehaviour
     public abstract float GetSpeed();
     public abstract void Move(Vector3 direction);
     public abstract void LookDir(Vector3 direction);
+    public abstract void Die();
 
     #region Damage_Coroutine
     public void StartingRoutine()
