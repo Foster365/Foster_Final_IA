@@ -26,11 +26,11 @@ public class AStar
         grid = _grid;
     }
 
-    public void FindPath(Vector3 targetNodePosition)//(Vector3 _startPosition, Vector3 _targetPosition)
+    public void FindPath(Vector3 startPos, Vector3 targetNodePosition)//(Vector3 _startPosition, Vector3 _targetPosition)
     {
         Stopwatch sw = Stopwatch.StartNew();
         sw.Start();
-        Node startNode = grid.GetNodeFromWorldPoint(seeker.position);//(_startPosition);
+        Node startNode = grid.GetNodeFromWorldPoint(startPos);//(_startPosition);
         Console.WriteLine("Start node: " + startNode);
         Node targetNode = grid.GetNodeFromWorldPoint(targetNodePosition);//(_targetPosition);
 

@@ -1,4 +1,5 @@
 using _Main.Scripts.FSM_SO_VERSION;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,32 +8,15 @@ public class CharacterModel : EntityModel
     //Components variables
     Rigidbody rb;
     Grid mapGrid;
-    CharacterController controller;
     HealthController healthController;
     //LeaderAIController charAIController;
-    //
-
-    //Waypoints
-    List<Transform> patrollingNodes; //TODO ver con patrol state en FSM SO
-    List<Transform> wp; //Patrol simple waypoints  //TODO ver con patrol state en FSM SO
-    List<Node> targetSeekNodes;
-    bool readyToMove = false;
-    int _nextWaypoint = 0, waypointIndexModifier = 1;
-    //
-
-    //Pathfinding variables
-    Vector3 pathfindingLastPosition;
     //
 
     Transform target;
     #region Encapsulated Variables
 
-    public Vector3 PathfindingLastPosition { get => pathfindingLastPosition; set => pathfindingLastPosition = value; }
     public Transform Target { get => target; set => target = value; }
     public Grid MapGrid { get => mapGrid; set => mapGrid = value; }
-    public bool ReadyToMove { get => readyToMove; set => readyToMove = value; }
-    public List<Node> TargetSeekNodes { get => targetSeekNodes; set => targetSeekNodes = value; }
-    public CharacterController Controller { get => controller; set => controller = value; }
     public HealthController HealthController { get => healthController; set => healthController = value; }
     #endregion
 
@@ -40,7 +24,6 @@ public class CharacterModel : EntityModel
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        controller = GetComponent<CharacterController>();
         mapGrid = GameObject.Find("Grid").GetComponent<Grid>();
         View = GetComponent<EntityView>();
         HealthController = new HealthController(Data.MaxHealth);
@@ -48,7 +31,6 @@ public class CharacterModel : EntityModel
 
     private void Start()
     {
-        pathfindingLastPosition = Vector3.zero;
         //charAIController = new LeaderAIController();
         new List<Node>();
         SetCharacterTag();
@@ -70,6 +52,7 @@ public class CharacterModel : EntityModel
     public override float GetSpeed() => rb.velocity.magnitude;
     public override void Move(Vector3 direction)
     {
+        Debug.Log("Entro en move character model");
         direction.y = 0;
         //direction += _obstacleAvoidance.GetDir() * multiplier;
         rb.velocity = direction * (Data.MovementSpeed * Time.deltaTime);
@@ -85,43 +68,19 @@ public class CharacterModel : EntityModel
         transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * Data.RotationSpeed);
     }
 
-    public void Patrol(List<Node> _finalPath)
+    public IEnumerator LookAtTarget(Vector3 _targetPos)
     {
-        Vector3 _patrollingLastPos = Vector3.zero;
-        List<Node> _waypoints = new List<Node>();
-        for (int i = 0; i < _finalPath.Count; i++)
+        Quaternion lookRotation = Quaternion.LookRotation(transform.position - _targetPos);
+        float timer = 0;
+        while (timer < .5f)
         {
-            if (Vector3.Distance(_finalPath[i].worldPosition, _patrollingLastPos) > 1)
-            {
-                //Debug.Log("Ok to find path");
-                //Debug.Log("Patrolling node: " + patrollingNodes[i].name);
-                _patrollingLastPos = _finalPath[i].worldPosition;
-                //_pathfinding.FindPath(transform.position, _patrollingLastPos, IsSatisfies);
-                _waypoints = _finalPath;
-                Run(_waypoints);
-            }
-            else return;
-        }
-    }
-    public void Run(List<Node> _waypoints)
-    {
-        if (_nextWaypoint <= _waypoints.Count - 1)
-        {
-            var waypoint = _waypoints[_nextWaypoint];
-            var waypointPosition = waypoint.worldPosition;
-            waypointPosition.y = transform.position.y;
-            Vector3 dir = waypointPosition - transform.position;
-            if (dir.magnitude < 1)
-            {
-                if (_nextWaypoint + waypointIndexModifier >= _waypoints.Count || _nextWaypoint + waypointIndexModifier < 0)
-                    waypointIndexModifier *= -1;
-                _nextWaypoint += waypointIndexModifier;
-                readyToMove = true;
-            }
-            Move(dir.normalized);
-        }
+            Quaternion.Slerp(transform.rotation, lookRotation, timer);
 
+            timer += Time.deltaTime * Data.RotationSpeed;
+            yield return null;
+        }
     }
+
     public override Rigidbody GetRigidbody() => rb;
 
     public override EntityModel GetModel() => this;

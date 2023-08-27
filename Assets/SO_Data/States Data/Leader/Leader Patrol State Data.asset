@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Leader Patrol State Data
   m_EditorClassIdentifier: 
   <State>k__BackingField: {fileID: 11400000, guid: 20dc1dd8a97bccb4fbb6bb291daabab7, type: 2}
-  <StateConditions>k__BackingField: []
-  <ExitStates>k__BackingField: []
+  <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: 6316bdc0559d26d4dab96d56d0b97653, type: 2}
+  <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: 8a183ecaa524d0e418bcb517048b5eda, type: 2}
