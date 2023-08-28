@@ -18,13 +18,19 @@ public class IdleState : State
     {
         Debug.Log("Leader idle state execute");
 
-        //Debug.Log("Idle timer: " + timer + " " + _entitiesData[model].CharAIData.IdleTimer);
         timer += Time.deltaTime;
 
-        if(timer >= _entitiesData[model].CharAIData.IdleTimer)
+        if(timer <= _entitiesData[model].CharAIData.IdleTimer)
         {
-            _entitiesData[model].IsPatrolling = true;
+            Debug.Log("Idle behaviour");
+            _entitiesData[model].GetComponent<CharacterController>().CharAIController.LineOfSight();
+
+            if (_entitiesData[model].GetComponent<CharacterController>().CharAIController.IsTargetInSight) _entitiesData[model].IsChasing = true;
+        }
+        else
+        {
             timer = 0;
+            _entitiesData[model].IsPatrolling = true;
         }
     }
 

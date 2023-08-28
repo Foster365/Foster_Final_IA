@@ -45,41 +45,39 @@ public class PatrolState : State
         maxTimer = _movementDatas[model].model.CharAIData.PatrolTimer;
         //_movementDatas[model].model.View.PlayWalkAnimation(false);
         var pos = GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position;
-        if (_movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.finalPath == null)
-        {
             pathfindingLastPosition = Vector3.zero;
             _nextWaypoint = 0;
             waypointIndexModifier = 1;
             _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
                modelRef.transform.position, GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position);
-        }
+        
        
     }
 
     public override void ExecuteState(EntityModel model) 
     {
         Debug.Log("Leader patrol state execute");
-        Debug.Log("Patrol timer: " + patrolStateTimer);
+        //Debug.Log("Patrol timer: " + patrolStateTimer);
         //Debug.Log("patrol timer: " + patrolStateTimer);
-        patrolStateTimer += Time.deltaTime;
+        patrolStateTimer += Time.deltaTime; 
         var finalPath = modelRef.GetComponent<CharacterController>().CharAIController.AStarPathFinding.finalPath;
-        //if (finalPath.Count > 0)
-        //{
-        //    Patrol(_movementDatas[model].model, finalPath);
-        //    if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position) <= 1)
-        //    {
-        //        pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
-        //        _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
-        //            pathfindingLastPosition, GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position);
-        //        Patrol(_movementDatas[model].model, finalPath);
-        //    }
-        //}
-        //else
-        //{
-        //    modelRef.IsPatrolling = false;
-        //    patrolStateTimer = 0;
-        //}
-        if (patrolStateTimer >= maxTimer)
+        if(patrolStateTimer <= maxTimer)
+        {
+            modelRef.GetComponent<CharacterController>().CharAIController.LineOfSight();
+            if (finalPath.Count > 0)
+            {
+                Patrol(_movementDatas[model].model, finalPath);
+                if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position) <= 1)
+                {
+                    pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
+                    _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
+                        pathfindingLastPosition, GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position);
+                    Patrol(_movementDatas[model].model, finalPath);
+                }
+            }
+            if (modelRef.GetComponent<CharacterController>().CharAIController.IsTargetInSight) modelRef.IsChasing = true;
+        }
+        else
         {
             patrolStateTimer = 0;
             modelRef.IsPatrolling = false;
@@ -93,25 +91,22 @@ public class PatrolState : State
 
     Vector3 GenerateRandomPosition(EntityModel model)
     {
-        return new Vector3(Random.Range(0, 100), 0, Random.Range(0, 100));
+        return new Vector3(Random.Range(0, model.CharAIData.RandomPositionThreshold), 0, Random.Range(0, model.CharAIData.RandomPositionThreshold));
     }
 
     public void Patrol(CharacterModel model, List<Node> _finalPath)
     {
-        Vector3 _patrollingLastPos = Vector3.zero;
+        Vector3 _patrollingLastPos = model.transform.position;
         List<Node> _waypoints = new List<Node>();
         for (int i = 0; i < _finalPath.Count; i++)
         {
             if (Vector3.Distance(_finalPath[i].worldPosition, _patrollingLastPos) > 1)
             {
-                //Debug.Log("Ok to find path");
-                //Debug.Log("Patrolling node: " + patrollingNodes[i].name);
                 _patrollingLastPos = _finalPath[i].worldPosition;
-                //_pathfinding.FindPath(transform.position, _patrollingLastPos, IsSatisfies);
                 _waypoints = _finalPath;
-                Run(model, _waypoints);
             }
             else return;
+            Run(model, _waypoints);
         }
     }
     public void Run(CharacterModel model, List<Node> _waypoints)
