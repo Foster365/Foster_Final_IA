@@ -1,8 +1,5 @@
 using _Main.Scripts.FSM_SO_VERSION;
 using System.Collections.Generic;
-using _Main.Scripts.Entities;
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class CharacterModel : EntityModel
@@ -11,8 +8,7 @@ public class CharacterModel : EntityModel
     Rigidbody rb;
     Grid mapGrid;
     CharacterController controller;
-    private HealthController2 healthController;
-    [SerializeField] private EnemyLeaderData data;
+    HealthController healthController;
     //LeaderAIController charAIController;
     //
 
@@ -37,7 +33,7 @@ public class CharacterModel : EntityModel
     public bool ReadyToMove { get => readyToMove; set => readyToMove = value; }
     public List<Node> TargetSeekNodes { get => targetSeekNodes; set => targetSeekNodes = value; }
     public CharacterController Controller { get => controller; set => controller = value; }
-    public HealthController2 HealthController { get => healthController; set => healthController = value; }
+    public HealthController HealthController { get => healthController; set => healthController = value; }
     #endregion
 
     #region Unity Engine Methods
@@ -47,9 +43,7 @@ public class CharacterModel : EntityModel
         controller = GetComponent<CharacterController>();
         mapGrid = GameObject.Find("Grid").GetComponent<Grid>();
         View = GetComponent<EntityView>();
-        healthController = new HealthController2(data.MaxLife);
-
-        healthController.OnDie += Die;
+        HealthController = new HealthController(Data.MaxHealth);
     }
 
     private void Start()
@@ -62,15 +56,13 @@ public class CharacterModel : EntityModel
 
     #endregion
 
-    public override StateData[] GetStates() => data.FsmStates;
-
     void SetCharacterTag()
     {
         if (gameObject.tag == TagManager.LEADER_TAG) HealthController.IsLeader = true;
         else if (gameObject.tag == TagManager.NPC_TAG) HealthController.IsNPC = true;
     }
 
-    //public override StateData[] GetStates() => CharAIData.FsmStates; // Necesitamos esto?
+    public override StateData[] GetStates() => CharAIData.FsmStates;
 
     public override EntityData GetData() => Data;
     public override Vector3 GetFoward() => transform.forward;
@@ -80,7 +72,7 @@ public class CharacterModel : EntityModel
     {
         direction.y = 0;
         //direction += _obstacleAvoidance.GetDir() * multiplier;
-        rb.velocity = direction.normalized * (data.MovementSpeed * Time.deltaTime);
+        rb.velocity = direction.normalized * (Data.MovementSpeed * Time.deltaTime);
 
         transform.forward = Vector3.Lerp(transform.forward, direction, Data.RotationSpeed * Time.deltaTime);
         //View.PlayWalkAnimation(true);
@@ -93,26 +85,9 @@ public class CharacterModel : EntityModel
         transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * Data.RotationSpeed);
     }
 
-    public override void Die()
-    {
-        StartCoroutine(WaitToDestroy());
-        Destroy(gameObject);
-    }
-
-    IEnumerator WaitToDestroy()
-    {
-        yield return new WaitForSeconds(1.5f);
-    }
-
     public override Rigidbody GetRigidbody() => rb;
 
     public override EntityModel GetModel() => this;
-
-    public bool CheckIfFlee()
-    {
-        IsFleeing = healthController.CurrentHealth <= data.FleeHealthValue ? true : false;
-        return IsFleeing;
-    }
 
     public EntityModel GetTarget()
     {
