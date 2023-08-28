@@ -7,6 +7,6 @@ public class IsEnemyOnSight : StateCondition
     public override bool CompleteCondition(EntityModel model)
     {
         CharacterModel charModel = model as CharacterModel;
-        return charModel.Controller.CharAIController.LineOfSight();
+        return charModel.GetComponent<CharacterController>().CharAIController.LineOfSight();
     }
 }

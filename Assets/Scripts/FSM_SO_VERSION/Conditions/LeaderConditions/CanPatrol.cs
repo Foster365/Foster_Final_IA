@@ -6,7 +6,6 @@ public class CanPatrol : StateCondition
 {
     public override bool CompleteCondition(EntityModel model)
     {
-        CharacterModel charModel = model as CharacterModel;
-        return charModel.IsPatrolling;
+        return model.IsPatrolling;
     }
 }

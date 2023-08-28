@@ -83,7 +83,7 @@ public class Grid : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        Gizmos.DrawCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
         if (grid != null && player != null)
         {
             Node playerNode = GetNodeFromWorldPoint(player.position);
@@ -94,12 +94,12 @@ public class Grid : MonoBehaviour
                 {
                     if (path.Contains(n))
                     {
-                        Gizmos.color = Color.yellow;
-                        Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+                        Gizmos.color = Color.magenta;
+                        Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
                     }
                 }
-                if (playerNode == n) Gizmos.color = Color.magenta;
-                Gizmos.DrawWireCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+                if (playerNode == n) Gizmos.color = Color.yellow;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
 
             }
         }

@@ -20,6 +20,7 @@ public class CharacterAIController
     bool isTargetInSight;
 
     public AStar AStarPathFinding { get => aStarPathFinding; set => aStarPathFinding = value; }
+    public bool IsTargetInSight { get => isTargetInSight; set => isTargetInSight = value; }
 
     public CharacterAIController(CharacterModel model, StateData fsmInitialState, GameObject finalNode)
     {

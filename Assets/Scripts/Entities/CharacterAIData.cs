@@ -11,6 +11,7 @@ public class CharacterAIData : ScriptableObject
     [field: SerializeField] public float PatrolTimer { get; private set; }
     [field: SerializeField] public float TimeForSearchPlayer { get; private set; }
     [field: SerializeField] public LayerMask TargetLayer { get; private set; }
+    [field: SerializeField] public float RandomPositionThreshold { get; private set; }
 
     //Line Of Sight variables
     [field: SerializeField] public LayerMask ObstacleLayerMask { get; private set; }
