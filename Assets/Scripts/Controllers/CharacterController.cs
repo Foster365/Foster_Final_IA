@@ -27,7 +27,7 @@ public class CharacterController : MonoBehaviour
     {
         charAIController = new CharacterAIController(model, fsmInitState, finalNode);
         charAIController.InitControllerComponents();
-    }
+    } 
 
     void Update()
     {

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
   m_Name: Leader Regular Attack State Data
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 0}
+  <State>k__BackingField: {fileID: 11400000, guid: 83ef94612ceb6704a95bdfb1afdd4f5a, type: 2}
   <StateConditions>k__BackingField: []
   <ExitStates>k__BackingField: []

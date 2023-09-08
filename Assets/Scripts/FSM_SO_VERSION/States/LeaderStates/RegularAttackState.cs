@@ -9,12 +9,13 @@ public class RegularAttackState : State
     private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
     public override void EnterState(EntityModel model)
     {
-          
-        
+        _entitiesData.Add(model, model as CharacterModel);
+        _entitiesData[model].GetRigidbody().velocity = Vector3.zero;
     }
 
     public override void ExecuteState(EntityModel model)
     {
+        Debug.Log("Attacking enemy");
     }
 
     public override void ExitState(EntityModel model)

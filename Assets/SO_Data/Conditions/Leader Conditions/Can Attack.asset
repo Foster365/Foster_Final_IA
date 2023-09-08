@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 387d9c39255f2004cb35915681ede3ee, type: 3}
-  m_Name: Is In Attack Range
+  m_Name: Can Attack
   m_EditorClassIdentifier: 

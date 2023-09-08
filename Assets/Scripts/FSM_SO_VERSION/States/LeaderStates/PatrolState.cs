@@ -15,7 +15,6 @@ public class PatrolState : State
     Vector3 pathfindingLastPosition;
     //
 
-
     float patrolStateTimer = 0, maxTimer;
     private Dictionary<EntityModel, DataMovementState> _movementDatas = new Dictionary<EntityModel, DataMovementState>();
     CharacterModel modelRef;
@@ -50,8 +49,6 @@ public class PatrolState : State
             waypointIndexModifier = 1;
             _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
                modelRef.transform.position, GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position);
-        
-       
     }
 
     public override void ExecuteState(EntityModel model) 
@@ -127,6 +124,5 @@ public class PatrolState : State
             }
             model.Move(dir.normalized);
         }
-
     }
 }

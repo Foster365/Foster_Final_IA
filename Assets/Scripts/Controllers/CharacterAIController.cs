@@ -21,6 +21,7 @@ public class CharacterAIController
 
     public AStar AStarPathFinding { get => aStarPathFinding; set => aStarPathFinding = value; }
     public bool IsTargetInSight { get => isTargetInSight; set => isTargetInSight = value; }
+    public Transform Target { get => target; set => target = value; }
 
     public CharacterAIController(CharacterModel model, StateData fsmInitialState, GameObject finalNode)
     {
