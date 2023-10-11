@@ -23,9 +23,7 @@ public class IdleState : State
         if(timer <= _entitiesData[model].CharAIData.IdleTimer)
         {
             Debug.Log("Idle behaviour");
-            _entitiesData[model].GetComponent<CharacterController>().CharAIController.LineOfSight();
-
-            if (_entitiesData[model].GetComponent<CharacterController>().CharAIController.IsTargetInSight) _entitiesData[model].IsChasing = true;
+            //if(_entitiesData[model].GetComponent<CharacterController>().CharAIController.LineOfSight())_entitiesData[model].IsChasing = true;
         }
         else
         {

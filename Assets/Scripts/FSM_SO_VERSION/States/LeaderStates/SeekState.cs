@@ -35,33 +35,43 @@ public class SeekState : State
 
         if (finalPath.Count > 0)
         {
-            Vector3 _patrollingLastPos = _entitiesData[model].transform.position;
-            enemyPrevPosition = charController.CharAIController.Target.position;
 
-            if (Vector3.Distance(charController.CharAIController.Target.position, _entitiesData[model].transform.position) <= _entitiesData[model].Data.AttackRange)
-            {
-                _entitiesData[model].IsAttacking = true;
-            }
 
-            List<Node> _waypoints = new List<Node>();
-            for (int i = 0; i < finalPath.Count; i++)
-            {
-                if (Vector3.Distance(finalPath[i].worldPosition, _patrollingLastPos) > 1)
+            //if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _entitiesData[model].transform.position) >= _entitiesData[model].Data.AttackRange)
+            //{
+                Vector3 _patrollingLastPos = _entitiesData[model].transform.position;
+                enemyPrevPosition = charController.CharAIController.Target.position;
+                Debug.Log("Dist between characters : " + Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _entitiesData[model].transform.position));
+                if (Vector3.Distance(charController.CharAIController.Target.position, _entitiesData[model].transform.position) <= _entitiesData[model].Data.AttackRange)
                 {
-                    _patrollingLastPos = finalPath[i].worldPosition;
-                    _waypoints = finalPath;
-                    Run(_entitiesData[model], _waypoints);
+                    _entitiesData[model].IsAttacking = true;
                 }
-                else return;
 
-            }
-
-            if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _entitiesData[model].transform.position) <= 1)
-            {
-                pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
-                charController.CharAIController.AStarPathFinding.FindPath(
-                    pathfindingLastPosition, charController.CharAIController.Target.position);
-            }
+                List<Node> _waypoints = new List<Node>();
+                for (int i = 0; i < finalPath.Count; i++)
+                {
+                    if (Vector3.Distance(finalPath[i].worldPosition, _patrollingLastPos) > 1)
+                    {
+                        _patrollingLastPos = finalPath[i].worldPosition;
+                        _waypoints = finalPath;
+                        Run(_entitiesData[model], _waypoints);
+                    }
+                }
+            //}
+            //else
+            //{
+            //    var targetSpeed = charController.CharAIController.Target.GetComponent<EntityModel>().GetSpeed();
+            //    if (targetSpeed == 0)
+            //    {
+            //        _entitiesData[model].Move(Vector3.zero);
+            //    }
+            //    else
+            //    {
+            //        pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
+            //        charController.CharAIController.AStarPathFinding.FindPath(pathfindingLastPosition, charController.CharAIController.Target.position);
+            //    }
+               
+            //}
 
         }
     }
@@ -90,5 +100,10 @@ public class SeekState : State
             model.Move(dir.normalized);
         }
 
+    }
+
+    void SeekBehaviour(EntityModel model)
+    {
+       
     }
 }
