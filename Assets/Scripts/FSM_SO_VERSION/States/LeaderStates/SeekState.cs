@@ -17,77 +17,88 @@ public class SeekState : State
 
     float patrolStateTimer = 0, maxTimer;
     float attackMaxCooldown = 1.5f, attackCooldown;
-    private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
+    private Dictionary<EntityModel, DataMovementState> _entitiesData = new Dictionary<EntityModel, DataMovementState>();
+    List<Node> finalPath = new List<Node>();
     CharacterController charController;
+
+    private class DataMovementState
+    {
+        public CharacterModel model;
+        public CharacterController controller;
+        public int patrolCount;
+        public bool travelBackwards;
+        public List<Node> nodesToTarget;
+        public Grid grid;
+
+        public DataMovementState(EntityModel entityModel)
+        {
+            model = (CharacterModel)entityModel;
+            controller = model.gameObject.GetComponent<CharacterController>();
+            patrolCount = 0;
+            grid = model.MapGrid;
+            travelBackwards = false;
+            nodesToTarget = new List<Node>();
+        }
+    }
+
     public override void EnterState(EntityModel model)
     {
-        if (!_entitiesData.ContainsKey(model)) _entitiesData.Add(model, model as CharacterModel);
-        charController = _entitiesData[model].GetComponent<CharacterController>();
-        charController.CharAIController.AStarPathFinding.FindPath(_entitiesData[model].transform.position, charController.CharAIController.Target.position);
+        Debug.Log("FSM Leader Seek ENTER");
+        if (!_entitiesData.ContainsKey(model)) _entitiesData.Add(model, new DataMovementState(model));
+        if(_entitiesData[model].controller.CharAIController.Target != null)
+            _entitiesData[model].controller.CharAIController.AStarPathFinding.FindPath(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+        finalPath = _entitiesData[model].controller.CharAIController.AStarPathFinding.finalPath;
+        _nextWaypoint = 0;
+        waypointIndexModifier = 1;
     }
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("Seek state execute");
+        Debug.Log("FSM Leader Seek EXECUTE");
         var enemyPrevPosition = Vector3.zero;
 
-        var finalPath = charController.CharAIController.AStarPathFinding.finalPath;
-
-        if (finalPath.Count > 0)
+        if (finalPath.Count >= 0)
         {
-
-
-            //if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _entitiesData[model].transform.position) >= _entitiesData[model].Data.AttackRange)
-            //{
-                Vector3 _patrollingLastPos = _entitiesData[model].transform.position;
-                enemyPrevPosition = charController.CharAIController.Target.position;
-                Debug.Log("Dist between characters : " + Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _entitiesData[model].transform.position));
-                if (Vector3.Distance(charController.CharAIController.Target.position, _entitiesData[model].transform.position) <= _entitiesData[model].Data.AttackRange)
-                {
-                    _entitiesData[model].IsAttacking = true;
-                }
-
-                List<Node> _waypoints = new List<Node>();
-                for (int i = 0; i < finalPath.Count; i++)
-                {
-                    if (Vector3.Distance(finalPath[i].worldPosition, _patrollingLastPos) > 1)
-                    {
-                        _patrollingLastPos = finalPath[i].worldPosition;
-                        _waypoints = finalPath;
-                        Run(_entitiesData[model], _waypoints);
-                    }
-                }
-            //}
-            //else
-            //{
-            //    var targetSpeed = charController.CharAIController.Target.GetComponent<EntityModel>().GetSpeed();
-            //    if (targetSpeed == 0)
-            //    {
-            //        _entitiesData[model].Move(Vector3.zero);
-            //    }
-            //    else
-            //    {
-            //        pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
-            //        charController.CharAIController.AStarPathFinding.FindPath(pathfindingLastPosition, charController.CharAIController.Target.position);
-            //    }
-               
-            //}
-
+            Seek(_entitiesData[model].model, finalPath);
+            var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+            if (dist < _entitiesData[model].model.Data.AttackRange)
+            {
+                _entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                _entitiesData[model].model.IsAttacking = true;
+            }
+           
         }
     }
 
     public override void ExitState(EntityModel model)
     {
+        Debug.Log("FSM Leader Seek EXIT");
         _entitiesData.Remove(model);
     }
-
+    public void Seek(CharacterModel model, List<Node> _finalPath)
+    {
+        Vector3 _seekLastPos = model.transform.position;
+        List<Node> _waypoints = new List<Node>();
+        for (int i = 0; i < _finalPath.Count; i++)
+        {
+            if (Vector3.Distance(_finalPath[i].worldPosition, _seekLastPos) > 1)
+            {
+                _seekLastPos = _finalPath[i].worldPosition;
+                _waypoints = _finalPath;
+            }
+            else return;
+            Run(model, _waypoints);
+        }
+    }
     public void Run(CharacterModel model, List<Node> _waypoints)
     {
+        Debug.Log("next wp " + _nextWaypoint + "nodes count " + (_waypoints.Count - 1));
         if (_nextWaypoint <= _waypoints.Count - 1)
         {
+            Debug.Log("Next wp entro a run");
             var waypointPosition = _waypoints[_nextWaypoint].worldPosition;
-            waypointPosition.y = _entitiesData[model].transform.position.y;
-            Vector3 dir = waypointPosition - _entitiesData[model].transform.position;
+            waypointPosition.y = _entitiesData[model].model.transform.position.y;
+            Vector3 dir = waypointPosition - _entitiesData[model].model.transform.position;
             if (dir.magnitude < 1)
             {
                 if (_nextWaypoint + waypointIndexModifier >= _waypoints.Count || _nextWaypoint + waypointIndexModifier < 0)

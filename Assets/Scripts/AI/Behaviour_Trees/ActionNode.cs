@@ -1,5 +1,5 @@
 
-public class ActionNode : BehaviourTreeNode
+public class ActionNode : INode
 {
     //Un delegate permite agregarle funciones que cumplan con la firma del delegate (el valor de retorno y los parametros del metodo)
     public delegate void ActionDelegate();
@@ -11,7 +11,7 @@ public class ActionNode : BehaviourTreeNode
         this.action = action;
     }
 
-    public override void Execute()
+    public void Execute()
     {
         action();
     }

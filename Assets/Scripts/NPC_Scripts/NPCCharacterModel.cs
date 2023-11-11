@@ -7,7 +7,7 @@ public class NPCCharacterModel : MonoBehaviour
 {
     HealthController characterHealthController;
     //NPCAIController npcAIController;
-    CharacterAnimationsController characterAnimController;
+    EntityView characterAnimController;
 
     Rigidbody rb;
 
@@ -38,7 +38,7 @@ public class NPCCharacterModel : MonoBehaviour
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public Rigidbody Rb { get => rb; set => rb = value; }
     public bool ReadyToMove { get => readyToMove; set => readyToMove = value; }
-    public CharacterAnimationsController CharacterAnimController { get => characterAnimController; set => characterAnimController = value; }
+    public EntityView CharacterAnimController { get => characterAnimController; set => characterAnimController = value; }
 
     #endregion
 
@@ -47,7 +47,7 @@ public class NPCCharacterModel : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         characterHealthController = GetComponent<HealthController>();
         //npcAIController = GetComponent<NPCAIController>();
-        characterAnimController = GetComponent<CharacterAnimationsController>();
+        characterAnimController = GetComponent<EntityView>();
     }
 
     private void Start()

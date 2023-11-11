@@ -10,8 +10,18 @@ public class TagManager
     public const string CHARACTER_ATTACK1_ANIMATION_TRIGGER = "attack1Trigger";
     public const string CHARACTER_ATTACK2_ANIMATION_TRIGGER = "attack2Trigger";
     public const string CHARACTER_ATTACK3_ANIMATION_TRIGGER = "attack3Trigger";
+
+    public const string CHARACTER_ENHANCED_ATTACK1_ANIMATION_TRIGGER = "enhancedAttack1Trigger";
+    public const string CHARACTER_ENHANCED_ATTACK2_ANIMATION_TRIGGER = "enhancedAttack2Trigger";
+    public const string CHARACTER_ENHANCED_ATTACK3_ANIMATION_TRIGGER = "enhancedAttack3Trigger";
+
+    public const string CHARACTER_DESPERATE_ATTACK1_ANIMATION_TRIGGER = "desperateAttack1Trigger";
+    public const string CHARACTER_DESPERATE_ATTACK2_ANIMATION_TRIGGER = "desperateAttack2Trigger";
+    public const string CHARACTER_DESPERATE_ATTACK3_ANIMATION_TRIGGER = "desperateAttack3Trigger";
+
     public const string CHARACTER_BLOCK1_ANIMATION_TRIGGER = "block1Trigger";
     public const string CHARACTER_BLOCK2_ANIMATION_TRIGGER = "block2Trigger";
+
     public const string CHARACTER_DAMAGE_ANIMATION_TRIGGER = "damageTrigger";
     public const string CHARACTER_DEATH_ANIMATION_TRIGGER = "deathTrigger";
 

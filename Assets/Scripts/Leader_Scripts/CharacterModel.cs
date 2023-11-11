@@ -31,8 +31,6 @@ public class CharacterModel : EntityModel
 
     private void Start()
     {
-        //charAIController = new LeaderAIController();
-        new List<Node>();
         SetCharacterTag();
     }
 
@@ -65,6 +63,7 @@ public class CharacterModel : EntityModel
     {
         if (direction == Vector3.zero) return;
         direction.y = 0;
+        StartCoroutine(LookAtTarget(direction));
         transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * Data.RotationSpeed);
     }
 

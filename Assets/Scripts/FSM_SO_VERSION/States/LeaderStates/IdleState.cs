@@ -9,6 +9,7 @@ public class IdleState : State
     private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
     public override void EnterState(EntityModel model)
     {
+        Debug.Log("FSM Leader IDLE START");
         _entitiesData.Add(model, model as CharacterModel);
         //charModel.View.PlayWalkAnimation(false);
         _entitiesData[model].GetRigidbody().velocity = Vector3.zero;
@@ -16,7 +17,7 @@ public class IdleState : State
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("Leader idle state execute");
+        Debug.Log("FSM Leader IDLE EXECUTE");
 
         timer += Time.deltaTime;
 
@@ -34,6 +35,7 @@ public class IdleState : State
 
     public override void ExitState(EntityModel model)
     {
+        Debug.Log("FSM Leader IDLE EXIT");
         _entitiesData.Remove(model);
     }
 }

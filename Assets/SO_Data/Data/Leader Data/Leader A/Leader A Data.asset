@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 20
   <MovementSpeed>k__BackingField: 1000
-  <AttackRange>k__BackingField: 3
+  <AttackRange>k__BackingField: 10
   <CooldownToAttack>k__BackingField: 0.75
   <RotationSpeed>k__BackingField: 10

@@ -39,6 +39,7 @@ public class PatrolState : State
 
     public override void EnterState(EntityModel model)
     {
+        Debug.Log("FSM Leader Patrol ENTER");
         if (!_movementDatas.ContainsKey(model)) _movementDatas.Add(model, new DataMovementState(model));
         modelRef = _movementDatas[model].model;
         maxTimer = _movementDatas[model].model.CharAIData.PatrolTimer;
@@ -53,9 +54,7 @@ public class PatrolState : State
 
     public override void ExecuteState(EntityModel model) 
     {
-        Debug.Log("Leader patrol state execute");
-        //Debug.Log("Patrol timer: " + patrolStateTimer);
-        //Debug.Log("patrol timer: " + patrolStateTimer);
+        Debug.Log("FSM Leader Patrol EXECUTE");
         patrolStateTimer += Time.deltaTime; 
         var finalPath = modelRef.GetComponent<CharacterController>().CharAIController.AStarPathFinding.finalPath;
         if(patrolStateTimer <= maxTimer)
@@ -72,7 +71,7 @@ public class PatrolState : State
                     Patrol(_movementDatas[model].model, finalPath);
                 }
             }
-            if (modelRef.GetComponent<CharacterController>().CharAIController.IsTargetInSight) modelRef.IsChasing = true;
+            else if (modelRef.GetComponent<CharacterController>().CharAIController.IsTargetInSight) modelRef.IsChasing = true;
         }
         else
         {
@@ -83,12 +82,13 @@ public class PatrolState : State
 
     public override void ExitState(EntityModel model)
     {
+        Debug.Log("FSM Leader Patrol EXIT");
         _movementDatas.Remove(model);
     }
 
     Vector3 GenerateRandomPosition(EntityModel model)
     {
-        return new Vector3(Random.Range(0, model.CharAIData.RandomPositionThreshold), 0, Random.Range(0, model.CharAIData.RandomPositionThreshold));
+        return new Vector3(Random.Range(0, model.CharAIData.RandomPositionThreshold), 0, Random.Range(0, model.CharAIData.RandomPositionThreshold)) * -1;
     }
 
     public void Patrol(CharacterModel model, List<Node> _finalPath)
@@ -108,6 +108,7 @@ public class PatrolState : State
     }
     public void Run(CharacterModel model, List<Node> _waypoints)
     {
+        Debug.Log("next wp " + _nextWaypoint + "nodes count " + (_waypoints.Count - 1));
         if (_nextWaypoint <= _waypoints.Count-1)
         {
             var waypointPosition = _waypoints[_nextWaypoint].worldPosition;

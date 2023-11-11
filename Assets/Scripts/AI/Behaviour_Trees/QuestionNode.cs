@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionNode : BehaviourTreeNode
+public class QuestionNode : INode
 {
     //Un delegate permite agregarle funciones que cumplan con la firma del delegate (el valor de retorno y los parametros del metodo)
     public delegate bool QuestionDelegate();
     private QuestionDelegate question;
-    private BehaviourTreeNode trueNode;
-    private BehaviourTreeNode falseNode;
+    private INode trueNode;
+    private INode falseNode;
 
-    public QuestionNode(QuestionDelegate question, BehaviourTreeNode trueNode, BehaviourTreeNode falseNode)
+    public QuestionNode(QuestionDelegate question, INode trueNode, INode falseNode)
     {
         this.question = question;
         this.trueNode = trueNode;
         this.falseNode = falseNode;
     }
 
-    public override void Execute()
+    public void Execute()
     {
         if (question())
         {
