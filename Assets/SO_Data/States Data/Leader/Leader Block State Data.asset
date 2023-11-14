@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
   m_Name: Leader Block State Data
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 0}
-  <StateConditions>k__BackingField: []
-  <ExitStates>k__BackingField: []
+  <State>k__BackingField: {fileID: 11400000, guid: 7d5a8cbe98baf384b9ad2c0e9aa78598, type: 2}
+  <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: d575425ff10c8db458a7f71674dbfb3d, type: 2}
+  <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: 45abc56daa99ac9429a3c19e9a7bf9c2, type: 2}
+  - {fileID: 11400000, guid: 036c1ebe4357f6343959255a94ed9903, type: 2}

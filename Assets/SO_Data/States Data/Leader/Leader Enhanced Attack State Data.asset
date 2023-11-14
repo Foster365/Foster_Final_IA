@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
   m_Name: Leader Enhanced Attack State Data
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 0}
-  <StateConditions>k__BackingField: []
-  <ExitStates>k__BackingField: []
+  <State>k__BackingField: {fileID: 11400000, guid: 32e54562ec7e99646b596eab63b40aab, type: 2}
+  <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: 6f38f902657a2e34099674b94ce072d5, type: 2}
+  - {fileID: 11400000, guid: 83180544d70f65a43bf1fb083364ccdf, type: 2}
+  - {fileID: 11400000, guid: 721f45be2c21f3a4dbeb022556df6b33, type: 2}
+  <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: 63137e96250df9f4f9f2eb90506970ee, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 3c8bf4b0dadf2434cb95db28d961ed30, type: 2}

@@ -6,22 +6,23 @@ using UnityEngine;
 
 public class AStar
 {
-    public Transform seeker, target;
+    public Transform seeker;
+    //target;
     Grid grid;
     public List<Node> finalPath;
     Vector3 lastPos;
 
-    public AStar(Transform _seeker, Transform _target, Grid _grid)
+    public AStar(Transform _seeker, Grid _grid)
     {
         seeker = _seeker;
-        target = _target;
+        //target = _target;
         grid = _grid;
     }
 
     public AStar(Transform _seeker, Transform _target, Vector3 _lastPos, Grid _grid)
     {
         seeker = _seeker;
-        target = _target;
+        //target = _target;
         lastPos = _lastPos;
         grid = _grid;
     }

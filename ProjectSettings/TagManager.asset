@@ -11,6 +11,8 @@ TagManager:
   - Object_Pooler_NPC_B
   - NPC_A
   - NPC_B
+  - Leader_A
+  - Leader_B
   layers:
   - Default
   - TransparentFX

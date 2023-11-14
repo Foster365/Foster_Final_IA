@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1748d34082d22074d9cb415b34de066d, type: 3}
-  m_Name: Leader A AI Data
+  m_Name: Leader B AI Data
   m_EditorClassIdentifier: 
   <FsmStates>k__BackingField:
   - {fileID: 11400000, guid: 8a183ecaa524d0e418bcb517048b5eda, type: 2}
@@ -24,14 +24,14 @@ MonoBehaviour:
   <IdleTimer>k__BackingField: 3
   <PatrolTimer>k__BackingField: 5
   <RegularAttackStateTimer>k__BackingField: 3
-  <EnhancedAttackStateTimer>k__BackingField: 3
-  <RegularAttackCooldown>k__BackingField: 1.5
-  <EnhancedAttackCooldown>k__BackingField: 2.5
-  <DesperateAttackCooldown>k__BackingField: 1
+  <EnhancedAttackStateTimer>k__BackingField: 2
+  <RegularAttackCooldown>k__BackingField: 0.75
+  <EnhancedAttackCooldown>k__BackingField: 1.5
+  <DesperateAttackCooldown>k__BackingField: 0.5
   <TimeForSearchPlayer>k__BackingField: 2
   <TargetLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   <RandomPositionThreshold>k__BackingField: 20
   <ObstacleLayerMask>k__BackingField:
     serializedVersion: 2

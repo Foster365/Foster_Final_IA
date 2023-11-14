@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
   m_Name: Leader Desperate Attack State Data
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 0}
-  <StateConditions>k__BackingField: []
-  <ExitStates>k__BackingField: []
+  <State>k__BackingField: {fileID: 11400000, guid: 19a5567413ac9e341993a27ce993a35d, type: 2}
+  <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: 721f45be2c21f3a4dbeb022556df6b33, type: 2}
+  - {fileID: 11400000, guid: 184e1fc9088cea24c8d5827e21a23ebe, type: 2}
+  <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: 3c8bf4b0dadf2434cb95db28d961ed30, type: 2}
+  - {fileID: 11400000, guid: 880c43b32ea7da2489649e8acd4fd81f, type: 2}

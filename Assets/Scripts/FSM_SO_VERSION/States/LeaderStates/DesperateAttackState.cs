@@ -10,6 +10,7 @@ public class DesperateAttackState : State
     public override void EnterState(EntityModel model)
     {
 
+        //attackMaxCooldown = _entitiesData[model].model.CharAIData.EnhancedAttackCooldown; 
 
     }
 

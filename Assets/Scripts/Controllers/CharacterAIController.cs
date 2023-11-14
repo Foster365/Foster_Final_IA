@@ -20,21 +20,32 @@ public class CharacterAIController
 
     bool isTargetInSight;
 
-    //Regular Attack roulette wheel
+    //Regular Attacks roulette wheel
     private Roulette _regularAttacksRouletteWheel;
     private Dictionary<ActionNode, int> _regularAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    //
+
+    //Enhanced Attacks roulette wheel
+    private Roulette _enhancedAttacksRouletteWheel;
+    private Dictionary<ActionNode, int> _enhancedAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    //
+
+    //Desperate Attacks roulette wheel
+    private Roulette _desperateAttacksRouletteWheel;
+    private Dictionary<ActionNode, int> _desperateAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    //
 
     public AStar AStarPathFinding { get => aStarPathFinding; set => aStarPathFinding = value; }
     public bool IsTargetInSight { get => isTargetInSight; set => isTargetInSight = value; }
     public Transform Target { get => target; set => target = value; }
     public EntityView View { get => view; set => view = value; }
 
-    public CharacterAIController(CharacterModel model, StateData fsmInitialState, GameObject finalNode)
+    public CharacterAIController(CharacterModel model, StateData fsmInitialState)
     {
         this.model = model;
         this.fsmInitialState = fsmInitialState;
 
-        this.finalNode = finalNode;
+        //this.finalNode = finalNode;
         if (model.HealthController.IsLeader) view = (LeaderView)view;
     }
 
@@ -46,8 +57,10 @@ public class CharacterAIController
         sbObstacleAvoidance = new ObstacleAvoidance(model.transform, model.CharAIData.ObstacleAvoidanceRadius,
             model.CharAIData.ObstacleAvoidanceMaxObstacles, model.CharAIData.ObstacleAvoidanceViewAngle,
             model.CharAIData.ObstacleAvoidanceLayerMask);
-        aStarPathFinding = new AStar(model.transform, finalNode.transform, model.MapGrid);
+        aStarPathFinding = new AStar(model.transform, model.MapGrid);
         RegularAttacksRouletteSetUp();
+        EnhancedAttacksRouletteSetUp();
+        DesperateAttacksRouletteSetUp();
     }
 
     public void UpdateControllerComponents()
@@ -159,6 +172,86 @@ public class CharacterAIController
     public void EnemyRegularAttacksRouletteAction()
     {
         INode node = _regularAttacksRouletteWheel.Run(_regularAttacksRouletteWheelNodes);
+        node.Execute();
+
+    }
+
+    #endregion
+
+    #region Enhanced Attacks Roulette Wheel
+    void EnhancedAttacksRouletteSetUp()
+    {
+        _enhancedAttacksRouletteWheel = new Roulette();
+
+        ActionNode Attack1 = new ActionNode(PlayEnhancedAttack1);
+        ActionNode Attack2 = new ActionNode(PlayEnhancedAttack2);
+        ActionNode Attack3 = new ActionNode(PlayEnhancedAttack3);
+
+        _enhancedAttacksRouletteWheelNodes.Add(Attack1, 30);
+        _enhancedAttacksRouletteWheelNodes.Add(Attack2, 25);
+        _enhancedAttacksRouletteWheelNodes.Add(Attack3, 35);
+
+        ActionNode rouletteAction = new ActionNode(EnemyEnhancedAttacksRouletteAction);
+    }
+
+    void PlayEnhancedAttack1()
+    {
+        model.View.CharacterAttack1Animation();
+    }
+
+    void PlayEnhancedAttack2()
+    {
+        model.View.CharacterAttack2Animation();
+    }
+
+    void PlayEnhancedAttack3()
+    {
+        model.View.CharacterAttack3Animation();
+    }
+
+    public void EnemyEnhancedAttacksRouletteAction()
+    {
+        INode node = _enhancedAttacksRouletteWheel.Run(_enhancedAttacksRouletteWheelNodes);
+        node.Execute();
+
+    }
+
+    #endregion
+
+    #region Desperate Attacks Roulette Wheel
+    void DesperateAttacksRouletteSetUp()
+    {
+        _desperateAttacksRouletteWheel = new Roulette();
+
+        ActionNode Attack1 = new ActionNode(PlayDesperateAttack1);
+        ActionNode Attack2 = new ActionNode(PlayDesperateAttack2);
+        ActionNode Attack3 = new ActionNode(PlayDesperateAttack3);
+
+        _desperateAttacksRouletteWheelNodes.Add(Attack1, 30);
+        _desperateAttacksRouletteWheelNodes.Add(Attack2, 25);
+        _desperateAttacksRouletteWheelNodes.Add(Attack3, 35);
+
+        ActionNode rouletteAction = new ActionNode(EnemyDesperateAttacksRouletteAction);
+    }
+
+    void PlayDesperateAttack1()
+    {
+        model.View.CharacterAttack1Animation();
+    }
+
+    void PlayDesperateAttack2()
+    {
+        model.View.CharacterAttack2Animation();
+    }
+
+    void PlayDesperateAttack3()
+    {
+        model.View.CharacterAttack3Animation();
+    }
+
+    public void EnemyDesperateAttacksRouletteAction()
+    {
+        INode node = _desperateAttacksRouletteWheel.Run(_desperateAttacksRouletteWheelNodes);
         node.Execute();
 
     }

@@ -12,7 +12,6 @@ public class CharacterController : MonoBehaviour
     Transform targetPosition;
     CharacterModel model;
     CharacterAIController charAIController;
-    [SerializeField] GameObject finalNode;
 
     public CharacterAIController CharAIController { get => charAIController; set => charAIController = value; }
 
@@ -25,7 +24,7 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     {
-        charAIController = new CharacterAIController(model, fsmInitState, finalNode);
+        charAIController = new CharacterAIController(model, fsmInitState);
         charAIController.InitControllerComponents();
     } 
 
