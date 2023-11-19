@@ -6,11 +6,25 @@ using UnityEngine;
 public class DeathState : State
 {
     float attackMaxCooldown = 1.5f, attackCooldown;
-    private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
+    private Dictionary<EntityModel, DeathStateData> _entitiesData = new Dictionary<EntityModel, DeathStateData>();
+
+    public class DeathStateData
+    {
+        public CharacterModel model;
+        public CharacterController controller;
+
+        public DeathStateData(EntityModel entityModel)
+        {
+            model = (CharacterModel)entityModel;
+            controller = model.gameObject.GetComponent<CharacterController>();
+
+        }
+    }
+
     public override void EnterState(EntityModel model)
     {
-
-
+        _entitiesData.Add(model, new DeathStateData(model));
+        _entitiesData[model].model.DeathHandler();
     }
 
     public override void ExecuteState(EntityModel model)
@@ -19,5 +33,6 @@ public class DeathState : State
 
     public override void ExitState(EntityModel model)
     {
+        _entitiesData.Remove(model);
     }
 }

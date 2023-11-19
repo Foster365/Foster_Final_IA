@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052c1668e7644c640aafbb51d3a2c78e, type: 3}
   m_Name: Leader B Data
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 0
+  <MaxHealth>k__BackingField: 100
   <MovementSpeed>k__BackingField: 500
-  <AttackRange>k__BackingField: 5
+  <AttackRange>k__BackingField: 3.5
   <CooldownToAttack>k__BackingField: 0.75
-  <RotationSpeed>k__BackingField: 10
+  <RotationSpeed>k__BackingField: 100

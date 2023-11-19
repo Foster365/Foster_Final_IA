@@ -6,7 +6,6 @@ using _Main.Scripts.FSM_SO_VERSION;
 
 public class CharacterController : MonoBehaviour
 {
-
     [SerializeField] StateData fsmInitState;
 
     Transform targetPosition;
@@ -30,7 +29,10 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        charAIController.UpdateControllerComponents();
+        if(!model.HealthController.IsDead)
+        {
+            charAIController.UpdateControllerComponents();
+        }
     }
 
 }

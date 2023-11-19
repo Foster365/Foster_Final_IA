@@ -173,7 +173,7 @@ public class NPCCharacterModel : MonoBehaviour
     }
     public void Block1()
     {
-        characterAnimController.CharacterBlock1Animation();
+        characterAnimController.CharacterBlockAnimation();
     }
 }
 

@@ -9,11 +9,14 @@ public class CharacterAIData : ScriptableObject
     [field: SerializeField, Header("FSM Variables")] public StateData[] FsmStates { get; private set; }
     [field: SerializeField] public float IdleTimer { get; set; }
     [field: SerializeField] public float PatrolTimer { get; private set; }
+    [field: SerializeField] public float BlockStateTimer { get; private set; }
     [field: SerializeField] public float RegularAttackStateTimer { get; private set; }
     [field: SerializeField] public float EnhancedAttackStateTimer { get; private set; }
     [field: SerializeField] public float RegularAttackCooldown { get; private set; }
     [field: SerializeField] public float EnhancedAttackCooldown { get; private set; }
     [field: SerializeField] public float DesperateAttackCooldown { get; private set; }
+    [field: SerializeField] public float EnhancedAttackThreshold { get; private set; }
+    [field: SerializeField] public float DesperateAttackThreshold { get; private set; }
     [field: SerializeField] public float TimeForSearchPlayer { get; private set; }
     [field: SerializeField] public LayerMask TargetLayer { get; private set; }
     [field: SerializeField] public float RandomPositionThreshold { get; private set; }

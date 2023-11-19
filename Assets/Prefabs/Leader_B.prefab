@@ -1405,11 +1405,16 @@ MonoBehaviour:
   rightHandCollider: {fileID: 0}
   leftFootCollider: {fileID: 0}
   rightFootCollider: {fileID: 0}
+  weaponCollider: {fileID: 6774907087595399958}
   redMaterial: {fileID: 0}
   material: {fileID: 0}
   meshRenderer: {fileID: 0}
   data: {fileID: 11400000, guid: 35a8faca56c82fe4c930104e44fd0e82, type: 2}
   charAIData: {fileID: 11400000, guid: 6c093c19790f2ed4399fd61cd9ce1036, type: 2}
+  attack1Chance: 5
+  attack2Chance: 10
+  attack3Chance: 15
+  attack4Chance: 20
 --- !u!114 &7132464628457388645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2943,6 +2948,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6774907087595399958
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,6 +3010,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!1001 &2958915110833922231
 PrefabInstance:
   m_ObjectHideFlags: 0

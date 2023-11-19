@@ -11,7 +11,7 @@ public class HealthController
     int maxHealth, currentHealth, damage;
 
     bool isLeader, isNPC;
-    bool isDamaged, isDead;
+    bool isDamaged, canReceiveDamage, isDead;
 
     public event Action<float> OnHealthChange;
     public event Action OnDie;
@@ -23,6 +23,7 @@ public class HealthController
     public int Damage { get => damage; set => damage = value; }
     public int CurrentHealth { get => currentHealth; }
     public bool IsDamaged { get => isDamaged; set => isDamaged = value; }
+    public bool CanReceiveDamage { get => canReceiveDamage; set => canReceiveDamage = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
     public int MaxHealth { get => maxHealth; }
     #endregion
@@ -37,10 +38,17 @@ public class HealthController
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
-            OnDie?.Invoke();
+        {
+            currentHealth = 0;
+        }
         else
             OnHealthChange?.Invoke(currentHealth);
 
+    }
+
+    public void Die()
+    {
+        OnDie?.Invoke();
     }
 
     public void Heal(int heal)

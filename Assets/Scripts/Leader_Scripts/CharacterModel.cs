@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class CharacterModel : EntityModel
 {
+
+    [SerializeField, Header("Attack Roulette Attacks Chances")]
+    int attack1Chance;
+    [SerializeField] int attack2Chance;
+    [SerializeField] int attack3Chance;
+    [SerializeField] int attack4Chance;
+
     //Components variables
     Rigidbody rb;
     Grid mapGrid;
@@ -18,6 +25,10 @@ public class CharacterModel : EntityModel
     public Transform Target { get => target; set => target = value; }
     public Grid MapGrid { get => mapGrid; set => mapGrid = value; }
     public HealthController HealthController { get => healthController; set => healthController = value; }
+    public int Attack1Chance { get => attack1Chance; set => attack1Chance = value; }
+    public int Attack2Chance { get => attack2Chance; set => attack2Chance = value; }
+    public int Attack3Chance { get => attack3Chance; set => attack3Chance = value; }
+    public int Attack4Chance { get => attack4Chance; set => attack4Chance = value; }
     #endregion
 
     #region Unity Engine Methods
@@ -27,6 +38,7 @@ public class CharacterModel : EntityModel
         mapGrid = GameObject.Find("Grid").GetComponent<Grid>();
         View = GetComponent<EntityView>();
         HealthController = new HealthController(Data.MaxHealth);
+        //healthController.OnDie += DeathHandler;
     }
 
     private void Start()
@@ -35,6 +47,13 @@ public class CharacterModel : EntityModel
     }
 
     #endregion
+
+    public void DeathHandler()
+    {
+        //healthController.IsDead = true;
+        //View.CharacterDeathAnimation();
+        Destroy(gameObject);
+    }
 
     void SetCharacterTag()
     {
@@ -50,13 +69,13 @@ public class CharacterModel : EntityModel
     public override float GetSpeed() => rb.velocity.magnitude;
     public override void Move(Vector3 direction)
     {
-        Debug.Log("Entro en move character model");
+        //Debug.Log("Entro en move character model");
         direction.y = 0;
         //direction += _obstacleAvoidance.GetDir() * multiplier;
         rb.velocity = direction * (Data.MovementSpeed * Time.deltaTime);
 
         transform.forward = Vector3.Lerp(transform.forward, direction, Data.RotationSpeed * Time.deltaTime);
-        //View.PlayWalkAnimation(true);
+        View.CharacterMoveAnimation(true);
     }
 
     public override void LookDir(Vector3 direction)
@@ -88,4 +107,5 @@ public class CharacterModel : EntityModel
     {
         return null;
     }
+
 }

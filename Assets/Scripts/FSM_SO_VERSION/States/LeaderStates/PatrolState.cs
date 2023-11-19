@@ -15,14 +15,14 @@ public class PatrolState : State
     Vector3 pathfindingLastPosition;
     //
 
-    float patrolStateTimer = 0, maxTimer;
+    float patrolStateTimer = 0, patrolStateMaxTimer;
     private Dictionary<EntityModel, DataMovementState> _movementDatas = new Dictionary<EntityModel, DataMovementState>();
     CharacterModel modelRef;
 
     private class DataMovementState
     {
         public CharacterModel model;
-        public int patrolCount;
+        public int patrolCount = 0;
         public bool travelBackwards;
         public List<Node> nodesToWaypoint;
         public Grid grid;
@@ -30,7 +30,6 @@ public class PatrolState : State
         public DataMovementState(EntityModel entityModel)
         {
             model = (CharacterModel)entityModel;
-            patrolCount = 0;
              grid = model.MapGrid;
             travelBackwards = false;
             nodesToWaypoint = new List<Node>();
@@ -39,56 +38,70 @@ public class PatrolState : State
 
     public override void EnterState(EntityModel model)
     {
-        Debug.Log("FSM Leader Patrol ENTER");
+        //Debug.Log("FSM Leader Patrol ENTER");
         if (!_movementDatas.ContainsKey(model)) _movementDatas.Add(model, new DataMovementState(model));
         modelRef = _movementDatas[model].model;
-        maxTimer = _movementDatas[model].model.CharAIData.PatrolTimer;
+        patrolStateMaxTimer = modelRef.CharAIData.PatrolTimer;
         //_movementDatas[model].model.View.PlayWalkAnimation(false);
         var pos = GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position;
             pathfindingLastPosition = Vector3.zero;
             _nextWaypoint = 0;
             waypointIndexModifier = 1;
             _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
-               modelRef.transform.position, GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position);
+               modelRef.transform.position, pos);
     }
 
-    public override void ExecuteState(EntityModel model) 
+    public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM Leader Patrol EXECUTE");
-        patrolStateTimer += Time.deltaTime; 
-        var finalPath = modelRef.GetComponent<CharacterController>().CharAIController.AStarPathFinding.finalPath;
-        if(patrolStateTimer <= maxTimer)
+        Debug.Log("FSM Leader Patrol EXECUTE " + _movementDatas[model].model.gameObject.name);
+        patrolStateTimer += Time.deltaTime;
+        var aiController = modelRef.GetComponent<CharacterController>().CharAIController;
+        var finalPath = aiController.AStarPathFinding.finalPath;
+        if(patrolStateTimer < patrolStateMaxTimer)
         {
-            modelRef.GetComponent<CharacterController>().CharAIController.LineOfSight();
+            aiController.LineOfSight();
             if (finalPath.Count > 0)
             {
-                Patrol(_movementDatas[model].model, finalPath);
-                if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position) <= 1)
+                Patrol(_movementDatas[model].model, finalPath); 
+                if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position) < 1)
                 {
                     pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
-                    _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
-                        pathfindingLastPosition, GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position);
+                    aiController.AStarPathFinding.FindPath(
+                        pathfindingLastPosition, GenerateRandomPosition(model) + modelRef.transform.position);
                     Patrol(_movementDatas[model].model, finalPath);
                 }
+                //Debug.Log("Patrol dist: " + Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position));
+                //HandlePathRegeneration(_movementDatas[model].model, finalPath);
             }
-            else if (modelRef.GetComponent<CharacterController>().CharAIController.IsTargetInSight) modelRef.IsChasing = true;
+            else if (aiController.IsTargetInSight) modelRef.IsChasing = true;
         }
         else
         {
-            patrolStateTimer = 0;
             modelRef.IsPatrolling = false;
+            patrolStateTimer = 0;
         }
     }
 
     public override void ExitState(EntityModel model)
     {
-        Debug.Log("FSM Leader Patrol EXIT");
+        //Debug.Log("FSM Leader Patrol EXIT");
         _movementDatas.Remove(model);
     }
 
     Vector3 GenerateRandomPosition(EntityModel model)
     {
-        return new Vector3(Random.Range(0, model.CharAIData.RandomPositionThreshold), 0, Random.Range(0, model.CharAIData.RandomPositionThreshold)) * -1;
+        return new Vector3(Random.Range(0, model.CharAIData.RandomPositionThreshold), 0, Random.Range(0, model.CharAIData.RandomPositionThreshold)) ;
+    }
+
+    void HandlePathRegeneration(CharacterModel model, List<Node> finalPath)
+    {
+        if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, model.transform.position) <= 1)
+        {
+            pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
+            modelRef.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
+                pathfindingLastPosition, GenerateRandomPosition(model) + modelRef.transform.position);
+            Patrol(model, finalPath);
+        }
     }
 
     public void Patrol(CharacterModel model, List<Node> _finalPath)
@@ -108,7 +121,7 @@ public class PatrolState : State
     }
     public void Run(CharacterModel model, List<Node> _waypoints)
     {
-        Debug.Log("next wp " + _nextWaypoint + "nodes count " + (_waypoints.Count - 1));
+        //Debug.Log("next wp " + _nextWaypoint + "nodes count " + (_waypoints.Count - 1));
         if (_nextWaypoint <= _waypoints.Count-1)
         {
             var waypointPosition = _waypoints[_nextWaypoint].worldPosition;

@@ -5,6 +5,8 @@ using _Main.Scripts.FSM_SO_VERSION;
 
 public class CharacterAIController
 {
+    public delegate int AttackRouletteWheightedCondAction(int val);
+    public static event AttackRouletteWheightedCondAction OnHealthCondition;
 
     CharacterModel model;
     StateData fsmInitialState;
@@ -21,18 +23,18 @@ public class CharacterAIController
     bool isTargetInSight;
 
     //Regular Attacks roulette wheel
-    private Roulette _regularAttacksRouletteWheel;
-    private Dictionary<ActionNode, int> _regularAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    Roulette _regularAttacksRouletteWheel;
+    Dictionary<ActionNode, int> _regularAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
     //
 
     //Enhanced Attacks roulette wheel
-    private Roulette _enhancedAttacksRouletteWheel;
-    private Dictionary<ActionNode, int> _enhancedAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    Roulette _enhancedAttacksRouletteWheel;
+    Dictionary<ActionNode, int> _enhancedAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
     //
 
     //Desperate Attacks roulette wheel
-    private Roulette _desperateAttacksRouletteWheel;
-    private Dictionary<ActionNode, int> _desperateAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    Roulette _desperateAttacksRouletteWheel;
+    Dictionary<ActionNode, int> _desperateAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
     //
 
     public AStar AStarPathFinding { get => aStarPathFinding; set => aStarPathFinding = value; }
@@ -61,6 +63,8 @@ public class CharacterAIController
         RegularAttacksRouletteSetUp();
         EnhancedAttacksRouletteSetUp();
         DesperateAttacksRouletteSetUp();
+        OnHealthCondition += HandleHealthCondition;
+
     }
 
     public void UpdateControllerComponents()
@@ -146,10 +150,12 @@ public class CharacterAIController
         ActionNode Attack1 = new ActionNode(PlayAttack1);
         ActionNode Attack2 = new ActionNode(PlayAttack2);
         ActionNode Attack3 = new ActionNode(PlayAttack3);
+        //ActionNode Attack4 = new ActionNode(PlayAttack4);
 
-        _regularAttacksRouletteWheelNodes.Add(Attack1, 30);
-        _regularAttacksRouletteWheelNodes.Add(Attack2, 25);
-        _regularAttacksRouletteWheelNodes.Add(Attack3, 35);
+        _regularAttacksRouletteWheelNodes.Add(Attack1, HandleRouletteOptionModifier(model.Attack1Chance));
+        _regularAttacksRouletteWheelNodes.Add(Attack2, HandleRouletteOptionModifier(model.Attack2Chance));
+        _regularAttacksRouletteWheelNodes.Add(Attack3, HandleRouletteOptionModifier(model.Attack3Chance));
+        //_regularAttacksRouletteWheelNodes.Add(Attack4, HandleRouletteOptionModifier(model.Attack4Chance));
 
         ActionNode rouletteAction = new ActionNode(EnemyRegularAttacksRouletteAction);
     }
@@ -169,11 +175,45 @@ public class CharacterAIController
         model.View.CharacterAttack3Animation();
     }
 
+    void PlayAttack4()
+    {
+        model.View.CharacterAttack4Animation();
+    }
+
     public void EnemyRegularAttacksRouletteAction()
     {
         INode node = _regularAttacksRouletteWheel.Run(_regularAttacksRouletteWheelNodes);
         node.Execute();
 
+    }
+
+    int HandleRouletteOptionModifier(int value)
+    {
+        var finalValue = value;
+        if (model.gameObject.CompareTag(TagManager.LEADER_TAG)) finalValue = HandleBossRouletteOptionsModifier(value);
+        else finalValue = HandleNPCRouletteOptionsModifier(value);
+
+        return finalValue;
+    }
+    int HandleHealthCondition(int val)
+    {
+        //Debug.Log("Events for health attack enhancement value is: " + val);
+        if(model.HealthController.CurrentHealth < model.CharAIData.EnhancedAttackThreshold)
+            val += 1;
+        else if(model.HealthController.CurrentHealth < model.CharAIData.EnhancedAttackThreshold)
+            val += 2;
+        //Debug.Log("Events for health attack enhancement final value is: " + val);
+        return val;
+    }
+    int HandleBossRouletteOptionsModifier(int value)
+    {
+        value = OnHealthCondition?.Invoke(value) ?? value;
+        return value;
+    }
+
+    int HandleNPCRouletteOptionsModifier(int value)
+    {
+        return value;
     }
 
     #endregion

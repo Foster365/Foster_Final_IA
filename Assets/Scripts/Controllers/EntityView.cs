@@ -30,15 +30,20 @@ public class EntityView : MonoBehaviour
         anim.SetTrigger(TagManager.CHARACTER_ATTACK3_ANIMATION_TRIGGER);
     }
 
-    public void CharacterBlock1Animation()
+    public void CharacterAttack4Animation()
     {
-        anim.SetTrigger(TagManager.CHARACTER_BLOCK1_ANIMATION_TRIGGER);
+        anim.SetTrigger(TagManager.CHARACTER_ATTACK4_ANIMATION_TRIGGER);
     }
 
-    public void CharacterBlock2Animation()
+    public void CharacterBlockAnimation()
     {
-        anim.SetTrigger(TagManager.CHARACTER_BLOCK2_ANIMATION_TRIGGER);
+        anim.SetTrigger(TagManager.CHARACTER_BLOCK_ANIMATION_TRIGGER);
     }
+
+    //public void CharacterBlock2Animation()
+    //{
+    //    anim.SetTrigger(TagManager.CHARACTER_BLOCK2_ANIMATION_TRIGGER);
+    //}
 
     public void CharacterDamageAnimation()
     {

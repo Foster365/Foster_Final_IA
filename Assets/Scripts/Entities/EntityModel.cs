@@ -11,6 +11,7 @@ public abstract class EntityModel : MonoBehaviour
     public GameObject rightHandCollider;
     public GameObject leftFootCollider;
     public GameObject rightFootCollider;
+    public GameObject weaponCollider;
 
     [SerializeField] private Material redMaterial;
     [SerializeField] private Material material;
@@ -34,6 +35,7 @@ public abstract class EntityModel : MonoBehaviour
     bool isBlocking;
     bool isSpecialAttacking;
     bool isAttackDone;
+    bool isDead;
     int regularAttackHealthThreshold;
     int enhancedAttackHealthThreshold;
     #endregion
@@ -56,6 +58,7 @@ public abstract class EntityModel : MonoBehaviour
     public int RegularAttackHealthThreshold { get => regularAttackHealthThreshold; set => regularAttackHealthThreshold = value; }
     public int EnhancedAttackHealthThreshold { get => enhancedAttackHealthThreshold; set => enhancedAttackHealthThreshold = value; }
     public CharacterAIData CharAIData { get => charAIData; set => charAIData = value; }
+    public bool IsDead { get => isDead; set => isDead = value; }
     #endregion
 
     #region Attack Colliders Activation/Deactivation
@@ -90,6 +93,14 @@ public abstract class EntityModel : MonoBehaviour
     public virtual void TurnOffRightFootCollider()
     {
         rightFootCollider.SetActive(false);
+    }
+    public virtual void TurnOnWeaponCollider()
+    {
+        weaponCollider.SetActive(true);
+    }
+    public virtual void TurnOffWeaponCollider()
+    {
+        weaponCollider.SetActive(false);
     }
     #endregion
     public abstract Rigidbody GetRigidbody();
