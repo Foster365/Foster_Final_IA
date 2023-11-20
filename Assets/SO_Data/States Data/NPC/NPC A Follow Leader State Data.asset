@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
+  m_Name: NPC A Follow Leader State Data
+  m_EditorClassIdentifier: 
+  <State>k__BackingField: {fileID: 11400000, guid: 632f75aa0d04b054a9bae9edf3017dc7, type: 2}
+  <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: ffeb01bcef9927b47ad8f8c8864188ed, type: 2}
+  <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: d40895f8a239aa641b803b5ddc14ae70, type: 2}
