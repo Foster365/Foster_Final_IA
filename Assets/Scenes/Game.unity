@@ -5369,6 +5369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leader_B
       objectReference: {fileID: 0}
+    - target: {fileID: 2066896392038628118, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4230308557749883508, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_Height
       value: 2.3581204
@@ -6974,7 +6978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6936562248820768058, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.47
+      value: 28.6
       objectReference: {fileID: 0}
     - target: {fileID: 6936562248820768058, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
       propertyPath: m_LocalPosition.y

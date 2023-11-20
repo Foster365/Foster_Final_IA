@@ -18,4 +18,4 @@ MonoBehaviour:
   <CooldownToAttack>k__BackingField: 1
   <RotationSpeed>k__BackingField: 5
   <BossName>k__BackingField: Leader_A
-  <FlockRadius>k__BackingField: 5
+  <FlockRadius>k__BackingField: 2
