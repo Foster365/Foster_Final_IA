@@ -8,7 +8,7 @@ public class NPCFollowLeaderState : State
     float timer = 0;
     private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
 
-    public GameObject boss;
+    GameObject boss;
     public override void EnterState(EntityModel model)
     {
         Debug.Log("FSM Follow Leader START");

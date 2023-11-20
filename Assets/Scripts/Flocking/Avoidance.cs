@@ -26,4 +26,9 @@ public class Avoidance : MonoBehaviour, IFlocking
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, personalRange);
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, personalRange * multiplier);
+    }
+
 }

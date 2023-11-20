@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: NPC A Data
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 50
-  <MovementSpeed>k__BackingField: 900
+  <MovementSpeed>k__BackingField: 500
   <AttackRange>k__BackingField: 10
   <CooldownToAttack>k__BackingField: 1
   <RotationSpeed>k__BackingField: 5
   <BossName>k__BackingField: Leader_A
-  <FlockRadius>k__BackingField: 2
+  <FlockRadius>k__BackingField: 5

@@ -75,7 +75,7 @@ public class CharacterModel : EntityModel
         rb.velocity = direction * (Data.MovementSpeed * Time.deltaTime);
 
         transform.forward = Vector3.Lerp(transform.forward, direction, Data.RotationSpeed * Time.deltaTime);
-        View.CharacterMoveAnimation(true);
+        //View.CharacterMoveAnimation(true);
     }
 
     public override void LookDir(Vector3 direction)

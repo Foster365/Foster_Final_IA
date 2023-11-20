@@ -20,11 +20,6 @@ public class FlockingManager : MonoBehaviour
         _colliders = new Collider[maxBoids];
     }
 
-    private void Update()
-    {
-        //RunFlocking();
-    }
-
     public void RunFlocking()
     {
         _boids.Clear();
