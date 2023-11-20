@@ -39,9 +39,20 @@ public abstract class EntityModel : MonoBehaviour
     int regularAttackHealthThreshold;
     int enhancedAttackHealthThreshold;
     #endregion
+    #region NPC FSM Variables
+    bool isFollowLeader;
+    bool isSeek;
+    bool isAttack;
+    bool isFlee;
+    #endregion
+
 
     #region Encapsulated variables
     public bool IsIdle { get => isIdle; set => isIdle = value; }
+    public bool IsSeek { get => isSeek; set => isSeek = value; }
+    public bool IsAttack { get => isAttack; set => isAttack = value; }
+    public bool IsFlee { get => isFlee; set => isFlee = value; }
+    public bool IsFollowLeader { get => isFollowLeader; set => isFollowLeader = value; }
     public bool IsPatrolling { get => isPatrolling; set => isPatrolling = value; }
     public bool IsSeeingTarget { get => isSeeingTarget; set => isSeeingTarget = value; }
     public bool IsChasing { get => isChasing; set => isChasing = value; }

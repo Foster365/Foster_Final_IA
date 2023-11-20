@@ -10,5 +10,7 @@ public class EntityData : ScriptableObject
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public float CooldownToAttack { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; }
+    [field: SerializeField] public string BossName { get; private set; }
+    [field: SerializeField] public float FlockRadius { get; private set; }
 
 }
