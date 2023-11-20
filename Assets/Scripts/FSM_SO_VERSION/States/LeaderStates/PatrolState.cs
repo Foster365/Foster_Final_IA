@@ -67,7 +67,7 @@ public class PatrolState : State
                 {
                     pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
                     aiController.AStarPathFinding.FindPath(
-                        pathfindingLastPosition, GenerateRandomPosition(model) + modelRef.transform.position *-1);
+                        pathfindingLastPosition, GenerateRandomPosition(model) - modelRef.transform.position);
                     Patrol(_movementDatas[model].model, finalPath);
                 }
                 //Debug.Log("Patrol dist: " + Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position));

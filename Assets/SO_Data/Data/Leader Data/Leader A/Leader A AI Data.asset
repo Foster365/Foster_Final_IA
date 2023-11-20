@@ -33,7 +33,7 @@ MonoBehaviour:
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
-  <RandomPositionThreshold>k__BackingField: 20
+  <RandomPositionThreshold>k__BackingField: 50
   <ObstacleLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
