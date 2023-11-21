@@ -27,12 +27,23 @@ public class NPCFollowLeaderState : State
         Debug.Log("FSM Follow Leader EXECUTE");
         _entitiesData[model].LookDir(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
         _entitiesData[model].Move(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
-
+        Debug.Log("ayuda me estan matando" + model.gameObject.GetComponent<CharacterController>().CharAIController.IsTargetInSight);
+        Debug.Log("ayuda me estan matando target" + model.gameObject.GetComponent<CharacterController>().CharAIController.Target);
+        CheckTarget(_entitiesData[model]);
     }
 
     public override void ExitState(EntityModel model)
     {
         Debug.Log("FSM Follow Leader EXIT");
         _entitiesData.Remove(model);
+    }
+
+    void CheckTarget(EntityModel model)
+    {
+        if(model.gameObject.GetComponent<CharacterController>().CharAIController.Target != null)
+        {
+            model.IsFollowLeader = false;
+            model.IsSeek = true;
+        }
     }
 }

@@ -15,8 +15,6 @@ public class SeekState : State
     int _nextWaypoint, waypointIndexModifier;
     //
 
-    float patrolStateTimer = 0, maxTimer;
-    float attackMaxCooldown = 1.5f, attackCooldown;
     private Dictionary<EntityModel, DataMovementState> _entitiesData = new Dictionary<EntityModel, DataMovementState>();
     List<Node> finalPath = new List<Node>();
     CharacterController charController;
@@ -25,7 +23,6 @@ public class SeekState : State
     {
         public CharacterModel model;
         public CharacterController controller;
-        public int patrolCount;
         public bool travelBackwards;
         public List<Node> nodesToTarget;
         public Grid grid;
@@ -34,9 +31,7 @@ public class SeekState : State
         {
             model = (CharacterModel)entityModel;
             controller = model.gameObject.GetComponent<CharacterController>();
-            patrolCount = 0;
             grid = model.MapGrid;
-            travelBackwards = false;
             nodesToTarget = new List<Node>();
         }
     }
@@ -114,10 +109,5 @@ public class SeekState : State
             model.Move(dir.normalized);
         }
 
-    }
-
-    void SeekBehaviour(EntityModel model)
-    {
-       
     }
 }

@@ -31,8 +31,8 @@ public class AttackCollider : MonoBehaviour
         if ((targetLayerMask.value & (1 << other.transform.gameObject.layer)) > 0)
         {
             Debug.Log("Collision with: " + other.gameObject.name);
-            other.gameObject.GetComponent<CharacterModel>().HealthController.TakeDamage(damage);
-            Debug.Log(other.name + "Health is " + other.gameObject.GetComponent<CharacterModel>().HealthController.CurrentHealth);
+            //other.gameObject.GetComponent<CharacterModel>().HealthController.TakeDamage(damage);
+            //Debug.Log(other.name + "Health is " + other.gameObject.GetComponent<CharacterModel>().HealthController.CurrentHealth);
             //isAutoDestroy = true;
         }
     }
