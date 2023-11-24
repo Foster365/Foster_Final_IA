@@ -34,8 +34,8 @@ MonoBehaviour:
   <ObstacleLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <SightRange>k__BackingField: 30
-  <TotalSightDegrees>k__BackingField: 180
+  <SightRange>k__BackingField: 60
+  <TotalSightDegrees>k__BackingField: 360
   <FleeThresholdTrigger>k__BackingField: 0
   <ObstacleAvoidanceRadius>k__BackingField: 0
   <ObstacleAvoidanceMaxObstacles>k__BackingField: 0

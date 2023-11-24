@@ -6,31 +6,37 @@ using _Main.Scripts.FSM_SO_VERSION;
 public class NPCFleeState : State
 {
     float timer = 0;
-    private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
+    private Dictionary<EntityModel,DataFleeState> _entitiesData = new Dictionary<EntityModel, DataFleeState>();
+    ISteeringBehaviour _steering;
+    Flee flee;
+
+    private class DataFleeState
+    {
+        public CharacterModel model;
+        public CharacterController controller;
+
+        public DataFleeState(EntityModel entityModel)
+        {
+            model = (CharacterModel)entityModel;
+            controller = model.gameObject.GetComponent<CharacterController>();
+
+        }
+    }
+
     public override void EnterState(EntityModel model)
     {
         Debug.Log("FSM NPC Flee START");
-        _entitiesData.Add(model, model as CharacterModel);
+        _entitiesData.Add(model, new DataFleeState(model));
         //charModel.View.PlayWalkAnimation(false);
-        _entitiesData[model].GetRigidbody().velocity = Vector3.zero;
+        _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
+        flee = new Flee(_entitiesData[model].model.transform, _entitiesData[model].controller.CharAIController.Target);
     }
 
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM NPC Flee EXECUTE");
-
-        timer += Time.deltaTime;
-
-        if (timer <= _entitiesData[model].CharAIData.IdleTimer)
-        {
-            Debug.Log("Flee behaviour");
-            //if(_entitiesData[model].GetComponent<CharacterController>().CharAIController.LineOfSight())_entitiesData[model].IsChasing = true;
-        }
-        else
-        {
-            timer = 0;
-            _entitiesData[model].IsFlee = true;
-        }
+        _entitiesData[model].model.LookDir(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir() + flee.GetDir());
+        _entitiesData[model].model.Move(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir() + flee.GetDir());
     }
 
     public override void ExitState(EntityModel model)

@@ -25,6 +25,7 @@ public class NPCFollowLeaderState : State
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM Follow Leader EXECUTE");
+        _entitiesData[model].gameObject.GetComponent<CharacterController>().CharAIController.LineOfSight();
         _entitiesData[model].LookDir(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
         _entitiesData[model].Move(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
         Debug.Log("ayuda me estan matando" + model.gameObject.GetComponent<CharacterController>().CharAIController.IsTargetInSight);

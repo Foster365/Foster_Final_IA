@@ -17,6 +17,7 @@ public class NPCSeekState : State
     private Dictionary<EntityModel, DataMovementState> _entitiesData = new Dictionary<EntityModel, DataMovementState>();
     List<Node> finalPath = new List<Node>();
     CharacterController charController;
+    Seek seek;
 
     private class DataMovementState
     {
@@ -43,6 +44,7 @@ public class NPCSeekState : State
         finalPath = _entitiesData[model].controller.CharAIController.AStarPathFinding.finalPath;
         _nextWaypoint = 0;
         waypointIndexModifier = 1;
+        seek = new Seek(_entitiesData[model].model.transform, _entitiesData[model].controller.CharAIController.Target);
     }
 
     public override void ExecuteState(EntityModel model)
@@ -59,7 +61,7 @@ public class NPCSeekState : State
             {
                 Debug.Log("Pasa a attack");
                 _entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //_entitiesData[model].model.IsAttacking = true;
+                _entitiesData[model].model.IsAttacking = true;
                 //_entitiesData[model].model.View.CharacterMoveAnimation(false);
             }
 
@@ -104,7 +106,7 @@ public class NPCSeekState : State
                 _nextWaypoint += waypointIndexModifier;
                 readyToMove = true;
             }
-            model.Move(dir.normalized);
+            model.Move(dir.normalized + _entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir() + seek.GetDir());
         }
 
     }
