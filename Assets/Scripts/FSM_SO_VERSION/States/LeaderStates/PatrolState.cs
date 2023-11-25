@@ -7,7 +7,7 @@ public class PatrolState : State
 {
 
     //Waypoints
-    bool readyToMove = false;
+    bool availableToRegeneratePath = false;
     int _nextWaypoint, waypointIndexModifier;
     //
 
@@ -16,6 +16,7 @@ public class PatrolState : State
     //
 
     float patrolStateTimer = 0, patrolStateMaxTimer;
+    float pathfindingWPIndexModifier = 0;
     private Dictionary<EntityModel, DataMovementState> _movementDatas = new Dictionary<EntityModel, DataMovementState>();
     CharacterModel modelRef;
 
@@ -43,39 +44,26 @@ public class PatrolState : State
         modelRef = _movementDatas[model].model;
         patrolStateMaxTimer = modelRef.CharAIData.PatrolTimer;
         //_movementDatas[model].model.View.PlayWalkAnimation(false);
-        var pos = GenerateRandomPosition(_movementDatas[model].model) + modelRef.transform.position;
-            pathfindingLastPosition = Vector3.zero;
-            _nextWaypoint = 0;
-            waypointIndexModifier = 1;
-            _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
-               modelRef.transform.position, pos);
+        var pos = GenerateRandomPosition(_movementDatas[model].model) + (modelRef.transform.position * -1);
+        pathfindingLastPosition = Vector3.zero;
+        _nextWaypoint = 0;
+        waypointIndexModifier = 1;
+        _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
+           modelRef.transform.position, pos);
     }
 
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM Leader Patrol EXECUTE " + _movementDatas[model].model.gameObject.name);
+
         patrolStateTimer += Time.deltaTime;
         var aiController = modelRef.GetComponent<CharacterController>().CharAIController;
         var finalPath = aiController.AStarPathFinding.finalPath;
-        if(patrolStateTimer < patrolStateMaxTimer)
-        {
-            aiController.LineOfSight();
-            if (finalPath.Count > 0)
-            {
-                Patrol(_movementDatas[model].model, finalPath); 
-                if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position) < 1)
-                {
-                    pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
-                    aiController.AStarPathFinding.FindPath(
-                        pathfindingLastPosition, GenerateRandomPosition(model) - modelRef.transform.position);
-                    Patrol(_movementDatas[model].model, finalPath);
-                }
-                //Debug.Log("Patrol dist: " + Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position));
-                //HandlePathRegeneration(_movementDatas[model].model, finalPath);
-            }
-            else if (aiController.IsTargetInSight) modelRef.IsChasing = true;
-        }
-        else
+
+        Patrol(_movementDatas[model].model, finalPath);
+        CheckPathRegeneration(aiController, _movementDatas[model].model);
+        
+        if (patrolStateTimer >= patrolStateMaxTimer)
         {
             modelRef.IsPatrolling = false;
             patrolStateTimer = 0;
@@ -87,12 +75,109 @@ public class PatrolState : State
         //Debug.Log("FSM Leader Patrol EXIT");
         _movementDatas.Remove(model);
     }
-
+    void CheckPathRegeneration(CharacterAIController _aiController, EntityModel _model)
+    {
+        if (availableToRegeneratePath)
+        {
+            _aiController.AStarPathFinding.FindPath(
+                pathfindingLastPosition, GenerateRandomPosition(_model) + (modelRef.transform.position * -1));
+            availableToRegeneratePath = false;
+        }
+    }
     Vector3 GenerateRandomPosition(EntityModel model)
     {
         return new Vector3(Random.Range(0, model.CharAIData.RandomPositionThreshold), 0, Random.Range(0, model.CharAIData.RandomPositionThreshold)) ;
     }
 
+    public void Patrol(CharacterModel model, List<Node> _finalPath)
+    {
+        Vector3 _patrollingLastPos = model.transform.position;
+        List<Node> _waypoints = new List<Node>();
+        for (int i = 0; i < _finalPath.Count; i++)
+        {
+            if (Vector3.Distance(_finalPath[i].worldPosition, _patrollingLastPos) > .5f)
+            {
+                _patrollingLastPos = _finalPath[i].worldPosition;
+                _waypoints = _finalPath;
+            }
+            else return;
+            Run(model, _waypoints);
+        }
+    }
+
+    public void Run(CharacterModel model, List<Node> _waypoints)
+    {
+        //Debug.Log("next wp " + _nextWaypoint + "nodes count " + (_waypoints.Count - 1));
+        if (_nextWaypoint <= _waypoints.Count - 1)
+        {
+            pathfindingLastPosition = modelRef.GetComponent<CharacterController>().CharAIController.AStarPathFinding.finalPath[modelRef.GetComponent<CharacterController>().CharAIController.AStarPathFinding.finalPath.Count - 1].worldPosition;
+
+            var waypointPosition = _waypoints[_nextWaypoint].worldPosition;
+            waypointPosition.y = _movementDatas[model].model.transform.position.y;
+            Vector3 dir = waypointPosition - _movementDatas[model].model.transform.position;
+            if (dir.magnitude < 1)
+            {
+                if (_nextWaypoint + waypointIndexModifier >= _waypoints.Count || _nextWaypoint + waypointIndexModifier < 0)
+                {
+                    waypointIndexModifier *= 1;
+                }
+                _nextWaypoint += waypointIndexModifier;
+            }
+            model.Move(dir.normalized + _movementDatas[model].model.gameObject.GetComponent<CharacterController>().CharAIController.SbObstacleAvoidance.GetDir());
+        }
+        else availableToRegeneratePath = true;
+    }
+
+    #region old execute method
+
+    //public override void ExecuteState(EntityModel model)
+    //{
+    //Debug.Log("FSM Leader Patrol EXECUTE " + _movementDatas[model].model.gameObject.name);
+    //patrolStateTimer += Time.deltaTime;
+    //var aiController = modelRef.GetComponent<CharacterController>().CharAIController;
+    //var finalPath = aiController.AStarPathFinding.finalPath;
+    //Debug.Log("Wp pathfinding modifier " + pathfindingWPIndexModifier + "final path count " + finalPath.Count);
+    //Patrol(_movementDatas[model].model, finalPath);
+    //if (pathfindingWPIndexModifier > finalPath.Count)
+    //{
+    //    pathfindingWPIndexModifier = 0;
+    //    aiController.AStarPathFinding.FindPath(
+    //        pathfindingLastPosition, GenerateRandomPosition(model) - modelRef.transform.position);
+    //    Patrol(_movementDatas[model].model, finalPath);
+    //}
+    //if (patrolStateTimer < patrolStateMaxTimer)
+    //{
+    //    Patrol(_movementDatas[model].model, finalPath);
+
+    //    //modelRef.IsPatrolling = false;
+    //    //patrolStateTimer = 0;
+    //}
+    //else
+    //{ //aiController.LineOfSight();
+    //    if (finalPath.Count > 0)
+    //    {
+    //        pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
+    //        Patrol(_movementDatas[model].model, finalPath);
+    //        //if (pathfindingWPIndexModifier > finalPath.Count)
+    //        //{
+    //        //    pathfindingWPIndexModifier = 0;
+    //        //    aiController.AStarPathFinding.FindPath(
+    //        //        pathfindingLastPosition, GenerateRandomPosition(model) - modelRef.transform.position);
+    //        //    Patrol(_movementDatas[model].model, finalPath);
+    //        //}
+    //        //if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position) < 1)
+    //        //{
+    //        //    pathfindingLastPosition = finalPath[finalPath.Count - 1].worldPosition;
+    //        //    aiController.AStarPathFinding.FindPath(
+    //        //        pathfindingLastPosition, GenerateRandomPosition(model) - modelRef.transform.position);
+    //        //    Patrol(_movementDatas[model].model, finalPath);
+    //        //}
+    //        //Debug.Log("Patrol dist: " + Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, _movementDatas[model].model.transform.position));
+    //        //HandlePathRegeneration(_movementDatas[model].model, finalPath);
+    //    }
+    //    //else if (aiController.IsTargetInSight) modelRef.IsChasing = true;
+    //}
+    //}
     void HandlePathRegeneration(CharacterModel model, List<Node> finalPath)
     {
         if (Vector3.Distance(finalPath[finalPath.Count - 1].worldPosition, model.transform.position) <= 1)
@@ -104,39 +189,5 @@ public class PatrolState : State
         }
     }
 
-    public void Patrol(CharacterModel model, List<Node> _finalPath)
-    {
-        Vector3 _patrollingLastPos = model.transform.position;
-        List<Node> _waypoints = new List<Node>();
-        for (int i = 0; i < _finalPath.Count; i++)
-        {
-            if (Vector3.Distance(_finalPath[i].worldPosition, _patrollingLastPos) > 1)
-            {
-                _patrollingLastPos = _finalPath[i].worldPosition;
-                _waypoints = _finalPath;
-            }
-            else return;
-            Run(model, _waypoints);
-        }
-    }
-    public void Run(CharacterModel model, List<Node> _waypoints)
-    {
-        //Debug.Log("next wp " + _nextWaypoint + "nodes count " + (_waypoints.Count - 1));
-        if (_nextWaypoint <= _waypoints.Count-1)
-        {
-            var waypointPosition = _waypoints[_nextWaypoint].worldPosition;
-            waypointPosition.y = _movementDatas[model].model.transform.position.y;
-            Vector3 dir = waypointPosition - _movementDatas[model].model.transform.position;
-            if (dir.magnitude < 1)
-            {
-                if (_nextWaypoint + waypointIndexModifier >= _waypoints.Count || _nextWaypoint + waypointIndexModifier < 0)
-                {
-                    waypointIndexModifier *= 1;
-                }
-                _nextWaypoint += waypointIndexModifier;
-                readyToMove = true;
-            }
-            model.Move(dir.normalized);
-        }
-    }
+    #endregion
 }

@@ -6,13 +6,28 @@ using _Main.Scripts.FSM_SO_VERSION;
 public class NPCAttackState : State
 {
     float timer = 0;
-    private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
+    private Dictionary<EntityModel, DataAttackState> _entitiesData = new Dictionary<EntityModel, DataAttackState>();
+    private class DataAttackState
+    {
+        public CharacterModel model;
+        public CharacterController controller;
+        public List<Node> nodesToTarget;
+        public Grid grid;
+
+        public DataAttackState(EntityModel entityModel)
+        {
+            model = (CharacterModel)entityModel;
+            controller = model.gameObject.GetComponent<CharacterController>();
+            grid = model.MapGrid;
+            nodesToTarget = new List<Node>();
+        }
+    }
+
     public override void EnterState(EntityModel model)
     {
-        Debug.Log("FSM NPC Attack START");
-        _entitiesData.Add(model, model as CharacterModel);
+        _entitiesData.Add(model, new DataAttackState(model));
         //charModel.View.PlayWalkAnimation(false);
-        _entitiesData[model].GetRigidbody().velocity = Vector3.zero;
+        _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
     }
 
     public override void ExecuteState(EntityModel model)
@@ -21,21 +36,19 @@ public class NPCAttackState : State
 
         timer += Time.deltaTime;
 
-        if (timer <= _entitiesData[model].CharAIData.IdleTimer)
+        if (timer <= _entitiesData[model].model.CharAIData.IdleTimer)
         {
-            Debug.Log("Attack behaviour");
-            //if(_entitiesData[model].GetComponent<CharacterController>().CharAIController.LineOfSight())_entitiesData[model].IsChasing = true;
+            //if(_entitiesData[model].model.GetComponent<CharacterController>().CharAIController.LineOfSight())_entitiesData[model].model.IsChasing = true;
         }
         else
         {
             timer = 0;
-            _entitiesData[model].IsAttack = true;
+            //_entitiesData[model].model.IsAttack = true;
         }
     }
 
     public override void ExitState(EntityModel model)
     {
-        Debug.Log("FSM NPC Attack EXIT");
         _entitiesData.Remove(model);
     }
 }

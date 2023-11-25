@@ -35,4 +35,11 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        //Line of sight visualization
+        if(model != null)
+            Gizmos.DrawWireSphere(transform.position, model.CharAIData.SightRange);
+    }
+
 }

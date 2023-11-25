@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
-  m_Name: NPC A Follow Leader State Data
+  m_Name: NPC Follow Leader State Data
   m_EditorClassIdentifier: 
   <State>k__BackingField: {fileID: 11400000, guid: 632f75aa0d04b054a9bae9edf3017dc7, type: 2}
   <StateConditions>k__BackingField:
+  - {fileID: 11400000, guid: ff63f8ea81985624a9ec9c78c0020e00, type: 2}
   - {fileID: 11400000, guid: ffeb01bcef9927b47ad8f8c8864188ed, type: 2}
   <ExitStates>k__BackingField:
+  - {fileID: 11400000, guid: 561c9d580761b114a93315f802e221fb, type: 2}
   - {fileID: 11400000, guid: d40895f8a239aa641b803b5ddc14ae70, type: 2}

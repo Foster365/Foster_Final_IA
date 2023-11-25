@@ -35,14 +35,10 @@ public class IdleState : State
 
         idleStateTimer += Time.deltaTime;
 
-        if(idleStateTimer < _entitiesData[model].model.CharAIData.IdleTimer)
-        {
-            //Debug.Log("Idle behaviour");
-            _entitiesData[model].model.View.CharacterMoveAnimation(false);
-            //if(_entitiesData[model].model.GetComponent<CharacterController>().CharAIController.LineOfSight())_entitiesData[model].model.IsChasing = true;
-            CheckTransitionToDeathState(_entitiesData[model].model);
-        }
-        else
+        _entitiesData[model].model.View.CharacterMoveAnimation(false);
+        CheckTransitionToDeathState(_entitiesData[model].model);
+        
+        if (idleStateTimer > _entitiesData[model].model.CharAIData.IdleTimer)
         {
             _entitiesData[model].model.IsPatrolling = true;
             idleStateTimer = 0;

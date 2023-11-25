@@ -36,7 +36,6 @@ public class NPCSeekState : State
 
     public override void EnterState(EntityModel model)
     {
-        Debug.Log("FSM NPC Seek ENTER");
         if (!_entitiesData.ContainsKey(model)) _entitiesData.Add(model, new DataMovementState(model));
         if (_entitiesData[model].controller.CharAIController.Target != null)
             _entitiesData[model].controller.CharAIController.AStarPathFinding.FindPath(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
@@ -68,7 +67,6 @@ public class NPCSeekState : State
 
     public override void ExitState(EntityModel model)
     {
-        //Debug.Log("FSM Leader Seek EXIT");
         _entitiesData.Remove(model);
     }
     public void Seek(CharacterModel model, List<Node> _finalPath)
@@ -104,7 +102,7 @@ public class NPCSeekState : State
                 _nextWaypoint += waypointIndexModifier;
                 readyToMove = true;
             }
-            model.Move(dir.normalized);
+            model.Move(dir.normalized + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
         }
 
     }

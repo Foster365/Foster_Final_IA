@@ -6,35 +6,57 @@ using _Main.Scripts.FSM_SO_VERSION;
 public class NPCFollowLeaderState : State
 {
     float timer = 0;
-    private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
+    private Dictionary<EntityModel, DataFollowLeaderState> _entitiesData = new Dictionary<EntityModel, DataFollowLeaderState>();
+    Flee npcFlee;
 
     GameObject boss;
+    private class DataFollowLeaderState
+    {
+        public CharacterModel model;
+        public CharacterController controller;
+        public GameObject boss;
+        public List<Node> nodesToTarget;
+        public Grid grid;
+
+        public DataFollowLeaderState(EntityModel entityModel)
+        {
+            model = (CharacterModel)entityModel;
+            controller = model.gameObject.GetComponent<CharacterController>();
+            boss = GameObject.Find(model.Data.BossName);
+            grid = model.MapGrid;
+            nodesToTarget = new List<Node>();
+        }
+    }
+
     public override void EnterState(EntityModel model)
     {
-        Debug.Log("FSM Follow Leader START");
-        _entitiesData.Add(model, model as CharacterModel);
+        _entitiesData.Add(model, new DataFollowLeaderState(model));
         //charModel.View.PlayWalkAnimation(false);
-        _entitiesData[model].GetRigidbody().velocity = Vector3.zero;
-
-        if (boss == null)
-        {
-            boss = GameObject.Find(_entitiesData[model].Data.BossName);
-        }
+        _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
     }
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM Follow Leader EXECUTE");
-        _entitiesData[model].LookDir(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
-        _entitiesData[model].Move(_entitiesData[model].GetComponent<FlockingManager>().RunFlockingDir());
-        Debug.Log("ayuda me estan matando" + model.gameObject.GetComponent<CharacterController>().CharAIController.IsTargetInSight);
-        Debug.Log("ayuda me estan matando target" + model.gameObject.GetComponent<CharacterController>().CharAIController.Target);
-        CheckTarget(_entitiesData[model]);
+        Debug.Log("FSM NPC FOLLOW LEADER EXECUTE");
+
+        _entitiesData[model].model.gameObject.GetComponent<CharacterController>().CharAIController.LineOfSight();
+
+        _entitiesData[model].model.LookDir(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
+        _entitiesData[model].model.Move(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
+
+        //CheckTarget(_entitiesData[model]);
+        if (model.gameObject.GetComponent<CharacterController>().CharAIController.Target != null)
+        {
+            model.IsFollowLeader = false;
+            model.IsSeek = true;
+        }
+        else if (_entitiesData[model].boss.gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero) _entitiesData[model].model.IsFollowLeader = false;
+        //else if (_entitiesData[model].gameObject.GetComponent<CharacterController>().CharAIController.IsTargetInSight)
+        //    _entitiesData[model].IsSeek = true;
     }
 
     public override void ExitState(EntityModel model)
     {
-        Debug.Log("FSM Follow Leader EXIT");
         _entitiesData.Remove(model);
     }
 

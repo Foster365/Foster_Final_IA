@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58d626f229597984d995e88da515ed1a, type: 3}
-  m_Name: NPC A Seek State Data
+  m_Name: NPC Search State Data
   m_EditorClassIdentifier: 
-  <State>k__BackingField: {fileID: 11400000, guid: edae90dfc8f01fe49952a8f1c23733a2, type: 2}
+  <State>k__BackingField: {fileID: 11400000, guid: fed65e81fe9d3644399f1bdc68c0c392, type: 2}
   <StateConditions>k__BackingField:
-  - {fileID: 11400000, guid: ce8858ef64c730940b799348e1676216, type: 2}
-  - {fileID: 11400000, guid: 33c9f6381f7581e4dae3cb5a1cc6a85a, type: 2}
+  - {fileID: 11400000, guid: 3e1075cf8c088474ea205314ec46c0c9, type: 2}
   <ExitStates>k__BackingField:
-  - {fileID: 11400000, guid: 2114d9097483fdf4f9bc8b18a023fd4b, type: 2}
-  - {fileID: 11400000, guid: 738902c1839d1db4b972eecc5fea6bd4, type: 2}
+  - {fileID: 11400000, guid: d40895f8a239aa641b803b5ddc14ae70, type: 2}

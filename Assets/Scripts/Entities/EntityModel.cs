@@ -38,6 +38,7 @@ public abstract class EntityModel : MonoBehaviour
     bool isDead;
     int regularAttackHealthThreshold;
     int enhancedAttackHealthThreshold;
+    bool isBattleBegun;
     #endregion
     #region NPC FSM Variables
     bool isFollowLeader;
@@ -70,6 +71,7 @@ public abstract class EntityModel : MonoBehaviour
     public int EnhancedAttackHealthThreshold { get => enhancedAttackHealthThreshold; set => enhancedAttackHealthThreshold = value; }
     public CharacterAIData CharAIData { get => charAIData; set => charAIData = value; }
     public bool IsDead { get => isDead; set => isDead = value; }
+    public bool IsBattleBegun { get => isBattleBegun; set => isBattleBegun = value; }
     #endregion
 
     #region Attack Colliders Activation/Deactivation

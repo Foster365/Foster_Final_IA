@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1748d34082d22074d9cb415b34de066d, type: 3}
-  m_Name: NPC A AI Data
+  m_Name: NPC B AI Data
   m_EditorClassIdentifier: 
   <FsmStates>k__BackingField:
   - {fileID: 11400000, guid: 561c9d580761b114a93315f802e221fb, type: 2}
   - {fileID: 11400000, guid: d40895f8a239aa641b803b5ddc14ae70, type: 2}
   - {fileID: 11400000, guid: 2114d9097483fdf4f9bc8b18a023fd4b, type: 2}
-  <IdleTimer>k__BackingField: 1.5
+  <IdleTimer>k__BackingField: 1
   <PatrolTimer>k__BackingField: 0
-  <SearchTimer>k__BackingField: 3
+  <SearchTimer>k__BackingField: 5
   <BlockStateTimer>k__BackingField: 0
   <RegularAttackStateTimer>k__BackingField: 0
   <EnhancedAttackStateTimer>k__BackingField: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   <TimeForSearchPlayer>k__BackingField: 0
   <TargetLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   <RandomPositionThreshold>k__BackingField: 5
   <ObstacleLayerMask>k__BackingField:
     serializedVersion: 2
@@ -43,4 +43,4 @@ MonoBehaviour:
   <ObstacleAvoidanceViewAngle>k__BackingField: 90
   <ObstacleAvoidanceLayerMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 328
+    m_Bits: 648

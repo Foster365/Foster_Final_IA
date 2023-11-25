@@ -7,19 +7,27 @@ using _Main.Scripts.FSM_SO_VERSION;
 public class NPCIdleState : State
 {
     float timer = 0;
-    private Dictionary<EntityModel, CharacterModel> _entitiesData = new Dictionary<EntityModel, CharacterModel>();
+    private Dictionary<EntityModel, DataIdleState> _entitiesData = new Dictionary<EntityModel, DataIdleState>();
     GameObject boss;
+    private class DataIdleState
+    {
+        public CharacterModel model;
+        public CharacterController controller;
+        public GameObject boss;
+
+        public DataIdleState(EntityModel entityModel)
+        {
+            model = (CharacterModel)entityModel;
+            controller = model.gameObject.GetComponent<CharacterController>();
+            boss = GameObject.Find(model.Data.BossName);
+        }
+    }
+
     public override void EnterState(EntityModel model)
     {
-        Debug.Log("FSM NPC IDLE START");
-        _entitiesData.Add(model, model as CharacterModel);
+        _entitiesData.Add(model, new DataIdleState(model));
         //charModel.View.PlayWalkAnimation(false);
-        _entitiesData[model].GetRigidbody().velocity = Vector3.zero;
-
-        if(boss == null)
-        {
-            boss = GameObject.Find(_entitiesData[model].Data.BossName);
-        }
+        _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
     }
 
     public override void ExecuteState(EntityModel model)
@@ -27,17 +35,16 @@ public class NPCIdleState : State
         Debug.Log("FSM NPC IDLE EXECUTE");
 
         timer += Time.deltaTime;
-
-        if (boss.gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
+        if (_entitiesData[model].boss.gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA AMO A MI ESPOSA");
-            _entitiesData[model].IsFollowLeader = true;
+            _entitiesData[model].model.IsFollowLeader = true;
         }
+        else if (_entitiesData[model].boss.gameObject.GetComponent<CharacterModel>().IsBattleBegun)
+            _entitiesData[model].model.IsSearching = true;
     }
 
     public override void ExitState(EntityModel model)
     {
-        Debug.Log("FSM NPC IDLE EXIT");
         _entitiesData.Remove(model);
     }
 }

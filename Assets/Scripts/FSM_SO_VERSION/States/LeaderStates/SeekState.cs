@@ -42,6 +42,7 @@ public class SeekState : State
         if (!_entitiesData.ContainsKey(model)) _entitiesData.Add(model, new DataMovementState(model));
         if(_entitiesData[model].controller.CharAIController.Target != null)
             _entitiesData[model].controller.CharAIController.AStarPathFinding.FindPath(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+        _entitiesData[model].model.IsBattleBegun = true;
         finalPath = _entitiesData[model].controller.CharAIController.AStarPathFinding.finalPath;
         _nextWaypoint = 0;
         waypointIndexModifier = 1;

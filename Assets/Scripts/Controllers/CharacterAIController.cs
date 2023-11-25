@@ -41,6 +41,7 @@ public class CharacterAIController
     public bool IsTargetInSight { get => isTargetInSight; set => isTargetInSight = value; }
     public Transform Target { get => target; set => target = value; }
     public EntityView View { get => view; set => view = value; }
+    public ObstacleAvoidance SbObstacleAvoidance { get => sbObstacleAvoidance; set => sbObstacleAvoidance = value; }
 
     public CharacterAIController(CharacterModel model, StateData fsmInitialState)
     {
@@ -298,6 +299,7 @@ public class CharacterAIController
 
     #endregion
     #endregion
+
 
 
 }

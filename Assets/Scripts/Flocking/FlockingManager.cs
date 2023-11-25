@@ -51,6 +51,7 @@ public class FlockingManager : MonoBehaviour
     {
         _boids.Clear();
 
+        var obsAvoidance = _self.gameObject.GetComponent<CharacterController>().CharAIController.SbObstacleAvoidance;
         int count = Physics.OverlapSphereNonAlloc(_self.transform.position, _self.Data.FlockRadius, _colliders, maskBoids);
 
         for (int i = 0; i < count; i++)
@@ -69,6 +70,6 @@ public class FlockingManager : MonoBehaviour
             var currFlock = _flockings[i];
             dir += currFlock.GetDir(_boids, _self);
         }
-        return dir.normalized;
+        return dir.normalized + obsAvoidance.GetDir();
     }
 }

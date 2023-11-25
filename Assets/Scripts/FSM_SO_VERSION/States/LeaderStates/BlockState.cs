@@ -40,10 +40,11 @@ public class BlockState : State
         }
         else
         {
-            blockStateTimer = 0;
+                           blockStateTimer = 0;
             _entitiesData[model].model.HealthController.CanReceiveDamage = true;
+            _entitiesData[model].model.IsBlocking = false;
             _entitiesData[model].model.IsAttacking = true;
-            _entitiesData[model].model.IsAttackDone = false;
+            //_entitiesData[model].model.IsAttackDone = false;
         }
 
     }
