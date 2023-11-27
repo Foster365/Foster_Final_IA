@@ -19,6 +19,7 @@ public class CharacterModel : EntityModel
     //LeaderAIController charAIController;
     //
 
+    public Vector3 dirToMove = Vector3.zero;
     Transform target;
     #region Encapsulated Variables
 
@@ -106,6 +107,12 @@ public class CharacterModel : EntityModel
     public EntityModel GetTarget()
     {
         return null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, dirToMove);
     }
 
 }

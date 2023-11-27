@@ -27,25 +27,26 @@ public class NPCFleeState : State
     public override void EnterState(EntityModel model)
     {
         _entitiesData.Add(model, new DataFleeState(model));
+        _entitiesData[model].model.View.CharacterMoveAnimation(true);
         //charModel.View.PlayWalkAnimation(false);
-        _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
+        //_entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
     }
 
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM NPC Flee EXECUTE");
 
-        timer += Time.deltaTime;
+        _entitiesData[model].model.LookDir(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
+        _entitiesData[model].model.Move(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
 
-        if (timer <= _entitiesData[model].model.CharAIData.IdleTimer)
+        _entitiesData[model].model.HealthController.Heal(_entitiesData[model].model.Data.HealthRegenerationAmount); //Regenerate while fleeing from target
+
+        if(timer >= _entitiesData[model].model.CharAIData.FleeStateTimer)
         {
-            //if(_entitiesData[model].model.GetComponent<CharacterController>().CharAIController.LineOfSight())_entitiesData[model].model.IsChasing = true;
+            _entitiesData[model].model.IsFlee = false;
+            _entitiesData[model].model.IsFollowLeader = true;
         }
-        else
-        {
-            timer = 0;
-            _entitiesData[model].model.IsFlee = true;
-        }
+
     }
 
     public override void ExitState(EntityModel model)

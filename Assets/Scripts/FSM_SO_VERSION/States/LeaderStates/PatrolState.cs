@@ -50,6 +50,7 @@ public class PatrolState : State
         waypointIndexModifier = 1;
         _movementDatas[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
            modelRef.transform.position, pos);
+        _movementDatas[model].model.View.CharacterMoveAnimation(true);
     }
 
     public override void ExecuteState(EntityModel model)
@@ -67,6 +68,7 @@ public class PatrolState : State
         {
             modelRef.IsPatrolling = false;
             patrolStateTimer = 0;
+            _movementDatas[model].model.View.CharacterMoveAnimation(false);
         }
     }
 

@@ -2210,8 +2210,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandCollider: {fileID: 0}
   rightHandCollider: {fileID: 0}
-  leftFootCollider: {fileID: 0}
-  rightFootCollider: {fileID: 0}
   weaponCollider: {fileID: 0}
   redMaterial: {fileID: 0}
   material: {fileID: 0}
@@ -2222,6 +2220,7 @@ MonoBehaviour:
   attack2Chance: 0
   attack3Chance: 0
   attack4Chance: 0
+  dirToMove: {x: 0, y: 0, z: 0}
 --- !u!114 &572511134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2942,7 +2941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1660479392756500, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4397688981244916, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_RootOrder
@@ -3036,10 +3035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842a0d99a7f15df44a115c1096ae3bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWorldSize: {x: 30, y: 50}
+  gridWorldSize: {x: 10, y: 20}
   prefab: {fileID: 2066896392038628118, guid: dc4d5144d91829745b4fbb5b231596b7, type: 3}
   leader: {fileID: 847738127}
-  troopSize: 40
+  troopSize: 5
   poolTag: NPC_B
   nodeRadius: 3
 --- !u!4 &923659634
@@ -3050,7 +3049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923659631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -68.6, y: -2.4041414, z: 14.4}
+  m_LocalPosition: {x: -47.2, y: -2.4041414, z: 14.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1038609507}
@@ -4946,7 +4945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4397688981244916, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.04
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4397688981244916, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4954,7 +4953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4397688981244916, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.98
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 4397688981244916, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5423,7 +5422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -51.7
+      value: -36.2
       objectReference: {fileID: 0}
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5927,7 +5926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1660479392756500, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4397688981244916, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
       propertyPath: m_RootOrder
@@ -6883,7 +6882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5766630674025092382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 73.4, y: -2.4041414, z: 14}
+  m_LocalPosition: {x: 52.1, y: -2.4041414, z: 14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1038609507}
@@ -6922,10 +6921,10 @@ MonoBehaviour:
   pools:
   - tag: NPC_A
     prefab: {fileID: 6936562248821186842, guid: c54856392f3a9f84e8777b23971a482a, type: 3}
-    size: 50
+    size: 5
   - tag: NPC_B
     prefab: {fileID: 2066896392038628118, guid: dc4d5144d91829745b4fbb5b231596b7, type: 3}
-    size: 40
+    size: 5
 --- !u!114 &5766630674025092387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6938,10 +6937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842a0d99a7f15df44a115c1096ae3bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWorldSize: {x: 30, y: 50}
+  gridWorldSize: {x: 10, y: 20}
   prefab: {fileID: 6936562248821186842, guid: c54856392f3a9f84e8777b23971a482a, type: 3}
   leader: {fileID: 483484358}
-  troopSize: 50
+  troopSize: 5
   poolTag: NPC_A
   nodeRadius: 3
 --- !u!1001 &6936562249513619771
@@ -7181,7 +7180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6936562248820768058, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.9
+      value: 39.9
       objectReference: {fileID: 0}
     - target: {fileID: 6936562248820768058, guid: 41cb901dc733d394086cb7b57923c591, type: 3}
       propertyPath: m_LocalPosition.y

@@ -38,8 +38,11 @@ public class CharacterController : MonoBehaviour
     private void OnDrawGizmos()
     {
         //Line of sight visualization
-        if(model != null)
-            Gizmos.DrawWireSphere(transform.position, model.CharAIData.SightRange);
+        if (CharAIController != null)
+        {
+            //Gizmos.color = Color.magenta;
+            //Gizmos.DrawRay(transform.position, CharAIController.Target.position - transform.position);
+        }
     }
 
 }

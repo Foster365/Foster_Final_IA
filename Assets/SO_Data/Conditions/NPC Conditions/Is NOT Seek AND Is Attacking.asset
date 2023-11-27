@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ac7d394cd70486586a71df752982625, type: 3}
-  m_Name: Is Seek AND Is NOT Searching For Target
+  m_Name: Is NOT Seek AND Is Attacking
   m_EditorClassIdentifier: 
-  conditionOne: {fileID: 11400000, guid: 52f97c975dc300048ab8db426f342f1c, type: 2}
-  conditionTwo: {fileID: 11400000, guid: 6e92558efd513a041bf68a1cd3cbeb1f, type: 2}
+  conditionOne: {fileID: 11400000, guid: ce8858ef64c730940b799348e1676216, type: 2}
+  conditionTwo: {fileID: 11400000, guid: 33c9f6381f7581e4dae3cb5a1cc6a85a, type: 2}

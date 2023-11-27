@@ -9,8 +9,6 @@ public abstract class EntityModel : MonoBehaviour
 
     public GameObject leftHandCollider;
     public GameObject rightHandCollider;
-    public GameObject leftFootCollider;
-    public GameObject rightFootCollider;
     public GameObject weaponCollider;
 
     [SerializeField] private Material redMaterial;
@@ -31,7 +29,6 @@ public abstract class EntityModel : MonoBehaviour
     bool isAllert;
 
     bool isWalking;
-    bool isFleeing;
     bool isBlocking;
     bool isSpecialAttacking;
     bool isAttackDone;
@@ -62,7 +59,6 @@ public abstract class EntityModel : MonoBehaviour
     public bool IsAllert { get => isAllert; set => isAllert = value; }
     public bool IsWalking { get => isWalking; set => isWalking = value; }
     public bool IsSpecialAttacking { get => isSpecialAttacking; set => isSpecialAttacking = value; }
-    public bool IsFleeing { get => isFleeing; set => isFleeing = value; }
     public bool IsBlocking { get => isBlocking; set => isBlocking = value; }
     public EntityView View { get => view; set => view = value; }
     public EntityData Data { get => data; set => data = value; }
@@ -90,22 +86,6 @@ public abstract class EntityModel : MonoBehaviour
     public virtual void TurnOffRightHandCollider()
     {
         rightHandCollider.SetActive(false);
-    }
-    public virtual void TurnOnLeftFootCollider()
-    {
-        leftFootCollider.SetActive(true);
-    }
-    public virtual void TurnOffLeftFootCollider()
-    {
-        leftFootCollider.SetActive(false);
-    }
-    public virtual void TurnOnRightFootCollider()
-    {
-        rightFootCollider.SetActive(true);
-    }
-    public virtual void TurnOffRightFootCollider()
-    {
-        rightFootCollider.SetActive(false);
     }
     public virtual void TurnOnWeaponCollider()
     {

@@ -10,7 +10,6 @@ public class NPCSeekState : State
     //
 
     //Waypoints
-    bool readyToMove = false;
     int _nextWaypoint, waypointIndexModifier;
     //
 
@@ -42,23 +41,32 @@ public class NPCSeekState : State
         finalPath = _entitiesData[model].controller.CharAIController.AStarPathFinding.finalPath;
         _nextWaypoint = 0;
         waypointIndexModifier = 1;
+        _entitiesData[model].model.gameObject.GetComponent<Leader>().target = _entitiesData[model].controller.CharAIController.Target;//_entitiesData[model].grid.GetNodeFromWorldPoint(_entitiesData[model].controller.CharAIController.AStarPathFinding.finalPath.Count-1);
+        _entitiesData[model].model.View.CharacterMoveAnimation(true);
     }
 
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM NPC Seek EXECUTE " + _entitiesData[model].model.gameObject.name);
+        //Debug.Log("FSM NPC Target is: " + _entitiesData[model].controller.CharAIController.Target.transform.position);
         var enemyPrevPosition = Vector3.zero;
 
         if (finalPath.Count > 0)
         {
-            Seek(_entitiesData[model].model, finalPath);
+
             var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+
             //Debug.Log("Dist " + dist);
-            if (dist < _entitiesData[model].model.Data.AttackRange)
+            if (dist > _entitiesData[model].model.Data.AttackRange)
             {
-                Debug.Log("Pasa a attack");
+                Seek(_entitiesData[model].model, finalPath);
+            }
+            else
+            {
+                Debug.Log("fsm npc puedo pasar a attack");
+                _entitiesData[model].model.IsSeek = false;
+                _entitiesData[model].model.IsAttack = true;
                 _entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //_entitiesData[model].model.IsAttacking = true;
                 //_entitiesData[model].model.View.CharacterMoveAnimation(false);
             }
 
@@ -71,7 +79,7 @@ public class NPCSeekState : State
     }
     public void Seek(CharacterModel model, List<Node> _finalPath)
     {
-        Vector3 _seekLastPos = model.transform.position;
+        Vector3 _seekLastPos = _entitiesData[model].model.transform.position;
         List<Node> _waypoints = new List<Node>();
         for (int i = 0; i < _finalPath.Count; i++)
         {
@@ -81,7 +89,7 @@ public class NPCSeekState : State
                 _waypoints = _finalPath;
             }
             else return;
-            Run(model, _waypoints);
+            Run(_entitiesData[model].model, _waypoints);
         }
     }
     public void Run(CharacterModel model, List<Node> _waypoints)
@@ -100,9 +108,9 @@ public class NPCSeekState : State
                     waypointIndexModifier *= 1;
                 }
                 _nextWaypoint += waypointIndexModifier;
-                readyToMove = true;
             }
-            model.Move(dir.normalized + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
+            model.LookDir(dir.normalized + _entitiesData[model].controller.CharAIController.SbSeek.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
+            model.Move(dir.normalized + _entitiesData[model].controller.CharAIController.SbSeek.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
         }
 
     }

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Leader A Data
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
-  <MovementSpeed>k__BackingField: 500
+  <HealthRegenerationAmount>k__BackingField: 0
+  <MovementSpeed>k__BackingField: 800
   <AttackRange>k__BackingField: 6
   <CooldownToAttack>k__BackingField: 1.25
   <RotationSpeed>k__BackingField: 100

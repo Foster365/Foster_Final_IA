@@ -11,7 +11,6 @@ public class SeekState : State
     //
 
     //Waypoints
-    bool readyToMove = false;
     int _nextWaypoint, waypointIndexModifier;
     //
 
@@ -23,7 +22,6 @@ public class SeekState : State
     {
         public CharacterModel model;
         public CharacterController controller;
-        public bool travelBackwards;
         public List<Node> nodesToTarget;
         public Grid grid;
 
@@ -44,6 +42,8 @@ public class SeekState : State
             _entitiesData[model].controller.CharAIController.AStarPathFinding.FindPath(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
         _entitiesData[model].model.IsBattleBegun = true;
         finalPath = _entitiesData[model].controller.CharAIController.AStarPathFinding.finalPath;
+        Debug.Log("Leader FSM target: " + _entitiesData[model].controller.CharAIController.Target.name);
+        _entitiesData[model].model.View.CharacterMoveAnimation(true);
         _nextWaypoint = 0;
         waypointIndexModifier = 1;
     }
@@ -105,9 +105,9 @@ public class SeekState : State
                     waypointIndexModifier *= 1;
                 }
                 _nextWaypoint += waypointIndexModifier;
-                readyToMove = true;
             }
-            model.Move(dir.normalized);
+            model.LookDir(dir.normalized + _entitiesData[model].model.gameObject.GetComponent<CharacterController>().CharAIController.SbObstacleAvoidance.GetDir() + _entitiesData[model].controller.CharAIController.SbSeek.GetDir());
+            model.Move(dir.normalized + _entitiesData[model].model.gameObject.GetComponent<CharacterController>().CharAIController.SbObstacleAvoidance.GetDir() + _entitiesData[model].controller.CharAIController.SbSeek.GetDir());
         }
 
     }

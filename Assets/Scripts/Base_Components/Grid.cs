@@ -83,25 +83,25 @@ public class Grid : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-        if (grid != null && player != null)
-        {
-            Node playerNode = GetNodeFromWorldPoint(player.position);
-            foreach (Node n in grid)
-            {
-                Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
-                if (path != null)
-                {
-                    if (path.Contains(n))
-                    {
-                        Gizmos.color = Color.magenta;
-                        Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-                    }
-                }
-                if (playerNode == n) Gizmos.color = Color.yellow;
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+        //Gizmos.DrawCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        //if (grid != null && player != null)
+        //{
+        //    Node playerNode = GetNodeFromWorldPoint(player.position);
+        //    foreach (Node n in grid)
+        //    {
+        //        Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
+        //        if (path != null)
+        //        {
+        //            if (path.Contains(n))
+        //            {
+        //                Gizmos.color = Color.magenta;
+        //                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+        //            }
+        //        }
+        //        if (playerNode == n) Gizmos.color = Color.yellow;
+        //        Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
 
-            }
-        }
+        //    }
+        //}
     }
 }

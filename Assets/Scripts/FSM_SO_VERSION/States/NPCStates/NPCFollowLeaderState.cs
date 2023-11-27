@@ -32,7 +32,8 @@ public class NPCFollowLeaderState : State
     {
         _entitiesData.Add(model, new DataFollowLeaderState(model));
         //charModel.View.PlayWalkAnimation(false);
-        _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
+        //_entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
+        _entitiesData[model].model.View.CharacterMoveAnimation(true);
     }
 
     public override void ExecuteState(EntityModel model)

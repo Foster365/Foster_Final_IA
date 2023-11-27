@@ -21,14 +21,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 880c43b32ea7da2489649e8acd4fd81f, type: 2}
   <IdleTimer>k__BackingField: 3
   <PatrolTimer>k__BackingField: 10
+  <SearchTimer>k__BackingField: 0
   <BlockStateTimer>k__BackingField: 5
-  <RegularAttackStateTimer>k__BackingField: 5
-  <EnhancedAttackStateTimer>k__BackingField: 2
-  <RegularAttackCooldown>k__BackingField: 1
-  <EnhancedAttackCooldown>k__BackingField: 1.5
-  <DesperateAttackCooldown>k__BackingField: 0.5
-  <EnhancedAttackThreshold>k__BackingField: 0
-  <DesperateAttackThreshold>k__BackingField: 0
+  <AttackStateTimer>k__BackingField: 5
+  <AttackCooldown>k__BackingField: 0.75
   <TimeForSearchPlayer>k__BackingField: 2
   <TargetLayer>k__BackingField:
     serializedVersion: 2
@@ -40,7 +36,8 @@ MonoBehaviour:
   <SightRange>k__BackingField: 20
   <TotalSightDegrees>k__BackingField: 360
   <FleeThresholdTrigger>k__BackingField: 0
-  <ObstacleAvoidanceRadius>k__BackingField: 2
+  <FleeStateTimer>k__BackingField: 0
+  <ObstacleAvoidanceRadius>k__BackingField: 5
   <ObstacleAvoidanceMaxObstacles>k__BackingField: 10
   <ObstacleAvoidanceViewAngle>k__BackingField: 90
   <ObstacleAvoidanceLayerMask>k__BackingField:

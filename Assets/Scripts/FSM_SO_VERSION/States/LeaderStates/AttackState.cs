@@ -12,9 +12,9 @@ public class AttackState : State
     CharacterModel charModel;
     private Dictionary<EntityModel, DataAttackState> _entitiesData = new Dictionary<EntityModel, DataAttackState>();
 
-    //Regular Attacks roulette wheel
-    Roulette _regularAttacksRouletteWheel;
-    Dictionary<ActionNode, int> _regularAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    // Attacks roulette wheel
+    Roulette _attacksRouletteWheel;
+    Dictionary<ActionNode, int> _attacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
     //
 
     private class DataAttackState
@@ -36,9 +36,9 @@ public class AttackState : State
         if (!_entitiesData.ContainsKey(model)) _entitiesData.Add(model, new DataAttackState(model));
         charModel = _entitiesData[model].model;
         charModel.GetRigidbody().velocity = Vector3.zero;
-            attackMaxCooldown = charModel.CharAIData.RegularAttackCooldown;
-        attackMaxStateTimer = charModel.CharAIData.RegularAttackStateTimer;
-        _regularAttacksRouletteWheelNodes.Clear();
+            attackMaxCooldown = charModel.CharAIData.AttackCooldown;
+        attackMaxStateTimer = charModel.CharAIData.AttackStateTimer;
+        _attacksRouletteWheelNodes.Clear();
         //attackCooldown = 0;
     }
 
@@ -55,9 +55,9 @@ public class AttackState : State
             {
                 if (attackCooldown > attackMaxCooldown)
                 {
-                    RegularAttacksRouletteSetUp();
+                    AttacksRouletteSetUp();
                     //Debug.Log("timer de reg attack reset");
-                    EnemyRegularAttacksRouletteAction();
+                    EnemyAttacksRouletteAction();
                     attackCooldown = 0;
                 }
                 CheckTransitionToSeekState(_entitiesData[model].model, dist);
@@ -92,23 +92,23 @@ public class AttackState : State
             charModel.IsDead = true;
     }
 
-    #region Regular Attacks Roulette Wheel
-    public void RegularAttacksRouletteSetUp()
+    #region  Attacks Roulette Wheel
+    public void AttacksRouletteSetUp()
     {
-        _regularAttacksRouletteWheel = new Roulette();
+        _attacksRouletteWheel = new Roulette();
 
         ActionNode Attack1 = new ActionNode(PlayAttack1);
         ActionNode Attack2 = new ActionNode(PlayAttack2);
         ActionNode Attack3 = new ActionNode(PlayAttack3);
         ActionNode Attack4 = new ActionNode(PlayAttack4);
 
-        _regularAttacksRouletteWheelNodes.Add(Attack1, HandleHealthCondition(charModel.Attack1Chance));
-        _regularAttacksRouletteWheelNodes.Add(Attack2, HandleHealthCondition(charModel.Attack2Chance));
-        _regularAttacksRouletteWheelNodes.Add(Attack3, HandleHealthCondition(charModel.Attack3Chance));
-        _regularAttacksRouletteWheelNodes.Add(Attack4, HandleHealthCondition(charModel.Attack4Chance));
-        //_regularAttacksRouletteWheelNodes.Add(Attack4, HandleRouletteOptionModifier(_entitiesData[model].Attack4Chance));
+        _attacksRouletteWheelNodes.Add(Attack1, HandleHealthCondition(charModel.Attack1Chance));
+        _attacksRouletteWheelNodes.Add(Attack2, HandleHealthCondition(charModel.Attack2Chance));
+        _attacksRouletteWheelNodes.Add(Attack3, HandleHealthCondition(charModel.Attack3Chance));
+        _attacksRouletteWheelNodes.Add(Attack4, HandleHealthCondition(charModel.Attack4Chance));
+        //_attacksRouletteWheelNodes.Add(Attack4, HandleRouletteOptionModifier(_entitiesData[model].Attack4Chance));
 
-        ActionNode rouletteAction = new ActionNode(EnemyRegularAttacksRouletteAction);
+        ActionNode rouletteAction = new ActionNode(EnemyAttacksRouletteAction);
     }
 
     void PlayAttack1()
@@ -131,9 +131,9 @@ public class AttackState : State
         charModel.View.CharacterAttack4Animation();
     }
 
-    public void EnemyRegularAttacksRouletteAction()
+    public void EnemyAttacksRouletteAction()
     {
-        INode node = _regularAttacksRouletteWheel.Run(_regularAttacksRouletteWheelNodes);
+        INode node = _attacksRouletteWheel.Run(_attacksRouletteWheelNodes);
         node.Execute();
 
     }
@@ -149,10 +149,10 @@ public class AttackState : State
     int HandleHealthCondition(int val)
     {
         //Debug.Log("Events for health attack enhancement value is: " + val);
-        if (charModel.HealthController.CurrentHealth < charModel.CharAIData.EnhancedAttackThreshold)
-            val += 1;
-        else if (charModel.HealthController.CurrentHealth < charModel.CharAIData.EnhancedAttackThreshold)
-            val += 2;
+        //if (charModel.HealthController.CurrentHealth < charModel.CharAIData.EnhancedAttackThreshold)
+        //    val += 1;
+        //else if (charModel.HealthController.CurrentHealth < charModel.CharAIData.EnhancedAttackThreshold)
+        //    val += 2;
         //Debug.Log("Events for health attack enhancement final value is: " + val);
         return val;
     }

@@ -6,28 +6,36 @@ using _Main.Scripts.FSM_SO_VERSION;
 public class NPCAttackState : State
 {
     float timer = 0;
+    float attackMaxCooldown, attackCooldown = 0;
     private Dictionary<EntityModel, DataAttackState> _entitiesData = new Dictionary<EntityModel, DataAttackState>();
+
+    //Regular Attacks roulette wheel
+    Roulette _attacksRouletteWheel;
+    Dictionary<ActionNode, int> _attacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    //
+    CharacterModel charModel;
+
+
     private class DataAttackState
     {
         public CharacterModel model;
         public CharacterController controller;
-        public List<Node> nodesToTarget;
-        public Grid grid;
 
         public DataAttackState(EntityModel entityModel)
         {
             model = (CharacterModel)entityModel;
             controller = model.gameObject.GetComponent<CharacterController>();
-            grid = model.MapGrid;
-            nodesToTarget = new List<Node>();
         }
     }
 
     public override void EnterState(EntityModel model)
     {
         _entitiesData.Add(model, new DataAttackState(model));
-        //charModel.View.PlayWalkAnimation(false);
         _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
+        attackMaxCooldown = _entitiesData[model].model.CharAIData.AttackCooldown;
+        charModel = _entitiesData[model].model;
+        AttacksRouletteSetUp(_entitiesData[model].model);
+        _entitiesData[model].model.View.CharacterMoveAnimation(false);
     }
 
     public override void ExecuteState(EntityModel model)
@@ -35,15 +43,20 @@ public class NPCAttackState : State
         Debug.Log("FSM NPC Attack EXECUTE");
 
         timer += Time.deltaTime;
-
-        if (timer <= _entitiesData[model].model.CharAIData.IdleTimer)
-        {
-            //if(_entitiesData[model].model.GetComponent<CharacterController>().CharAIController.LineOfSight())_entitiesData[model].model.IsChasing = true;
-        }
-        else
-        {
-            timer = 0;
-            //_entitiesData[model].model.IsAttack = true;
+        var target = _entitiesData[model].controller.CharAIController.Target;
+        if (target != null && !target.gameObject.GetComponent<CharacterModel>().HealthController.IsDead)
+        {    //Debug.Log("Timer de reg attack: " + attackStateTimer);
+            attackCooldown += Time.deltaTime;
+            var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+                if (attackCooldown > attackMaxCooldown)
+                {
+                    //Debug.Log("timer de reg attack reset");
+                    EnemyAttacksRouletteAction();
+                    attackCooldown = 0;
+                }
+                CheckTransitionToFleeState(_entitiesData[model].model);
+                CheckTransitionToDeathState(_entitiesData[model].model);
+           
         }
     }
 
@@ -51,4 +64,63 @@ public class NPCAttackState : State
     {
         _entitiesData.Remove(model);
     }
+
+    public void CheckTransitionToFleeState(CharacterModel model)
+    {
+        if(_entitiesData[model].model.HealthController.CurrentHealth <= _entitiesData[model].model.CharAIData.FleeThresholdTrigger)
+        {
+            _entitiesData[model].model.IsAttack = false;
+            _entitiesData[model].model.IsFlee = true;
+        }
+    }
+
+    public void CheckTransitionToDeathState(CharacterModel model)
+    {
+
+        if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
+        {
+            _entitiesData[model].model.IsAttack = false;
+            _entitiesData[model].model.IsDead = true;
+        }
+    }
+
+    #region  Attacks Roulette Wheel
+    public void AttacksRouletteSetUp(CharacterModel model)
+    {
+        _attacksRouletteWheel = new Roulette();
+
+        ActionNode Attack1 = new ActionNode(PlayAttack1);
+        ActionNode Attack2 = new ActionNode(PlayAttack2);
+        ActionNode Attack3 = new ActionNode(PlayAttack3);
+
+        _attacksRouletteWheelNodes.Add(Attack1, 10);
+        _attacksRouletteWheelNodes.Add(Attack2, 15);
+        _attacksRouletteWheelNodes.Add(Attack3, 20);
+
+        ActionNode rouletteAction = new ActionNode(EnemyAttacksRouletteAction);
+    }
+
+    void PlayAttack1()
+    {
+        charModel.View.CharacterAttack1Animation();
+    }
+
+    void PlayAttack2()
+    {
+        charModel.View.CharacterAttack2Animation();
+    }
+
+    void PlayAttack3()
+    {
+        charModel.View.CharacterAttack3Animation();
+    }
+
+
+    public void EnemyAttacksRouletteAction()
+    {
+        INode node = _attacksRouletteWheel.Run(_attacksRouletteWheelNodes);
+        node.Execute();
+
+    }
+    #endregion
 }

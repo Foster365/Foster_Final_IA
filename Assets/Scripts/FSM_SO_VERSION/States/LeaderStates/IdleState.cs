@@ -27,6 +27,7 @@ public class IdleState : State
 
         //charModel.View.PlayWalkAnimation(false);
         _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
+        _entitiesData[model].model.View.CharacterMoveAnimation(false);
     }
     
     public override void ExecuteState(EntityModel model)
@@ -35,7 +36,7 @@ public class IdleState : State
 
         idleStateTimer += Time.deltaTime;
 
-        _entitiesData[model].model.View.CharacterMoveAnimation(false);
+        //_entitiesData[model].model.View.CharacterMoveAnimation(false);
         CheckTransitionToDeathState(_entitiesData[model].model);
         
         if (idleStateTimer > _entitiesData[model].model.CharAIData.IdleTimer)

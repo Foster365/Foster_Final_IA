@@ -42,6 +42,8 @@ public class CharacterAIController
     public Transform Target { get => target; set => target = value; }
     public EntityView View { get => view; set => view = value; }
     public ObstacleAvoidance SbObstacleAvoidance { get => sbObstacleAvoidance; set => sbObstacleAvoidance = value; }
+    public Flee SbFlee { get => sbFlee; set => sbFlee = value; }
+    public Seek SbSeek { get => sbSeek; set => sbSeek = value; }
 
     public CharacterAIController(CharacterModel model, StateData fsmInitialState)
     {
@@ -61,21 +63,14 @@ public class CharacterAIController
             model.CharAIData.ObstacleAvoidanceMaxObstacles, model.CharAIData.ObstacleAvoidanceViewAngle,
             model.CharAIData.ObstacleAvoidanceLayerMask);
         aStarPathFinding = new AStar(model.transform, model.MapGrid);
-        RegularAttacksRouletteSetUp();
-        EnhancedAttacksRouletteSetUp();
-        DesperateAttacksRouletteSetUp();
-        OnHealthCondition += HandleHealthCondition;
 
     }
 
     public void UpdateControllerComponents()
     {
+        if(target != null) UpdateSBTargetReference();
         charFSM.UpdateState();
     }
-
-    #region Finite State Machine
-
-    #endregion
 
     #region Line Of Sight
     public bool LineOfSight()
@@ -129,177 +124,12 @@ public class CharacterAIController
 
     #region Steering Behaviours
 
-    #region Seek
-
-    #endregion
-
-    #region Flee
-    #endregion
-
-    #region Obstacle Avoidance
-    #endregion
-
-    #endregion
-
-    #region Roulette Wheel
-
-    #region Regular Attacks Roulette Wheel
-    void RegularAttacksRouletteSetUp()
+    void UpdateSBTargetReference()
     {
-        _regularAttacksRouletteWheel = new Roulette();
-
-        ActionNode Attack1 = new ActionNode(PlayAttack1);
-        ActionNode Attack2 = new ActionNode(PlayAttack2);
-        ActionNode Attack3 = new ActionNode(PlayAttack3);
-        //ActionNode Attack4 = new ActionNode(PlayAttack4);
-
-        _regularAttacksRouletteWheelNodes.Add(Attack1, HandleRouletteOptionModifier(model.Attack1Chance));
-        _regularAttacksRouletteWheelNodes.Add(Attack2, HandleRouletteOptionModifier(model.Attack2Chance));
-        _regularAttacksRouletteWheelNodes.Add(Attack3, HandleRouletteOptionModifier(model.Attack3Chance));
-        //_regularAttacksRouletteWheelNodes.Add(Attack4, HandleRouletteOptionModifier(model.Attack4Chance));
-
-        ActionNode rouletteAction = new ActionNode(EnemyRegularAttacksRouletteAction);
-    }
-
-    void PlayAttack1()
-    {
-        model.View.CharacterAttack1Animation();
-    }
-
-    void PlayAttack2()
-    {
-        model.View.CharacterAttack2Animation();
-    }
-
-    void PlayAttack3()
-    {
-        model.View.CharacterAttack3Animation();
-    }
-
-    void PlayAttack4()
-    {
-        model.View.CharacterAttack4Animation();
-    }
-
-    public void EnemyRegularAttacksRouletteAction()
-    {
-        INode node = _regularAttacksRouletteWheel.Run(_regularAttacksRouletteWheelNodes);
-        node.Execute();
-
-    }
-
-    int HandleRouletteOptionModifier(int value)
-    {
-        var finalValue = value;
-        if (model.gameObject.CompareTag(TagManager.LEADER_TAG)) finalValue = HandleBossRouletteOptionsModifier(value);
-        else finalValue = HandleNPCRouletteOptionsModifier(value);
-
-        return finalValue;
-    }
-    int HandleHealthCondition(int val)
-    {
-        //Debug.Log("Events for health attack enhancement value is: " + val);
-        if(model.HealthController.CurrentHealth < model.CharAIData.EnhancedAttackThreshold)
-            val += 1;
-        else if(model.HealthController.CurrentHealth < model.CharAIData.EnhancedAttackThreshold)
-            val += 2;
-        //Debug.Log("Events for health attack enhancement final value is: " + val);
-        return val;
-    }
-    int HandleBossRouletteOptionsModifier(int value)
-    {
-        value = OnHealthCondition?.Invoke(value) ?? value;
-        return value;
-    }
-
-    int HandleNPCRouletteOptionsModifier(int value)
-    {
-        return value;
+        sbFlee.Target = target;
+        sbSeek.Target = target;
     }
 
     #endregion
-
-    #region Enhanced Attacks Roulette Wheel
-    void EnhancedAttacksRouletteSetUp()
-    {
-        _enhancedAttacksRouletteWheel = new Roulette();
-
-        ActionNode Attack1 = new ActionNode(PlayEnhancedAttack1);
-        ActionNode Attack2 = new ActionNode(PlayEnhancedAttack2);
-        ActionNode Attack3 = new ActionNode(PlayEnhancedAttack3);
-
-        _enhancedAttacksRouletteWheelNodes.Add(Attack1, 30);
-        _enhancedAttacksRouletteWheelNodes.Add(Attack2, 25);
-        _enhancedAttacksRouletteWheelNodes.Add(Attack3, 35);
-
-        ActionNode rouletteAction = new ActionNode(EnemyEnhancedAttacksRouletteAction);
-    }
-
-    void PlayEnhancedAttack1()
-    {
-        model.View.CharacterAttack1Animation();
-    }
-
-    void PlayEnhancedAttack2()
-    {
-        model.View.CharacterAttack2Animation();
-    }
-
-    void PlayEnhancedAttack3()
-    {
-        model.View.CharacterAttack3Animation();
-    }
-
-    public void EnemyEnhancedAttacksRouletteAction()
-    {
-        INode node = _enhancedAttacksRouletteWheel.Run(_enhancedAttacksRouletteWheelNodes);
-        node.Execute();
-
-    }
-
-    #endregion
-
-    #region Desperate Attacks Roulette Wheel
-    void DesperateAttacksRouletteSetUp()
-    {
-        _desperateAttacksRouletteWheel = new Roulette();
-
-        ActionNode Attack1 = new ActionNode(PlayDesperateAttack1);
-        ActionNode Attack2 = new ActionNode(PlayDesperateAttack2);
-        ActionNode Attack3 = new ActionNode(PlayDesperateAttack3);
-
-        _desperateAttacksRouletteWheelNodes.Add(Attack1, 30);
-        _desperateAttacksRouletteWheelNodes.Add(Attack2, 25);
-        _desperateAttacksRouletteWheelNodes.Add(Attack3, 35);
-
-        ActionNode rouletteAction = new ActionNode(EnemyDesperateAttacksRouletteAction);
-    }
-
-    void PlayDesperateAttack1()
-    {
-        model.View.CharacterAttack1Animation();
-    }
-
-    void PlayDesperateAttack2()
-    {
-        model.View.CharacterAttack2Animation();
-    }
-
-    void PlayDesperateAttack3()
-    {
-        model.View.CharacterAttack3Animation();
-    }
-
-    public void EnemyDesperateAttacksRouletteAction()
-    {
-        INode node = _desperateAttacksRouletteWheel.Run(_desperateAttacksRouletteWheelNodes);
-        node.Execute();
-
-    }
-
-    #endregion
-    #endregion
-
-
 
 }

@@ -32,10 +32,10 @@ public class FlockManager : MonoBehaviour
                     Random.Range(-movementLimits.y, movementLimits.y), Random.Range(-movementLimits.z, movementLimits.z));
     }
 
-    //void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireCube(transform.position, MovementLimits);
-    //    Gizmos.DrawWireSphere(transform.position, neighbourDist);
-    //}
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, MovementLimits);
+        //Gizmos.DrawWireSphere(transform.position, dist);
+    }
 }
