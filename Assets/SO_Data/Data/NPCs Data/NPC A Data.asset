@@ -15,7 +15,7 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 50
   <HealthRegenerationAmount>k__BackingField: 5
   <MovementSpeed>k__BackingField: 800
-  <AttackRange>k__BackingField: 6
+  <AttackRange>k__BackingField: 3
   <CooldownToAttack>k__BackingField: 1
   <RotationSpeed>k__BackingField: 5
   <BossName>k__BackingField: Leader_A

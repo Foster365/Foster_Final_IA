@@ -38,6 +38,7 @@ public class AttackState : State
         charModel.GetRigidbody().velocity = Vector3.zero;
             attackMaxCooldown = charModel.CharAIData.AttackCooldown;
         attackMaxStateTimer = charModel.CharAIData.AttackStateTimer;
+        _entitiesData[model].model.HealthController.CanReceiveDamage = true;
         _attacksRouletteWheelNodes.Clear();
         //attackCooldown = 0;
     }
@@ -51,19 +52,19 @@ public class AttackState : State
         {    //Debug.Log("Timer de reg attack: " + attackStateTimer);
             attackCooldown += Time.deltaTime;
             var dist = Vector3.Distance(charModel.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
-            if (attackStateTimer < attackMaxStateTimer)
+            //Debug.Log("FSM LEADER TIMER STATE ATTACK: " + _entitiesData[model].model.gameObject.name + attackStateTimer);
+
+            if (attackCooldown > attackMaxCooldown)
             {
-                if (attackCooldown > attackMaxCooldown)
-                {
-                    AttacksRouletteSetUp();
-                    //Debug.Log("timer de reg attack reset");
-                    EnemyAttacksRouletteAction();
-                    attackCooldown = 0;
-                }
-                CheckTransitionToSeekState(_entitiesData[model].model, dist);
-                CheckTransitionToDeathState(_entitiesData[model].model);
+                AttacksRouletteSetUp();
+                //Debug.Log("timer de reg attack reset");
+                EnemyAttacksRouletteAction();
+                attackCooldown = 0;
             }
-            else
+            CheckTransitionToSeekState(_entitiesData[model].model, dist);
+            CheckTransitionToDeathState(_entitiesData[model].model);
+
+            if (attackStateTimer > attackMaxStateTimer)
             {
                 Debug.Log("Paso a block state?");
                 attackStateTimer = 0;
@@ -89,7 +90,7 @@ public class AttackState : State
     void CheckTransitionToDeathState(EntityModel model)
     {
         if (charModel.HealthController.CurrentHealth <= 0)
-            charModel.IsDead = true;
+            charModel.HealthController.IsDead = true;
     }
 
     #region  Attacks Roulette Wheel

@@ -107182,4 +107182,11 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.1
+    functionName: SpawnMagicProjectile
+    data: 
+    objectReferenceParameter: {fileID: 6778120169541092406, guid: 4cea750722225ba4090f5f62e0a000bd, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

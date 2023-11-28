@@ -1,87 +1,87 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class Flocking
-{
+//public class Flocking
+//{
 
-    GameObject[] prefabsGrid;
-    GameObject myFlockAgent;
+//    GameObject[] prefabsGrid;
+//    GameObject myFlockAgent;
 
-    float avoidDistance, speed, neighbourDist, maxSpeed, rotationSpeed;
-    Transform goalPosition;
+//    float avoidDistance, speed, neighbourDist, maxSpeed, rotationSpeed;
+//    Transform goalPosition;
 
-    public Flocking(GameObject[] _prefabsGrid, GameObject _myFlockAgent, float _avoidDistance, float _neighbourDist
-        , float _maxSpeed, float _rotationSpeed)
-    {
-        prefabsGrid = _prefabsGrid;
-        myFlockAgent = _myFlockAgent;
+//    public Flocking(GameObject[] _prefabsGrid, GameObject _myFlockAgent, float _avoidDistance, float _neighbourDist
+//        , float _maxSpeed, float _rotationSpeed)
+//    {
+//        prefabsGrid = _prefabsGrid;
+//        myFlockAgent = _myFlockAgent;
 
-        avoidDistance = _avoidDistance;
-        neighbourDist = _neighbourDist;
+//        avoidDistance = _avoidDistance;
+//        neighbourDist = _neighbourDist;
 
-        maxSpeed = _maxSpeed;
-        rotationSpeed = _rotationSpeed;
-    }
+//        maxSpeed = _maxSpeed;
+//        rotationSpeed = _rotationSpeed;
+//    }
 
-    public float Speed { get => speed; set => speed = value; }
-    public Transform GoalPosition { get => goalPosition; set => goalPosition = value; }
+//    public float Speed { get => speed; set => speed = value; }
+//    public Transform GoalPosition { get => goalPosition; set => goalPosition = value; }
 
-    public void ApplyFlockingRules()
-    {
-        GameObject[] neighbours;
-        neighbours = prefabsGrid; //Guardo todos los agentes que considere vecinos (Si quiero agrandar o achicar
-        //la cantidad de vecinos puedo establecer un rango y overlapspherear desde mi agente hasta el rango deseado,
-        //e ir almacenando todos los agentes que se encuentren dentro de ese rango
-        Vector3 neighboursCenter = Vector3.zero; //Centro de los vecinos.
-        Vector3 avoidanceVector = Vector3.zero; //Dist avoidance entre agentes.
+//    public void ApplyFlockingRules()
+//    {
+//        GameObject[] neighbours;
+//        neighbours = prefabsGrid; //Guardo todos los agentes que considere vecinos (Si quiero agrandar o achicar
+//        //la cantidad de vecinos puedo establecer un rango y overlapspherear desde mi agente hasta el rango deseado,
+//        //e ir almacenando todos los agentes que se encuentren dentro de ese rango
+//        Vector3 neighboursCenter = Vector3.zero; //Centro de los vecinos.
+//        Vector3 avoidanceVector = Vector3.zero; //Dist avoidance entre agentes.
 
-        float globalSpeed = .01f;
-        float neighbourDistance;
-        int groupSize = 0;
+//        float globalSpeed = .01f;
+//        float neighbourDistance;
+//        int groupSize = 0;
 
-        foreach (GameObject neighbour in neighbours)
-        {
-            if (neighbour != myFlockAgent) //Distinto para no compararme a mi mismo, sinò que para compararme con los demàs.
-            {
-                neighbourDistance = Vector3.Distance(neighbour.transform.position, myFlockAgent.transform.position); //Calculo mi distancia con el siguiente agente.
+//        foreach (GameObject neighbour in neighbours)
+//        {
+//            if (neighbour != myFlockAgent) //Distinto para no compararme a mi mismo, sinò que para compararme con los demàs.
+//            {
+//                neighbourDistance = Vector3.Distance(neighbour.transform.position, myFlockAgent.transform.position); //Calculo mi distancia con el siguiente agente.
 
-                if (neighbourDistance <= neighbourDist) //Si está en el rango de agregarlo al grupo.
-                {
-                    neighboursCenter += neighbour.transform.position; //Agrego la posición del agente que esté junto a mí en el grupo
-                    groupSize++;
+//                if (neighbourDistance <= neighbourDist) //Si está en el rango de agregarlo al grupo.
+//                {
+//                    neighboursCenter += neighbour.transform.position; //Agrego la posición del agente que esté junto a mí en el grupo
+//                    groupSize++;
 
-                    if (neighbourDistance <= avoidDistance)
-                    {
-                        avoidanceVector += myFlockAgent.transform.position + neighbour.transform.position; //Establezco un avoidance vector, para no
-                                                                                                           //chocarme con el agente vecino.
-                    }
+//                    if (neighbourDistance <= avoidDistance)
+//                    {
+//                        avoidanceVector += myFlockAgent.transform.position + neighbour.transform.position; //Establezco un avoidance vector, para no
+//                                                                                                           //chocarme con el agente vecino.
+//                    }
 
-                    Flocking anotherFlock = neighbour.GetComponent<Flocking>(); //Obtengo el flock component del agente comparado.
-                    globalSpeed += anotherFlock.speed; //Establezco la velocidad global del grupo, acorde al vecino comparado.
+//                    Flocking anotherFlock = neighbour.GetComponent<Flocking>(); //Obtengo el flock component del agente comparado.
+//                    globalSpeed += anotherFlock.speed; //Establezco la velocidad global del grupo, acorde al vecino comparado.
 
-                    //if (anotherFlock.speed == 0) speed = 0;
-                }
+//                    //if (anotherFlock.speed == 0) speed = 0;
+//                }
 
-            }
-        }
+//            }
+//        }
 
-        if (groupSize > 0)
-        {
+//        if (groupSize > 0)
+//        {
 
-            neighboursCenter = (neighboursCenter / groupSize) + (goalPosition.position - myFlockAgent.transform.position);
-            speed = globalSpeed / groupSize;
+//            neighboursCenter = (neighboursCenter / groupSize) + (goalPosition.position - myFlockAgent.transform.position);
+//            speed = globalSpeed / groupSize;
 
-            if (speed >= maxSpeed) speed = maxSpeed;
+//            if (speed >= maxSpeed) speed = maxSpeed;
 
-            Vector3 centerAvoidance = neighboursCenter + avoidanceVector;
-            Vector3 direction = centerAvoidance - myFlockAgent.transform.position;
+//            Vector3 centerAvoidance = neighboursCenter + avoidanceVector;
+//            Vector3 direction = centerAvoidance - myFlockAgent.transform.position;
 
-            if (direction != Vector3.zero)
-                myFlockAgent.transform.rotation = Quaternion.Slerp(myFlockAgent.transform.rotation, Quaternion.LookRotation(direction), //Hago que lentamente los agentes vayan todos hacia
-                    rotationSpeed * Time.deltaTime);                                              //La dirección en común que tienen (Para esto creé el rotationSpeed) 
-        }
+//            if (direction != Vector3.zero)
+//                myFlockAgent.transform.rotation = Quaternion.Slerp(myFlockAgent.transform.rotation, Quaternion.LookRotation(direction), //Hago que lentamente los agentes vayan todos hacia
+//                    rotationSpeed * Time.deltaTime);                                              //La dirección en común que tienen (Para esto creé el rotationSpeed) 
+//        }
 
-    }
+//    }
 
-}
+//}

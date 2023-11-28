@@ -16,27 +16,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 561c9d580761b114a93315f802e221fb, type: 2}
   - {fileID: 11400000, guid: d40895f8a239aa641b803b5ddc14ae70, type: 2}
   - {fileID: 11400000, guid: 2114d9097483fdf4f9bc8b18a023fd4b, type: 2}
-  <IdleTimer>k__BackingField: 1
+  <IdleTimer>k__BackingField: 1.5
   <PatrolTimer>k__BackingField: 0
-  <SearchTimer>k__BackingField: 2
+  <SearchStateTimer>k__BackingField: 5
   <BlockStateTimer>k__BackingField: 0
   <AttackStateTimer>k__BackingField: 0
-  <AttackCooldown>k__BackingField: 0
-  <TimeForSearchPlayer>k__BackingField: 0
+  <AttackCooldown>k__BackingField: 0.5
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 256
-  <RandomPositionThreshold>k__BackingField: 2
+  <RandomPositionThreshold>k__BackingField: 1
   <ObstacleLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <SightRange>k__BackingField: 20
+  <SightRange>k__BackingField: 30
   <TotalSightDegrees>k__BackingField: 180
   <FleeThresholdTrigger>k__BackingField: 20
-  <FleeStateTimer>k__BackingField: 0
+  <FleeStateTimer>k__BackingField: 5
   <ObstacleAvoidanceRadius>k__BackingField: 5
   <ObstacleAvoidanceMaxObstacles>k__BackingField: 5
-  <ObstacleAvoidanceViewAngle>k__BackingField: 90
+  <ObstacleAvoidanceViewAngle>k__BackingField: 180
   <ObstacleAvoidanceLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 648

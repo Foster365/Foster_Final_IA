@@ -25,25 +25,29 @@ public class BlockState : State
         //Debug.Log("FSM Leader Block ENTER");
         _entitiesData.Add(model, new DataBlockState(model));
         blockStateMaxTimer = _entitiesData[model].model.CharAIData.BlockStateTimer;
+        _entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         _entitiesData[model].model.View.CharacterMoveAnimation(false);
+        _entitiesData[model].model.HealthController.CanReceiveDamage = false;
     }
 
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM Leader Block EXECUTE " + _entitiesData[model].model.gameObject.name);
         blockStateTimer += Time.deltaTime;
-        if (blockStateTimer < blockStateMaxTimer)
-        {
-            _entitiesData[model].model.HealthController.CanReceiveDamage = false;
-            //_entitiesData[model].model.View.CharacterBlockAnimation();
 
-        }
-        else
+        var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.gameObject.transform.position;
+        _entitiesData[model].model.LookDir(dir);
+        _entitiesData[model].model.View.CharacterBlockAnimation(true);
+        //_entitiesData[model].model.View.CharacterBlockAnimation();
+        //Debug.Log("FSM LEADER TIMER STATE BLOCK: " + _entitiesData[model].model.gameObject.name + blockStateTimer);
+
+        if (blockStateTimer > blockStateMaxTimer)
         {
-                           blockStateTimer = 0;
-            _entitiesData[model].model.HealthController.CanReceiveDamage = true;
+            Debug.Log("Salgo de block");
             _entitiesData[model].model.IsBlocking = false;
             _entitiesData[model].model.IsAttacking = true;
+            _entitiesData[model].model.View.CharacterBlockAnimation(false);
+            blockStateTimer = 0;
             //_entitiesData[model].model.IsAttackDone = false;
         }
 
@@ -52,6 +56,7 @@ public class BlockState : State
     public override void ExitState(EntityModel model)
     {
         //Debug.Log("FSM Leader Block EXIT");
+        _entitiesData[model].model.HealthController.CanReceiveDamage = true;
         _entitiesData.Remove(model);
     }
 }

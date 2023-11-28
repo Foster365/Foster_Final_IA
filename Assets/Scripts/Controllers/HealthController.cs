@@ -40,16 +40,17 @@ public class HealthController
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            isDead = true;
         }
         else
             OnHealthChange?.Invoke(currentHealth);
 
     }
 
-    public void Die()
-    {
-        OnDie?.Invoke();
-    }
+    //public void Die()
+    //{
+    //    OnDie?.Invoke();
+    //}
 
     public void Heal(int heal)
     {

@@ -17,7 +17,7 @@ public class CharacterMagicAttack : MonoBehaviour
     void Start()
     {
         timer = 0;
-        rb.AddForce(transform.forward * projectileSpeed);
+        rb.AddForce(-transform.right * projectileSpeed);
     }
 
     private void Update()

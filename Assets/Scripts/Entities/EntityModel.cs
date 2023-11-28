@@ -32,7 +32,6 @@ public abstract class EntityModel : MonoBehaviour
     bool isBlocking;
     bool isSpecialAttacking;
     bool isAttackDone;
-    bool isDead;
     int regularAttackHealthThreshold;
     int enhancedAttackHealthThreshold;
     bool isBattleBegun;
@@ -66,7 +65,6 @@ public abstract class EntityModel : MonoBehaviour
     public int RegularAttackHealthThreshold { get => regularAttackHealthThreshold; set => regularAttackHealthThreshold = value; }
     public int EnhancedAttackHealthThreshold { get => enhancedAttackHealthThreshold; set => enhancedAttackHealthThreshold = value; }
     public CharacterAIData CharAIData { get => charAIData; set => charAIData = value; }
-    public bool IsDead { get => isDead; set => isDead = value; }
     public bool IsBattleBegun { get => isBattleBegun; set => isBattleBegun = value; }
     #endregion
 

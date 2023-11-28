@@ -34,7 +34,7 @@ public class NPCFleeState : State
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM NPC Flee EXECUTE");
+        Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC Flee EXECUTE");
 
         _entitiesData[model].model.LookDir(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
         _entitiesData[model].model.Move(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());

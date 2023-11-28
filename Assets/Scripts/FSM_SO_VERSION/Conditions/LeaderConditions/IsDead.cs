@@ -8,6 +8,6 @@ public class IsDead : StateCondition
     {
         CharacterModel charModel = model as CharacterModel;
 
-        return charModel.IsDead;
+        return charModel.HealthController.IsDead;
     }
 }

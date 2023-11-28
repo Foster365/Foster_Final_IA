@@ -171,9 +171,9 @@ public class NPCCharacterModel : MonoBehaviour
     {
         characterAnimController.CharacterAttack3Animation();
     }
-    public void Block1()
-    {
-        characterAnimController.CharacterBlockAnimation();
-    }
+    //public void Block1()
+    //{
+    //    characterAnimController.CharacterBlockAnimation();
+    //}
 }
 

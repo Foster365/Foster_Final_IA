@@ -28,6 +28,7 @@ public class IdleState : State
         //charModel.View.PlayWalkAnimation(false);
         _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
         _entitiesData[model].model.View.CharacterMoveAnimation(false);
+        _entitiesData[model].model.HealthController.CanReceiveDamage = true;
     }
     
     public override void ExecuteState(EntityModel model)
@@ -55,7 +56,7 @@ public class IdleState : State
     void CheckTransitionToDeathState(EntityModel model)
     {
         if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
-            _entitiesData[model].model.IsDead = true;
+            _entitiesData[model].model.HealthController.IsDead = true;
     }
 
 }

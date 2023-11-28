@@ -1234,6 +1234,7 @@ GameObject:
   - component: {fileID: 3102046172721308881}
   - component: {fileID: 8388262078521928549}
   - component: {fileID: 5789241111047809069}
+  - component: {fileID: -8395197207144064166}
   m_Layer: 9
   m_Name: NPC_B
   m_TagString: NPC_B
@@ -1250,7 +1251,7 @@ Transform:
   m_GameObject: {fileID: 2066896392038628118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 2066896392038131396}
   - {fileID: 2066896392038131498}
@@ -1426,6 +1427,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: 5
   target: {fileID: 0}
+--- !u!114 &-8395197207144064166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e687f3ff4af95594f8810e2bbb300df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
+  predatorRange: 10
+  predatorMax: 15
+  predatorMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2066896392038628120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,7 +2550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16ec7377d6a1f449c6b6cdc0062463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 320
@@ -2600,14 +2619,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 421140039854e8c42938a8cb73d3480c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20cb9cb9197fb64a830cea6c0550d0e, type: 3}
---- !u!4 &2958915110834059831 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: b20cb9cb9197fb64a830cea6c0550d0e, type: 3}
-  m_PrefabInstance: {fileID: 2958915110833922231}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2958915110833956375 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b20cb9cb9197fb64a830cea6c0550d0e, type: 3}
+  m_PrefabInstance: {fileID: 2958915110833922231}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2958915110834059831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: b20cb9cb9197fb64a830cea6c0550d0e, type: 3}
   m_PrefabInstance: {fileID: 2958915110833922231}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &7050037211811534927

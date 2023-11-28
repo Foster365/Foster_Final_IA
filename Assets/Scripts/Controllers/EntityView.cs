@@ -35,9 +35,9 @@ public class EntityView : MonoBehaviour
         anim.SetTrigger(TagManager.CHARACTER_ATTACK4_ANIMATION_TRIGGER);
     }
 
-    public void CharacterBlockAnimation()
+    public void CharacterBlockAnimation(bool value)
     {
-        anim.SetTrigger(TagManager.CHARACTER_BLOCK_ANIMATION_TRIGGER);
+        anim.SetBool(TagManager.CHARACTER_BLOCK_ANIMATION_BOOL, value);
     }
 
     //public void CharacterBlock2Animation()

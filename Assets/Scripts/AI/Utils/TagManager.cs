@@ -20,7 +20,7 @@ public class TagManager
     public const string CHARACTER_DESPERATE_ATTACK2_ANIMATION_TRIGGER = "desperateAttack2Trigger";
     public const string CHARACTER_DESPERATE_ATTACK3_ANIMATION_TRIGGER = "desperateAttack3Trigger";
 
-    public const string CHARACTER_BLOCK_ANIMATION_TRIGGER = "blockTrigger";
+    public const string CHARACTER_BLOCK_ANIMATION_BOOL = "isBlocking";
     //public const string CHARACTER_BLOCK2_ANIMATION_TRIGGER = "block2Trigger";
 
     public const string CHARACTER_DAMAGE_ANIMATION_TRIGGER = "damageTrigger";

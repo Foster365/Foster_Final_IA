@@ -32,37 +32,49 @@ public class NPCAttackState : State
     {
         _entitiesData.Add(model, new DataAttackState(model));
         _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
+        _entitiesData[model].model.View.CharacterMoveAnimation(false);
         attackMaxCooldown = _entitiesData[model].model.CharAIData.AttackCooldown;
         charModel = _entitiesData[model].model;
         AttacksRouletteSetUp(_entitiesData[model].model);
-        _entitiesData[model].model.View.CharacterMoveAnimation(false);
     }
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM NPC Attack EXECUTE");
+        Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC Attack EXECUTE");
 
         timer += Time.deltaTime;
         var target = _entitiesData[model].controller.CharAIController.Target;
-        if (target != null && !target.gameObject.GetComponent<CharacterModel>().HealthController.IsDead)
-        {    //Debug.Log("Timer de reg attack: " + attackStateTimer);
-            attackCooldown += Time.deltaTime;
-            var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+        if (target != null)
+        {
+            if (!target.gameObject.GetComponent<CharacterModel>().HealthController.IsDead)
+            {    //Debug.Log("Timer de reg attack: " + attackStateTimer);
+                attackCooldown += Time.deltaTime;
+                var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
                 if (attackCooldown > attackMaxCooldown)
                 {
                     //Debug.Log("timer de reg attack reset");
                     EnemyAttacksRouletteAction();
                     attackCooldown = 0;
                 }
+                CheckTransitionToFollowLeaderState(_entitiesData[model].model);
                 CheckTransitionToFleeState(_entitiesData[model].model);
                 CheckTransitionToDeathState(_entitiesData[model].model);
-           
+            }
         }
     }
 
     public override void ExitState(EntityModel model)
     {
         _entitiesData.Remove(model);
+    }
+
+    public void CheckTransitionToFollowLeaderState(CharacterModel model)
+    {
+        if (_entitiesData[model].controller.CharAIController.Target == null)
+        {
+            _entitiesData[model].model.IsAttack = false;
+            _entitiesData[model].model.IsFollowLeader = true;
+        }
     }
 
     public void CheckTransitionToFleeState(CharacterModel model)
@@ -80,7 +92,7 @@ public class NPCAttackState : State
         if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
         {
             _entitiesData[model].model.IsAttack = false;
-            _entitiesData[model].model.IsDead = true;
+            _entitiesData[model].model.HealthController.IsDead = true;
         }
     }
 
@@ -102,16 +114,19 @@ public class NPCAttackState : State
 
     void PlayAttack1()
     {
+        //Debug.Log("FSM NPC Attack " + charModel);
         charModel.View.CharacterAttack1Animation();
     }
 
     void PlayAttack2()
     {
+        //Debug.Log("FSM NPC Attack " + charModel);
         charModel.View.CharacterAttack2Animation();
     }
 
     void PlayAttack3()
     {
+        //Debug.Log("FSM NPC Attack " + charModel);
         charModel.View.CharacterAttack3Animation();
     }
 

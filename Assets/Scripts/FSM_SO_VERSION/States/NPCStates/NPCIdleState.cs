@@ -33,7 +33,7 @@ public class NPCIdleState : State
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM NPC IDLE EXECUTE");
+        Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC IDLE EXECUTE");
 
         timer += Time.deltaTime;
         if (_entitiesData[model].boss.gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)

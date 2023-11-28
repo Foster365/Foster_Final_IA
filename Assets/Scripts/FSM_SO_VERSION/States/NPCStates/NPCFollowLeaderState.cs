@@ -38,7 +38,7 @@ public class NPCFollowLeaderState : State
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM NPC FOLLOW LEADER EXECUTE");
+        Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC FOLLOW LEADER EXECUTE");
 
         _entitiesData[model].model.gameObject.GetComponent<CharacterController>().CharAIController.LineOfSight();
 

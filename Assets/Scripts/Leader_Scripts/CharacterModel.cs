@@ -51,15 +51,21 @@ public class CharacterModel : EntityModel
 
     public void DeathHandler()
     {
-        //healthController.IsDead = true;
-        //View.CharacterDeathAnimation();
-        Destroy(gameObject);
+        Debug.Log("FSM NPC ME MUERO" + gameObject.name);
+        healthController.IsDead = true;
+        View.CharacterDeathAnimation();
+        Destroy(gameObject, 1f);
     }
 
     void SetCharacterTag()
     {
         if (gameObject.tag == TagManager.LEADER_TAG) HealthController.IsLeader = true;
         else if (gameObject.tag == TagManager.NPC_TAG) HealthController.IsNPC = true;
+    }
+
+    public void SpawnMagicProjectile(GameObject go)
+    {
+        Instantiate(go, leftHandCollider.transform.position, Quaternion.identity);
     }
 
     public override StateData[] GetStates() => CharAIData.FsmStates;

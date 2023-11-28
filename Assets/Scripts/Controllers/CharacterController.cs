@@ -23,8 +23,11 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     {
-        charAIController = new CharacterAIController(model, fsmInitState);
-        charAIController.InitControllerComponents();
+        if(!model.HealthController.IsDead)
+        {
+            charAIController = new CharacterAIController(model, fsmInitState);
+            charAIController.InitControllerComponents();
+        }
     } 
 
     void Update()

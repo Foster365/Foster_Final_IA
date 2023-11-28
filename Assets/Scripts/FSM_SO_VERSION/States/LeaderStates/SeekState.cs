@@ -44,6 +44,7 @@ public class SeekState : State
         finalPath = _entitiesData[model].controller.CharAIController.AStarPathFinding.finalPath;
         Debug.Log("Leader FSM target: " + _entitiesData[model].controller.CharAIController.Target.name);
         _entitiesData[model].model.View.CharacterMoveAnimation(true);
+        _entitiesData[model].model.HealthController.CanReceiveDamage = true;
         _nextWaypoint = 0;
         waypointIndexModifier = 1;
     }
@@ -61,9 +62,9 @@ public class SeekState : State
             if (dist < _entitiesData[model].model.Data.AttackRange)
             {
                 Debug.Log("Pasa a attack");
-                _entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                //_entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 _entitiesData[model].model.IsAttacking = true;
-                _entitiesData[model].model.View.CharacterMoveAnimation(false);
+                //_entitiesData[model].model.View.CharacterMoveAnimation(false);
             }
 
         }

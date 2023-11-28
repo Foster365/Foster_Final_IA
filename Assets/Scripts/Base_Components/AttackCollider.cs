@@ -32,9 +32,25 @@ public class AttackCollider : MonoBehaviour
         {
             Debug.Log("Collision with: " + other.gameObject.name);
             if(other.gameObject.GetComponent<CharacterModel>() != null)
-                other.gameObject.GetComponent<CharacterModel>().HealthController.TakeDamage(damage);
-            //Debug.Log(other.name + "Health is " + other.gameObject.GetComponent<CharacterModel>().HealthController.CurrentHealth);
+            {
+                DamageHandler(other.gameObject.GetComponent<CharacterModel>());
+            }
             //isAutoDestroy = true;
         }
+    }
+
+    void DamageHandler(CharacterModel model)
+    {
+        if (model.HealthController.CanReceiveDamage)
+        {
+            model.HealthController.TakeDamage(damage);
+            Debug.Log(model.gameObject.name + "Health is " + model.HealthController.CurrentHealth);
+        }
+    }
+
+    void CheckDeath(CharacterModel model)
+    {
+        if (model.HealthController.IsDead)
+            Destroy(model.gameObject);
     }
 }
