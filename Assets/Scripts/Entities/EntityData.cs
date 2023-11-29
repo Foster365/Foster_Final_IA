@@ -9,7 +9,6 @@ public class EntityData : ScriptableObject
     [field:SerializeField] public int HealthRegenerationAmount { get; private set; }
     [field: SerializeField] public int MovementSpeed { get; private set; }
     [field: SerializeField, Header("Attack Attributes")] public float AttackRange { get; private set; }
-    [field: SerializeField] public float CooldownToAttack { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; }
     [field: SerializeField, Header("NPC Attributes")] public string BossName { get; private set; }
     [field: SerializeField] public float FlockRadius { get; private set; }

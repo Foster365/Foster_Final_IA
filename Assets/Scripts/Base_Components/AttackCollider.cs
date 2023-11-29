@@ -22,21 +22,23 @@ public class AttackCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject != null) CheckCollisionWTarget(other);
+        if (((1 << other.gameObject.layer) & targetLayerMask.value) != 0)
+        {
+            //Debug.Log(gameObject.name + "Collision with: " + other.gameObject.name);
+            if (other.gameObject.GetComponent<CharacterModel>() != null && other.gameObject.GetComponent<CharacterModel>().HealthController.CanReceiveDamage)
+            {
+                other.gameObject.GetComponent<CharacterModel>().HealthController.TakeDamage(damage);
+
+                //DamageHandler(other.gameObject.GetComponent<CharacterModel>());
+            }
+            //isAutoDestroy = true;
+        }
 
     }
 
     void CheckCollisionWTarget(Collider other)
     {
-        if ((targetLayerMask.value & (1 << other.transform.gameObject.layer)) > 0)
-        {
-            Debug.Log("Collision with: " + other.gameObject.name);
-            if(other.gameObject.GetComponent<CharacterModel>() != null)
-            {
-                DamageHandler(other.gameObject.GetComponent<CharacterModel>());
-            }
-            //isAutoDestroy = true;
-        }
+        
     }
 
     void DamageHandler(CharacterModel model)

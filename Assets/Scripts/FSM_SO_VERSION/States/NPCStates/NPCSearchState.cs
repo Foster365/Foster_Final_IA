@@ -146,8 +146,8 @@ public class NPCSearchState : State
                 _nextWaypoint += waypointIndexModifier;
             }
             _entitiesData[model].model.dirToMove = dir;
-            model.LookDir(dir.normalized/* + _entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir()*/);
-            model.Move(dir.normalized/* + _entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir()*/);
+            model.LookDir(dir.normalized + _entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
+            model.Move(dir.normalized + _entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
         }
         else availableToRegeneratePath = true;
     }

@@ -1257,7 +1257,7 @@ Transform:
   m_GameObject: {fileID: 2066896392038628118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 2066896392038131396}
   - {fileID: 2066896392038131498}
@@ -1334,10 +1334,10 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   data: {fileID: 11400000, guid: 35a8faca56c82fe4c930104e44fd0e82, type: 2}
   charAIData: {fileID: 11400000, guid: 6c093c19790f2ed4399fd61cd9ce1036, type: 2}
-  attack1Chance: 5
-  attack2Chance: 10
-  attack3Chance: 15
-  attack4Chance: 20
+  attack1Chance: 0
+  attack2Chance: 0
+  attack3Chance: 0
+  attack4Chance: 0
   dirToMove: {x: 0, y: 0, z: 0}
 --- !u!114 &7132464628457388645
 MonoBehaviour:
@@ -2665,10 +2665,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.19331694
-  m_Height: 1.4780633
+  m_Radius: 0.112152204
+  m_Height: 2.3581204
   m_Direction: 1
-  m_Center: {x: 0.004502236, y: -0.5405661, z: -0.016030498}
+  m_Center: {x: 0.004502203, y: -0.980595, z: -0.016030343}
 --- !u!114 &4812911992008714554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,10 +2681,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16ec7377d6a1f449c6b6cdc0062463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 10
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 576
 --- !u!1 &7216869976802775478
 GameObject:
   m_ObjectHideFlags: 0

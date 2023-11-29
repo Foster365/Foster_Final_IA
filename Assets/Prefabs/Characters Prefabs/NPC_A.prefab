@@ -2060,9 +2060,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.10130393
-  m_Height: 1.5609057
+  m_Height: 0.74292153
   m_Direction: 1
-  m_Center: {x: 0.006890564, y: 0.43133402, z: -0.002350029}
+  m_Center: {x: 0.0068952045, y: 0.84031814, z: -0.0023491548}
 --- !u!114 &4765385142847698441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf7bed3e3132e2458fc9547b82d986a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 2
+  multiplier: 3
 --- !u!114 &7195775813836505561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2261,7 +2261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c81a528e0794143a00e640182f9540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 2
+  multiplier: 3
 --- !u!114 &6422097115432854640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2274,7 +2274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89d99e5d8e500143891f92ed001ca77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBoids: 50
+  maxBoids: 10
   maskBoids:
     serializedVersion: 2
     m_Bits: 256
@@ -2290,7 +2290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2e42202caeaf64da8764e1b5bae217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 3
+  multiplier: 6
   target: {fileID: 0}
 --- !u!114 &7610082342671785727
 MonoBehaviour:
@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e687f3ff4af95594f8810e2bbb300df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1
+  multiplier: 2
   predatorRange: 10
   predatorMax: 15
   predatorMask:

@@ -61,10 +61,9 @@ public class SeekState : State
             //Debug.Log("Dist " + dist);
             if (dist < _entitiesData[model].model.Data.AttackRange)
             {
-                Debug.Log("Pasa a attack");
-                //_entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 _entitiesData[model].model.IsAttacking = true;
-                //_entitiesData[model].model.View.CharacterMoveAnimation(false);
+                _entitiesData[model].model.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                _entitiesData[model].model.View.CharacterMoveAnimation(false);
             }
 
         }

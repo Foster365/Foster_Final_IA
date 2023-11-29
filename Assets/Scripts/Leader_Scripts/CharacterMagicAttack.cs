@@ -5,6 +5,8 @@ using UnityEngine;
 public class CharacterMagicAttack : MonoBehaviour
 {
     [SerializeField] float projectileSpeed, lifeTime;
+    [SerializeField] int damage;
+    [SerializeField] LayerMask targetLayerMask;
     float timer;
     Rigidbody rb;
 
@@ -22,8 +24,11 @@ public class CharacterMagicAttack : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        HandleAutoDestroy();
+        if(gameObject != null)
+        {
+            timer += Time.deltaTime;
+            HandleAutoDestroy();
+        }
     }
 
     void HandleAutoDestroy()
@@ -37,10 +42,27 @@ public class CharacterMagicAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == TagManager.WALL_TAG)
+        if (other.gameObject != null) CheckCollisionWTarget(other);
+    }
+    void CheckCollisionWTarget(Collider other)
+    {
+        if ((targetLayerMask.value & (1 << other.transform.gameObject.layer)) > 0)
         {
-            Debug.Log("Destroy porque chocó contra una pared");
-            Destroy(gameObject);
+            Debug.Log("Collision with: " + other.gameObject.name);
+            if (other.gameObject.GetComponent<CharacterModel>() != null)
+            {
+                DamageHandler(other.gameObject.GetComponent<CharacterModel>());
+            }
+        }
+        else Destroy(gameObject);
+    }
+
+    void DamageHandler(CharacterModel model)
+    {
+        if (model.HealthController.CanReceiveDamage)
+        {
+            model.HealthController.TakeDamage(damage);
+            Debug.Log(model.gameObject.name + "Health is " + model.HealthController.CurrentHealth);
         }
     }
 

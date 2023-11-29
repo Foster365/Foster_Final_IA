@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Is NOT Blocking and CanAttack
   m_EditorClassIdentifier: 
   conditionOne: {fileID: 11400000, guid: 7bc77c9fc1930b34d9c3dc1f12a71483, type: 2}
-  conditionTwo: {fileID: 11400000, guid: 721f45be2c21f3a4dbeb022556df6b33, type: 2}
+  conditionTwo: {fileID: 11400000, guid: 184e1fc9088cea24c8d5827e21a23ebe, type: 2}

@@ -78,6 +78,9 @@ public class PatrolState : State
         //Debug.Log("FSM Leader Patrol EXIT");
         _entitiesData.Remove(model);
     }
+
+    #region Path handling
+
     void CheckPathRegeneration(CharacterAIController _aiController, EntityModel _model)
     {
         if (availableToRegeneratePath)
@@ -130,6 +133,8 @@ public class PatrolState : State
         }
         else availableToRegeneratePath = true;
     }
+
+    #endregion        
 
     #region old execute method
 

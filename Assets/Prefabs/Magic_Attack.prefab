@@ -96,7 +96,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9199879777386292604
 MonoBehaviour:
@@ -110,7 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16ec7377d6a1f449c6b6cdc0062463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 30
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 640
 --- !u!54 &1201104600968254817
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,4 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 700
-  lifeTime: 5
+  lifeTime: 2
+  damage: 40
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 640

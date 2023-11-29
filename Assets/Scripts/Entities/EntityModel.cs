@@ -30,6 +30,7 @@ public abstract class EntityModel : MonoBehaviour
 
     bool isWalking;
     bool isBlocking;
+    bool isDead;
     bool isSpecialAttacking;
     bool isAttackDone;
     int regularAttackHealthThreshold;
@@ -66,6 +67,7 @@ public abstract class EntityModel : MonoBehaviour
     public int EnhancedAttackHealthThreshold { get => enhancedAttackHealthThreshold; set => enhancedAttackHealthThreshold = value; }
     public CharacterAIData CharAIData { get => charAIData; set => charAIData = value; }
     public bool IsBattleBegun { get => isBattleBegun; set => isBattleBegun = value; }
+    public bool IsDead { get => isDead; set => isDead = value; }
     #endregion
 
     #region Attack Colliders Activation/Deactivation

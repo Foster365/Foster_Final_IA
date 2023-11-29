@@ -21,11 +21,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 880c43b32ea7da2489649e8acd4fd81f, type: 2}
   <IdleTimer>k__BackingField: 3
   <PatrolTimer>k__BackingField: 10
-  <SearchTimer>k__BackingField: 0
-  <BlockStateTimer>k__BackingField: 5
-  <AttackStateTimer>k__BackingField: 5
+  <SearchStateTimer>k__BackingField: 0
+  <BlockStateTimer>k__BackingField: 2
+  <AttackStateTimer>k__BackingField: 4
   <AttackCooldown>k__BackingField: 0.75
-  <TimeForSearchPlayer>k__BackingField: 2
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64

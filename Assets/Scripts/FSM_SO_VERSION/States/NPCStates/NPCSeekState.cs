@@ -59,7 +59,6 @@ public class NPCSeekState : State
                 _entitiesData[model].model.View.CharacterMoveAnimation(true);
                 Seek(_entitiesData[model].model, finalPath);
 
-                //Debug.Log(_entitiesData[model].model.gameObject.name + "Dist " + dist);
                 if (dist < _entitiesData[model].model.Data.AttackRange)
                 {
                     _entitiesData[model].model.IsAttack = true;
@@ -108,8 +107,8 @@ public class NPCSeekState : State
                 }
                 _nextWaypoint += waypointIndexModifier;
             }
-            model.LookDir(dir.normalized + _entitiesData[model].controller.CharAIController.SbSeek.GetDir()/* + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir()*/);
-            model.Move(dir.normalized + _entitiesData[model].controller.CharAIController.SbSeek.GetDir()/* + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir()*/);
+            model.LookDir(dir.normalized + _entitiesData[model].controller.CharAIController.SbSeek.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
+            model.Move(dir.normalized + _entitiesData[model].controller.CharAIController.SbSeek.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
         }
 
     }

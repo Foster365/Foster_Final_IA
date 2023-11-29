@@ -26,110 +26,116 @@ public class AttackState : State
         {
             model = (CharacterModel)entityModel;
             controller = model.gameObject.GetComponent<CharacterController>();
-
         }
     }
 
     public override void EnterState(EntityModel model)
     {
-        //Debug.Log("FSM Leader Attack ENTER");
         if (!_entitiesData.ContainsKey(model)) _entitiesData.Add(model, new DataAttackState(model));
         charModel = _entitiesData[model].model;
-        charModel.GetRigidbody().velocity = Vector3.zero;
             attackMaxCooldown = charModel.CharAIData.AttackCooldown;
         attackMaxStateTimer = charModel.CharAIData.AttackStateTimer;
-        _entitiesData[model].model.HealthController.CanReceiveDamage = true;
-        _attacksRouletteWheelNodes.Clear();
         //attackCooldown = 0;
     }
 
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM Leader Attack EXECUTE " + charModel.gameObject.name);
+        _entitiesData[model].model.HealthController.CanReceiveDamage = true;
         attackStateTimer += Time.deltaTime;
-        var target = _entitiesData[model].controller.CharAIController.Target;
-        if (target != null && !target.gameObject.GetComponent<CharacterModel>().HealthController.IsDead)
-        {    //Debug.Log("Timer de reg attack: " + attackStateTimer);
-            attackCooldown += Time.deltaTime;
-            var dist = Vector3.Distance(charModel.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
-            //Debug.Log("FSM LEADER TIMER STATE ATTACK: " + _entitiesData[model].model.gameObject.name + attackStateTimer);
-
-            if (attackCooldown > attackMaxCooldown)
+        if (attackStateTimer <= attackMaxStateTimer)
+        {
+            var target = _entitiesData[model].controller.CharAIController.Target;
+            if (!target.gameObject.GetComponent<CharacterModel>().HealthController.IsDead)
             {
-                AttacksRouletteSetUp();
-                //Debug.Log("timer de reg attack reset");
-                EnemyAttacksRouletteAction();
-                attackCooldown = 0;
-            }
-            CheckTransitionToSeekState(_entitiesData[model].model, dist);
-            CheckTransitionToDeathState(_entitiesData[model].model);
 
-            if (attackStateTimer > attackMaxStateTimer)
-            {
-                Debug.Log("Paso a block state?");
-                attackStateTimer = 0;
-                //charModel.IsAttackDone = true;
-                charModel.IsBlocking = true;
-                charModel.IsAttacking = false;
+                var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+
+                var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.transform.position;
+
+                _entitiesData[model].model.LookDir(dir);
+
+                attackCooldown += Time.deltaTime;
+
+                CheckTransitionToSeekState(_entitiesData[model].model, dist);
+                CheckTransitionToDeathState(_entitiesData[model].model);
+
+
+                AttackHandler(_entitiesData[model].model);
             }
         }
-
+        else
+        {
+            CheckTransitionToBlockState(_entitiesData[model].model);
+        }
     }
 
     public override void ExitState(EntityModel model)
     {
-        //Debug.Log("FSM Leader Attack EXIT");
         _entitiesData.Remove(model);
     }
 
+    void AttackHandler(CharacterModel model)
+    {
+        if (attackCooldown > attackMaxCooldown)
+        {
+            _entitiesData[model].model.View.CharacterAttack1Animation();
+            //_attacksRouletteWheelNodes.Clear();
+            //AttacksRouletteSetUp(_entitiesData[model].model);
+            //EnemyAttacksRouletteAction();
+            attackCooldown = 0;
+        }
+    }
+
+    #region Transitions to other states
+
     void CheckTransitionToSeekState(EntityModel model, float dist)
     {
-        if (dist > charModel.Data.AttackRange)
-            charModel.IsAttacking = false;
+        if (dist > _entitiesData[model].model.Data.AttackRange)
+        {
+            _entitiesData[model].model.IsAttacking = false;
+            attackCooldown = 0;
+            attackStateTimer = 0;
+        }
     }
     void CheckTransitionToDeathState(EntityModel model)
     {
-        if (charModel.HealthController.CurrentHealth <= 0)
-            charModel.HealthController.IsDead = true;
+        if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
+        {
+            _entitiesData[model].model.IsDead = true;
+            attackCooldown = 0;
+            attackStateTimer = 0;
+        }
+    }
+    void CheckTransitionToBlockState(CharacterModel model)
+    {
+        if (attackStateTimer > attackMaxStateTimer)
+        {
+            _entitiesData[model].model.IsBlocking = true;
+            _entitiesData[model].model.IsAttacking = false;
+            attackCooldown = 0;
+            attackStateTimer = 0;
+        }
     }
 
+    #endregion
+
     #region  Attacks Roulette Wheel
-    public void AttacksRouletteSetUp()
+    public void AttacksRouletteSetUp(CharacterModel model)
     {
         _attacksRouletteWheel = new Roulette();
 
-        ActionNode Attack1 = new ActionNode(PlayAttack1);
-        ActionNode Attack2 = new ActionNode(PlayAttack2);
-        ActionNode Attack3 = new ActionNode(PlayAttack3);
-        ActionNode Attack4 = new ActionNode(PlayAttack4);
+        ActionNode Attack1 = new ActionNode(_entitiesData[model].model.View.CharacterAttack1Animation);
+        ActionNode Attack2 = new ActionNode(_entitiesData[model].model.View.CharacterAttack2Animation);
+        ActionNode Attack3 = new ActionNode(_entitiesData[model].model.View.CharacterAttack3Animation);
+        ActionNode Attack4 = new ActionNode(_entitiesData[model].model.View.CharacterAttack4Animation);
 
-        _attacksRouletteWheelNodes.Add(Attack1, HandleHealthCondition(charModel.Attack1Chance));
-        _attacksRouletteWheelNodes.Add(Attack2, HandleHealthCondition(charModel.Attack2Chance));
-        _attacksRouletteWheelNodes.Add(Attack3, HandleHealthCondition(charModel.Attack3Chance));
-        _attacksRouletteWheelNodes.Add(Attack4, HandleHealthCondition(charModel.Attack4Chance));
-        //_attacksRouletteWheelNodes.Add(Attack4, HandleRouletteOptionModifier(_entitiesData[model].Attack4Chance));
+        _attacksRouletteWheelNodes.Add(Attack1,_entitiesData[model].model.Attack1Chance);
+        _attacksRouletteWheelNodes.Add(Attack2,_entitiesData[model].model.Attack2Chance);
+        _attacksRouletteWheelNodes.Add(Attack3,_entitiesData[model].model.Attack3Chance);
+        _attacksRouletteWheelNodes.Add(Attack4,_entitiesData[model].model.Attack4Chance);
 
         ActionNode rouletteAction = new ActionNode(EnemyAttacksRouletteAction);
-    }
-
-    void PlayAttack1()
-    {
-        charModel.View.CharacterAttack1Animation();
-    }
-
-    void PlayAttack2()
-    {
-        charModel.View.CharacterAttack2Animation();
-    }
-
-    void PlayAttack3()
-    {
-        charModel.View.CharacterAttack3Animation();
-    }
-
-    void PlayAttack4()
-    {
-        charModel.View.CharacterAttack4Animation();
     }
 
     public void EnemyAttacksRouletteAction()
