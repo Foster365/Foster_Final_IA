@@ -6216,7 +6216,7 @@ MonoBehaviour:
   gridWorldSize: {x: 30, y: 50}
   prefab: {fileID: 6936562248821186842, guid: c54856392f3a9f84e8777b23971a482a, type: 3}
   leader: {fileID: 483484358}
-  troopSize: 300
+  troopSize: 5
   poolTag: 
   nodeRadius: 2
 --- !u!1001 &1979278157
