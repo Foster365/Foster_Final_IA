@@ -17,7 +17,7 @@ public class Grid : MonoBehaviour
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
-        CreateGrid(); //Hacer esto por editor. Corro por editor, me guardo por cache lo que trae y uso eso
+        CreateGrid(); // TODO :Hacer esto por editor. Corro por editor, me guardo por cache lo que trae y uso eso
         //O hacer que cada objeto que pueda ser un obs para la grilla le diga a la grilla que chequee esa zona. Chequear solamente zonas que me digan los obstaculos
     }
 
