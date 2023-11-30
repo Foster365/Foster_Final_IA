@@ -2,27 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackCollider : MonoBehaviour
+public class NPCAttackCollider : MonoBehaviour
 {
     [SerializeField] int damage;
-    [SerializeField] LayerMask targetLayerMask;
-    CharacterModel attacker;
-    bool isAutoDestroy;
-
-    public bool IsAutoDestroy { get => isAutoDestroy; set => isAutoDestroy = value; }
-
-    //[SerializeField] GameObject hitFX;
-
-    public void Start()
-    {
-        attacker = GetComponentInParent<CharacterModel>();
-        isAutoDestroy = false;
-
-    }
+    [SerializeField] string targetTag;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (((1 << other.gameObject.layer) & targetLayerMask.value) != 0)
+        if (other.gameObject.CompareTag(targetTag))
         {
             Debug.Log("and can receive damage show layer health is" + LayerMask.LayerToName(other.gameObject.layer));
             if (other.gameObject.GetComponent<CharacterModel>() != null && other.gameObject.GetComponent<CharacterModel>().HealthController.CanReceiveDamage)
@@ -39,7 +26,7 @@ public class AttackCollider : MonoBehaviour
 
     void CheckCollisionWTarget(Collider other)
     {
-        
+
     }
 
 }

@@ -13,6 +13,7 @@ public class CharacterAIController
     FsmScript charFSM;
     Seek sbSeek;
     Flee sbFlee;
+    Pursuit sbPursuit;
     ObstacleAvoidance sbObstacleAvoidance;
     AStar aStarPathFinding;
     GameObject finalNode;
@@ -22,21 +23,6 @@ public class CharacterAIController
 
     bool isTargetInSight;
 
-    //Regular Attacks roulette wheel
-    Roulette _regularAttacksRouletteWheel;
-    Dictionary<ActionNode, int> _regularAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
-    //
-
-    //Enhanced Attacks roulette wheel
-    Roulette _enhancedAttacksRouletteWheel;
-    Dictionary<ActionNode, int> _enhancedAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
-    //
-
-    //Desperate Attacks roulette wheel
-    Roulette _desperateAttacksRouletteWheel;
-    Dictionary<ActionNode, int> _desperateAttacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
-    //
-
     public AStar AStarPathFinding { get => aStarPathFinding; set => aStarPathFinding = value; }
     public bool IsTargetInSight { get => isTargetInSight; set => isTargetInSight = value; }
     public Transform Target { get => target; set => target = value; }
@@ -44,6 +30,7 @@ public class CharacterAIController
     public ObstacleAvoidance SbObstacleAvoidance { get => sbObstacleAvoidance; set => sbObstacleAvoidance = value; }
     public Flee SbFlee { get => sbFlee; set => sbFlee = value; }
     public Seek SbSeek { get => sbSeek; set => sbSeek = value; }
+    public Pursuit SbPursuit { get => sbPursuit; set => sbPursuit = value; }
 
     public CharacterAIController(CharacterModel model, StateData fsmInitialState)
     {
@@ -59,6 +46,7 @@ public class CharacterAIController
         charFSM = new FsmScript(model, fsmInitialState);
         sbSeek = new Seek(model.transform, target);
         sbFlee = new Flee(model.transform, target);
+        sbPursuit = new Pursuit(model.transform, target, model.CharAIData.SbPursuitTime);
         sbObstacleAvoidance = new ObstacleAvoidance(model.transform, model.CharAIData.ObstacleAvoidanceRadius,
             model.CharAIData.ObstacleAvoidanceMaxObstacles, model.CharAIData.ObstacleAvoidanceViewAngle,
             model.CharAIData.ObstacleAvoidanceLayerMask);
@@ -128,6 +116,7 @@ public class CharacterAIController
     {
         sbFlee.Target = target;
         sbSeek.Target = target;
+        sbPursuit.Target = target;
     }
 
     #endregion

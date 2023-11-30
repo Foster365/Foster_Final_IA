@@ -40,7 +40,7 @@ public class HealthController
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            isDead = true;
+            //isDead = true;
         }
         else
             OnHealthChange?.Invoke(currentHealth);

@@ -21,21 +21,22 @@ MonoBehaviour:
   <SearchStateTimer>k__BackingField: 5
   <BlockStateTimer>k__BackingField: 0
   <AttackStateTimer>k__BackingField: 0
-  <AttackCooldown>k__BackingField: 0.5
+  <AttackCooldown>k__BackingField: 1
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
-  <RandomPositionThreshold>k__BackingField: 1
+  <RandomPositionThreshold>k__BackingField: 3
   <ObstacleLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
   <SightRange>k__BackingField: 30
   <TotalSightDegrees>k__BackingField: 180
-  <FleeThresholdTrigger>k__BackingField: 20
+  <FleeThresholdTrigger>k__BackingField: 15
   <FleeStateTimer>k__BackingField: 5
-  <ObstacleAvoidanceRadius>k__BackingField: 15
+  <ObstacleAvoidanceRadius>k__BackingField: 10
   <ObstacleAvoidanceMaxObstacles>k__BackingField: 10
   <ObstacleAvoidanceViewAngle>k__BackingField: 180
   <ObstacleAvoidanceLayerMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 256
+  <SbPursuitTime>k__BackingField: 3

@@ -16,14 +16,12 @@ public class NPCFollowLeaderState : State
         public CharacterController controller;
         public GameObject boss;
         public List<Node> nodesToTarget;
-        public Grid grid;
 
         public DataFollowLeaderState(EntityModel entityModel)
         {
             model = (CharacterModel)entityModel;
             controller = model.gameObject.GetComponent<CharacterController>();
             boss = GameObject.Find(model.Data.BossName);
-            grid = model.MapGrid;
             nodesToTarget = new List<Node>();
         }
     }
@@ -31,8 +29,6 @@ public class NPCFollowLeaderState : State
     public override void EnterState(EntityModel model)
     {
         _entitiesData.Add(model, new DataFollowLeaderState(model));
-        //charModel.View.PlayWalkAnimation(false);
-        //_entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
         _entitiesData[model].model.View.CharacterMoveAnimation(true);
     }
 
@@ -45,15 +41,10 @@ public class NPCFollowLeaderState : State
         //_entitiesData[model].model.LookDir(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
         //_entitiesData[model].model.Move(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
         _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlocking();
-        //CheckTarget(_entitiesData[model]);
-        if (model.gameObject.GetComponent<CharacterController>().CharAIController.Target != null)
-        {
-            model.IsFollowLeader = false;
-            model.IsSeek = true;
-        }
-        else if (_entitiesData[model].boss.gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero) _entitiesData[model].model.IsFollowLeader = false;
-        //else if (_entitiesData[model].gameObject.GetComponent<CharacterController>().CharAIController.IsTargetInSight)
-        //    _entitiesData[model].IsSeek = true;
+
+        CheckTransitionToIdleState(_entitiesData[model].model);
+        CheckTransitionToSeekState(_entitiesData[model].model);
+
     }
 
     public override void ExitState(EntityModel model)
@@ -61,12 +52,23 @@ public class NPCFollowLeaderState : State
         _entitiesData.Remove(model);
     }
 
-    void CheckTarget(EntityModel model)
+    #region Transition to other states
+
+    void CheckTransitionToSeekState(CharacterModel model)
     {
-        if(model.gameObject.GetComponent<CharacterController>().CharAIController.Target != null)
+        if (_entitiesData[model].model.gameObject.GetComponent<CharacterController>().CharAIController.Target != null)
         {
-            model.IsFollowLeader = false;
-            model.IsSeek = true;
+            _entitiesData[model].model.IsFollowLeader = false;
+            _entitiesData[model].model.IsSeek = true;
         }
     }
+
+    void CheckTransitionToIdleState(CharacterModel model)
+    {
+        if (_entitiesData[model].boss.gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero)
+            _entitiesData[model].model.IsFollowLeader = false;
+    }
+
+    #endregion
+
 }

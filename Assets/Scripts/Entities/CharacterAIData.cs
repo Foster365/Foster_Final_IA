@@ -31,5 +31,7 @@ public class CharacterAIData : ScriptableObject
     [field: SerializeField] public float ObstacleAvoidanceViewAngle { get; set; }
     [field: SerializeField] public LayerMask ObstacleAvoidanceLayerMask { get; set; }
 
+    [field: SerializeField, Header("Pursuit SB Variables")] public float SbPursuitTime { get; set; }
+
 
 }

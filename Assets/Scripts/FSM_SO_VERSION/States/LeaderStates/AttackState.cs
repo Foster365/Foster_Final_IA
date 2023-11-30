@@ -53,10 +53,12 @@ public class AttackState : State
         attackStateTimer += Time.deltaTime;
         if (attackStateTimer <= attackMaxStateTimer)
         {
-            var target = _entitiesData[model].controller.CharAIController.Target;
-            if (!target.gameObject.GetComponent<CharacterModel>().HealthController.IsDead)
-            {
 
+            Debug.Log(_entitiesData[model].model.gameObject.name + "curr health " + _entitiesData[model].model.HealthController.CurrentHealth);
+
+            var target = _entitiesData[model].controller.CharAIController.Target;
+            if (target != null)
+            {
                 var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
 
                 var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.transform.position;
@@ -65,13 +67,11 @@ public class AttackState : State
 
                 attackCooldown += Time.deltaTime;
 
-                Debug.Log("Attacks dictionary is " + _attacksRouletteWheelNodes);
-                Debug.Log("Attacks dictionary roulette is " + _attacksRouletteWheel);
+                if(_attacksRouletteWheelNodes != null) AttackHandler(_entitiesData[model].model);
 
                 CheckTransitionToSeekState(_entitiesData[model].model, dist);
                 CheckTransitionToDeathState(_entitiesData[model].model);
 
-                if(_attacksRouletteWheelNodes != null) AttackHandler(_entitiesData[model].model);
             }
         }
         else
@@ -90,8 +90,7 @@ public class AttackState : State
     {
         if (attackCooldown > attackMaxCooldown)
         {
-            //RouletteWheelSetUp(_entitiesData[model].model);
-            //_entitiesData[model].model.View.CharacterAttack1Animation();
+            HandleRWheelAttackChances(_entitiesData[model].model);
             EnemyAttacksRouletteAction();
             attackCooldown = 0;
         }
@@ -108,21 +107,25 @@ public class AttackState : State
             attackStateTimer = 0;
         }
     }
-    void CheckTransitionToDeathState(EntityModel model)
-    {
-        if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
-        {
-            _entitiesData[model].model.IsDead = true;
-            attackCooldown = 0;
-            attackStateTimer = 0;
-        }
-    }
     void CheckTransitionToBlockState(CharacterModel model)
     {
         if (attackStateTimer > attackMaxStateTimer)
         {
             _entitiesData[model].model.IsBlocking = true;
             _entitiesData[model].model.IsAttacking = false;
+            attackCooldown = 0;
+            attackStateTimer = 0;
+        }
+    }
+
+    void CheckTransitionToDeathState(EntityModel model)
+    {
+        if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
+        {
+            Debug.Log("Curr health is zero, transition to death state");
+            _entitiesData[model].model.IsDead = true;
+            _entitiesData[model].model.IsAttacking = false;
+            //_entitiesData[model].model.HealthController.IsDead = true;
             attackCooldown = 0;
             attackStateTimer = 0;
         }
@@ -137,10 +140,10 @@ public class AttackState : State
         Debug.Log("anim ataque seteo ruleta");
         _attacksRouletteWheel = new Roulette();
 
-        ActionNode Attack1 = new ActionNode(/*Ataque1);*/_entitiesData[model].model.View.CharacterAttack1Animation);
-        ActionNode Attack2 = new ActionNode(/*Ataque2);*/_entitiesData[model].model.View.CharacterAttack2Animation);
-        ActionNode Attack3 = new ActionNode(/*Ataque3);*/_entitiesData[model].model.View.CharacterAttack3Animation);
-        ActionNode Attack4 = new ActionNode(/*Ataque4);*/_entitiesData[model].model.View.CharacterAttack4Animation);
+        ActionNode Attack1 = new ActionNode(_entitiesData[model].model.View.CharacterAttack1Animation);
+        ActionNode Attack2 = new ActionNode(_entitiesData[model].model.View.CharacterAttack2Animation);
+        ActionNode Attack3 = new ActionNode(_entitiesData[model].model.View.CharacterAttack3Animation);
+        ActionNode Attack4 = new ActionNode(_entitiesData[model].model.View.CharacterAttack4Animation);
 
 
         _attacksRouletteWheelNodes.Add(Attack1, attack1Chance);
@@ -156,6 +159,32 @@ public class AttackState : State
 
         INode node = _attacksRouletteWheel.Run(_attacksRouletteWheelNodes);
         node.Execute();
+    }
+
+    void HandleRWheelAttackChances(CharacterModel model)
+    {
+        var currHealth = _entitiesData[model].model.HealthController.CurrentHealth;
+        if (currHealth > currHealth * .75f)
+        {
+            attack1Chance = attack1Chance + 3;
+            attack2Chance = attack2Chance + 2;
+            attack3Chance = attack3Chance + 1;
+            attack4Chance = attack4Chance + 0;
+        }
+        else if(currHealth < currHealth * .75f && currHealth > currHealth * .35f)
+        {
+            attack1Chance = attack1Chance + 2;
+            attack2Chance = attack2Chance + 1;
+            attack3Chance = attack3Chance + 2;
+            attack4Chance = attack4Chance + 1;
+        }
+        else if (currHealth < currHealth * .35f)
+        {
+            attack1Chance = attack1Chance + 1;
+            attack2Chance = attack2Chance + 2;
+            attack3Chance = attack3Chance + 3;
+            attack4Chance = attack4Chance + 4;
+        }
     }
 
     #endregion

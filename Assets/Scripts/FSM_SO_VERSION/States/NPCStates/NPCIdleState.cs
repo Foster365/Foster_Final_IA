@@ -26,6 +26,7 @@ public class NPCIdleState : State
     public override void EnterState(EntityModel model)
     {
         _entitiesData.Add(model, new DataIdleState(model));
+        _entitiesData[model].model.HealthController.CanReceiveDamage = true;
         //charModel.View.PlayWalkAnimation(false);
         _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
         _entitiesData[model].model.View.CharacterMoveAnimation(false);

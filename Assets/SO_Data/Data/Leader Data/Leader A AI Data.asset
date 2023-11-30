@@ -42,3 +42,4 @@ MonoBehaviour:
   <ObstacleAvoidanceLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
+  <SbPursuitTime>k__BackingField: 2

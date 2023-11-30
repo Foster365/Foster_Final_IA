@@ -1334,10 +1334,10 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   data: {fileID: 11400000, guid: 35a8faca56c82fe4c930104e44fd0e82, type: 2}
   charAIData: {fileID: 11400000, guid: 6c093c19790f2ed4399fd61cd9ce1036, type: 2}
-  attack1Chance: 0
-  attack2Chance: 0
-  attack3Chance: 0
-  attack4Chance: 0
+  attack1Chance: 2
+  attack2Chance: 1
+  attack3Chance: 3
+  attack4Chance: 2
   dirToMove: {x: 0, y: 0, z: 0}
 --- !u!114 &7132464628457388645
 MonoBehaviour:
@@ -2558,7 +2558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd3d29f3a8d14f41972a85f9a087f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  character: {fileID: 7956637677070464954}
   textUI: {fileID: 3940127782647011418}
   txtUI: {fileID: 8659511232144776259}
   blockingAttacksUITxt: {fileID: 7362759892500872495}
@@ -2602,7 +2602,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6277161059733568852}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.1397295, y: 0.650985, z: 0.59290385}
@@ -2640,7 +2640,7 @@ GameObject:
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3200110554568729044
 Transform:
   m_ObjectHideFlags: 0

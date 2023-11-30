@@ -29,16 +29,17 @@ public class BlockState : State
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log("FSM Leader Block EXECUTE " + _entitiesData[model].model.gameObject.name);
-        blockStateTimer += Time.deltaTime;
+        if(_entitiesData[model].controller.CharAIController.Target)
+        {
+            blockStateTimer += Time.deltaTime;
 
-        _entitiesData[model].model.View.CharacterBlockAnimation(true);
-        _entitiesData[model].model.HealthController.CanReceiveDamage = false;
-        var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.gameObject.transform.position;
-        _entitiesData[model].model.LookDir(dir);
+            _entitiesData[model].model.View.CharacterBlockAnimation(true);
+            _entitiesData[model].model.HealthController.CanReceiveDamage = false;
+            var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.gameObject.transform.position;
+            _entitiesData[model].model.LookDir(dir);
 
-
-        CheckTransitionToAttackState(_entitiesData[model].model);
-
+            CheckTransitionToAttackState(_entitiesData[model].model);
+        }
     }
 
     public override void ExitState(EntityModel model)

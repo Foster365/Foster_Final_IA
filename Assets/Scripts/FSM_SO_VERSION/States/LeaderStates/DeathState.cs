@@ -17,14 +17,13 @@ public class DeathState : State
         {
             model = (CharacterModel)entityModel;
             controller = model.gameObject.GetComponent<CharacterController>();
-
         }
     }
 
     public override void EnterState(EntityModel model)
     {
-        Debug.Log("NPC/LEADER DEATH STATE ENTER");
         _entitiesData.Add(model, new DeathStateData(model));
+        Debug.Log(_entitiesData[model].model.gameObject.name + "NPC/LEADER DEATH STATE ENTER");
         _entitiesData[model].model.DeathHandler();
     }
 

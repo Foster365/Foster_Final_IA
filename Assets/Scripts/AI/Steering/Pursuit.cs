@@ -1,23 +1,25 @@
 ﻿using UnityEngine;
 
-public class Pursuit// : ISteeringBehaviour
-{
+public class Pursuit{
     Transform _npc;
+    Transform _target;
     float _timePrediction;
 
-    public Pursuit(Transform npc, float time)
+    public Pursuit(Transform npc, Transform target, float time)
     {
         _timePrediction = time;
+        Target = target;
         _npc = npc;
     }
 
-    public Vector3 GetDir(Transform _target, Rigidbody _rbTarget)
+    public Transform Target { get => _target; set => _target = value; }
+
+    public Vector3 GetDir()
     {
-        float vel = _rbTarget.velocity.magnitude;
-        Vector3 posPrediction = _target.position + (_target.forward * vel * _timePrediction);
-        Vector3 dir = (posPrediction - _npc.position).normalized;
+        float vel = Target.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+        Vector3 posPrediction = Target.position + (Target.forward * vel * _timePrediction);
         //Vector3 dir = Vector3.zero;
-        return dir;
+        return (posPrediction - _npc.position).normalized;
     }
 }
 

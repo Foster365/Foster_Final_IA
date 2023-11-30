@@ -168,7 +168,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7078782884089894955
 Transform:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   damage: 15
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 128
 --- !u!1 &2437935038351937999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,10 +1757,10 @@ MonoBehaviour:
   meshRenderer: {fileID: 6936562248824368138}
   data: {fileID: 11400000, guid: b741a65f24eb0a84aad5677f9d6311f0, type: 2}
   charAIData: {fileID: 11400000, guid: 5811a78ab0c2e934dbbbb81502a0c217, type: 2}
-  attack1Chance: 20
-  attack2Chance: 15
-  attack3Chance: 10
-  attack4Chance: 5
+  attack1Chance: 2
+  attack2Chance: 1
+  attack3Chance: 2
+  attack4Chance: 1
   dirToMove: {x: 0, y: 0, z: 0}
 --- !u!114 &4105525876296751118
 MonoBehaviour:

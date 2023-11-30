@@ -13,7 +13,6 @@ public class NPCAttackState : State
     Roulette _attacksRouletteWheel;
     Dictionary<ActionNode, int> _attacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
     //
-    CharacterModel charModel;
 
 
     private class DataAttackState
@@ -31,10 +30,12 @@ public class NPCAttackState : State
     public override void EnterState(EntityModel model)
     {
         _entitiesData.Add(model, new DataAttackState(model));
+
+        attackMaxCooldown = _entitiesData[model].model.CharAIData.AttackCooldown;
+
         _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
         _entitiesData[model].model.View.CharacterMoveAnimation(false);
-        attackMaxCooldown = _entitiesData[model].model.CharAIData.AttackCooldown;
-        charModel = _entitiesData[model].model;
+
         AttacksRouletteSetUp(_entitiesData[model].model);
     }
 
@@ -42,24 +43,27 @@ public class NPCAttackState : State
     {
         Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC Attack EXECUTE");
 
-        timer += Time.deltaTime;
+
+        Debug.Log(_entitiesData[model].model.gameObject.name + " current health is " + _entitiesData[model].model.HealthController.CurrentHealth + " and can receive damage " + _entitiesData[model].model.HealthController.CanReceiveDamage);
         var target = _entitiesData[model].controller.CharAIController.Target;
         if (target != null)
         {
-            if (!target.gameObject.GetComponent<CharacterModel>().HealthController.IsDead)
-            {    //Debug.Log("Timer de reg attack: " + attackStateTimer);
-                attackCooldown += Time.deltaTime;
-                var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
-                if (attackCooldown > attackMaxCooldown)
-                {
-                    //Debug.Log("timer de reg attack reset");
-                    EnemyAttacksRouletteAction();
-                    attackCooldown = 0;
-                }
-                CheckTransitionToFollowLeaderState(_entitiesData[model].model);
-                CheckTransitionToFleeState(_entitiesData[model].model);
-                CheckTransitionToDeathState(_entitiesData[model].model);
+            attackCooldown += Time.deltaTime;
+            var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+            var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.gameObject.transform.position;
+
+            _entitiesData[model].model.LookDir(dir);
+
+            if (attackCooldown > attackMaxCooldown)
+            {
+                //Debug.Log("timer de reg attack reset");
+                EnemyAttacksRouletteAction();
+                attackCooldown = 0;
             }
+
+            CheckTransitionToFleeState(_entitiesData[model].model);
+            CheckTransitionToDeathState(_entitiesData[model].model);
+            CheckTransitionToFollowLeaderState(_entitiesData[model].model);
         }
     }
 
@@ -67,6 +71,8 @@ public class NPCAttackState : State
     {
         _entitiesData.Remove(model);
     }
+
+    #region Transition to other states
 
     public void CheckTransitionToFollowLeaderState(CharacterModel model)
     {
@@ -79,7 +85,7 @@ public class NPCAttackState : State
 
     public void CheckTransitionToFleeState(CharacterModel model)
     {
-        if(_entitiesData[model].model.HealthController.CurrentHealth <= _entitiesData[model].model.CharAIData.FleeThresholdTrigger)
+        if(_entitiesData[model].model.HealthController.CurrentHealth < _entitiesData[model].model.CharAIData.FleeThresholdTrigger)
         {
             _entitiesData[model].model.IsAttack = false;
             _entitiesData[model].model.IsFlee = true;
@@ -88,48 +94,33 @@ public class NPCAttackState : State
 
     public void CheckTransitionToDeathState(CharacterModel model)
     {
-
         if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
         {
-            _entitiesData[model].model.IsAttack = false;
-            _entitiesData[model].model.HealthController.IsDead = true;
+            Debug.Log(" NPC Curr health is zero, transition to death state");
+            _entitiesData[model].model.IsDead = true;
+            _entitiesData[model].model.IsAttacking = false;
+            //_entitiesData[model].model.HealthController.IsDead = true;
+            attackCooldown = 0;
         }
     }
+
+    #endregion
 
     #region  Attacks Roulette Wheel
     public void AttacksRouletteSetUp(CharacterModel model)
     {
         _attacksRouletteWheel = new Roulette();
 
-        ActionNode Attack1 = new ActionNode(PlayAttack1);
-        ActionNode Attack2 = new ActionNode(PlayAttack2);
-        ActionNode Attack3 = new ActionNode(PlayAttack3);
+        ActionNode Attack1 = new ActionNode(_entitiesData[model].model.View.CharacterAttack1Animation);
+        ActionNode Attack2 = new ActionNode(_entitiesData[model].model.View.CharacterAttack2Animation);
+        ActionNode Attack3 = new ActionNode(_entitiesData[model].model.View.CharacterAttack3Animation);
 
-        _attacksRouletteWheelNodes.Add(Attack1, 10);
-        _attacksRouletteWheelNodes.Add(Attack2, 15);
-        _attacksRouletteWheelNodes.Add(Attack3, 20);
+        _attacksRouletteWheelNodes.Add(Attack1, _entitiesData[model].model.Attack1Chance);
+        _attacksRouletteWheelNodes.Add(Attack2, _entitiesData[model].model.Attack2Chance);
+        _attacksRouletteWheelNodes.Add(Attack3, _entitiesData[model].model.Attack3Chance);
 
         ActionNode rouletteAction = new ActionNode(EnemyAttacksRouletteAction);
     }
-
-    void PlayAttack1()
-    {
-        //Debug.Log("FSM NPC Attack " + charModel);
-        charModel.View.CharacterAttack1Animation();
-    }
-
-    void PlayAttack2()
-    {
-        //Debug.Log("FSM NPC Attack " + charModel);
-        charModel.View.CharacterAttack2Animation();
-    }
-
-    void PlayAttack3()
-    {
-        //Debug.Log("FSM NPC Attack " + charModel);
-        charModel.View.CharacterAttack3Animation();
-    }
-
 
     public void EnemyAttacksRouletteAction()
     {
