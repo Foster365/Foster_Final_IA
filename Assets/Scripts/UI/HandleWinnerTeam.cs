@@ -19,12 +19,12 @@ public class HandleWinnerTeam : MonoBehaviour
 
     void CheckWinnerTeam()
     {
-        if(leaderA.HealthController.IsDead)
+        if(leaderA.HealthController.CurrentHealth <= 0)
         {
             teamWinsTxt.gameObject.SetActive(true);
             winnerTeamTxt.text = "Dogs";
         }
-        else if (leaderB.HealthController.IsDead)
+        else if (leaderB.HealthController.CurrentHealth <= 0)
         {
             teamWinsTxt.gameObject.SetActive(true);
             winnerTeamTxt.text = "Devil's";

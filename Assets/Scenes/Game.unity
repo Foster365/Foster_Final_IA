@@ -3430,7 +3430,7 @@ GameObject:
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &923659633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3457,7 +3457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923659631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.1, y: -2.4041414, z: 16.6}
+  m_LocalPosition: {x: -26.1, y: -2.4041414, z: 15.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1038609507}
@@ -6220,7 +6220,7 @@ MonoBehaviour:
   gridWorldSize: {x: 30, y: 50}
   prefab: {fileID: 6936562248821186842, guid: c54856392f3a9f84e8777b23971a482a, type: 3}
   leader: {fileID: 483484358}
-  troopSize: 300
+  troopSize: 5
   poolTag: 
   nodeRadius: 2
 --- !u!1001 &1979278157
@@ -7293,7 +7293,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &5766630674025092386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7328,7 +7328,7 @@ MonoBehaviour:
   gridWorldSize: {x: 10, y: 20}
   prefab: {fileID: 6936562248821186842, guid: c54856392f3a9f84e8777b23971a482a, type: 3}
   leader: {fileID: 483484358}
-  troopSize: 10
+  troopSize: 5
   poolTag: NPC_A
   nodeRadius: 3
 --- !u!1001 &6936562249513619771
