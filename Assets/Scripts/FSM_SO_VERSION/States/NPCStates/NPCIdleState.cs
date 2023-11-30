@@ -34,19 +34,44 @@ public class NPCIdleState : State
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC IDLE EXECUTE");
-
-        timer += Time.deltaTime;
-        if (_entitiesData[model].boss.gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
+        if(_entitiesData[model].boss != null)
         {
-            _entitiesData[model].model.IsFollowLeader = true;
+            Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC IDLE EXECUTE");
+
+            timer += Time.deltaTime;
+            CheckTransitionToFollowLeaderState(_entitiesData[model].model);
+            CheckTransitionToSearchState(_entitiesData[model].model);
         }
-        else if (_entitiesData[model].boss.gameObject.GetComponent<CharacterModel>().IsBattleBegun)
-            _entitiesData[model].model.IsSearching = true;
+        else
+        {
+            CheckTransitionToDeathState(_entitiesData[model].model);
+        }
     }
 
     public override void ExitState(EntityModel model)
     {
         _entitiesData.Remove(model);
     }
+
+    #region Transition to other states
+
+    void CheckTransitionToFollowLeaderState(CharacterModel model)
+    {
+        if (_entitiesData[model].boss.gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
+            _entitiesData[model].model.IsFollowLeader = true;
+    }
+
+    void CheckTransitionToSearchState(CharacterModel model)
+    {
+        if (_entitiesData[model].boss.gameObject.GetComponent<CharacterModel>().IsBattleBegun)
+            _entitiesData[model].model.IsSearching = true;
+    }
+
+    void CheckTransitionToDeathState(CharacterModel model)
+    {
+        _entitiesData[model].model.IsDead = true;
+    }
+
+    #endregion
+
 }

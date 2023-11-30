@@ -51,7 +51,6 @@ public class LineOfSight
         {
             Target = overlapSphere[0].transform;
         }
-        //Debug.Log(Target + "  " + ViewDistance);
         targetInSight = false;
         if (Target != null)
         {

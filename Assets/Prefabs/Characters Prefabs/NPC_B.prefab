@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  personalRange: 5
+  personalRange: 7
 --- !u!114 &-6015402434111110759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2e42202caeaf64da8764e1b5bae217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 2
+  multiplier: 3
   target: {fileID: 0}
 --- !u!114 &-8395197207144064166
 MonoBehaviour:
@@ -1444,8 +1444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  predatorRange: 5
-  predatorMax: 10
+  predatorRange: 2.5
+  predatorMax: 5
   predatorMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1462,8 +1462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  predatorRange: 5
-  predatorMax: 10
+  predatorRange: 2.5
+  predatorMax: 5
   predatorMask:
     serializedVersion: 2
     m_Bits: 128
@@ -1480,8 +1480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  predatorRange: 5
-  predatorMax: 10
+  predatorRange: 2.5
+  predatorMax: 3
   predatorMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1498,8 +1498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  predatorRange: 5
-  predatorMax: 10
+  predatorRange: 2.5
+  predatorMax: 3
   predatorMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: 2
   predatorRange: 2.5
-  predatorMax: 5
+  predatorMax: 3
   predatorMask:
     serializedVersion: 2
     m_Bits: 8

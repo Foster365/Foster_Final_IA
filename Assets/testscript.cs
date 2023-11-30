@@ -20,7 +20,6 @@ public class testscript : MonoBehaviour
     {
         if(boss.gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
         {
-            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ");
         }
     }
 }

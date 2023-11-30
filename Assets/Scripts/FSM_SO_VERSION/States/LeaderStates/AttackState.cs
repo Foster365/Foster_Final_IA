@@ -48,14 +48,11 @@ public class AttackState : State
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM Leader Attack EXECUTE " + _entitiesData[model].model.gameObject.name);
+        //Debug.Log("FSM Leader Attack EXECUTE " + _entitiesData[model].model.gameObject.name);
         _entitiesData[model].model.HealthController.CanReceiveDamage = true;
         attackStateTimer += Time.deltaTime;
         if (attackStateTimer <= attackMaxStateTimer)
         {
-
-            Debug.Log(_entitiesData[model].model.gameObject.name + "curr health " + _entitiesData[model].model.HealthController.CurrentHealth);
-
             var target = _entitiesData[model].controller.CharAIController.Target;
             if (target != null)
             {
@@ -82,7 +79,6 @@ public class AttackState : State
 
     public override void ExitState(EntityModel model)
     {
-        //if (_attacksRouletteWheelNodes.Count > 0) _attacksRouletteWheelNodes.Clear();
         _entitiesData.Remove(model);
     }
 
@@ -122,7 +118,6 @@ public class AttackState : State
     {
         if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
         {
-            Debug.Log("Curr health is zero, transition to death state");
             _entitiesData[model].model.IsDead = true;
             _entitiesData[model].model.IsAttacking = false;
             //_entitiesData[model].model.HealthController.IsDead = true;
@@ -137,7 +132,6 @@ public class AttackState : State
     
     public void RouletteWheelSetUp(CharacterModel model)
     {
-        Debug.Log("anim ataque seteo ruleta");
         _attacksRouletteWheel = new Roulette();
 
         ActionNode Attack1 = new ActionNode(_entitiesData[model].model.View.CharacterAttack1Animation);

@@ -51,7 +51,6 @@ public class CharacterModel : EntityModel
 
     public void DeathHandler()
     {
-        Debug.Log("FSM NPC ME MUERO" + gameObject.name);
         healthController.IsDead = true;
         View.CharacterDeathAnimation();
         Destroy(gameObject, 1f);
@@ -76,13 +75,11 @@ public class CharacterModel : EntityModel
     public override float GetSpeed() => rb.velocity.magnitude;
     public override void Move(Vector3 direction)
     {
-        //Debug.Log("Entro en move character model");
         direction.y = 0;
         //direction += _obstacleAvoidance.GetDir() * multiplier;
         rb.velocity = direction * (Data.MovementSpeed * Time.deltaTime);
 
         transform.forward = Vector3.Lerp(transform.forward, direction, Data.RotationSpeed * Time.deltaTime);
-        //View.CharacterMoveAnimation(true);
     }
 
     public override void LookDir(Vector3 direction)

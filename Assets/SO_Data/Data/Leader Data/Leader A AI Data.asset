@@ -36,8 +36,8 @@ MonoBehaviour:
   <TotalSightDegrees>k__BackingField: 180
   <FleeThresholdTrigger>k__BackingField: 0
   <FleeStateTimer>k__BackingField: 0
-  <ObstacleAvoidanceRadius>k__BackingField: 5
-  <ObstacleAvoidanceMaxObstacles>k__BackingField: 20
+  <ObstacleAvoidanceRadius>k__BackingField: 7
+  <ObstacleAvoidanceMaxObstacles>k__BackingField: 10
   <ObstacleAvoidanceViewAngle>k__BackingField: 180
   <ObstacleAvoidanceLayerMask>k__BackingField:
     serializedVersion: 2

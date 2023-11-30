@@ -35,7 +35,6 @@ public class CharacterMagicAttack : MonoBehaviour
     {
         if (timer >= lifeTime)
         {
-            Debug.Log("Destroy por timer");
             Destroy(gameObject);
         }
     }
@@ -48,7 +47,6 @@ public class CharacterMagicAttack : MonoBehaviour
     {
         if ((targetLayerMask.value & (1 << other.transform.gameObject.layer)) > 0)
         {
-            Debug.Log("Collision with: " + other.gameObject.name);
             if (other.gameObject.GetComponent<CharacterModel>() != null)
             {
                 DamageHandler(other.gameObject.GetComponent<CharacterModel>());
@@ -62,7 +60,6 @@ public class CharacterMagicAttack : MonoBehaviour
         if (model.HealthController.CanReceiveDamage)
         {
             model.HealthController.TakeDamage(damage);
-            Debug.Log(model.gameObject.name + "Health is " + model.HealthController.CurrentHealth);
         }
     }
 

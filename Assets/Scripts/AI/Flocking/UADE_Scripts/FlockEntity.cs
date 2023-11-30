@@ -90,7 +90,6 @@ public class FlockEntity : MonoBehaviour
         {
             if (collider != mainCollider)
             {
-                Debug.Log("Collider added");
                 context.Add(collider.transform);
             }
         }

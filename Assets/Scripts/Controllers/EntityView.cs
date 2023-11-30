@@ -18,25 +18,21 @@ public class EntityView : MonoBehaviour
     public void CharacterAttack1Animation()
     {
         anim.SetTrigger(TagManager.CHARACTER_ATTACK1_ANIMATION_TRIGGER);
-        Debug.Log("Anim Ataque 1");
     }
 
     public void CharacterAttack2Animation()
     {
         anim.SetTrigger(TagManager.CHARACTER_ATTACK2_ANIMATION_TRIGGER);
-        Debug.Log("Anim Ataque 2");
     }
 
     public void CharacterAttack3Animation()
     {
         anim.SetTrigger(TagManager.CHARACTER_ATTACK3_ANIMATION_TRIGGER);
-        Debug.Log("Anim Ataque 3");
     }
 
     public void CharacterAttack4Animation()
     {
         anim.SetTrigger(TagManager.CHARACTER_ATTACK4_ANIMATION_TRIGGER);
-        Debug.Log("Anim Ataque 4");
     }
 
     public void CharacterBlockAnimation(bool value)

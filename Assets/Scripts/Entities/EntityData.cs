@@ -7,7 +7,7 @@ public class EntityData : ScriptableObject
     //Basic Entity variables
     [field:SerializeField, Header("Basic Attributes")] public int MaxHealth { get; private set; }
     [field:SerializeField] public int HealthRegenerationAmount { get; private set; }
-    [field: SerializeField] public int MovementSpeed { get; private set; }
+    [field: SerializeField] public float MovementSpeed { get; set; }
     [field: SerializeField, Header("Attack Attributes")] public float AttackRange { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; }
     [field: SerializeField, Header("NPC Attributes")] public string BossName { get; private set; }

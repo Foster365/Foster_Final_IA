@@ -12,15 +12,14 @@ public class NPCFleeState : State
     {
         public CharacterModel model;
         public CharacterController controller;
-        public List<Node> nodesToTarget;
-        public Grid grid;
+        public float initSpeed;
 
         public DataFleeState(EntityModel entityModel)
         {
             model = (CharacterModel)entityModel;
             controller = model.gameObject.GetComponent<CharacterController>();
-            grid = model.MapGrid;
-            nodesToTarget = new List<Node>();
+            initSpeed = model.CharAIData.FleeReferenceMovementSpeed;
+            //model.Data.MovementSpeed -= (model.Data.MovementSpeed * .75f);
         }
     }
 
@@ -28,29 +27,54 @@ public class NPCFleeState : State
     {
         _entitiesData.Add(model, new DataFleeState(model));
         _entitiesData[model].model.View.CharacterMoveAnimation(true);
-        //charModel.View.PlayWalkAnimation(false);
-        //_entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
     }
 
     public override void ExecuteState(EntityModel model)
     {
         Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC Flee EXECUTE");
+        timer += Time.deltaTime;
 
-        _entitiesData[model].model.LookDir(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
-        _entitiesData[model].model.Move(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
-
-        _entitiesData[model].model.HealthController.Heal(_entitiesData[model].model.Data.HealthRegenerationAmount); //Regenerate while fleeing from target
-
-        if(timer >= _entitiesData[model].model.CharAIData.FleeStateTimer)
+        if(_entitiesData[model].controller.CharAIController.Target != null)
         {
-            _entitiesData[model].model.IsFlee = false;
-            _entitiesData[model].model.IsFollowLeader = true;
+            _entitiesData[model].model.LookDir(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
+            _entitiesData[model].model.Move(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
+            Debug.Log("flee curr speed" + _entitiesData[model].model.Data.MovementSpeed);
+            //_entitiesData[model].model.HealthController.Heal(_entitiesData[model].model.Data.HealthRegenerationAmount); //Regenerate while fleeing from target
+            Debug.Log(_entitiesData[model].model.HealthController.CurrentHealth + "health de npc paso a flee");
+
         }
 
+        HandleTransitionToFollowLeaderState(_entitiesData[model].model);
+        CheckTransitionToDeathState(_entitiesData[model].model);
     }
 
     public override void ExitState(EntityModel model)
     {
         _entitiesData.Remove(model);
     }
+
+    void HandleTransitionToFollowLeaderState(CharacterModel model)
+    {
+        if (timer > _entitiesData[model].model.CharAIData.FleeStateTimer)
+        {
+            _entitiesData[model].model.IsFlee = false;
+            _entitiesData[model].model.IsSearching = true;
+            _entitiesData[model].model.Data.MovementSpeed = _entitiesData[model].model.CharAIData.FleeReferenceMovementSpeed;
+            Debug.Log("flee speed reset" + _entitiesData[model].model.Data.MovementSpeed);
+
+            timer = 0;
+        }
+
+    }
+
+    public void CheckTransitionToDeathState(CharacterModel model)
+    {
+        if (_entitiesData[model].model.HealthController.CurrentHealth <= 0)
+        {
+            _entitiesData[model].model.IsDead = true;
+            _entitiesData[model].model.IsFlee = false;
+            timer = 0;
+        }
+    }
+
 }

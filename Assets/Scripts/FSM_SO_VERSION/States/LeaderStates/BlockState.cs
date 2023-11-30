@@ -21,14 +21,13 @@ public class BlockState : State
 
     public override void EnterState(EntityModel model)
     {
-        //Debug.Log("FSM Leader Block ENTER");
         _entitiesData.Add(model, new DataBlockState(model));
         blockStateMaxTimer = _entitiesData[model].model.CharAIData.BlockStateTimer;
     }
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM Leader Block EXECUTE " + _entitiesData[model].model.gameObject.name);
+        //Debug.Log("FSM Leader Block EXECUTE " + _entitiesData[model].model.gameObject.name);
         if(_entitiesData[model].controller.CharAIController.Target)
         {
             blockStateTimer += Time.deltaTime;
@@ -44,7 +43,6 @@ public class BlockState : State
 
     public override void ExitState(EntityModel model)
     {
-        //Debug.Log("FSM Leader Block EXIT");
         _entitiesData.Remove(model);
     }
 

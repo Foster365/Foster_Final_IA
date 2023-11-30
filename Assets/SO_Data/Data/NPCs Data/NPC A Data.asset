@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052c1668e7644c640aafbb51d3a2c78e, type: 3}
   m_Name: NPC A Data
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 50
-  <HealthRegenerationAmount>k__BackingField: 5
+  <MaxHealth>k__BackingField: 25
+  <HealthRegenerationAmount>k__BackingField: 2
   <MovementSpeed>k__BackingField: 800
   <AttackRange>k__BackingField: 3
-  <RotationSpeed>k__BackingField: 5
+  <RotationSpeed>k__BackingField: 10
   <BossName>k__BackingField: Leader_A
-  <FlockRadius>k__BackingField: 5
+  <FlockRadius>k__BackingField: 7

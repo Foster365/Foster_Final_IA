@@ -24,6 +24,7 @@ public class CharacterAIData : ScriptableObject
     //Flee variables
     [field: SerializeField, Header("Flee SB Variables")] public float FleeThresholdTrigger { get; set; }
     [field: SerializeField] public float FleeStateTimer { get; set; }
+    [field: SerializeField] public float FleeReferenceMovementSpeed { get; private set; }
 
     //Obstacle Avoidance variables
     [field: SerializeField, Header("Obstacle Avoidance SB Variables")] public float ObstacleAvoidanceRadius { get; set; }

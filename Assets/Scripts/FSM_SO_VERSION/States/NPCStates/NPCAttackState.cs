@@ -43,28 +43,30 @@ public class NPCAttackState : State
     {
         Debug.Log(_entitiesData[model].model.gameObject.name + "FSM NPC Attack EXECUTE");
 
-
-        Debug.Log(_entitiesData[model].model.gameObject.name + " current health is " + _entitiesData[model].model.HealthController.CurrentHealth + " and can receive damage " + _entitiesData[model].model.HealthController.CanReceiveDamage);
-        var target = _entitiesData[model].controller.CharAIController.Target;
-        if (target != null)
+        if (_entitiesData[model].model.HealthController.CurrentHealth < _entitiesData[model].model.CharAIData.FleeThresholdTrigger)
         {
-            attackCooldown += Time.deltaTime;
-            var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
-            var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.gameObject.transform.position;
-
-            _entitiesData[model].model.LookDir(dir);
-
-            if (attackCooldown > attackMaxCooldown)
-            {
-                //Debug.Log("timer de reg attack reset");
-                EnemyAttacksRouletteAction();
-                attackCooldown = 0;
-            }
-
-            CheckTransitionToFleeState(_entitiesData[model].model);
-            CheckTransitionToDeathState(_entitiesData[model].model);
-            CheckTransitionToFollowLeaderState(_entitiesData[model].model);
+            _entitiesData[model].model.IsAttack = false;
+            _entitiesData[model].model.IsFlee = true;
         }
+        else
+        {
+            var target = _entitiesData[model].controller.CharAIController.Target;
+            if (target != null)
+            {
+                attackCooldown += Time.deltaTime;
+                var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
+                var dir = _entitiesData[model].controller.CharAIController.Target.position - _entitiesData[model].model.gameObject.transform.position;
+
+                _entitiesData[model].model.LookDir(dir);
+
+                HandleAttacks(_entitiesData[model].model);
+
+                CheckTransitionToSearchState(_entitiesData[model].model, dist);
+                CheckTransitionToDeathState(_entitiesData[model].model);
+                CheckTransitionToFollowLeaderState(_entitiesData[model].model);
+            }
+        }
+        
     }
 
     public override void ExitState(EntityModel model)
@@ -72,7 +74,27 @@ public class NPCAttackState : State
         _entitiesData.Remove(model);
     }
 
-    #region Transition to other states
+    public void HandleAttacks(CharacterModel model)
+    {
+
+        if (attackCooldown > attackMaxCooldown)
+        {
+            EnemyAttacksRouletteAction();
+            attackCooldown = 0;
+        }
+
+    }
+
+    #region Transitions to other states
+
+    public void CheckTransitionToSearchState(CharacterModel model, float dist)
+    {
+        if (dist > _entitiesData[model].model.Data.AttackRange)
+        {
+            _entitiesData[model].model.IsAttack = false;
+            _entitiesData[model].model.IsSearching = true;
+        }
+    }
 
     public void CheckTransitionToFollowLeaderState(CharacterModel model)
     {
