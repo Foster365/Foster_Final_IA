@@ -36,8 +36,8 @@ public class NPCFleeState : State
 
         if(_entitiesData[model].controller.CharAIController.Target != null)
         {
-            _entitiesData[model].model.LookDir(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
-            _entitiesData[model].model.Move(_entitiesData[model].controller.CharAIController.SbFlee.GetDir() + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir());
+            _entitiesData[model].model.LookDir(_entitiesData[model].controller.CharAIController.SbFlee.GetDir()/* + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir()*/);
+            _entitiesData[model].model.Move(_entitiesData[model].controller.CharAIController.SbFlee.GetDir()/* + _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlockingDir()*/);
             Debug.Log("flee curr speed" + _entitiesData[model].model.Data.MovementSpeed);
             //_entitiesData[model].model.HealthController.Heal(_entitiesData[model].model.Data.HealthRegenerationAmount); //Regenerate while fleeing from target
             Debug.Log(_entitiesData[model].model.HealthController.CurrentHealth + "health de npc paso a flee");

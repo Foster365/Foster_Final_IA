@@ -53,6 +53,10 @@ public class AttackState : State
         attackStateTimer += Time.deltaTime;
         if (attackStateTimer <= attackMaxStateTimer)
         {
+            CheckTransitionToDeathState(_entitiesData[model].model);
+
+            Debug.Log(_entitiesData[model].model.gameObject.name + "paso a death state muestro curr health" + _entitiesData[model].model.HealthController.CurrentHealth);
+
             var target = _entitiesData[model].controller.CharAIController.Target;
             if (target != null)
             {
@@ -67,7 +71,6 @@ public class AttackState : State
                 if(_attacksRouletteWheelNodes != null) AttackHandler(_entitiesData[model].model);
 
                 CheckTransitionToSeekState(_entitiesData[model].model, dist);
-                CheckTransitionToDeathState(_entitiesData[model].model);
 
             }
         }

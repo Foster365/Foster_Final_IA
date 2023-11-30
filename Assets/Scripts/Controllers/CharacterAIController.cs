@@ -5,8 +5,6 @@ using _Main.Scripts.FSM_SO_VERSION;
 
 public class CharacterAIController
 {
-    public delegate int AttackRouletteWheightedCondAction(int val);
-    public static event AttackRouletteWheightedCondAction OnHealthCondition;
 
     CharacterModel model;
     StateData fsmInitialState;
@@ -56,8 +54,11 @@ public class CharacterAIController
 
     public void UpdateControllerComponents()
     {
-        if(target != null) UpdateSBTargetReference();
-        charFSM.UpdateState();
+        if(!model.HealthController.IsDead)
+        {
+            UpdateSBTargetReference();
+            charFSM.UpdateState();
+        }
     }
 
     #region Line Of Sight
@@ -114,9 +115,13 @@ public class CharacterAIController
 
     void UpdateSBTargetReference()
     {
-        sbFlee.Target = target;
-        sbSeek.Target = target;
-        sbPursuit.Target = target;
+
+        if (target != null)
+        {
+            sbFlee.Target = target;
+            sbSeek.Target = target;
+            sbPursuit.Target = target;
+        }
     }
 
     #endregion

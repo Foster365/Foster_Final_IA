@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: NPC B AI Data
   m_EditorClassIdentifier: 
   <FsmStates>k__BackingField:
-  - {fileID: 11400000, guid: 561c9d580761b114a93315f802e221fb, type: 2}
   - {fileID: 11400000, guid: d40895f8a239aa641b803b5ddc14ae70, type: 2}
+  - {fileID: 11400000, guid: fe756e6511490d44ead1e989b4c4c70c, type: 2}
+  - {fileID: 11400000, guid: 83eb4285524fa50499ab75c7a323dcb4, type: 2}
   - {fileID: 11400000, guid: 2114d9097483fdf4f9bc8b18a023fd4b, type: 2}
+  - {fileID: 11400000, guid: 561c9d580761b114a93315f802e221fb, type: 2}
+  - {fileID: 11400000, guid: 16e32c967017d074ab62a8bd8063e5ba, type: 2}
+  - {fileID: 11400000, guid: 738902c1839d1db4b972eecc5fea6bd4, type: 2}
   <IdleTimer>k__BackingField: 1.5
   <PatrolTimer>k__BackingField: 0
   <SearchStateTimer>k__BackingField: 5

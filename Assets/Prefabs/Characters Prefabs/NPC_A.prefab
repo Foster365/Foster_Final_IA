@@ -2307,8 +2307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  predatorRange: 2.5
-  predatorMax: 5
+  predatorRange: 5
+  predatorMax: 10
   predatorMask:
     serializedVersion: 2
     m_Bits: 64
@@ -2325,8 +2325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  predatorRange: 2.5
-  predatorMax: 5
+  predatorRange: 5
+  predatorMax: 10
   predatorMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2343,8 +2343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  predatorRange: 2.5
-  predatorMax: 3
+  predatorRange: 3.5
+  predatorMax: 5
   predatorMask:
     serializedVersion: 2
     m_Bits: 256

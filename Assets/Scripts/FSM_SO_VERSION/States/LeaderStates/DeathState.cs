@@ -23,6 +23,7 @@ public class DeathState : State
     public override void EnterState(EntityModel model)
     {
         _entitiesData.Add(model, new DeathStateData(model));
+        Debug.Log("Death state enter " + _entitiesData[model].model.gameObject.name);
         _entitiesData[model].model.DeathHandler();
     }
 

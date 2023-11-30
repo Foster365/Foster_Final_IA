@@ -52,7 +52,7 @@ public class CharacterModel : EntityModel
     public void DeathHandler()
     {
         healthController.IsDead = true;
-        View.CharacterDeathAnimation();
+        //View.CharacterDeathAnimation();
         Destroy(gameObject, 1f);
     }
 
