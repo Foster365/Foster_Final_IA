@@ -51,7 +51,6 @@ public class PatrolState : State
         _entitiesData[model].model.GetComponent<CharacterController>().CharAIController.AStarPathFinding.FindPath(
            modelRef.transform.position, pos);
         _entitiesData[model].model.HealthController.CanReceiveDamage = true;
-        _entitiesData[model].model.View.CharacterMoveAnimation(true);
     }
 
     public override void ExecuteState(EntityModel model)
@@ -62,6 +61,7 @@ public class PatrolState : State
         var aiController = modelRef.GetComponent<CharacterController>().CharAIController;
         var finalPath = aiController.AStarPathFinding.finalPath;
 
+        _entitiesData[model].model.View.CharacterMoveAnimation(true);
         Patrol(_entitiesData[model].model, finalPath);
         CheckPathRegeneration(aiController, _entitiesData[model].model);
         

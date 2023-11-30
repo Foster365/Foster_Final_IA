@@ -24,7 +24,7 @@ MonoBehaviour:
   <SearchStateTimer>k__BackingField: 0
   <BlockStateTimer>k__BackingField: 2
   <AttackStateTimer>k__BackingField: 4
-  <AttackCooldown>k__BackingField: 0.75
+  <AttackCooldown>k__BackingField: 1
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64

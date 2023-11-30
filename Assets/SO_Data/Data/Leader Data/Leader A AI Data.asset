@@ -22,9 +22,9 @@ MonoBehaviour:
   <IdleTimer>k__BackingField: 3
   <PatrolTimer>k__BackingField: 10
   <SearchStateTimer>k__BackingField: 0
-  <BlockStateTimer>k__BackingField: 1.5
-  <AttackStateTimer>k__BackingField: 3
-  <AttackCooldown>k__BackingField: 0.5
+  <BlockStateTimer>k__BackingField: 2
+  <AttackStateTimer>k__BackingField: 4
+  <AttackCooldown>k__BackingField: 1
   <TargetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 128

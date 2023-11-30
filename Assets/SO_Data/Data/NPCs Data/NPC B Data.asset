@@ -16,7 +16,6 @@ MonoBehaviour:
   <HealthRegenerationAmount>k__BackingField: 4
   <MovementSpeed>k__BackingField: 800
   <AttackRange>k__BackingField: 4
-  <CooldownToAttack>k__BackingField: 0.5
   <RotationSpeed>k__BackingField: 5
   <BossName>k__BackingField: Leader_B
-  <FlockRadius>k__BackingField: 10
+  <FlockRadius>k__BackingField: 5

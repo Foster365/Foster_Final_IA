@@ -42,9 +42,9 @@ public class NPCFollowLeaderState : State
 
         _entitiesData[model].model.gameObject.GetComponent<CharacterController>().CharAIController.LineOfSight();
 
-        _entitiesData[model].model.LookDir(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
-        _entitiesData[model].model.Move(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
-
+        //_entitiesData[model].model.LookDir(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
+        //_entitiesData[model].model.Move(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
+        _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlocking();
         //CheckTarget(_entitiesData[model]);
         if (model.gameObject.GetComponent<CharacterController>().CharAIController.Target != null)
         {

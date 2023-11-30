@@ -9,12 +9,12 @@ public class AttackState : State
     float attackMaxCooldown, attackCooldown = 0;
     float attackMaxStateTimer, attackStateTimer = 0;
 
-    CharacterModel charModel;
     private Dictionary<EntityModel, DataAttackState> _entitiesData = new Dictionary<EntityModel, DataAttackState>();
 
     // Attacks roulette wheel
-    Roulette _attacksRouletteWheel;
-    Dictionary<ActionNode, int> _attacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    public Roulette _attacksRouletteWheel;
+    public Dictionary<ActionNode, int> _attacksRouletteWheelNodes = new Dictionary<ActionNode, int>();
+    public int attack1Chance, attack2Chance, attack3Chance, attack4Chance;
     //
 
     private class DataAttackState
@@ -26,21 +26,29 @@ public class AttackState : State
         {
             model = (CharacterModel)entityModel;
             controller = model.gameObject.GetComponent<CharacterController>();
+            //_attacksRouletteWheelNodes.Clear();
         }
     }
 
     public override void EnterState(EntityModel model)
     {
         if (!_entitiesData.ContainsKey(model)) _entitiesData.Add(model, new DataAttackState(model));
-        charModel = _entitiesData[model].model;
-            attackMaxCooldown = charModel.CharAIData.AttackCooldown;
-        attackMaxStateTimer = charModel.CharAIData.AttackStateTimer;
-        //attackCooldown = 0;
+        attackMaxStateTimer = _entitiesData[model].model.CharAIData.AttackStateTimer;
+        attackMaxCooldown = _entitiesData[model].model.CharAIData.AttackCooldown;
+
+        attack1Chance = _entitiesData[model].model.Attack1Chance;
+        attack2Chance = _entitiesData[model].model.Attack2Chance;
+        attack3Chance = _entitiesData[model].model.Attack3Chance;
+        attack4Chance = _entitiesData[model].model.Attack4Chance;
+
+        RouletteWheelSetUp(_entitiesData[model].model);
+
+        //attackCooldown = 0;   
     }
 
     public override void ExecuteState(EntityModel model)
     {
-        Debug.Log("FSM Leader Attack EXECUTE " + charModel.gameObject.name);
+        Debug.Log("FSM Leader Attack EXECUTE " + _entitiesData[model].model.gameObject.name);
         _entitiesData[model].model.HealthController.CanReceiveDamage = true;
         attackStateTimer += Time.deltaTime;
         if (attackStateTimer <= attackMaxStateTimer)
@@ -57,11 +65,13 @@ public class AttackState : State
 
                 attackCooldown += Time.deltaTime;
 
+                Debug.Log("Attacks dictionary is " + _attacksRouletteWheelNodes);
+                Debug.Log("Attacks dictionary roulette is " + _attacksRouletteWheel);
+
                 CheckTransitionToSeekState(_entitiesData[model].model, dist);
                 CheckTransitionToDeathState(_entitiesData[model].model);
 
-
-                AttackHandler(_entitiesData[model].model);
+                if(_attacksRouletteWheelNodes != null) AttackHandler(_entitiesData[model].model);
             }
         }
         else
@@ -72,6 +82,7 @@ public class AttackState : State
 
     public override void ExitState(EntityModel model)
     {
+        //if (_attacksRouletteWheelNodes.Count > 0) _attacksRouletteWheelNodes.Clear();
         _entitiesData.Remove(model);
     }
 
@@ -79,10 +90,9 @@ public class AttackState : State
     {
         if (attackCooldown > attackMaxCooldown)
         {
-            _entitiesData[model].model.View.CharacterAttack1Animation();
-            //_attacksRouletteWheelNodes.Clear();
-            //AttacksRouletteSetUp(_entitiesData[model].model);
-            //EnemyAttacksRouletteAction();
+            //RouletteWheelSetUp(_entitiesData[model].model);
+            //_entitiesData[model].model.View.CharacterAttack1Animation();
+            EnemyAttacksRouletteAction();
             attackCooldown = 0;
         }
     }
@@ -121,57 +131,31 @@ public class AttackState : State
     #endregion
 
     #region  Attacks Roulette Wheel
-    public void AttacksRouletteSetUp(CharacterModel model)
+    
+    public void RouletteWheelSetUp(CharacterModel model)
     {
+        Debug.Log("anim ataque seteo ruleta");
         _attacksRouletteWheel = new Roulette();
 
-        ActionNode Attack1 = new ActionNode(_entitiesData[model].model.View.CharacterAttack1Animation);
-        ActionNode Attack2 = new ActionNode(_entitiesData[model].model.View.CharacterAttack2Animation);
-        ActionNode Attack3 = new ActionNode(_entitiesData[model].model.View.CharacterAttack3Animation);
-        ActionNode Attack4 = new ActionNode(_entitiesData[model].model.View.CharacterAttack4Animation);
+        ActionNode Attack1 = new ActionNode(/*Ataque1);*/_entitiesData[model].model.View.CharacterAttack1Animation);
+        ActionNode Attack2 = new ActionNode(/*Ataque2);*/_entitiesData[model].model.View.CharacterAttack2Animation);
+        ActionNode Attack3 = new ActionNode(/*Ataque3);*/_entitiesData[model].model.View.CharacterAttack3Animation);
+        ActionNode Attack4 = new ActionNode(/*Ataque4);*/_entitiesData[model].model.View.CharacterAttack4Animation);
 
-        _attacksRouletteWheelNodes.Add(Attack1,_entitiesData[model].model.Attack1Chance);
-        _attacksRouletteWheelNodes.Add(Attack2,_entitiesData[model].model.Attack2Chance);
-        _attacksRouletteWheelNodes.Add(Attack3,_entitiesData[model].model.Attack3Chance);
-        _attacksRouletteWheelNodes.Add(Attack4,_entitiesData[model].model.Attack4Chance);
+
+        _attacksRouletteWheelNodes.Add(Attack1, attack1Chance);
+        _attacksRouletteWheelNodes.Add(Attack2, attack2Chance);
+        _attacksRouletteWheelNodes.Add(Attack3, attack3Chance);
+        _attacksRouletteWheelNodes.Add(Attack4, attack4Chance);
 
         ActionNode rouletteAction = new ActionNode(EnemyAttacksRouletteAction);
     }
 
     public void EnemyAttacksRouletteAction()
     {
+
         INode node = _attacksRouletteWheel.Run(_attacksRouletteWheelNodes);
         node.Execute();
-
-    }
-
-    int HandleRouletteOptionModifier(int value)
-    {
-        var finalValue = value;
-        if (charModel.gameObject.CompareTag(TagManager.LEADER_TAG)) finalValue = HandleBossRouletteOptionsModifier(value);
-        else finalValue = HandleNPCRouletteOptionsModifier(value);
-
-        return finalValue;
-    }
-    int HandleHealthCondition(int val)
-    {
-        //Debug.Log("Events for health attack enhancement value is: " + val);
-        //if (charModel.HealthController.CurrentHealth < charModel.CharAIData.EnhancedAttackThreshold)
-        //    val += 1;
-        //else if (charModel.HealthController.CurrentHealth < charModel.CharAIData.EnhancedAttackThreshold)
-        //    val += 2;
-        //Debug.Log("Events for health attack enhancement final value is: " + val);
-        return val;
-    }
-    public int HandleBossRouletteOptionsModifier(int value)
-    {
-        //value = OnHealthCondition?.Invoke(value) ?? value;
-        return value;
-    }
-
-    public int HandleNPCRouletteOptionsModifier(int value)
-    {
-        return value;
     }
 
     #endregion

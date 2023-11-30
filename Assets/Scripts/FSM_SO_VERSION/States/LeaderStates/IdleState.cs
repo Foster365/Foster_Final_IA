@@ -25,7 +25,6 @@ public class IdleState : State
         //Debug.Log("FSM Leader IDLE START");
         _entitiesData.Add(model, new IdleData(model));//model as CharacterModel);
 
-        //charModel.View.PlayWalkAnimation(false);
         _entitiesData[model].model.GetRigidbody().velocity = Vector3.zero;
         _entitiesData[model].model.View.CharacterMoveAnimation(false);
         _entitiesData[model].model.HealthController.CanReceiveDamage = true;
@@ -36,6 +35,7 @@ public class IdleState : State
         Debug.Log("FSM Leader IDLE EXECUTE " + _entitiesData[model].model.gameObject.name);
 
         idleStateTimer += Time.deltaTime;
+
 
         //_entitiesData[model].model.View.CharacterMoveAnimation(false);
         CheckTransitionToDeathState(_entitiesData[model].model);

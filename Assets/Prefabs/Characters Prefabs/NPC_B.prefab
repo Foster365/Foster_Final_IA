@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1
-  personalRange: 5
+  personalRange: 15
 --- !u!114 &3102046172721308881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 5
-  predatorRange: 2.5
+  predatorRange: 10
   predatorMax: 10
   predatorMask:
     serializedVersion: 2
