@@ -2099,8 +2099,6 @@ GameObject:
   - component: {fileID: 6989199125450618144}
   - component: {fileID: 5027604014500380103}
   - component: {fileID: -3558019972220120827}
-  - component: {fileID: 7610082342671785727}
-  - component: {fileID: 8876453651190864078}
   - component: {fileID: 5684492945360683563}
   m_Layer: 8
   m_Name: NPC_A
@@ -2324,48 +2322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e687f3ff4af95594f8810e2bbb300df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 2
+  multiplier: 4
   predatorRange: 5
   predatorMax: 10
   predatorMask:
     serializedVersion: 2
-    m_Bits: 128
---- !u!114 &7610082342671785727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e687f3ff4af95594f8810e2bbb300df3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 2
-  predatorRange: 3.5
-  predatorMax: 5
-  predatorMask:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!114 &8876453651190864078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6936562248821186842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e687f3ff4af95594f8810e2bbb300df3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 2
-  predatorRange: 2.5
-  predatorMax: 3
-  predatorMask:
-    serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
 --- !u!114 &5684492945360683563
 MonoBehaviour:
   m_ObjectHideFlags: 0

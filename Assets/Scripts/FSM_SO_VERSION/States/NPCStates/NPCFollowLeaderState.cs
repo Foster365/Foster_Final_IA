@@ -38,6 +38,9 @@ public class NPCFollowLeaderState : State
 
         _entitiesData[model].model.gameObject.GetComponent<CharacterController>().CharAIController.LineOfSight();
 
+        //Diccionario de charactercontroller, que tenga como key el charactermodel. Si existe lo obtengo y si no existe un getcomponent
+        //lookup table -> Design pattern
+
         //_entitiesData[model].model.LookDir(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
         //_entitiesData[model].model.Move(_entitiesData[model].model.GetComponent<FlockingManager>().RunFlockingDir());
         _entitiesData[model].model.gameObject.GetComponent<FlockingManager>().RunFlocking();

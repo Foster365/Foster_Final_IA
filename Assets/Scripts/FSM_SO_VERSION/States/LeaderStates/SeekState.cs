@@ -37,8 +37,9 @@ public class SeekState : State
     {
         //Debug.Log("FSM Leader Seek EXECUTE " + _entitiesData[model].model.gameObject.name);
 
-        model.LookDir(_entitiesData[model].controller.CharAIController.SbObstacleAvoidance.GetDir() + _entitiesData[model].controller.CharAIController.SbPursuit.GetDir());
-        model.Move(_entitiesData[model].controller.CharAIController.SbObstacleAvoidance.GetDir() + _entitiesData[model].controller.CharAIController.SbPursuit.GetDir());
+        var dir = _entitiesData[model].controller.CharAIController.SbObstacleAvoidance.GetDir() + _entitiesData[model].controller.CharAIController.SbPursuit.GetDir();
+        model.LookDir(dir);
+        model.Move(dir);
 
         var dist = Vector3.Distance(_entitiesData[model].model.transform.position, _entitiesData[model].controller.CharAIController.Target.position);
 

@@ -17,7 +17,8 @@ public class Grid : MonoBehaviour
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
-        CreateGrid();
+        CreateGrid(); //Hacer esto por editor. Corro por editor, me guardo por cache lo que trae y uso eso
+        //O hacer que cada objeto que pueda ser un obs para la grilla le diga a la grilla que chequee esa zona. Chequear solamente zonas que me digan los obstaculos
     }
 
     public int MaxSize
@@ -83,25 +84,25 @@ public class Grid : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.DrawCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-        //if (grid != null && player != null)
-        //{
-        //    Node playerNode = GetNodeFromWorldPoint(player.position);
-        //    foreach (Node n in grid)
-        //    {
-        //        Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
-        //        if (path != null)
-        //        {
-        //            if (path.Contains(n))
-        //            {
-        //                Gizmos.color = Color.magenta;
-        //                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-        //            }
-        //        }
-        //        if (playerNode == n) Gizmos.color = Color.yellow;
-        //        Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+        Gizmos.DrawCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        if (grid != null && player != null)
+        {
+            Node playerNode = GetNodeFromWorldPoint(player.position);
+            foreach (Node n in grid)
+            {
+                Gizmos.color = (n.isWalkable) ? Color.green : Color.red;
+                if (path != null)
+                {
+                    if (path.Contains(n))
+                    {
+                        Gizmos.color = Color.magenta;
+                        Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+                    }
+                }
+                if (playerNode == n) Gizmos.color = Color.yellow;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
 
-        //    }
-        //}
+            }
+        }
     }
 }

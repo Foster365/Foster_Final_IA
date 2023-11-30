@@ -163,6 +163,8 @@ public class AttackState : State
         var currHealth = _entitiesData[model].model.HealthController.CurrentHealth;
         if (currHealth > currHealth * .75f)
         {
+            //En vez de if hacer que el valor del nodo de la ruleta sea el current health + o * un modificador
+            //tal que si tiene más vida tiene más chances de salir, y viceversa
             attack1Chance = attack1Chance + 3;
             attack2Chance = attack2Chance + 2;
             attack3Chance = attack3Chance + 1;
